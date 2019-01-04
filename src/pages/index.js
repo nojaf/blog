@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, withPrefix } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import BodyClassName from 'react-body-classname'
+import TimeAgo from 'react-timeago/lib/index'
 
 const BlogPostPreview = ({ node }) => {
   const {excerpt, fields, frontmatter} = node;
@@ -19,13 +20,7 @@ const BlogPostPreview = ({ node }) => {
         <div className="sidebar text-right meta">
           <div className="published animated fadeInUp">
             <strong>Published</strong>
-            <time
-              className="timeago"
-              dateTime={frontmatter.date}
-              title="November 10 &#x27;18 at 17:17"
-            >
-              2 months ago
-            </time>
+            <TimeAgo date={frontmatter.date} className={'timeago'}/>
           </div>
           <span className="separator animated fadeInUp">//</span>
           <div className="tags animated fadeInUp">
@@ -67,7 +62,7 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges.splice(0, 5)
+    const posts = data.allMarkdownRemark.edges; //.splice(0, 5)
 
     return (
       <BodyClassName className="home-template">
@@ -92,7 +87,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
       edges {
         node {
           excerpt(pruneLength: 560)

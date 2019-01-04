@@ -5,6 +5,7 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import BodyClassName from 'react-body-classname'
+import TimeAgo from 'react-timeago/lib/index'
 
 const Cover = ({ path, title, image, tags, date }) => {
   const url = `https://blog.nojaf.com/${path}`
@@ -26,36 +27,18 @@ const Cover = ({ path, title, image, tags, date }) => {
             >
               <i className="fa nojaf-share-icon fa-twitter" />
             </a>
-            ,
-            <a
-              id="facebook"
-              href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
-            >
-              <i className="fa nojaf-share-icon fa-facebook" />
-            </a>{' '}
-            or{' '}
-            <a
-              id="google-plus"
-              href={`https://plus.google.com/share?url=${url}`}
-            >
-              <i className="fa nojaf-share-icon fa-google-plus" />
-            </a>
-            .
           </div>
         </div>
         <div className="sidebar text-right meta">
           <div className="published animated fadeInUp">
             <strong>Published</strong>
-            <time
-              className="timeago"
-              dateTime={date}
-            />
+            <TimeAgo date={date} className={'timeago'}/>
           </div>
           <span className="separator animated fadeInUp">//</span>
           <div className="tags animated fadeInUp">
             <strong>Tags</strong>
             {tags.map(t => {
-              <a href={`/tag/${t}/`}>{t}</a>
+              <Link to={`/tag/${t}/`}>{t}</Link>
             })}
           </div>
         </div>

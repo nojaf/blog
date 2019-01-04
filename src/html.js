@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from './components/seo'
 
 export default class HTML extends React.Component {
   render() {
@@ -26,9 +25,6 @@ export default class HTML extends React.Component {
           {this.props.postBodyComponents}
           <script src="/scripts/jquery-2.2.4.min.js"></script>
           <script src="/scripts/nojaf-body.min.js?v=cbf5158763"></script>
-          <script dangerouslySetInnerHTML={{ __html:`jQuery(document).ready(function() {
-            jQuery('time.timeago').timeago()
-          })`}} />
         </body>
       </html>
     )
