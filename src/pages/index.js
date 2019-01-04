@@ -1,38 +1,84 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
-import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
+import BodyClassName from 'react-body-classname'
+
+const BlogPostPreview = ({ node }) => {
+  const {excerpt, fields, frontmatter} = node;
+  console.log(fields, frontmatter)
+  return [
+    <div key='sample' className="sample animated fadeIn">
+      <div className="container">
+        <div className="title animated fadeInUp">
+          <Link to={frontmatter.path}>
+            <h1>{frontmatter.title}</h1>
+          </Link>
+        </div>
+        <div className="sidebar text-right meta">
+          <div className="published animated fadeInUp">
+            <strong>Published</strong>
+            <time
+              className="timeago"
+              dateTime={frontmatter.date}
+              title="November 10 &#x27;18 at 17:17"
+            >
+              2 months ago
+            </time>
+          </div>
+          <span className="separator animated fadeInUp">//</span>
+          <div className="tags animated fadeInUp">
+            <strong>Tags</strong>
+            <a href="/tag/f/">F#</a>
+            <a href="/tag/fable/">Fable</a>
+            <a href="/tag/react/">React</a>
+          </div>
+        </div>
+      </div>
+    </div>,
+    <article key='article' className="excerpt animated fadeIn post tag-f tag-fable tag-vscode">
+      <div className="container">
+        <p>
+          {excerpt}&hellip;
+        </p>
+      </div>
+    </article>
+  ]
+}
+
+// const title = node.frontmatter.title || node.fields.slug
+// return (
+//   <div key={node.fields.slug}>
+//     <h3>
+//       <Link
+//         style={{ boxShadow: `none` }}
+//         to={node.frontmatter.path}
+//       >
+//         {title}
+//       </Link>
+//     </h3>
+//     <small>{node.frontmatter.date}</small>
+//     <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+//   </div>
+// )
 
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allMarkdownRemark.edges.splice(0, 5)
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link style={{ boxShadow: `none` }} to={node.frontmatter.path}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-      </Layout>
+      <BodyClassName className="home-template">
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO title="Home" keywords={[`blog`, `blog.nojaf.com`]} />
+          <div className="main" />
+          {posts.map((post, idx) => {
+            return <BlogPostPreview key={`preview-${idx}`} {...post}  />
+          })}
+        </Layout>
+      </BodyClassName>
     )
   }
 }
@@ -49,12 +95,12 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 560)
           fields {
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date
             title
             path
           }
