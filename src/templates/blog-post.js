@@ -37,7 +37,7 @@ const Cover = ({ path, title, image, tags, date }) => {
           <span className="separator animated fadeInUp">//</span>
           <div className="tags animated fadeInUp">
             <strong>Tags</strong>
-            {tags.map(t => <Link to={`/tag/${t}/`}>{t}</Link>)}
+            {tags.map(t => <Link key={t} to={`/tag/${t}/`}>{t}</Link>)}
           </div>
         </div>
       </div>
