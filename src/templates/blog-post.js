@@ -37,9 +37,7 @@ const Cover = ({ path, title, image, tags, date }) => {
           <span className="separator animated fadeInUp">//</span>
           <div className="tags animated fadeInUp">
             <strong>Tags</strong>
-            {tags.map(t => {
-              <Link to={`/tag/${t}/`}>{t}</Link>
-            })}
+            {tags.map(t => <Link to={`/tag/${t}/`}>{t}</Link>)}
           </div>
         </div>
       </div>
@@ -51,7 +49,6 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
     const tags = post.frontmatter.tags || []
     const tagsClass = tags.reduce((acc, next) => `${acc} tag-${next}`)
 
@@ -75,6 +72,7 @@ class BlogPostTemplate extends React.Component {
                 />
               </article>
             </div>
+            <Bio />
           </div>
         </Layout>
       </BodyClassName>

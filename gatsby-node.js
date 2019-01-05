@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const PageSize = 5;
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -18,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                title,
+                title
                 path
               }
             }
@@ -48,6 +49,21 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
+
+    // Create blog-list pages
+    // highlight-start
+    const numPages = Math.ceil(posts.length / PageSize)
+    Array.from({ length: numPages }).filter((_,n) => n > 0).forEach((_, i) => {
+      createPage({
+        path: `/page/${i+2}`,
+        component: path.resolve("./src/templates/blog-list-template.js"),
+        context: {
+          limit: PageSize,
+          skip: (i + 1) * PageSize,
+        },
+      })
+    })
+    // highlight-end
   })
 }
 

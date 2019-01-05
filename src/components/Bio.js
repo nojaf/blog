@@ -7,18 +7,24 @@ function Bio() {
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author } = data.site.siteMetadata
         return (
-          <div>
-            <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
-            </p>
+          <div className="container">
+            <div className="author animated fadeIn clearfix">
+              <Image
+                fixed={data.avatar.childImageSharp.original}
+                alt={author}
+              />
+              <div className="info">
+                <a href="https://twitter.com/verdonckflorian" className="name">
+                  Florian Verdonck
+                </a>
+                <p className="bio">
+                  Florian Verdonck is web &amp; .NET developer. He is passionate
+                  about clean code and is eager to learn new technologies.
+                </p>
+              </div>
+            </div>
           </div>
         )
       }}
@@ -30,8 +36,10 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
+        original {
+          src
+          width
+          height
         }
       }
     }

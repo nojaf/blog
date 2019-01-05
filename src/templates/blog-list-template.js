@@ -1,27 +1,24 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import BodyClassName from 'react-body-classname'
 import BlogPostPreview from '../components/BlogPostPreview'
 import Navigation from '../components/Navigation'
 
-class BlogIndex extends React.Component {
+export default class BlogList extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
-
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const posts = this.props.data.allMarkdownRemark.edges
     return (
-      <BodyClassName className="home-template">
+      <BodyClassName className="paged archive-template">
         <Layout location={this.props.location} title={siteTitle}>
-          <SEO title="Home" keywords={[`blog`, `blog.nojaf.com`]} />
+          <SEO title={`Page`} keywords={[`blog`, `blog.nojaf.com`]} />
           <div className="main">
             {posts.map((post, idx) => {
               return <BlogPostPreview key={`preview-${idx}`} {...post} />
             })}
-            <Navigation total={data.pages.totalCount} skip={0} />
+            <Navigation total={this.props.data.allMarkdownRemark.totalCount} skip={this.props.pageContext.skip} />
           </div>
         </Layout>
       </BodyClassName>
@@ -29,10 +26,8 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
+export const blogListQuery = graphql`
+  query blogListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -40,11 +35,12 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
+      limit: $limit
+      skip: $skip
     ) {
+      totalCount
       edges {
         node {
-          excerpt(pruneLength: 560)
           fields {
             slug
           }
@@ -56,9 +52,6 @@ export const pageQuery = graphql`
           }
         }
       }
-    }
-    pages: allMarkdownRemark {
-      totalCount
     }
   }
 `
