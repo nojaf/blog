@@ -12,7 +12,7 @@ const Header = ({tag, total}) => {
         <h1>{tag}</h1>
         <div className="share">
           Share this on <a id="twitter"
-                           href={`http://twitter.com/share?text=%5Bobject%20Object%5D&amp;url=http://blog.nojaf.com/tag/${tag}/`}><i
+                           href={`http://twitter.com/share?text=${tag} on &amp;url=http://blog.nojaf.com/tag/${tag}/`}><i
           className="fa nojaf-share-icon fa-twitter" /></a>
         </div>
       </div>
