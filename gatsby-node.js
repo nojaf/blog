@@ -1,11 +1,15 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const PageSize = 5;
+const _ = require('lodash')
+const PageSize = 5
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+  const tagTemplate = path.resolve('./src/templates/tags.js')
+  const blogListTemplate = path.resolve('./src/templates/blog-list-template.js')
+
   return graphql(
     `
       {
@@ -21,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 title
                 path
+                tags
               }
             }
           }
@@ -41,7 +46,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       createPage({
         path: post.node.frontmatter.path,
-        component: blogPost,
+        component: blogPostTemplate,
         context: {
           slug: post.node.fields.slug,
           previous,
@@ -53,17 +58,41 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog-list pages
     // highlight-start
     const numPages = Math.ceil(posts.length / PageSize)
-    Array.from({ length: numPages }).filter((_,n) => n > 0).forEach((_, i) => {
+    Array.from({ length: numPages })
+      .filter((_, n) => n > 0)
+      .forEach((_, i) => {
+        createPage({
+          path: `/page/${i + 2}`,
+          component: blogListTemplate,
+          context: {
+            limit: PageSize,
+            skip: (i + 1) * PageSize,
+          },
+        })
+      })
+    // highlight-end
+
+    // Tag pages:
+    let tags = []
+    // Iterate through each post, putting all found tags into `tags`
+    _.each(posts, edge => {
+      if (_.get(edge, 'node.frontmatter.tags')) {
+        tags = tags.concat(edge.node.frontmatter.tags)
+      }
+    })
+    // Eliminate duplicate tags
+    tags = _.uniq(tags)
+
+    // Make tag pages
+    tags.forEach(tag => {
       createPage({
-        path: `/page/${i+2}`,
-        component: path.resolve("./src/templates/blog-list-template.js"),
+        path: `/tag/${_.kebabCase(tag)}/`,
+        component: tagTemplate,
         context: {
-          limit: PageSize,
-          skip: (i + 1) * PageSize,
+          tag,
         },
       })
     })
-    // highlight-end
   })
 }
 
