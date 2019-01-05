@@ -41,6 +41,7 @@ export const blogListQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 560)
           fields {
             slug
           }

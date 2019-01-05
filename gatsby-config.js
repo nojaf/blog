@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `blog.nojaf.com`,
     author: `Florian Verdonck`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Thoughts, stories and ideas on coding, web &amp; .NET development and other things.`,
+    siteUrl: `https://blog.nojaf.com/`,
     social: {
       twitter: `verdonckflorian`,
     },
@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `nojaf's blog`,
+        short_name: `blog.nojaf.com`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#000`,
+        theme_color: `#32995f`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/nojaf-icon.png`,
       },
     },
     //`gatsby-plugin-offline`,

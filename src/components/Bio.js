@@ -12,7 +12,7 @@ function Bio() {
           <div className="container">
             <div className="author animated fadeIn clearfix">
               <Image
-                fixed={data.avatar.childImageSharp.original}
+                fixed={data.avatar.childImageSharp.fixed}
                 alt={author}
               />
               <div className="info">
@@ -36,10 +36,8 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        original {
-          src
-          width
-          height
+        fixed(width: 125, height: 125, quality: 100) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

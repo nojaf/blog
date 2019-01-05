@@ -18,7 +18,7 @@ Today I would like to show you how you can create [VS Code extension](https://co
 
 To get started we will follow the general approach of scaffolding a new extension. Using the [yeoman](https://code.visualstudio.com/docs/extensions/yocode) generator we will scaffold a new _JavaScript_ extension.
 
-![vs code](/content/images/2018/12/yo-code.png)
+![vs code](./yo-code.png)
 
 ### Adding Fable
 
@@ -139,14 +139,14 @@ Change the `activationEvents` to `*` in the `package.json`.
 
 and start debugging.
 
-![debug](/content/images/2018/12/debug.png)
+![debug](./debug.png)
 
 This opens a new instance of `vscode` and should contain our extension.
 
 Yikes, this isn't really doing anything at all!  
 We even see a crash when we toggle the developer tools.
 
-![crash in logs](/content/images/2018/12/debug-failure-line-one-1.png)
+![crash in logs](./debug-failure-line-one-1.png)
 
 What code is telling us here is that it doesn't know how to deal with the `import` and `export` keywords.  
 I believe this whole thing is running in a node context, so we should be using `module.exports` instead.
@@ -189,7 +189,7 @@ The JavaScript output now looks like
 
 and our extension now runs!
 
-![extension runs](/content/images/2018/12/extension-loaded.png)
+![extension runs](./extension-loaded.png)
 
 ### F# dependencies
 
@@ -299,7 +299,7 @@ Execute with
 > 
 > PS> yarn test
 
-![](/content/images/2018/12/failing-test.png)
+![](./failing-test.png)
 
 [Coolio](https://www.youtube.com/watch?v=VzDN7mCDoC0), we can unit test now! The way I like to proceed now is having two console windows. One to run `fable-splitter` with `yarn watch`, and other to run tests with `yarn test --watchAll`.
 
@@ -526,13 +526,13 @@ Notice that the event handlers call `triggerUpdateDecorations`, which prevents u
 
 `updateDecorations` is rather straightforward as well. We map the result of `parseText` and make ranges out of it. The result looks as follows:
 
-![Markdown highlighting in VS Code](/content/images/2018/12/markdown-highlighting-1.png)
+![Markdown highlighting in VS Code](./markdown-highlighting-1.png)
 
 ## Preview mode
 
 When we switch to preview mode of the Markdown file, we don't really see any changes.
 
-![Preview mode before](/content/images/2018/12/preview-before-1.png)
+![Preview mode before](./preview-before-1.png)
 
 This can be changed by writing our own [markdown-it](https://markdown-it.github.io/) extension.  
 To be fair, it took me a while to figure out how this works. Even after reading the [documentation](https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md), I was still somewhat puzzled.
@@ -761,7 +761,7 @@ at the end.
 
 Final outcome:
 
-![preview after](/content/images/2018/12/preview-after.png)
+![preview after](./preview-after.png)
 
 ## The Source
 
@@ -781,5 +781,4 @@ I hope you enjoyed this blogpost and it all makes sense to you. If you have any 
 Yours truly,  
 nojaf
 
-Photo by  
-[<span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title></svg></span><span style="display:inline-block;padding:2px 3px">Massimo Rinaldi</span>](https://unsplash.com/@playjack01?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge "Download free do whatever you want high-resolution photos from Massimo Rinaldi")
+Photo by <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@playjack01?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Massimo Rinaldi"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Massimo Rinaldi</span></a>
