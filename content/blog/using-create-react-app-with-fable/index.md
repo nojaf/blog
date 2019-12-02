@@ -14,10 +14,10 @@ I had fun [last year](/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) an
 
 ### To Feliz or not to Feliz
 
-[Feliz](https://zaid-ajaj.github.io/Feliz/) has been receiving some traction in the community and at one point Zaid asked me what I thought about it.
+[Feliz](https://zaid-ajaj.github.io/Feliz/) has been receiving some traction in the community and at one-point Zaid asked me what I thought about it.
 My reply was a resounding `meh` 😅, I didn't really care then and I still don't.<br />
 If it works for you, that is fine and all I want to say is that it's not for everyone.<br />
-So to further mess around with Zaid, I'm gonna explore yet another alternative of creating views in Elmish, by using React as is.
+So to further mess around with Zaid, I'm going to explore yet another alternative of creating views in Elmish, by using React as is.
 
 ### TL;DR
 
@@ -29,24 +29,24 @@ Writing our views with vanilla React components and our logic in F#.
 Recently I have the need to track where my money is going too. Or as we say in Belgium, there is a hole in my wallet somehow.
 Obviously using an existing online tool is too easy so I decided to build something myself.
 
-The domain is actually a bit more complex than you would think at first glance. See the basics are simple, I earn money and I spend it.
-Capture all those transactions and you know the balance. However some expenses are recurring or sometimes you want to spread an bigger expense over multiple months.
-Anyway, we aren't going to cover the entire application but you can sorta see where this could go to.<br />
+The domain is a bit more complex than you would think at first glance. See the basics are simple, I earn money and I spend it.
+Capture all those transactions and you know the balance. However, some expenses are recurring or sometimes you want to spread an bigger expense over multiple months.
+Anyway, we aren't going to cover the entire application, but you can sort of see where this could go to.<br />
 It is technically challenging enough to serve as a good exercise in domain modeling and **event sourcing**.
 
 ### Architecture
 
 Since we are doing event sourcing I'm eager to use Azure Functions and [Cosmo store](https://github.com/Dzoukr/CosmoStore) for the back-end.
-However this post is about the front-end and we will focus solely on that.
+Nonetheless, this post is about the front-end and we will focus solely on that.
 
 ## Create React App and Fable
 
-As mentioned the first thing we want to do is scaffold a new project with Create React App.<br />
+As mentioned, the first thing we want to do is scaffold a new project with Create React App.<br />
 I'm a Yarn guy so:
 
 > yarn create react-app capital-guardian
 
-CRA has amazing documentation and the key takeaway here is that I don't gave to do any crazy webpack shizzle.
+Create React Application has amazing documentation and the key takeaway here is that I don't gave to do any crazy webpack shizzle.
 It just works &copy; and I don't have to maintain anything. 
 
 ### Compiling FSharp
@@ -57,7 +57,8 @@ We can solve this problem using a FAKE script.
 
 ### Paket
 
-First let's install some .NET Core 3 tools.
+First let's install some .NET Core 3 tools. 
+Let's use the new and [shiny Paket 6](http://www.navision-blog.de/blog/2019/12/02/announcing-paket-6-alpha/)!
 
 > dotnet new tool-manifest
 >
@@ -94,7 +95,7 @@ nuget Fake.DotNet.Paket
 nuget Fantomas
 ```
 
-And install everything:
+And install everything with:
 
 > dotnet paket install
 
@@ -148,9 +149,9 @@ Target.create "Build" (fun _ -> Yarn.exec "build" setYarnWorkingDirectory)
 Target.runOrDefault "Build"
 ```
 
-As a first draft of our build script we can install our dependencies and build our application.
+As a first version of our build script we can install our dependencies and build our application.
 Notice the little helper module to [generate the load script](https://fsprojects.github.io/Paket/paket-generate-load-scripts.html).
-However nothing Fable related is in place yet.
+Keep in mind that nothing Fable related is in place yet.
 
 ### Fable
 
@@ -199,11 +200,11 @@ And just like that:
 
 ![Create React App failed to compile](./cra-failed-to-compile.png)
 
-Well CRA does JavaScript linting as well and it is rejecting the compiled F# code.
+Well Create React Application does JavaScript linting as well and it is rejecting the compiled F# code.
 Or at least a part of the `Fable.Core` library in this case.
 We want to tell the linter that it should ignore the `src/bin` folder.
 
-Create a `.eslintignore` file and add `src/bin/**` to it.
+Create an `.eslintignore` file and add `src/bin/**` to it.
 For the ignore file to be picked up add an `.env` file with `EXTEND_ESLINT=true`.
 
 ![Fable compiled this](./fable-compiled-this.png)
@@ -212,9 +213,9 @@ Great! At this point running `dotnet fake run build.fsx` will compile the F# and
 
 ###  Watch mode
 
-`fable-splitter` has a watch mode, however using this can lead some chicken and egg problems.
-If the F# has never been compiled and CRA is started it will fail. A possible solution could be to compile the F#, start CRA and then compile F# in watch mode.
-Unfortunately this is an expensive operation. A workaround can be created in our build script.
+`fable-splitter` has a watch mode, however using this can lead some chicken and egg type of problem.
+If the F# has never been compiled and Create React Application is started it will fail. A possible solution could be to compile the F#, start Create React Application and then compile F# in watch mode.
+Unfortunately, this is an expensive operation (we would start the Fable daemon twice). A workaround can be created in our build script.
 
 ```fsharp
 Target.create "Watch" (fun _ ->
@@ -243,19 +244,19 @@ Target.runOrDefault "Build"
 ```
 
 Admittedly this is a bit of hack, first we start the splitter process and read all the output.
-If the output says `fable: Watching...`, it means the initial JavaScript was emitted (to `src/bin`).
-Once we have that, we can start CRA.
+If the output says `fable: Watching...`, it means the initial JavaScript was emitted (to `src/bin`) and will continue to watch our F# files.
+Once we have that initial JavaScript output, we can start Create React Application.
 
 Any changes to either `*.js` or  `*.fsx` files will trigger a browser reload and this provides us a rich developer experience.
 
 ## Enter Elmish
 
-We wish to use `Fable.Elmish` and position it similar to how [React Redux](https://react-redux.js.org/) works.
-A top level component will contain all the state and expose actions and selections via hooks.
+We wish to use `Fable.Elmish` and position it like how [React Redux](https://react-redux.js.org/) works.
+A top-level component will contain all the state and expose actions and selections via hooks.
 
 ### React Context
 
-First we need a wrapper component that will start an **Elmish program**.
+First, we need a wrapper component that will start an **Elmish program**.
 
 ```fsharp
 #load "../.paket/load/netstandard2.0/client/client.group.fsx"
@@ -437,7 +438,7 @@ let private useDispatch() =
 
 #### Dispatching messages
 
-However we are not going to access the `Model` and `Dispatch`directly. Creating a `Msg` in JavaScript is hard because the output of the Fable isn't really that nice.
+Be that as it may, we are not going to access the `Model` and `Dispatch`directly. Creating a `Msg` in JavaScript is hard because the output of the Fable isn't really that nice.
 
 For example:
 ```fsharp
@@ -523,7 +524,7 @@ const HomePage = () => {
 };
 ```
 
-However there is another problem.
+Yet there is another problem.
 When we create a function in Fable that returns a function it doesn't compile to what we think it would.
 
 For example:
@@ -538,13 +539,13 @@ export function a(unitVar0, b) {
 }
 ```
 
-So when calling the function `a`, it will immediately be executed.
+So, when calling the function `a`, it will immediately be executed.
 To overcome this we can wrap the lambda in a `System.Func<_,_>`.
 
 ```fsharp
 let a () = System.Func<_,_>(fun b -> b)
 ``` 
-so it compiles to
+so that it compiles to
 ```js
 export function a() {
   return function (b) {
@@ -684,7 +685,7 @@ Prettier is very straightforward, add it with Yarn and create a script in the `p
 ```
 
 We don't want Prettier to format the code generated by Fable.
-To avoid this, add a `.prettierignore` file with `src/bin`.
+To avoid this, add an `.prettierignore` file with `src/bin`.
 
 ### Fantomas
 
@@ -718,7 +719,7 @@ Trigger it with `dotnet fake run build.fsx -t Format` and both languages will be
 You can find the source on my [GitHub](https://github.com/nojaf/capital-guardian/tree/blogpost).<br />
 Notice that the code for this blog post is preserved in the `blogpost` branch.
 
-The master branch will be used to actually finish the application.<br />
+The master branch will be used to finish the application.<br />
 At the time of writing I still have these intentions 😄.
 
 The `blogpost` branch also contains some addition setup for the back-end.
@@ -729,22 +730,23 @@ And it is overall a bit fleshed out to have a first usable piece of functionalit
 ## Final words
 
 I don't believe the Mandalorian would say *"This is the way"*, in terms of this approach.
-There are pro's and con's to it and it certainly is not a silver bullet.
+There are pro's and cons to it and it certainly is not a silver bullet.
 
 ### Pro's
 
 - Much easier to use the vast existing JavaScript ecosystem. I've used [reactstrap](https://reactstrap.github.io/), [react-form-hook](https://react-hook-form.com/), [yup](https://github.com/jquense/yup), [react-switch](https://react-switch.netlify.com/) without the need of writing a single binding file.
-- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of CRA as dead simple and it a minute later everything was up and running.
+- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of Create React Application as dead simple and it a minute later everything was up and running.
 - Tooling for React is vastly superior. I'm using Rider and all the good magic of WebStorm for React components is available for me.
-- The formatting story is nicer, Fantomas is not that good with formatting Elmish views. I'm aware of this and it is just hard to get right. So I'm happy that I can use Prettier for that.
+- The formatting story is nicer, Fantomas is not that good with formatting Elmish views. I'm aware of this and it is just hard to get right. So, I'm happy that I can use Prettier for that.
 
 ### Con's
 
 - Part of the application is now not statically typed. It provides speed but a what cost right?
-- The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However I really enjoyed it so I didn't really mind.
-- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. CRA has this habit of clearing the screen when it compiles. So you need to scroll to see the F# error you might have.
+- The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However, I really enjoyed it so I didn't really mind.
+- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. Create React Application has this habit of clearing the screen when it compiles. 
+Consequentially, you need to scroll to see the F# error you might have.
 
-Overall I like this, and time will tell if this ends up to be my new default or not.
+Overall, I like this, and time will tell if this ends up to be my new default or not.
 Thanks for reading this far and I hope you enjoy the rest the of F# Advent calendar!
 
 Yours truly,  
