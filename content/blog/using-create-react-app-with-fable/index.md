@@ -15,9 +15,8 @@ I had fun [last year](/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) an
 ### To Feliz or not to Feliz
 
 [Feliz](https://zaid-ajaj.github.io/Feliz/) has been receiving some traction in the community and at one-point Zaid asked me what I thought about it.
-My reply was a resounding `meh` 😅, I didn't really care then and I still don't.<br />
-If it works for you, that is fine and all I want to say is that it's not for everyone.<br />
-So to further mess around with Zaid, I'm going to explore yet another alternative of creating views in Elmish, by using React as is.
+My reply was, well it's not for everybody 😅.
+In this blog post I'm going to explore yet another alternative of creating views in Elmish, by using React as is.
 
 ### TL;DR
 
