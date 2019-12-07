@@ -21,7 +21,7 @@ In this blog post I'm going to explore yet another alternative of creating views
 ### TL;DR
 
 In blog post we are going to combine [Fable](https://fable.io/) with [Create React App](https://create-react-app.dev/).
-Writing our views with vanilla React components and our logic in F#.
+Writing our **views with vanilla React** components and our **logic in F#**.
 
 ## Capital Guardian
 
@@ -35,7 +35,7 @@ It is technically challenging enough to serve as a good exercise in domain model
 
 ### Architecture
 
-Since we are doing event sourcing I'm eager to use Azure Functions and [Cosmo store](https://github.com/Dzoukr/CosmoStore) for the back-end.
+Since we are doing event sourcing I'm eager to use **Azure Functions** and [Cosmo store](https://github.com/Dzoukr/CosmoStore) for the back-end.
 Nonetheless, this post is about the front-end and we will focus solely on that.
 
 ## Create React App and Fable
@@ -45,7 +45,7 @@ I'm a Yarn guy so:
 
 > yarn create react-app capital-guardian
 
-Create React Application has amazing documentation and the key takeaway here is that I don't gave to do any crazy webpack shizzle.
+_Create React Application_ has amazing documentation and the key takeaway here is that I don't gave to do any crazy webpack shizzle.
 It just works &copy; and I don't have to maintain anything. 
 
 ### Compiling FSharp
@@ -199,7 +199,7 @@ And just like that:
 
 ![Create React App failed to compile](./cra-failed-to-compile.png)
 
-Well Create React Application does JavaScript linting as well and it is rejecting the compiled F# code.
+Well _Create React Application_ does JavaScript linting as well and it is rejecting the compiled F# code.
 Or at least a part of the `Fable.Core` library in this case.
 We want to tell the linter that it should ignore the `src/bin` folder.
 
@@ -213,7 +213,7 @@ Great! At this point running `dotnet fake run build.fsx` will compile the F# and
 ###  Watch mode
 
 `fable-splitter` has a watch mode, however using this can lead some chicken and egg type of problem.
-If the F# has never been compiled and Create React Application is started it will fail. A possible solution could be to compile the F#, start Create React Application and then compile F# in watch mode.
+If the F# has never been compiled and _Create React Application_ is started it will fail. A possible solution could be to compile the F#, start _Create React Application_ and then compile F# in watch mode.
 Unfortunately, this is an expensive operation (we would start the Fable daemon twice). A workaround can be created in our build script.
 
 ```fsharp
@@ -244,7 +244,7 @@ Target.runOrDefault "Build"
 
 Admittedly this is a bit of hack, first we start the splitter process and read all the output.
 If the output says `fable: Watching...`, it means the initial JavaScript was emitted (to `src/bin`) and will continue to watch our F# files.
-Once we have that initial JavaScript output, we can start Create React Application.
+Once we have that initial JavaScript output, we can start _Create React Application_.
 
 Any changes to either `*.js` or  `*.fsx` files will trigger a browser reload and this provides us a rich developer experience.
 
@@ -734,7 +734,7 @@ There are pro's and cons to it and it certainly is not a silver bullet.
 ### Pro's
 
 - Much easier to use the vast existing JavaScript ecosystem. I've used [reactstrap](https://reactstrap.github.io/), [react-form-hook](https://react-hook-form.com/), [yup](https://github.com/jquense/yup), [react-switch](https://react-switch.netlify.com/) without the need of writing a single binding file.
-- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of Create React Application as dead simple and it a minute later everything was up and running.
+- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of _Create React Application_ as dead simple and it a minute later everything was up and running.
 - Tooling for React is vastly superior. I'm using Rider and all the good magic of WebStorm for React components is available for me.
 - The formatting story is nicer, Fantomas is not that good with formatting Elmish views. I'm aware of this and it is just hard to get right. So, I'm happy that I can use Prettier for that.
 
@@ -742,11 +742,11 @@ There are pro's and cons to it and it certainly is not a silver bullet.
 
 - Part of the application is now not statically typed. It provides speed but a what cost right?
 - The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However, I really enjoyed it so I didn't really mind.
-- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. Create React Application has this habit of clearing the screen when it compiles. 
+- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. _Create React Application_ has this habit of clearing the screen when it compiles. 
 Consequentially, you need to scroll to see the F# error you might have.
 
 Overall, I like this, and time will tell if this ends up to be my new default or not.
-Thanks for reading this far and I hope you enjoy the rest the of F# Advent calendar!
+Thanks for reading this far and I hope you enjoy the rest the of **F# Advent calendar**!
 
 Yours truly,  
 nojaf
