@@ -742,7 +742,7 @@ There are pro's and cons to it and it certainly is not a silver bullet.
 
 - Part of the application is now not statically typed. It provides speed but a what cost right?
 - The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However, I really enjoyed it so I didn't really mind.
-- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. _Create React Application_ has this habit of clearing the screen when it compiles. 
+- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. Create React Application has this habit of clearing the screen when it compiles. 
 Consequentially, you need to scroll to see the F# error you might have.
 
 Overall, I like this, and time will tell if this ends up to be my new default or not.
