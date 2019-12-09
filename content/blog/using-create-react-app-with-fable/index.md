@@ -25,12 +25,12 @@ Writing our **views with vanilla React** components and our **logic in F#**.
 
 ## Capital Guardian
 
-Recently I have the need to track where my money is going too. Or as we say in Belgium, there is a hole in my wallet somehow.
-Obviously using an existing online tool is too easy so I decided to build something myself.
+Recently I've had the need to track where my money is going. Or as we say in Belgium, there is a hole in my wallet somehow.
+Obviously, using an existing online tool is too easy so I decided to build something myself.
 
-The domain is a bit more complex than you would think at first glance. See the basics are simple, I earn money and I spend it.
+The domain is a bit more complex than you would think at first glance. The basics are simple, I earn money and I spend it.
 Capture all those transactions and you know the balance. However, some expenses are recurring or sometimes you want to spread an bigger expense over multiple months.
-Anyway, we aren't going to cover the entire application, but you can sort of see where this could go to.<br />
+Anyway, we aren't going to cover the entire application, but you can sort of see where this could go.<br />
 It is technically challenging enough to serve as a good exercise in domain modeling and **event sourcing**.
 
 ### Architecture
@@ -41,11 +41,11 @@ Nonetheless, this post is about the front-end and we will focus solely on that.
 ## Create React App and Fable
 
 As mentioned, the first thing we want to do is scaffold a new project with Create React App.<br />
-I'm a Yarn guy so:
+I'm a Yarn guy, so:
 
 > yarn create react-app capital-guardian
 
-_Create React Application_ has amazing documentation and the key takeaway here is that I don't gave to do any crazy webpack shizzle.
+_Create React Application_ has amazing documentation and the key takeaway here is that I don't have to do any crazy webpack shizzle.
 It just works &copy; and I don't have to maintain anything. 
 
 ### Compiling FSharp
@@ -58,6 +58,7 @@ We can solve this problem using a FAKE script.
 
 First let's install some .NET Core 3 tools. 
 Let's use the new and [shiny Paket 6](http://www.navision-blog.de/blog/2019/12/02/announcing-paket-6-alpha/)!
+Paket is useful in this case because we are using FAKE and will compile [F# scripts with Fable](https://axxes.com). // TODO: add link to axxes blog
 
 > dotnet new tool-manifest
 >
@@ -250,7 +251,9 @@ Any changes to either `*.js` or  `*.fsx` files will trigger a browser reload and
 
 ## Enter Elmish
 
-We wish to use `Fable.Elmish` and position it like how [React Redux](https://react-redux.js.org/) works.
+We wish to use `Fable.Elmish` for the purpose of what React Redux is commonly used for.
+
+position it like how [React Redux](https://react-redux.js.org/) works.
 A top-level component will contain all the state and expose actions and selections via hooks.
 
 ### React Context
@@ -423,7 +426,7 @@ Fable splitter compiles our code to `src/bin`, so now we can wrap the existing `
 
 ### Hooks
 
-How do we access the `Model` and the `Dispatch` function now? The answer here lies within [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+How do we access the `Model` and `Dispatch` directly? The answer here lies within [React Hooks](https://reactjs.org/docs/hooks-intro.html).
 
 ```fsharp
 let private useModel() =
@@ -648,7 +651,7 @@ export default HomePage;
 ## Formatting
 
 Great, it looks like everything is place now. We can access the model, dispatch messages and manage the state in F#.
-To wrap up I want to extend the build script to format all the code.
+To wrap up, I want to extend the build script to format all the code.
 
 For the JavaScript I'm going to use [Prettier](https://prettier.io/) and for F# I can use [Fantomas](https://github.com/fsprojects/fantomas).
 
@@ -721,28 +724,28 @@ Notice that the code for this blog post is preserved in the `blogpost` branch.
 The master branch will be used to finish the application.<br />
 At the time of writing I still have these intentions 😄.
 
-The `blogpost` branch also contains some addition setup for the back-end.
-And it is overall a bit fleshed out to have a first usable piece of functionality.
+The `blogpost` branch also contains some additional setup for the back-end.
+And it is fleshed out to have a first usable functionality.
 
 ![Create React App with Fable Result](./create-react-app-with-fable-result.png)
 
 ## Final words
 
 I don't believe the Mandalorian would say *"This is the way"*, in terms of this approach.
-There are pro's and cons to it and it certainly is not a silver bullet.
+There are pros and cons to it and it certainly is not a silver bullet.
 
-### Pro's
+### Pros
 
 - Much easier to use the vast existing JavaScript ecosystem. I've used [reactstrap](https://reactstrap.github.io/), [react-form-hook](https://react-hook-form.com/), [yup](https://github.com/jquense/yup), [react-switch](https://react-switch.netlify.com/) without the need of writing a single binding file.
-- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of _Create React Application_ as dead simple and it a minute later everything was up and running.
+- No need for any webpack stuff! For me this is a big win, even when I wanted to use Sass the documentation of _Create React Application_ was dead simple and it a minute later everything was up and running.
 - Tooling for React is vastly superior. I'm using Rider and all the good magic of WebStorm for React components is available for me.
 - The formatting story is nicer, Fantomas is not that good with formatting Elmish views. I'm aware of this and it is just hard to get right. So, I'm happy that I can use Prettier for that.
 
-### Con's
+### Cons
 
-- Part of the application is now not statically typed. It provides speed but a what cost right?
+- Part of the application is no longer statically typed. It provides speed but a what cost, right?
 - The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However, I really enjoyed it so I didn't really mind.
-- The output of the console is less clear. Since we are using two processes to compile all code to JavaScript it can get hard to spot what is going wrong from time to time. Create React Application has this habit of clearing the screen when it compiles. 
+- The output of the console is less clear. Since we are using two processes to compile all the code to JavaScript, it can get hard to spot what is going wrong from time to time. Create React Application has the habit of clearing the screen when it compiles. 
 Consequentially, you need to scroll to see the F# error you might have.
 
 Overall, I like this, and time will tell if this ends up to be my new default or not.
