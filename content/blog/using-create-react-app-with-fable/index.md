@@ -58,7 +58,7 @@ We can solve this problem using a FAKE script.
 
 First let's install some .NET Core 3 tools. 
 Let's use the new and [shiny Paket 6](http://www.navision-blog.de/blog/2019/12/02/announcing-paket-6-alpha/)!
-Paket is useful in this case because we are using FAKE and will compile [F# scripts with Fable](https://axxes.com). // TODO: add link to axxes blog
+Paket is useful in this case because we are using FAKE and will compile [F# scripts with Fable](https://axxes.com/en/net/compiling-f-scripts-with-fable-2-2/).
 
 > dotnet new tool-manifest
 >
