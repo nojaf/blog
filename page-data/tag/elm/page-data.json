@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-js","path":"/tag/elm/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"date":"2016-11-28","title":"Adventures in Elm","path":"2016/11/28/adventures-in-elm/","tags":["javascript","elm","fp"]}}}]}},"pageContext":{"tag":"elm"}}}

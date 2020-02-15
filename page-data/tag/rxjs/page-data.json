@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-js","path":"/tag/rxjs/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"date":"2016-03-24","title":"A leap in RxJS","path":"2016/03/24/a-leap-in-rx-js/","tags":["javascript","rxjs"]}}}]}},"pageContext":{"tag":"rxjs"}}}

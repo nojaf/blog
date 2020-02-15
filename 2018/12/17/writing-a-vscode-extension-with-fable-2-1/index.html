@@ -1,0 +1,896 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="robots" content="index, follow"/><style data-href="/styles.d2819b3dcf3566e6e65f.css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+
+/*!
+ *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */@font-face{font-family:FontAwesome;src:url(/static/fontawesome-webfont-f7c2b4b747b1a225eb8dee034134a1b0.eot);src:url(/static/fontawesome-webfont-f7c2b4b747b1a225eb8dee034134a1b0.eot?#iefix&v=4.3.0) format("embedded-opentype"),url(/static/fontawesome-webfont-97493d3f11c0a3bd5cbd959f5d19b699.woff2) format("woff2"),url(/static/fontawesome-webfont-d9ee23d59d0e0e727b51368b458a0bff.woff) format("woff"),url(/static/fontawesome-webfont-706450d7bba6374ca02fe167d86685cb.ttf) format("truetype"),url(/static/fontawesome-webfont-c28eb3e012457a07ad2bfd84d1dfca54.svg#fontawesomeregular) format("svg");font-weight:400;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-transform:translate(0);transform:translate(0)}.fa-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-fw{width:1.28571429em;text-align:center}.fa-ul{padding-left:0;margin-left:2.14285714em;list-style-type:none}.fa-ul>li{position:relative}.fa-li{position:absolute;left:-2.14285714em;width:2.14285714em;top:.14285714em;text-align:center}.fa-li.fa-lg{left:-1.85714286em}.fa-border{padding:.2em .25em .15em;border:.08em solid #eee;border-radius:.1em}.pull-right{float:right}.pull-left{float:left}.fa.pull-left{margin-right:.3em}.fa.pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s linear infinite;animation:fa-spin 2s linear infinite}.fa-pulse{-webkit-animation:fa-spin 1s steps(8) infinite;animation:fa-spin 1s steps(8) infinite}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}.fa-rotate-90{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0,mirror=1);-webkit-transform:scaleX(-1);transform:scaleX(-1)}.fa-flip-vertical{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2,mirror=1);-webkit-transform:scaleY(-1);transform:scaleY(-1)}:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-90,:root .fa-rotate-180,:root .fa-rotate-270{-webkit-filter:none;filter:none}.fa-stack{position:relative;display:inline-block;width:2em;height:2em;line-height:2em;vertical-align:middle}.fa-stack-1x,.fa-stack-2x{position:absolute;left:0;width:100%;text-align:center}.fa-stack-1x{line-height:inherit}.fa-stack-2x{font-size:2em}.fa-inverse{color:#fff}.fa-glass:before{content:"\F000"}.fa-music:before{content:"\F001"}.fa-search:before{content:"\F002"}.fa-envelope-o:before{content:"\F003"}.fa-heart:before{content:"\F004"}.fa-star:before{content:"\F005"}.fa-star-o:before{content:"\F006"}.fa-user:before{content:"\F007"}.fa-film:before{content:"\F008"}.fa-th-large:before{content:"\F009"}.fa-th:before{content:"\F00A"}.fa-th-list:before{content:"\F00B"}.fa-check:before{content:"\F00C"}.fa-close:before,.fa-remove:before,.fa-times:before{content:"\F00D"}.fa-search-plus:before{content:"\F00E"}.fa-search-minus:before{content:"\F010"}.fa-power-off:before{content:"\F011"}.fa-signal:before{content:"\F012"}.fa-cog:before,.fa-gear:before{content:"\F013"}.fa-trash-o:before{content:"\F014"}.fa-home:before{content:"\F015"}.fa-file-o:before{content:"\F016"}.fa-clock-o:before{content:"\F017"}.fa-road:before{content:"\F018"}.fa-download:before{content:"\F019"}.fa-arrow-circle-o-down:before{content:"\F01A"}.fa-arrow-circle-o-up:before{content:"\F01B"}.fa-inbox:before{content:"\F01C"}.fa-play-circle-o:before{content:"\F01D"}.fa-repeat:before,.fa-rotate-right:before{content:"\F01E"}.fa-refresh:before{content:"\F021"}.fa-list-alt:before{content:"\F022"}.fa-lock:before{content:"\F023"}.fa-flag:before{content:"\F024"}.fa-headphones:before{content:"\F025"}.fa-volume-off:before{content:"\F026"}.fa-volume-down:before{content:"\F027"}.fa-volume-up:before{content:"\F028"}.fa-qrcode:before{content:"\F029"}.fa-barcode:before{content:"\F02A"}.fa-tag:before{content:"\F02B"}.fa-tags:before{content:"\F02C"}.fa-book:before{content:"\F02D"}.fa-bookmark:before{content:"\F02E"}.fa-print:before{content:"\F02F"}.fa-camera:before{content:"\F030"}.fa-font:before{content:"\F031"}.fa-bold:before{content:"\F032"}.fa-italic:before{content:"\F033"}.fa-text-height:before{content:"\F034"}.fa-text-width:before{content:"\F035"}.fa-align-left:before{content:"\F036"}.fa-align-center:before{content:"\F037"}.fa-align-right:before{content:"\F038"}.fa-align-justify:before{content:"\F039"}.fa-list:before{content:"\F03A"}.fa-dedent:before,.fa-outdent:before{content:"\F03B"}.fa-indent:before{content:"\F03C"}.fa-video-camera:before{content:"\F03D"}.fa-image:before,.fa-photo:before,.fa-picture-o:before{content:"\F03E"}.fa-pencil:before{content:"\F040"}.fa-map-marker:before{content:"\F041"}.fa-adjust:before{content:"\F042"}.fa-tint:before{content:"\F043"}.fa-edit:before,.fa-pencil-square-o:before{content:"\F044"}.fa-share-square-o:before{content:"\F045"}.fa-check-square-o:before{content:"\F046"}.fa-arrows:before{content:"\F047"}.fa-step-backward:before{content:"\F048"}.fa-fast-backward:before{content:"\F049"}.fa-backward:before{content:"\F04A"}.fa-play:before{content:"\F04B"}.fa-pause:before{content:"\F04C"}.fa-stop:before{content:"\F04D"}.fa-forward:before{content:"\F04E"}.fa-fast-forward:before{content:"\F050"}.fa-step-forward:before{content:"\F051"}.fa-eject:before{content:"\F052"}.fa-chevron-left:before{content:"\F053"}.fa-chevron-right:before{content:"\F054"}.fa-plus-circle:before{content:"\F055"}.fa-minus-circle:before{content:"\F056"}.fa-times-circle:before{content:"\F057"}.fa-check-circle:before{content:"\F058"}.fa-question-circle:before{content:"\F059"}.fa-info-circle:before{content:"\F05A"}.fa-crosshairs:before{content:"\F05B"}.fa-times-circle-o:before{content:"\F05C"}.fa-check-circle-o:before{content:"\F05D"}.fa-ban:before{content:"\F05E"}.fa-arrow-left:before{content:"\F060"}.fa-arrow-right:before{content:"\F061"}.fa-arrow-up:before{content:"\F062"}.fa-arrow-down:before{content:"\F063"}.fa-mail-forward:before,.fa-share:before{content:"\F064"}.fa-expand:before{content:"\F065"}.fa-compress:before{content:"\F066"}.fa-plus:before{content:"\F067"}.fa-minus:before{content:"\F068"}.fa-asterisk:before{content:"\F069"}.fa-exclamation-circle:before{content:"\F06A"}.fa-gift:before{content:"\F06B"}.fa-leaf:before{content:"\F06C"}.fa-fire:before{content:"\F06D"}.fa-eye:before{content:"\F06E"}.fa-eye-slash:before{content:"\F070"}.fa-exclamation-triangle:before,.fa-warning:before{content:"\F071"}.fa-plane:before{content:"\F072"}.fa-calendar:before{content:"\F073"}.fa-random:before{content:"\F074"}.fa-comment:before{content:"\F075"}.fa-magnet:before{content:"\F076"}.fa-chevron-up:before{content:"\F077"}.fa-chevron-down:before{content:"\F078"}.fa-retweet:before{content:"\F079"}.fa-shopping-cart:before{content:"\F07A"}.fa-folder:before{content:"\F07B"}.fa-folder-open:before{content:"\F07C"}.fa-arrows-v:before{content:"\F07D"}.fa-arrows-h:before{content:"\F07E"}.fa-bar-chart-o:before,.fa-bar-chart:before{content:"\F080"}.fa-twitter-square:before{content:"\F081"}.fa-facebook-square:before{content:"\F082"}.fa-camera-retro:before{content:"\F083"}.fa-key:before{content:"\F084"}.fa-cogs:before,.fa-gears:before{content:"\F085"}.fa-comments:before{content:"\F086"}.fa-thumbs-o-up:before{content:"\F087"}.fa-thumbs-o-down:before{content:"\F088"}.fa-star-half:before{content:"\F089"}.fa-heart-o:before{content:"\F08A"}.fa-sign-out:before{content:"\F08B"}.fa-linkedin-square:before{content:"\F08C"}.fa-thumb-tack:before{content:"\F08D"}.fa-external-link:before{content:"\F08E"}.fa-sign-in:before{content:"\F090"}.fa-trophy:before{content:"\F091"}.fa-github-square:before{content:"\F092"}.fa-upload:before{content:"\F093"}.fa-lemon-o:before{content:"\F094"}.fa-phone:before{content:"\F095"}.fa-square-o:before{content:"\F096"}.fa-bookmark-o:before{content:"\F097"}.fa-phone-square:before{content:"\F098"}.fa-twitter:before{content:"\F099"}.fa-facebook-f:before,.fa-facebook:before{content:"\F09A"}.fa-github:before{content:"\F09B"}.fa-unlock:before{content:"\F09C"}.fa-credit-card:before{content:"\F09D"}.fa-rss:before{content:"\F09E"}.fa-hdd-o:before{content:"\F0A0"}.fa-bullhorn:before{content:"\F0A1"}.fa-bell:before{content:"\F0F3"}.fa-certificate:before{content:"\F0A3"}.fa-hand-o-right:before{content:"\F0A4"}.fa-hand-o-left:before{content:"\F0A5"}.fa-hand-o-up:before{content:"\F0A6"}.fa-hand-o-down:before{content:"\F0A7"}.fa-arrow-circle-left:before{content:"\F0A8"}.fa-arrow-circle-right:before{content:"\F0A9"}.fa-arrow-circle-up:before{content:"\F0AA"}.fa-arrow-circle-down:before{content:"\F0AB"}.fa-globe:before{content:"\F0AC"}.fa-wrench:before{content:"\F0AD"}.fa-tasks:before{content:"\F0AE"}.fa-filter:before{content:"\F0B0"}.fa-briefcase:before{content:"\F0B1"}.fa-arrows-alt:before{content:"\F0B2"}.fa-group:before,.fa-users:before{content:"\F0C0"}.fa-chain:before,.fa-link:before{content:"\F0C1"}.fa-cloud:before{content:"\F0C2"}.fa-flask:before{content:"\F0C3"}.fa-cut:before,.fa-scissors:before{content:"\F0C4"}.fa-copy:before,.fa-files-o:before{content:"\F0C5"}.fa-paperclip:before{content:"\F0C6"}.fa-floppy-o:before,.fa-save:before{content:"\F0C7"}.fa-square:before{content:"\F0C8"}.fa-bars:before,.fa-navicon:before,.fa-reorder:before{content:"\F0C9"}.fa-list-ul:before{content:"\F0CA"}.fa-list-ol:before{content:"\F0CB"}.fa-strikethrough:before{content:"\F0CC"}.fa-underline:before{content:"\F0CD"}.fa-table:before{content:"\F0CE"}.fa-magic:before{content:"\F0D0"}.fa-truck:before{content:"\F0D1"}.fa-pinterest:before{content:"\F0D2"}.fa-pinterest-square:before{content:"\F0D3"}.fa-google-plus-square:before{content:"\F0D4"}.fa-google-plus:before{content:"\F0D5"}.fa-money:before{content:"\F0D6"}.fa-caret-down:before{content:"\F0D7"}.fa-caret-up:before{content:"\F0D8"}.fa-caret-left:before{content:"\F0D9"}.fa-caret-right:before{content:"\F0DA"}.fa-columns:before{content:"\F0DB"}.fa-sort:before,.fa-unsorted:before{content:"\F0DC"}.fa-sort-desc:before,.fa-sort-down:before{content:"\F0DD"}.fa-sort-asc:before,.fa-sort-up:before{content:"\F0DE"}.fa-envelope:before{content:"\F0E0"}.fa-linkedin:before{content:"\F0E1"}.fa-rotate-left:before,.fa-undo:before{content:"\F0E2"}.fa-gavel:before,.fa-legal:before{content:"\F0E3"}.fa-dashboard:before,.fa-tachometer:before{content:"\F0E4"}.fa-comment-o:before{content:"\F0E5"}.fa-comments-o:before{content:"\F0E6"}.fa-bolt:before,.fa-flash:before{content:"\F0E7"}.fa-sitemap:before{content:"\F0E8"}.fa-umbrella:before{content:"\F0E9"}.fa-clipboard:before,.fa-paste:before{content:"\F0EA"}.fa-lightbulb-o:before{content:"\F0EB"}.fa-exchange:before{content:"\F0EC"}.fa-cloud-download:before{content:"\F0ED"}.fa-cloud-upload:before{content:"\F0EE"}.fa-user-md:before{content:"\F0F0"}.fa-stethoscope:before{content:"\F0F1"}.fa-suitcase:before{content:"\F0F2"}.fa-bell-o:before{content:"\F0A2"}.fa-coffee:before{content:"\F0F4"}.fa-cutlery:before{content:"\F0F5"}.fa-file-text-o:before{content:"\F0F6"}.fa-building-o:before{content:"\F0F7"}.fa-hospital-o:before{content:"\F0F8"}.fa-ambulance:before{content:"\F0F9"}.fa-medkit:before{content:"\F0FA"}.fa-fighter-jet:before{content:"\F0FB"}.fa-beer:before{content:"\F0FC"}.fa-h-square:before{content:"\F0FD"}.fa-plus-square:before{content:"\F0FE"}.fa-angle-double-left:before{content:"\F100"}.fa-angle-double-right:before{content:"\F101"}.fa-angle-double-up:before{content:"\F102"}.fa-angle-double-down:before{content:"\F103"}.fa-angle-left:before{content:"\F104"}.fa-angle-right:before{content:"\F105"}.fa-angle-up:before{content:"\F106"}.fa-angle-down:before{content:"\F107"}.fa-desktop:before{content:"\F108"}.fa-laptop:before{content:"\F109"}.fa-tablet:before{content:"\F10A"}.fa-mobile-phone:before,.fa-mobile:before{content:"\F10B"}.fa-circle-o:before{content:"\F10C"}.fa-quote-left:before{content:"\F10D"}.fa-quote-right:before{content:"\F10E"}.fa-spinner:before{content:"\F110"}.fa-circle:before{content:"\F111"}.fa-mail-reply:before,.fa-reply:before{content:"\F112"}.fa-github-alt:before{content:"\F113"}.fa-folder-o:before{content:"\F114"}.fa-folder-open-o:before{content:"\F115"}.fa-smile-o:before{content:"\F118"}.fa-frown-o:before{content:"\F119"}.fa-meh-o:before{content:"\F11A"}.fa-gamepad:before{content:"\F11B"}.fa-keyboard-o:before{content:"\F11C"}.fa-flag-o:before{content:"\F11D"}.fa-flag-checkered:before{content:"\F11E"}.fa-terminal:before{content:"\F120"}.fa-code:before{content:"\F121"}.fa-mail-reply-all:before,.fa-reply-all:before{content:"\F122"}.fa-star-half-empty:before,.fa-star-half-full:before,.fa-star-half-o:before{content:"\F123"}.fa-location-arrow:before{content:"\F124"}.fa-crop:before{content:"\F125"}.fa-code-fork:before{content:"\F126"}.fa-chain-broken:before,.fa-unlink:before{content:"\F127"}.fa-question:before{content:"\F128"}.fa-info:before{content:"\F129"}.fa-exclamation:before{content:"\F12A"}.fa-superscript:before{content:"\F12B"}.fa-subscript:before{content:"\F12C"}.fa-eraser:before{content:"\F12D"}.fa-puzzle-piece:before{content:"\F12E"}.fa-microphone:before{content:"\F130"}.fa-microphone-slash:before{content:"\F131"}.fa-shield:before{content:"\F132"}.fa-calendar-o:before{content:"\F133"}.fa-fire-extinguisher:before{content:"\F134"}.fa-rocket:before{content:"\F135"}.fa-maxcdn:before{content:"\F136"}.fa-chevron-circle-left:before{content:"\F137"}.fa-chevron-circle-right:before{content:"\F138"}.fa-chevron-circle-up:before{content:"\F139"}.fa-chevron-circle-down:before{content:"\F13A"}.fa-html5:before{content:"\F13B"}.fa-css3:before{content:"\F13C"}.fa-anchor:before{content:"\F13D"}.fa-unlock-alt:before{content:"\F13E"}.fa-bullseye:before{content:"\F140"}.fa-ellipsis-h:before{content:"\F141"}.fa-ellipsis-v:before{content:"\F142"}.fa-rss-square:before{content:"\F143"}.fa-play-circle:before{content:"\F144"}.fa-ticket:before{content:"\F145"}.fa-minus-square:before{content:"\F146"}.fa-minus-square-o:before{content:"\F147"}.fa-level-up:before{content:"\F148"}.fa-level-down:before{content:"\F149"}.fa-check-square:before{content:"\F14A"}.fa-pencil-square:before{content:"\F14B"}.fa-external-link-square:before{content:"\F14C"}.fa-share-square:before{content:"\F14D"}.fa-compass:before{content:"\F14E"}.fa-caret-square-o-down:before,.fa-toggle-down:before{content:"\F150"}.fa-caret-square-o-up:before,.fa-toggle-up:before{content:"\F151"}.fa-caret-square-o-right:before,.fa-toggle-right:before{content:"\F152"}.fa-eur:before,.fa-euro:before{content:"\F153"}.fa-gbp:before{content:"\F154"}.fa-dollar:before,.fa-usd:before{content:"\F155"}.fa-inr:before,.fa-rupee:before{content:"\F156"}.fa-cny:before,.fa-jpy:before,.fa-rmb:before,.fa-yen:before{content:"\F157"}.fa-rouble:before,.fa-rub:before,.fa-ruble:before{content:"\F158"}.fa-krw:before,.fa-won:before{content:"\F159"}.fa-bitcoin:before,.fa-btc:before{content:"\F15A"}.fa-file:before{content:"\F15B"}.fa-file-text:before{content:"\F15C"}.fa-sort-alpha-asc:before{content:"\F15D"}.fa-sort-alpha-desc:before{content:"\F15E"}.fa-sort-amount-asc:before{content:"\F160"}.fa-sort-amount-desc:before{content:"\F161"}.fa-sort-numeric-asc:before{content:"\F162"}.fa-sort-numeric-desc:before{content:"\F163"}.fa-thumbs-up:before{content:"\F164"}.fa-thumbs-down:before{content:"\F165"}.fa-youtube-square:before{content:"\F166"}.fa-youtube:before{content:"\F167"}.fa-xing:before{content:"\F168"}.fa-xing-square:before{content:"\F169"}.fa-youtube-play:before{content:"\F16A"}.fa-dropbox:before{content:"\F16B"}.fa-stack-overflow:before{content:"\F16C"}.fa-instagram:before{content:"\F16D"}.fa-flickr:before{content:"\F16E"}.fa-adn:before{content:"\F170"}.fa-bitbucket:before{content:"\F171"}.fa-bitbucket-square:before{content:"\F172"}.fa-tumblr:before{content:"\F173"}.fa-tumblr-square:before{content:"\F174"}.fa-long-arrow-down:before{content:"\F175"}.fa-long-arrow-up:before{content:"\F176"}.fa-long-arrow-left:before{content:"\F177"}.fa-long-arrow-right:before{content:"\F178"}.fa-apple:before{content:"\F179"}.fa-windows:before{content:"\F17A"}.fa-android:before{content:"\F17B"}.fa-linux:before{content:"\F17C"}.fa-dribbble:before{content:"\F17D"}.fa-skype:before{content:"\F17E"}.fa-foursquare:before{content:"\F180"}.fa-trello:before{content:"\F181"}.fa-female:before{content:"\F182"}.fa-male:before{content:"\F183"}.fa-gittip:before,.fa-gratipay:before{content:"\F184"}.fa-sun-o:before{content:"\F185"}.fa-moon-o:before{content:"\F186"}.fa-archive:before{content:"\F187"}.fa-bug:before{content:"\F188"}.fa-vk:before{content:"\F189"}.fa-weibo:before{content:"\F18A"}.fa-renren:before{content:"\F18B"}.fa-pagelines:before{content:"\F18C"}.fa-stack-exchange:before{content:"\F18D"}.fa-arrow-circle-o-right:before{content:"\F18E"}.fa-arrow-circle-o-left:before{content:"\F190"}.fa-caret-square-o-left:before,.fa-toggle-left:before{content:"\F191"}.fa-dot-circle-o:before{content:"\F192"}.fa-wheelchair:before{content:"\F193"}.fa-vimeo-square:before{content:"\F194"}.fa-try:before,.fa-turkish-lira:before{content:"\F195"}.fa-plus-square-o:before{content:"\F196"}.fa-space-shuttle:before{content:"\F197"}.fa-slack:before{content:"\F198"}.fa-envelope-square:before{content:"\F199"}.fa-wordpress:before{content:"\F19A"}.fa-openid:before{content:"\F19B"}.fa-bank:before,.fa-institution:before,.fa-university:before{content:"\F19C"}.fa-graduation-cap:before,.fa-mortar-board:before{content:"\F19D"}.fa-yahoo:before{content:"\F19E"}.fa-google:before{content:"\F1A0"}.fa-reddit:before{content:"\F1A1"}.fa-reddit-square:before{content:"\F1A2"}.fa-stumbleupon-circle:before{content:"\F1A3"}.fa-stumbleupon:before{content:"\F1A4"}.fa-delicious:before{content:"\F1A5"}.fa-digg:before{content:"\F1A6"}.fa-pied-piper:before{content:"\F1A7"}.fa-pied-piper-alt:before{content:"\F1A8"}.fa-drupal:before{content:"\F1A9"}.fa-joomla:before{content:"\F1AA"}.fa-language:before{content:"\F1AB"}.fa-fax:before{content:"\F1AC"}.fa-building:before{content:"\F1AD"}.fa-child:before{content:"\F1AE"}.fa-paw:before{content:"\F1B0"}.fa-spoon:before{content:"\F1B1"}.fa-cube:before{content:"\F1B2"}.fa-cubes:before{content:"\F1B3"}.fa-behance:before{content:"\F1B4"}.fa-behance-square:before{content:"\F1B5"}.fa-steam:before{content:"\F1B6"}.fa-steam-square:before{content:"\F1B7"}.fa-recycle:before{content:"\F1B8"}.fa-automobile:before,.fa-car:before{content:"\F1B9"}.fa-cab:before,.fa-taxi:before{content:"\F1BA"}.fa-tree:before{content:"\F1BB"}.fa-spotify:before{content:"\F1BC"}.fa-deviantart:before{content:"\F1BD"}.fa-soundcloud:before{content:"\F1BE"}.fa-database:before{content:"\F1C0"}.fa-file-pdf-o:before{content:"\F1C1"}.fa-file-word-o:before{content:"\F1C2"}.fa-file-excel-o:before{content:"\F1C3"}.fa-file-powerpoint-o:before{content:"\F1C4"}.fa-file-image-o:before,.fa-file-photo-o:before,.fa-file-picture-o:before{content:"\F1C5"}.fa-file-archive-o:before,.fa-file-zip-o:before{content:"\F1C6"}.fa-file-audio-o:before,.fa-file-sound-o:before{content:"\F1C7"}.fa-file-movie-o:before,.fa-file-video-o:before{content:"\F1C8"}.fa-file-code-o:before{content:"\F1C9"}.fa-vine:before{content:"\F1CA"}.fa-codepen:before{content:"\F1CB"}.fa-jsfiddle:before{content:"\F1CC"}.fa-life-bouy:before,.fa-life-buoy:before,.fa-life-ring:before,.fa-life-saver:before,.fa-support:before{content:"\F1CD"}.fa-circle-o-notch:before{content:"\F1CE"}.fa-ra:before,.fa-rebel:before{content:"\F1D0"}.fa-empire:before,.fa-ge:before{content:"\F1D1"}.fa-git-square:before{content:"\F1D2"}.fa-git:before{content:"\F1D3"}.fa-hacker-news:before{content:"\F1D4"}.fa-tencent-weibo:before{content:"\F1D5"}.fa-qq:before{content:"\F1D6"}.fa-wechat:before,.fa-weixin:before{content:"\F1D7"}.fa-paper-plane:before,.fa-send:before{content:"\F1D8"}.fa-paper-plane-o:before,.fa-send-o:before{content:"\F1D9"}.fa-history:before{content:"\F1DA"}.fa-circle-thin:before,.fa-genderless:before{content:"\F1DB"}.fa-header:before{content:"\F1DC"}.fa-paragraph:before{content:"\F1DD"}.fa-sliders:before{content:"\F1DE"}.fa-share-alt:before{content:"\F1E0"}.fa-share-alt-square:before{content:"\F1E1"}.fa-bomb:before{content:"\F1E2"}.fa-futbol-o:before,.fa-soccer-ball-o:before{content:"\F1E3"}.fa-tty:before{content:"\F1E4"}.fa-binoculars:before{content:"\F1E5"}.fa-plug:before{content:"\F1E6"}.fa-slideshare:before{content:"\F1E7"}.fa-twitch:before{content:"\F1E8"}.fa-yelp:before{content:"\F1E9"}.fa-newspaper-o:before{content:"\F1EA"}.fa-wifi:before{content:"\F1EB"}.fa-calculator:before{content:"\F1EC"}.fa-paypal:before{content:"\F1ED"}.fa-google-wallet:before{content:"\F1EE"}.fa-cc-visa:before{content:"\F1F0"}.fa-cc-mastercard:before{content:"\F1F1"}.fa-cc-discover:before{content:"\F1F2"}.fa-cc-amex:before{content:"\F1F3"}.fa-cc-paypal:before{content:"\F1F4"}.fa-cc-stripe:before{content:"\F1F5"}.fa-bell-slash:before{content:"\F1F6"}.fa-bell-slash-o:before{content:"\F1F7"}.fa-trash:before{content:"\F1F8"}.fa-copyright:before{content:"\F1F9"}.fa-at:before{content:"\F1FA"}.fa-eyedropper:before{content:"\F1FB"}.fa-paint-brush:before{content:"\F1FC"}.fa-birthday-cake:before{content:"\F1FD"}.fa-area-chart:before{content:"\F1FE"}.fa-pie-chart:before{content:"\F200"}.fa-line-chart:before{content:"\F201"}.fa-lastfm:before{content:"\F202"}.fa-lastfm-square:before{content:"\F203"}.fa-toggle-off:before{content:"\F204"}.fa-toggle-on:before{content:"\F205"}.fa-bicycle:before{content:"\F206"}.fa-bus:before{content:"\F207"}.fa-ioxhost:before{content:"\F208"}.fa-angellist:before{content:"\F209"}.fa-cc:before{content:"\F20A"}.fa-ils:before,.fa-shekel:before,.fa-sheqel:before{content:"\F20B"}.fa-meanpath:before{content:"\F20C"}.fa-buysellads:before{content:"\F20D"}.fa-connectdevelop:before{content:"\F20E"}.fa-dashcube:before{content:"\F210"}.fa-forumbee:before{content:"\F211"}.fa-leanpub:before{content:"\F212"}.fa-sellsy:before{content:"\F213"}.fa-shirtsinbulk:before{content:"\F214"}.fa-simplybuilt:before{content:"\F215"}.fa-skyatlas:before{content:"\F216"}.fa-cart-plus:before{content:"\F217"}.fa-cart-arrow-down:before{content:"\F218"}.fa-diamond:before{content:"\F219"}.fa-ship:before{content:"\F21A"}.fa-user-secret:before{content:"\F21B"}.fa-motorcycle:before{content:"\F21C"}.fa-street-view:before{content:"\F21D"}.fa-heartbeat:before{content:"\F21E"}.fa-venus:before{content:"\F221"}.fa-mars:before{content:"\F222"}.fa-mercury:before{content:"\F223"}.fa-transgender:before{content:"\F224"}.fa-transgender-alt:before{content:"\F225"}.fa-venus-double:before{content:"\F226"}.fa-mars-double:before{content:"\F227"}.fa-venus-mars:before{content:"\F228"}.fa-mars-stroke:before{content:"\F229"}.fa-mars-stroke-v:before{content:"\F22A"}.fa-mars-stroke-h:before{content:"\F22B"}.fa-neuter:before{content:"\F22C"}.fa-facebook-official:before{content:"\F230"}.fa-pinterest-p:before{content:"\F231"}.fa-whatsapp:before{content:"\F232"}.fa-server:before{content:"\F233"}.fa-user-plus:before{content:"\F234"}.fa-user-times:before{content:"\F235"}.fa-bed:before,.fa-hotel:before{content:"\F236"}.fa-viacoin:before{content:"\F237"}.fa-train:before{content:"\F238"}.fa-subway:before{content:"\F239"}.fa-medium:before{content:"\F23A"}/*! Normalize.css v3.0.1*/pre,textarea{overflow:auto}legend,td,th{padding:0}iframe,img,legend{border:0}.excerpt,.vertical-align,sub,sup{position:relative}.pagination,.text-center{text-align:center}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{max-width:100%;height:auto}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}body,ol,p,ul{font-weight:300}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}textarea{resize:vertical}table{border-collapse:collapse;border-spacing:0}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}html{box-sizing:border-box;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}*,:after,:before{box-sizing:inherit;outline:0!important}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;display:none}@media print{blockquote,img,pre,tr{page-break-inside:avoid!important}blockquote,pre{border:1px solid #999!important}img{max-width:100%!important!important}@page{margin:.5cm!important}h2,h3,p{orphans:3!important;widows:3!important}h2,h3{page-break-after:avoid!important}thead{display:table-header-group!important}*{background:0 0!important;color:#000!important;text-shadow:none!important;-webkit-filter:none!important;filter:none!important}p a[href]:after{content:" (" attr(href) ")"!important}p abbr[title]:after{content:" (" attr(title) ")"!important}p a[href^="#"]:after,p a[href^="javascript:"]:after{content:""!important}p a,p abbr{word-wrap:break-word!important;text-decoration:underline!important}}.webkit-link-disable{-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}.unselectable{-webkit-user-select:none;-ms-user-select:none;user-select:none}.vertical-align{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transform-style:preserve-3d;transform-style:preserve-3d}@-ms-viewport{width:device-width}.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.animated.infinite{-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}.animated.hinge{-webkit-animation-duration:2s;animation-duration:2s}@-webkit-keyframes bounce{0%,20%,53%,80%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1);-webkit-transform:translateZ(0);transform:translateZ(0)}40%,43%{-webkit-transition-timing-function:cubic-bezier(.755,.05,.855,.06);transition-timing-function:cubic-bezier(.755,.05,.855,.06);-webkit-transform:translate3d(0,-30px,0);transform:translate3d(0,-30px,0)}70%{-webkit-transition-timing-function:cubic-bezier(.755,.05,.855,.06);transition-timing-function:cubic-bezier(.755,.05,.855,.06);-webkit-transform:translate3d(0,-15px,0);transform:translate3d(0,-15px,0)}90%{-webkit-transform:translate3d(0,-4px,0);transform:translate3d(0,-4px,0)}}@keyframes bounce{0%,20%,53%,80%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1);-webkit-transform:translateZ(0);transform:translateZ(0)}40%,43%{-webkit-transition-timing-function:cubic-bezier(.755,.05,.855,.06);transition-timing-function:cubic-bezier(.755,.05,.855,.06);-webkit-transform:translate3d(0,-30px,0);transform:translate3d(0,-30px,0)}70%{-webkit-transition-timing-function:cubic-bezier(.755,.05,.855,.06);transition-timing-function:cubic-bezier(.755,.05,.855,.06);-webkit-transform:translate3d(0,-15px,0);transform:translate3d(0,-15px,0)}90%{-webkit-transform:translate3d(0,-4px,0);transform:translate3d(0,-4px,0)}}.bounce{-webkit-animation-name:bounce;animation-name:bounce;-webkit-transform-origin:center bottom;transform-origin:center bottom}@-webkit-keyframes flash{0%,50%,to{opacity:1}25%,75%{opacity:0}}@keyframes flash{0%,50%,to{opacity:1}25%,75%{opacity:0}}.flash{-webkit-animation-name:flash;animation-name:flash}@-webkit-keyframes pulse{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}50%{-webkit-transform:scale3d(1.05,1.05,1.05);transform:scale3d(1.05,1.05,1.05)}}@keyframes pulse{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}50%{-webkit-transform:scale3d(1.05,1.05,1.05);transform:scale3d(1.05,1.05,1.05)}}.pulse{-webkit-animation-name:pulse;animation-name:pulse}@-webkit-keyframes rubberBand{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}}@keyframes rubberBand{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}}.rubberBand{-webkit-animation-name:rubberBand;animation-name:rubberBand}@-webkit-keyframes shake{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}@keyframes shake{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}.shake{-webkit-animation-name:shake;animation-name:shake}@-webkit-keyframes swing{20%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);transform:rotate(-5deg)}to{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}@keyframes swing{20%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg);transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg);transform:rotate(-5deg)}to{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}.swing{-webkit-transform-origin:top center;transform-origin:top center;-webkit-animation-name:swing;animation-name:swing}@-webkit-keyframes tada{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}10%,20%{-webkit-transform:scale3d(.9,.9,.9) rotate(-3deg);transform:scale3d(.9,.9,.9) rotate(-3deg)}30%,50%,70%,90%{-webkit-transform:scale3d(1.1,1.1,1.1) rotate(3deg);transform:scale3d(1.1,1.1,1.1) rotate(3deg)}40%,60%,80%{-webkit-transform:scale3d(1.1,1.1,1.1) rotate(-3deg);transform:scale3d(1.1,1.1,1.1) rotate(-3deg)}}@keyframes tada{0%,to{-webkit-transform:scaleX(1);transform:scaleX(1)}10%,20%{-webkit-transform:scale3d(.9,.9,.9) rotate(-3deg);transform:scale3d(.9,.9,.9) rotate(-3deg)}30%,50%,70%,90%{-webkit-transform:scale3d(1.1,1.1,1.1) rotate(3deg);transform:scale3d(1.1,1.1,1.1) rotate(3deg)}40%,60%,80%{-webkit-transform:scale3d(1.1,1.1,1.1) rotate(-3deg);transform:scale3d(1.1,1.1,1.1) rotate(-3deg)}}.tada{-webkit-animation-name:tada;animation-name:tada}@-webkit-keyframes wobble{0%,to{-webkit-transform:none;transform:none}15%{-webkit-transform:translate3d(-25%,0,0) rotate(-5deg);transform:translate3d(-25%,0,0) rotate(-5deg)}30%{-webkit-transform:translate3d(20%,0,0) rotate(3deg);transform:translate3d(20%,0,0) rotate(3deg)}45%{-webkit-transform:translate3d(-15%,0,0) rotate(-3deg);transform:translate3d(-15%,0,0) rotate(-3deg)}60%{-webkit-transform:translate3d(10%,0,0) rotate(2deg);transform:translate3d(10%,0,0) rotate(2deg)}75%{-webkit-transform:translate3d(-5%,0,0) rotate(-1deg);transform:translate3d(-5%,0,0) rotate(-1deg)}}@keyframes wobble{0%,to{-webkit-transform:none;transform:none}15%{-webkit-transform:translate3d(-25%,0,0) rotate(-5deg);transform:translate3d(-25%,0,0) rotate(-5deg)}30%{-webkit-transform:translate3d(20%,0,0) rotate(3deg);transform:translate3d(20%,0,0) rotate(3deg)}45%{-webkit-transform:translate3d(-15%,0,0) rotate(-3deg);transform:translate3d(-15%,0,0) rotate(-3deg)}60%{-webkit-transform:translate3d(10%,0,0) rotate(2deg);transform:translate3d(10%,0,0) rotate(2deg)}75%{-webkit-transform:translate3d(-5%,0,0) rotate(-1deg);transform:translate3d(-5%,0,0) rotate(-1deg)}}.wobble{-webkit-animation-name:wobble;animation-name:wobble}@-webkit-keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}to{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}}@keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}to{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}}.bounceIn{-webkit-animation-name:bounceIn;animation-name:bounceIn;animation-duration:.75s}.bounceIn,.bounceOut,.flipOutX{-webkit-animation-duration:.75s}@-webkit-keyframes bounceInDown{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(0,-3000px,0);transform:translate3d(0,-3000px,0)}60%{opacity:1;-webkit-transform:translate3d(0,25px,0);transform:translate3d(0,25px,0)}75%{-webkit-transform:translate3d(0,-10px,0);transform:translate3d(0,-10px,0)}90%{-webkit-transform:translate3d(0,5px,0);transform:translate3d(0,5px,0)}to{-webkit-transform:none;transform:none}}@keyframes bounceInDown{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(0,-3000px,0);transform:translate3d(0,-3000px,0)}60%{opacity:1;-webkit-transform:translate3d(0,25px,0);transform:translate3d(0,25px,0)}75%{-webkit-transform:translate3d(0,-10px,0);transform:translate3d(0,-10px,0)}90%{-webkit-transform:translate3d(0,5px,0);transform:translate3d(0,5px,0)}to{-webkit-transform:none;transform:none}}.bounceInDown{-webkit-animation-name:bounceInDown;animation-name:bounceInDown}@-webkit-keyframes bounceInLeft{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-webkit-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-webkit-transform:none;transform:none}}@keyframes bounceInLeft{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-webkit-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-webkit-transform:none;transform:none}}.bounceInLeft{-webkit-animation-name:bounceInLeft;animation-name:bounceInLeft}@-webkit-keyframes bounceInRight{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(3000px,0,0);transform:translate3d(3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(-25px,0,0);transform:translate3d(-25px,0,0)}75%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}90%{-webkit-transform:translate3d(-5px,0,0);transform:translate3d(-5px,0,0)}to{-webkit-transform:none;transform:none}}@keyframes bounceInRight{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(3000px,0,0);transform:translate3d(3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(-25px,0,0);transform:translate3d(-25px,0,0)}75%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}90%{-webkit-transform:translate3d(-5px,0,0);transform:translate3d(-5px,0,0)}to{-webkit-transform:none;transform:none}}.bounceInRight{-webkit-animation-name:bounceInRight;animation-name:bounceInRight}@-webkit-keyframes bounceInUp{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(0,3000px,0);transform:translate3d(0,3000px,0)}60%{opacity:1;-webkit-transform:translate3d(0,-20px,0);transform:translate3d(0,-20px,0)}75%{-webkit-transform:translate3d(0,10px,0);transform:translate3d(0,10px,0)}90%{-webkit-transform:translate3d(0,-5px,0);transform:translate3d(0,-5px,0)}to{-webkit-transform:translateZ(0);transform:translateZ(0)}}@keyframes bounceInUp{0%,60%,75%,90%,to{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(0,3000px,0);transform:translate3d(0,3000px,0)}60%{opacity:1;-webkit-transform:translate3d(0,-20px,0);transform:translate3d(0,-20px,0)}75%{-webkit-transform:translate3d(0,10px,0);transform:translate3d(0,10px,0)}90%{-webkit-transform:translate3d(0,-5px,0);transform:translate3d(0,-5px,0)}to{-webkit-transform:translateZ(0);transform:translateZ(0)}}.bounceInUp{-webkit-animation-name:bounceInUp;animation-name:bounceInUp}@-webkit-keyframes bounceOut{20%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}50%,55%{opacity:1;-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}to{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}}@keyframes bounceOut{20%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}50%,55%{opacity:1;-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}to{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}}.bounceOut{-webkit-animation-name:bounceOut;animation-name:bounceOut;-webkit-animation-duration:.75s;animation-duration:.75s}@-webkit-keyframes bounceOutDown{20%{-webkit-transform:translate3d(0,10px,0);transform:translate3d(0,10px,0)}40%,45%{opacity:1;-webkit-transform:translate3d(0,-20px,0);transform:translate3d(0,-20px,0)}to{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}}@keyframes bounceOutDown{20%{-webkit-transform:translate3d(0,10px,0);transform:translate3d(0,10px,0)}40%,45%{opacity:1;-webkit-transform:translate3d(0,-20px,0);transform:translate3d(0,-20px,0)}to{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}}.bounceOutDown{-webkit-animation-name:bounceOutDown;animation-name:bounceOutDown}@-webkit-keyframes bounceOutLeft{20%{opacity:1;-webkit-transform:translate3d(20px,0,0);transform:translate3d(20px,0,0)}to{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}}@keyframes bounceOutLeft{20%{opacity:1;-webkit-transform:translate3d(20px,0,0);transform:translate3d(20px,0,0)}to{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}}.bounceOutLeft{-webkit-animation-name:bounceOutLeft;animation-name:bounceOutLeft}@-webkit-keyframes bounceOutRight{20%{opacity:1;-webkit-transform:translate3d(-20px,0,0);transform:translate3d(-20px,0,0)}to{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}}@keyframes bounceOutRight{20%{opacity:1;-webkit-transform:translate3d(-20px,0,0);transform:translate3d(-20px,0,0)}to{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}}.bounceOutRight{-webkit-animation-name:bounceOutRight;animation-name:bounceOutRight}@-webkit-keyframes bounceOutUp{20%{-webkit-transform:translate3d(0,-10px,0);transform:translate3d(0,-10px,0)}40%,45%{opacity:1;-webkit-transform:translate3d(0,20px,0);transform:translate3d(0,20px,0)}to{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}}@keyframes bounceOutUp{20%{-webkit-transform:translate3d(0,-10px,0);transform:translate3d(0,-10px,0)}40%,45%{opacity:1;-webkit-transform:translate3d(0,20px,0);transform:translate3d(0,20px,0)}to{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}}.bounceOutUp{-webkit-animation-name:bounceOutUp;animation-name:bounceOutUp}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}.fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn}@-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInDown{-webkit-animation-name:fadeInDown;animation-name:fadeInDown}@-webkit-keyframes fadeInDownBig{0%{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInDownBig{0%{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInDownBig{-webkit-animation-name:fadeInDownBig;animation-name:fadeInDownBig}@-webkit-keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInLeft{-webkit-animation-name:fadeInLeft;animation-name:fadeInLeft}@-webkit-keyframes fadeInLeftBig{0%{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInLeftBig{0%{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInLeftBig{-webkit-animation-name:fadeInLeftBig;animation-name:fadeInLeftBig}@-webkit-keyframes fadeInRight{0%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInRight{0%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInRight{-webkit-animation-name:fadeInRight;animation-name:fadeInRight}@-webkit-keyframes fadeInRightBig{0%{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInRightBig{0%{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInRightBig{-webkit-animation-name:fadeInRightBig;animation-name:fadeInRightBig}.fadeInUp{-webkit-animation-name:fadeInUp;animation-name:fadeInUp}@-webkit-keyframes fadeInUpBig{0%{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInUpBig{0%{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}to{opacity:1;-webkit-transform:none;transform:none}}.fadeInUpBig{-webkit-animation-name:fadeInUpBig;animation-name:fadeInUpBig}@-webkit-keyframes fadeOut{0%{opacity:1}to{opacity:0}}@keyframes fadeOut{0%{opacity:1}to{opacity:0}}.fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOutDown{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@keyframes fadeOutDown{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}.fadeOutDown{-webkit-animation-name:fadeOutDown;animation-name:fadeOutDown}@-webkit-keyframes fadeOutDownBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}}@keyframes fadeOutDownBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,2000px,0);transform:translate3d(0,2000px,0)}}.fadeOutDownBig{-webkit-animation-name:fadeOutDownBig;animation-name:fadeOutDownBig}@-webkit-keyframes fadeOutLeft{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@keyframes fadeOutLeft{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}.fadeOutLeft{-webkit-animation-name:fadeOutLeft;animation-name:fadeOutLeft}@-webkit-keyframes fadeOutLeftBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}}@keyframes fadeOutLeftBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(-2000px,0,0);transform:translate3d(-2000px,0,0)}}.fadeOutLeftBig{-webkit-animation-name:fadeOutLeftBig;animation-name:fadeOutLeftBig}@-webkit-keyframes fadeOutRight{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}}@keyframes fadeOutRight{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}}.fadeOutRight{-webkit-animation-name:fadeOutRight;animation-name:fadeOutRight}@-webkit-keyframes fadeOutRightBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}}@keyframes fadeOutRightBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(2000px,0,0);transform:translate3d(2000px,0,0)}}.fadeOutRightBig{-webkit-animation-name:fadeOutRightBig;animation-name:fadeOutRightBig}@-webkit-keyframes fadeOutUp{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}}@keyframes fadeOutUp{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}}.fadeOutUp{-webkit-animation-name:fadeOutUp;animation-name:fadeOutUp}@-webkit-keyframes fadeOutUpBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}}@keyframes fadeOutUpBig{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(0,-2000px,0);transform:translate3d(0,-2000px,0)}}.fadeOutUpBig{-webkit-animation-name:fadeOutUpBig;animation-name:fadeOutUpBig}@-webkit-keyframes flip{0%{-webkit-transform:perspective(400px) rotateY(-1turn);transform:perspective(400px) rotateY(-1turn);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}40%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(-190deg);transform:perspective(400px) translateZ(150px) rotateY(-190deg);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}50%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(-170deg);transform:perspective(400px) translateZ(150px) rotateY(-170deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}80%{-webkit-transform:perspective(400px) scale3d(.95,.95,.95);transform:perspective(400px) scale3d(.95,.95,.95);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}to{-webkit-transform:perspective(400px);transform:perspective(400px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}}@keyframes flip{0%{-webkit-transform:perspective(400px) rotateY(-1turn);transform:perspective(400px) rotateY(-1turn);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}40%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(-190deg);transform:perspective(400px) translateZ(150px) rotateY(-190deg);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}50%{-webkit-transform:perspective(400px) translateZ(150px) rotateY(-170deg);transform:perspective(400px) translateZ(150px) rotateY(-170deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}80%{-webkit-transform:perspective(400px) scale3d(.95,.95,.95);transform:perspective(400px) scale3d(.95,.95,.95);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}to{-webkit-transform:perspective(400px);transform:perspective(400px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}}.animated.flip{-webkit-backface-visibility:visible;backface-visibility:visible;-webkit-animation-name:flip;animation-name:flip}@-webkit-keyframes flipInX{0%{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in;opacity:0}40%{-webkit-transform:perspective(400px) rotateX(-20deg);transform:perspective(400px) rotateX(-20deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in}60%{-webkit-transform:perspective(400px) rotateX(10deg);transform:perspective(400px) rotateX(10deg);opacity:1}80%{-webkit-transform:perspective(400px) rotateX(-5deg);transform:perspective(400px) rotateX(-5deg)}to{-webkit-transform:perspective(400px);transform:perspective(400px)}}@keyframes flipInX{0%{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in;opacity:0}40%{-webkit-transform:perspective(400px) rotateX(-20deg);transform:perspective(400px) rotateX(-20deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in}60%{-webkit-transform:perspective(400px) rotateX(10deg);transform:perspective(400px) rotateX(10deg);opacity:1}80%{-webkit-transform:perspective(400px) rotateX(-5deg);transform:perspective(400px) rotateX(-5deg)}to{-webkit-transform:perspective(400px);transform:perspective(400px)}}.flipInX{backface-visibility:visible!important;-webkit-animation-name:flipInX;animation-name:flipInX}.flipInX,.flipInY,.flipOutX{-webkit-backface-visibility:visible!important}.flipInY,.flipOutX{-ms-backface-visibility:visible!important}@-webkit-keyframes flipInY{0%{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in;opacity:0}40%{-webkit-transform:perspective(400px) rotateY(-20deg);transform:perspective(400px) rotateY(-20deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in}60%{-webkit-transform:perspective(400px) rotateY(10deg);transform:perspective(400px) rotateY(10deg);opacity:1}80%{-webkit-transform:perspective(400px) rotateY(-5deg);transform:perspective(400px) rotateY(-5deg)}to{-webkit-transform:perspective(400px);transform:perspective(400px)}}@keyframes flipInY{0%{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in;opacity:0}40%{-webkit-transform:perspective(400px) rotateY(-20deg);transform:perspective(400px) rotateY(-20deg);-webkit-transition-timing-function:ease-in;transition-timing-function:ease-in}60%{-webkit-transform:perspective(400px) rotateY(10deg);transform:perspective(400px) rotateY(10deg);opacity:1}80%{-webkit-transform:perspective(400px) rotateY(-5deg);transform:perspective(400px) rotateY(-5deg)}to{-webkit-transform:perspective(400px);transform:perspective(400px)}}.flipInY{-webkit-backface-visibility:visible!important;backface-visibility:visible!important;-webkit-animation-name:flipInY;animation-name:flipInY}@-webkit-keyframes flipOutX{0%{-webkit-transform:perspective(400px);transform:perspective(400px)}30%{-webkit-transform:perspective(400px) rotateX(-20deg);transform:perspective(400px) rotateX(-20deg);opacity:1}to{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}}@keyframes flipOutX{0%{-webkit-transform:perspective(400px);transform:perspective(400px)}30%{-webkit-transform:perspective(400px) rotateX(-20deg);transform:perspective(400px) rotateX(-20deg);opacity:1}to{-webkit-transform:perspective(400px) rotateX(90deg);transform:perspective(400px) rotateX(90deg);opacity:0}}.flipOutX{-webkit-animation-name:flipOutX;animation-name:flipOutX;-webkit-animation-duration:.75s;animation-duration:.75s;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}@-webkit-keyframes flipOutY{0%{-webkit-transform:perspective(400px);transform:perspective(400px)}30%{-webkit-transform:perspective(400px) rotateY(-15deg);transform:perspective(400px) rotateY(-15deg);opacity:1}to{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}}@keyframes flipOutY{0%{-webkit-transform:perspective(400px);transform:perspective(400px)}30%{-webkit-transform:perspective(400px) rotateY(-15deg);transform:perspective(400px) rotateY(-15deg);opacity:1}to{-webkit-transform:perspective(400px) rotateY(90deg);transform:perspective(400px) rotateY(90deg);opacity:0}}.flipOutY{-webkit-backface-visibility:visible!important;backface-visibility:visible!important;-webkit-animation-name:flipOutY;animation-name:flipOutY;-webkit-animation-duration:.75s;animation-duration:.75s}.navigation,.title{-webkit-animation-duration:.5s}@-webkit-keyframes lightSpeedIn{0%{-webkit-transform:translate3d(100%,0,0) skewX(-30deg);transform:translate3d(100%,0,0) skewX(-30deg);opacity:0}60%{-webkit-transform:skewX(20deg);transform:skewX(20deg);opacity:1}80%{-webkit-transform:skewX(-5deg);transform:skewX(-5deg);opacity:1}to{-webkit-transform:none;transform:none;opacity:1}}@keyframes lightSpeedIn{0%{-webkit-transform:translate3d(100%,0,0) skewX(-30deg);transform:translate3d(100%,0,0) skewX(-30deg);opacity:0}60%{-webkit-transform:skewX(20deg);transform:skewX(20deg);opacity:1}80%{-webkit-transform:skewX(-5deg);transform:skewX(-5deg);opacity:1}to{-webkit-transform:none;transform:none;opacity:1}}.lightSpeedIn{-webkit-animation-name:lightSpeedIn;animation-name:lightSpeedIn;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}@-webkit-keyframes lightSpeedOut{0%{opacity:1}to{-webkit-transform:translate3d(100%,0,0) skewX(30deg);transform:translate3d(100%,0,0) skewX(30deg);opacity:0}}@keyframes lightSpeedOut{0%{opacity:1}to{-webkit-transform:translate3d(100%,0,0) skewX(30deg);transform:translate3d(100%,0,0) skewX(30deg);opacity:0}}.lightSpeedOut{-webkit-animation-name:lightSpeedOut;animation-name:lightSpeedOut;-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}@-webkit-keyframes rotateIn{0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate(-200deg);transform:rotate(-200deg);opacity:0}to{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none;opacity:1}}@keyframes rotateIn{0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate(-200deg);transform:rotate(-200deg);opacity:0}to{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none;opacity:1}}.rotateIn{-webkit-animation-name:rotateIn;animation-name:rotateIn}@-webkit-keyframes rotateInDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:none;transform:none;opacity:1}}@keyframes rotateInDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:none;transform:none;opacity:1}}.rotateInDownLeft{-webkit-animation-name:rotateInDownLeft;animation-name:rotateInDownLeft}@-webkit-keyframes rotateInDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:none;transform:none;opacity:1}}@keyframes rotateInDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:none;transform:none;opacity:1}}.rotateInDownRight{-webkit-animation-name:rotateInDownRight;animation-name:rotateInDownRight}@-webkit-keyframes rotateInUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:none;transform:none;opacity:1}}@keyframes rotateInUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:none;transform:none;opacity:1}}.rotateInUpLeft{-webkit-animation-name:rotateInUpLeft;animation-name:rotateInUpLeft}@-webkit-keyframes rotateInUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:none;transform:none;opacity:1}}@keyframes rotateInUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);opacity:0}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:none;transform:none;opacity:1}}.rotateInUpRight{-webkit-animation-name:rotateInUpRight;animation-name:rotateInUpRight}@-webkit-keyframes rotateOut{0%{-webkit-transform-origin:center;transform-origin:center;opacity:1}to{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate(200deg);transform:rotate(200deg);opacity:0}}@keyframes rotateOut{0%{-webkit-transform-origin:center;transform-origin:center;opacity:1}to{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate(200deg);transform:rotate(200deg);opacity:0}}.rotateOut{-webkit-animation-name:rotateOut;animation-name:rotateOut}@-webkit-keyframes rotateOutDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;opacity:1}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0,0,1,45deg);transform:rotate(0,0,1,45deg);opacity:0}}@keyframes rotateOutDownLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;opacity:1}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(0,0,1,45deg);transform:rotate(0,0,1,45deg);opacity:0}}.rotateOutDownLeft{-webkit-animation-name:rotateOutDownLeft;animation-name:rotateOutDownLeft}@-webkit-keyframes rotateOutDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;opacity:1}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}}@keyframes rotateOutDownRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;opacity:1}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}}.rotateOutDownRight{-webkit-animation-name:rotateOutDownRight;animation-name:rotateOutDownRight}@-webkit-keyframes rotateOutUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;opacity:1}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}}@keyframes rotateOutUpLeft{0%{-webkit-transform-origin:left bottom;transform-origin:left bottom;opacity:1}to{-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);opacity:0}}.rotateOutUpLeft{-webkit-animation-name:rotateOutUpLeft;animation-name:rotateOutUpLeft}@-webkit-keyframes rotateOutUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;opacity:1}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}@keyframes rotateOutUpRight{0%{-webkit-transform-origin:right bottom;transform-origin:right bottom;opacity:1}to{-webkit-transform-origin:right bottom;transform-origin:right bottom;-webkit-transform:rotate(90deg);transform:rotate(90deg);opacity:0}}.rotateOutUpRight{-webkit-animation-name:rotateOutUpRight;animation-name:rotateOutUpRight}@-webkit-keyframes hinge{0%{-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}20%,60%{-webkit-transform:rotate(80deg);transform:rotate(80deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}40%,80%{-webkit-transform:rotate(60deg);transform:rotate(60deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;opacity:1}to{-webkit-transform:translate3d(0,700px,0);transform:translate3d(0,700px,0);opacity:0}}@keyframes hinge{0%{-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}20%,60%{-webkit-transform:rotate(80deg);transform:rotate(80deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}40%,80%{-webkit-transform:rotate(60deg);transform:rotate(60deg);-webkit-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;opacity:1}to{-webkit-transform:translate3d(0,700px,0);transform:translate3d(0,700px,0);opacity:0}}.hinge{-webkit-animation-name:hinge;animation-name:hinge}@-webkit-keyframes rollIn{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0) rotate(-120deg);transform:translate3d(-100%,0,0) rotate(-120deg)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes rollIn{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0) rotate(-120deg);transform:translate3d(-100%,0,0) rotate(-120deg)}to{opacity:1;-webkit-transform:none;transform:none}}.rollIn{-webkit-animation-name:rollIn;animation-name:rollIn}@-webkit-keyframes rollOut{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(100%,0,0) rotate(120deg);transform:translate3d(100%,0,0) rotate(120deg)}}@keyframes rollOut{0%{opacity:1}to{opacity:0;-webkit-transform:translate3d(100%,0,0) rotate(120deg);transform:translate3d(100%,0,0) rotate(120deg)}}.rollOut{-webkit-animation-name:rollOut;animation-name:rollOut}@-webkit-keyframes zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}.zoomIn{-webkit-animation-name:zoomIn;animation-name:zoomIn}@-webkit-keyframes zoomInDown{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomInDown{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomInDown{-webkit-animation-name:zoomInDown;animation-name:zoomInDown}@-webkit-keyframes zoomInLeft{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(-1000px,0,0);transform:scale3d(.1,.1,.1) translate3d(-1000px,0,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(10px,0,0);transform:scale3d(.475,.475,.475) translate3d(10px,0,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomInLeft{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(-1000px,0,0);transform:scale3d(.1,.1,.1) translate3d(-1000px,0,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(10px,0,0);transform:scale3d(.475,.475,.475) translate3d(10px,0,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomInLeft{-webkit-animation-name:zoomInLeft;animation-name:zoomInLeft}@-webkit-keyframes zoomInRight{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(1000px,0,0);transform:scale3d(.1,.1,.1) translate3d(1000px,0,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(-10px,0,0);transform:scale3d(.475,.475,.475) translate3d(-10px,0,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomInRight{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(1000px,0,0);transform:scale3d(.1,.1,.1) translate3d(1000px,0,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(-10px,0,0);transform:scale3d(.475,.475,.475) translate3d(-10px,0,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomInRight{-webkit-animation-name:zoomInRight;animation-name:zoomInRight}@-webkit-keyframes zoomInUp{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomInUp{0%{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,1000px,0);transform:scale3d(.1,.1,.1) translate3d(0,1000px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}60%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomInUp{-webkit-animation-name:zoomInUp;animation-name:zoomInUp}@-webkit-keyframes zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:0}}@keyframes zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:0}}.zoomOut{-webkit-animation-name:zoomOut;animation-name:zoomOut}@-webkit-keyframes zoomOutDown{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}to{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,2000px,0);transform:scale3d(.1,.1,.1) translate3d(0,2000px,0);-webkit-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomOutDown{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}to{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,2000px,0);transform:scale3d(.1,.1,.1) translate3d(0,2000px,0);-webkit-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomOutDown{-webkit-animation-name:zoomOutDown;animation-name:zoomOutDown}@-webkit-keyframes zoomOutLeft{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(42px,0,0);transform:scale3d(.475,.475,.475) translate3d(42px,0,0)}to{opacity:0;-webkit-transform:scale(.1) translate3d(-2000px,0,0);transform:scale(.1) translate3d(-2000px,0,0);-webkit-transform-origin:left center;transform-origin:left center}}@keyframes zoomOutLeft{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(42px,0,0);transform:scale3d(.475,.475,.475) translate3d(42px,0,0)}to{opacity:0;-webkit-transform:scale(.1) translate3d(-2000px,0,0);transform:scale(.1) translate3d(-2000px,0,0);-webkit-transform-origin:left center;transform-origin:left center}}.zoomOutLeft{-webkit-animation-name:zoomOutLeft;animation-name:zoomOutLeft}@-webkit-keyframes zoomOutRight{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(-42px,0,0);transform:scale3d(.475,.475,.475) translate3d(-42px,0,0)}to{opacity:0;-webkit-transform:scale(.1) translate3d(2000px,0,0);transform:scale(.1) translate3d(2000px,0,0);-webkit-transform-origin:right center;transform-origin:right center}}@keyframes zoomOutRight{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(-42px,0,0);transform:scale3d(.475,.475,.475) translate3d(-42px,0,0)}to{opacity:0;-webkit-transform:scale(.1) translate3d(2000px,0,0);transform:scale(.1) translate3d(2000px,0,0);-webkit-transform-origin:right center;transform-origin:right center}}.zoomOutRight{-webkit-animation-name:zoomOutRight;animation-name:zoomOutRight}@-webkit-keyframes zoomOutUp{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}to{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-2000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-2000px,0);-webkit-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}@keyframes zoomOutUp{40%{opacity:1;-webkit-transform:scale3d(.475,.475,.475) translate3d(0,60px,0);transform:scale3d(.475,.475,.475) translate3d(0,60px,0);-webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}to{opacity:0;-webkit-transform:scale3d(.1,.1,.1) translate3d(0,-2000px,0);transform:scale3d(.1,.1,.1) translate3d(0,-2000px,0);-webkit-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation-timing-function:cubic-bezier(.175,.885,.32,1);animation-timing-function:cubic-bezier(.175,.885,.32,1)}}.zoomOutUp{-webkit-animation-name:zoomOutUp;animation-name:zoomOutUp}.hljs{display:block;overflow-x:auto;background:#232323;color:#e6e1dc;-webkit-text-size-adjust:none}.hljs-comment,.hljs-javadoc,.hljs-shebang,.hljs-template_comment{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-list .hljs-title,.hljs-request,.hljs-status,.method,.nginx .hljs-title,.ruby .hljs-function .hljs-keyword{color:#c26230}.apache .hljs-cbracket,.asciidoc .hljs-link_label,.hljs-attr_selector,.hljs-cdata,.hljs-date,.hljs-filter .hljs-argument,.hljs-number,.hljs-regexp,.hljs-string,.hljs-tag .hljs-value,.markdown .hljs-link_label,.tex .hljs-command{color:#a5c261}.hljs-subst{color:#519f50}.hljs-doctype,.hljs-pi,.hljs-sub .hljs-identifier,.hljs-tag,.hljs-tag .hljs-keyword,.hljs-tag .hljs-title,.input_number{color:#e8bf6a}.hljs-identifier{color:#d0d0ff}.hljs-class .hljs-title,.hljs-dartdoc,.hljs-javadoctag,.hljs-phpdoc,.hljs-type,.hljs-yardoctag,.smalltalk .hljs-class{text-decoration:none}.hljs-constant{color:#da4939}.asciidoc .hljs-link_url,.hljs-attribute,.hljs-built_in,.hljs-symbol,.markdown .hljs-link_url,.ruby .hljs-symbol .hljs-identifier,.ruby .hljs-symbol .hljs-string{color:#6d9cbe}.asciidoc .hljs-link_url,.markdown .hljs-link_url{text-decoration:underline}a,a:hover{text-decoration:none}.clojure .hljs-attribute,.hljs-params,.hljs-variable{color:#d0d0ff}.css .hljs-tag,.hljs-pseudo,.hljs-rules .hljs-property,.tex .hljs-special{color:#cda869}.css .hljs-class{color:#9b703f}.hljs-rules .hljs-keyword{color:#c5af75}.hljs-rules .hljs-value{color:#cf6a4c}.css .hljs-id{color:#8b98ab}.apache .hljs-sqbracket,.hljs-annotation,.nginx .hljs-built_in{color:#9b859d}.hljs-pragma,.hljs-preprocessor,.hljs-preprocessor *{color:#8996a8!important}.css .hljs-value .hljs-number,.hljs-hexcolor{color:#a5c261}.css .hljs-function,.hljs-decorator,.hljs-title{color:#ffc66d}.diff .hljs-header,.hljs-chunk{background-color:#2f33ab;color:#e6e1dc;display:inline-block;width:100%}.diff .hljs-change{background-color:#4a410d;color:#f8f8f8;display:inline-block;width:100%}.hljs-addition,.hljs-deletion{color:#e6e1dc;display:inline-block;width:100%}.hljs-addition{background-color:#144212}.hljs-deletion{background-color:#600}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .css,.xml .hljs-cdata,.xml .javascript,.xml .vbscript{opacity:.7}@font-face{font-family:Open Sans;src:url(/static/OpenSans-Light-webfont-09e00aa7622ece30a0f1e06b55f66c2a.eot);src:url(/static/OpenSans-Light-webfont-09e00aa7622ece30a0f1e06b55f66c2a.eot?#iefix) format("embedded-opentype"),url(/static/OpenSans-Light-webfont-45b47f3e9c7d74b80f5c6e0a3c513b23.woff) format("woff"),url(/static/OpenSans-Light-webfont-2e98fc3ce85f31f63010b706259cb604.ttf) format("truetype"),url(/static/OpenSans-Light-webfont-4100d20032c5c36af7af1d20d96de0c2.svg#open_sanslight) format("svg");font-weight:300;font-style:normal}@font-face{font-family:Open Sans;src:url(/static/OpenSans-Regular-webfont-c4d82460ef260eb1589e73528cbfb257.eot);src:url(/static/OpenSans-Regular-webfont-c4d82460ef260eb1589e73528cbfb257.eot?#iefix) format("embedded-opentype"),url(/static/OpenSans-Regular-webfont-79515ad0788973c533405f7012dfeccd.woff) format("woff"),url(/static/OpenSans-Regular-webfont-488d5cc145299ba07b75495100419ee6.ttf) format("truetype"),url(/static/OpenSans-Regular-webfont-03fd1e8c72f938f5a52685aaa84595af.svg#open_sansregular) format("svg");font-weight:400;font-style:normal}@font-face{font-family:Open Sans;src:url(/static/OpenSans-Semibold-webfont-f28eb362fb6afe946d822ee5451c2146.eot);src:url(/static/OpenSans-Semibold-webfont-f28eb362fb6afe946d822ee5451c2146.eot?#iefix) format("embedded-opentype"),url(/static/OpenSans-Semibold-webfont-697574b47bcfdd2c45e3e63c7380dd67.woff) format("woff"),url(/static/OpenSans-Semibold-webfont-b32acea6fd3c228b5059042c7ad21c55.ttf) format("truetype"),url(/static/OpenSans-Semibold-webfont-5484699d1d53b64b139a9ef243b40f64.svg#open_sanssemibold) format("svg");font-weight:600;font-style:normal}@-webkit-keyframes fadeInUp{0%{opacity:0;-webkit-transform:translate3d(0,20px,0);transform:translate3d(0,20px,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInUp{0%{opacity:0;-webkit-transform:translate3d(0,20px,0);transform:translate3d(0,20px,0)}to{opacity:1;-webkit-transform:none;transform:none}}body{margin:0;font-family:Open Sans,Helvetica Neue,Helvetica,Segoe UI,Arial,sans-serif}ol,p,ul{margin-bottom:40px;font-size:18px;line-height:34px;letter-spacing:0}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}blockquote{padding-left:20px;margin-left:20px}a{-webkit-transition:color .2s ease-in-out;transition:color .2s ease-in-out}strong{font-weight:600}.excerpt{z-index:-1}.container,.pagination{position:relative;width:500px;margin:0 auto}.newer-posts,.older-posts,.sidebar,header:before{position:absolute}.pagination{font-size:13px}.page-number{color:#ecf0f1}.older-posts{right:0}.newer-posts{left:0}.sidebar{left:-190px;width:130px}.comments,footer{padding:120px 0 10px}.text-right{text-align:right}.navigation{height:90px;font-weight:100;background:#1b1f23;-webkit-animation-duration:.5s;animation-duration:.5s}.meta time,.tags a,.title h1,header{font-weight:300}.brand,.content{display:block;float:left}.brand{border:none;padding:20px 0;line-height:0}.brand img{max-height:50px}.content{line-height:90px;margin:0}header{position:relative;color:#fff;background-position:50%;background-repeat:no-repeat;background-size:cover;-webkit-animation-duration:3s;animation-duration:3s}header:before{top:0;left:0;width:100%;height:100%;background:rgba(36,43,47,.8);content:""}header .container{padding:130px 0}.title{-webkit-animation-delay:.5s;animation-delay:.5s;animation-duration:.5s}.published,.tags,.title{-webkit-animation-duration:.5s}.title h1{font-size:55px;line-height:60px;margin:0}.title p{max-width:420px;margin-bottom:0}header .share{margin-top:20px;line-height:28px;color:#ecf0f1}.meta{top:140px;text-transform:capitalize}.meta strong{display:block;color:#fff}.meta strong,.meta time,.tags a{font-size:13px;line-height:22px}.published{-webkit-animation-delay:.25s;animation-delay:.25s}.published,.tags{-webkit-animation-duration:.5s;animation-duration:.5s}.tags{margin-top:30px;-webkit-animation-delay:.5s;animation-delay:.5s}.author,.comments,article{-webkit-animation-duration:.5s}.tags a{display:block;border:none}.meta .separator{display:none;color:#ecf0f1;margin:0 10px}.push-article{padding-top:40px}article{-webkit-animation-delay:.75s;animation-delay:.75s;-webkit-animation-duration:.5s;animation-duration:.5s;padding:40px 0}.hljs{padding:20px;border-radius:8px;line-height:1.5em}article hr,article input{border:1px solid #ddd}article a>img,article p>img{display:block;margin:0 auto}article h1,article h2,article h3{font-weight:300;color:#464c4c}article h1{font-size:33px;line-height:43px;margin:80px 0 40px}article h2{font-size:26px;line-height:36px;margin:40px 0 0}article h3{font-size:20px;line-height:30px;margin:30px 0}article input{width:100%;border-radius:4px;outline:0;-webkit-transition:border .25s;transition:border .25s;padding:8px 16px}article input:hover{border:1px solid #bbb}article input:focus{border:1px solid #999}.author{border-top:1px solid #ddd;padding:40px 0 80px}.author img{border-radius:50%;width:100px;float:left}.article-count{margin-top:20px}.author-image img{margin-top:-20px;border-radius:50%}.author .info{width:385px;float:left;margin-left:15px}.author .name{margin:0;display:block;border:none;font-weight:600;font-size:18px;line-height:34px}.author .bio{margin:0;font-size:16px;line-height:30px}.author,.comments{-webkit-animation-delay:1.5s;animation-delay:1.5s;-webkit-animation-duration:.5s;animation-duration:.5s}.comments{background:#f2f3f4}footer{-webkit-animation-delay:2s;animation-delay:2s;-webkit-animation-duration:.5s;animation-duration:.5s}.copyright{font-size:16px;line-height:40px;font-weight:400;color:#464c4c;margin:0 -80px 20px;text-transform:lowercase}.theme{font-weight:600;border:none;color:#ddd;font-size:12px}footer p{margin:0}.sample{font-weight:300;color:#fff;-webkit-animation-duration:3s;animation-duration:3s}.sample .title a{display:block;border-bottom:none}.sample .container{padding-top:130px;padding-bottom:0}.excerpt article{padding:40px 0;border-bottom:2px solid #f2f3f4}.page footer{border-top:2px solid #f2f3f4}header .share a{border:none}.excerpt article h1,.excerpt article h2,.excerpt article h3,.sample:before{display:none}.sample .meta strong,.sample .title a{color:#464c4c}.blog-cover{padding:180px 8%;text-align:center}.blog-title{font-size:75px;line-height:75px;font-weight:200;position:relative;margin:0}.blog-description{font-weight:400;max-width:540px;margin:10px auto 0;position:relative;font-size:25px}@media (max-width:992px){.container,.pagination{width:auto;max-width:650px;padding:0 8%}.sidebar{position:static;top:0;left:0;width:auto}.content{margin-left:20px}.title h1{margin:0;font-size:49px;line-height:54px}.title{width:90%}header .container{padding-top:120px;padding-bottom:240px}.meta a:after{content:",";margin-right:4px}.meta a:last-child:after{content:""}.meta strong{display:none}.published:after{margin-left:10px}.published,.tags{margin-top:0}.meta.text-right{text-align:left}.meta{width:400px;margin-top:20px}.article-image{width:100%;margin:80px 0}.sample{padding-bottom:0}.meta .separator,.meta time,.published,.tags,.tags a{display:inline-block}.author .info{width:320px}.author .bio{font-size:14px;line-height:28px}.copyright{margin:0}.copyright span{display:block}.blog-title{font-size:49px;line-height:49px}.blog-description{font-size:18px;max-width:400px}}@media (max-width:480px){.content,ol,p,ul{font-size:18px}ol,p,ul{margin-bottom:20px;line-height:28px}.container,.pagination{padding:0 6%}.comments,footer{padding:60px 0}nav .content{font-size:14px}nav.navigation .brand,nav.navigation a.content{margin:0 7px}nav.navigation .container{padding:0}.main header .container{padding-right:6%;padding-left:6%}.title h1{font-size:29px;line-height:37px}header .container{padding-top:60px;padding-bottom:120px}.sample .container{padding-top:60px}.published:after{margin-left:5px}.published,.tags{display:block}.author img,.meta .separator{display:none}.article-image{margin:20px 0}article h1{font-size:23px;line-height:33px;margin:40px 0 20px}article h2{font-size:18px;line-height:28px;margin:20px 0 0}article h3{font-size:13px;line-height:23px;margin:15px 0}article{padding:40px 0 20px}.copyright{font-size:17px;line-height:26px}.meta,.title{max-width:100%}.author .info{margin-left:0;width:auto}.author .bio{font-size:13px;line-height:25px}.blog-cover{padding:90px 6%;text-align:left}.blog-description,.blog-title{max-width:270px;margin:10px 0 0}}@media print{header .share{margin-top:30px}header .container{padding-top:30px;padding-bottom:60px}.meta{margin-top:10px}article{padding:0}.comments,footer{display:none}}@font-face{font-family:Josefin Sans;font-style:normal;font-weight:300;src:local("Josefin Sans Light"),local("JosefinSans-Light"),url(https://fonts.gstatic.com/s/josefinsans/v9/C6HYlRF50SGJq1XyXj04zwV_pQ1T3xN3K1c3sB361us.ttf) format("truetype")}@font-face{font-family:Josefin Sans;font-style:normal;font-weight:400;src:local("Josefin Sans"),local("JosefinSans"),url(https://fonts.gstatic.com/s/josefinsans/v9/xgzbb53t8j-Mo-vYa23n5onF5uFdDttMLvmWuJdhhgs.ttf) format("truetype")}@font-face{font-family:Josefin Sans;font-style:normal;font-weight:700;src:local("Josefin Sans Bold"),local("JosefinSans-Bold"),url(https://fonts.gstatic.com/s/josefinsans/v9/C6HYlRF50SGJq1XyXj04z306qf9KHRHwsVx7iw5MXmY.ttf) format("truetype")}.teal{color:#32995f}.nojaf-share-icon{font-size:18px;padding:0 5px}nav.navigation a{margin:0 15px;border:none}nav.navigation a:hover{color:#fff}a,ol,p,ul{color:#292929}.sample .container a:hover,.tags a,a:hover,article h2,article h3,article h4,header .share a{color:#32995f}h1,nav{font-family:Josefin Sans,sans-serif}h1{font-weight:700}nav a{font-size:24px;font-weight:400}a{border-bottom:1px dotted #32995f}.meta time,header .share a:hover{color:#fff}@media (min-width:768px){.container{width:600px}}@media (min-width:992px){.container{width:768px}}blockquote{font-style:italic;border-left:1px dotted #32995f;background-color:rgba(50,153,95,.51);padding-top:1px;padding-bottom:1px}blockquote p{color:#fff;margin:0;padding:10px 0}.sample .sidebar.text-right.meta .timeago{color:#292929}</style><meta name="generator" content="Gatsby 2.18.21"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="icon" href="/icons/icon-48x48.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#32995f"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=43848d97737d1aee7bdcb43d74d76b42"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=43848d97737d1aee7bdcb43d74d76b42"/><title data-react-helmet="true">Writing a VSCode extension with Fable 2.1 | blog.nojaf.com</title><meta data-react-helmet="true" name="description" content="Introduction This post is part of the F# Advent Calendar in English 2018. I’m very grateful to be a part of this and I hope you will enjoy this one as much as I…"/><meta data-react-helmet="true" property="og:title" content="Writing a VSCode extension with Fable 2.1"/><meta data-react-helmet="true" property="og:description" content="Introduction This post is part of the F# Advent Calendar in English 2018. I’m very grateful to be a part of this and I hope you will enjoy this one as much as I…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Florian Verdonck"/><meta data-react-helmet="true" name="twitter:title" content="Writing a VSCode extension with Fable 2.1"/><meta data-react-helmet="true" name="twitter:description" content="Introduction This post is part of the F# Advent Calendar in English 2018. I’m very grateful to be a part of this and I hope you will enjoy this one as much as I…"/><link as="script" rel="preload" href="/webpack-runtime-4483d765503bd875a95a.js"/><link as="script" rel="preload" href="/app-aa68771f91db7ba0214e.js"/><link as="script" rel="preload" href="/styles-dd7782f29eeb2d6ba84a.js"/><link as="script" rel="preload" href="/commons-c8681a085e71ed13f9bf.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-53f371ffffb43e02d7f9.js"/><link as="fetch" rel="preload" href="/page-data\2018\12\17\writing-a-vscode-extension-with-fable-2-1\page-data.json" crossorigin="anonymous"/><script src="/scripts/nojaf-head.min.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><div><nav class="animated fadeIn navigation"><div class="container"><a class="text-right sidebar brand" href="/"><img src="data:image/png;base64,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" alt="nojaf.com"/></a><a class="teal content" href="/about-nojaf-com">About</a><a class="teal content" href="/contact-nojaf-com">Contact</a></div></nav><div class="main"><header class="animated fadeIn" style="background-image:url(/static/nojaf-fable-vscode-extension-065efacf066eeae01996303d4c129d90.jpg)"><div class="container" data-stellar-ratio="0.75"><div class="title animated fadeInUp"><h1>Writing a VSCode extension with Fable 2.1</h1><div class="share">Share this on<!-- --> <a id="twitter" href="http://twitter.com/share?text=Writing a VSCode extension with Fable 2.1 by @verdonckflorian;url=https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/"><i class="fa nojaf-share-icon fa-twitter"></i></a></div></div><div class="sidebar text-right meta"><div class="published animated fadeInUp"><strong>Published</strong><time class="timeago" dateTime="2018-12-17T00:00:00.000Z" title="2018-12-17">1 year ago</time></div><span class="separator animated fadeInUp">//</span><div class="tags animated fadeInUp"><strong>Tags</strong><a href="/tag/javascript/">javascript</a><a href="/tag/fable/">fable</a><a href="/tag/fp/">fp</a><a href="/tag/fsharp/">fsharp</a></div></div></div></header><div class="push-article"><article class="animated fadeIn post tag-javascript tag-elm tag-fp"><div class="container"><h2>Introduction</h2>
+<p>This post is part of the <strong><a href="https://sergeytihon.com/2018/10/22/f-advent-calendar-in-english-2018/">F# Advent Calendar in English 2018</a></strong>. I’m very grateful to be a part of this and I hope you will enjoy this one as much as I have enjoyed the others.</p>
+<p>Today I would like to show you how you can create <a href="https://code.visualstudio.com/docs/extensions/overview">VS Code extension</a> from scratch using <strong>Fable</strong>. Along the way we write some code that will extend the <a href="https://www.markdownguide.org/getting-started">Markdown</a> syntax.</p>
+<h2>Project setup</h2>
+<h3>Code extension</h3>
+<p>To get started we will follow the general approach of scaffolding a new extension. Using the <a href="https://code.visualstudio.com/docs/extensions/yocode">yeoman</a> generator we will scaffold a new <em>JavaScript</em> extension.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/473f82c71001c8c1871c1da20220b763/683fc/yo-code.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 66.30316248636859%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB7UlEQVQ4y41T7W7aQBD0w7TF8flsg+svjFUMTlCR+LKxCYGmRALe/w0muyucIEqk/hjd+c43N7OzZ/R6PpJ+gjgOEAQBPM8TdLtd2LYt0Fp/zK/B67cwTNNEVyn4vo9hnmM6nWIymSCnueu6ULT3FZnjOPLPNQzXdZAmIaIoENIsy0hxH6zcJaWaDjlf4JZMCBXd5jkK2lYwLQsdUtzpmFCWgqttghYIwR1CmfP+Bcbj5BFlWWG1KlGt1zIulkv8Itua1H5LEvyIIpik3qLDii61qAzqAou+bYLmMthEWNYlTsczzuczjqcTDocDjscjmt0OaVEgHI0QD4eI0hQpIaELGH0qS0rg8SeFqVgpE46fRti9vmC//4PD2xv2r3/x9HuK+WyG5XyOgkhTJoljOdwSMviCAcEnQpvts2XL/Y4497CuajSbDZarFeZEVFWVgBO3b9tGfc7ZNltt62vo3gMGRYB63QjhqiyxpBo2dY2crLp30pWW0c7doD4J6wab52dRWBPZhsizwUBseG2a/wFD+w/IJiERbLF92YpNJmQU47GQRpQyt4h3p+/+6UObFCYjn2yWKIlsNl9QDRdim5uc2+L6aX1Yvoy3ewZHHnGC3BJ9ejGhK6+GVbWpSpqklMd2PQxD+Zb2uezz2ju8o63FtXqlxQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="vs code"
+        title="vs code"
+        src="/static/473f82c71001c8c1871c1da20220b763/799d3/yo-code.png"
+        srcset="/static/473f82c71001c8c1871c1da20220b763/00d96/yo-code.png 148w,
+/static/473f82c71001c8c1871c1da20220b763/0b23c/yo-code.png 295w,
+/static/473f82c71001c8c1871c1da20220b763/799d3/yo-code.png 590w,
+/static/473f82c71001c8c1871c1da20220b763/2a3d6/yo-code.png 885w,
+/static/473f82c71001c8c1871c1da20220b763/683fc/yo-code.png 917w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h3>Adding Fable</h3>
+<p>In order to add Fable we need two main pieces: a couple of npm modules and some NuGet packages.<br>
+First, we will add them with yarn.</p>
+<blockquote>
+<p>PS> cd fable-markdown-extension</p>
+<p>PS> yarn add -D “fable-compiler” “fable-splitter”</p>
+</blockquote>
+<p>We won’t be using webpack as we don’t really need a bundle in this scenario. When a plugin is installed all JavaScript is executed in a node environment. All files are on disk so there is no need to bundle in order to spare some network requests.</p>
+<ul>
+<li>fable-compiler? The piece of Fable that compiles your F# source code. Don’t be confused by the fact that this is a npm package. It contains a <code class="language-text">.NET</code> executable and a compiled version of <code class="language-text">Fable.Core</code>. Although it is not really that important to know all this.</li>
+<li>fable-splitter? This npm package can compile multiple F# files linked by a <code class="language-text">.fsproj</code> when configured correctly. We will use the splitter to compile F# files to JavaScript and nothing more. Under the hood <code class="language-text">fable-splitter</code> uses <code class="language-text">fable-compiler</code>.</li>
+</ul>
+<p>Next we need a F# project. This can be a simple <code class="language-text">netstandard classlib</code>.</p>
+<blockquote>
+<p>PS> dotnet new classlib -lang F# -o src -n AdventExtension</p>
+</blockquote>
+<p>This created a <code class="language-text">src</code> folder with a <code class="language-text">Library.fs</code> file in it. Let us try and compile this to JavaScript using <code class="language-text">fable-splitter</code>.<br>
+In our <code class="language-text">package.json</code> we can add a new script called <code class="language-text">build</code>.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  &quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+    &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;
+}</code></pre></div>
+<p>And as you would expect we will also need a <code class="language-text">splitter.config.js</code> file.<br>
+The configuration looks like this:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">const path = require(&quot;path&quot;);
+
+function resolve(relativePath) {  
+  return path.join(__dirname, relativePath);
+}
+
+module.exports = {  
+  entry: resolve(&quot;src/AdventExtension.fsproj&quot;),
+  outDir: resolve(&quot;out&quot;),
+  allFiles: true
+};</code></pre></div>
+<p>Execute by running <code class="language-text">yarn build</code>. This is the equivalent of running <code class="language-text">npm run build</code>. Yarn just doesn’t need the <code class="language-text">run</code> word.<br>
+We see that all the files in the project are compiled to the <code class="language-text">out</code> folder as specified in <code class="language-text">splitter.config.js</code>.</p>
+<p>Now let us rename <code class="language-text">Library.fs</code> and change it to <code class="language-text">Extension.fs</code>, compile again and try to run our extension.</p>
+<p>The <code class="language-text">main</code> property of our <code class="language-text">package.json</code> is pointing to <code class="language-text">./extension</code>, so we will need to change that into <code class="language-text">out/Extension.js</code>.<br>
+However if we look at the existing <code class="language-text">extension.js</code> file it seems to expose an <code class="language-text">activate</code> function.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">// The module &#39;vscode&#39; contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+const vscode = require(&#39;vscode&#39;);
+
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+function activate(context) {
+
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log(&#39;Congratulations, your extension &quot;fable-markdown-extension&quot; is now active!&#39;);
+
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with  registerCommand
+    // The commandId parameter must match the command field in package.json
+    let disposable = vscode.commands.registerCommand(&#39;extension.sayHello&#39;, function () {
+        // The code you place here will be executed every time your command is executed
+
+        // Display a message box to the user
+        vscode.window.showInformationMessage(&#39;Hello World!&#39;);
+    });
+
+    context.subscriptions.push(disposable);
+}
+exports.activate = activate;
+
+// this method is called when your extension is deactivated
+function deactivate() {  
+}
+exports.deactivate = deactivate;  </code></pre></div>
+<p>So we will need this in our Fable code as well.<br>
+Changing <code class="language-text">Extension.fs</code> to</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.Extension
+
+let activate _ =  
+    printfn &quot;Fable extension is activated!&quot;</code></pre></div>
+<p>should do the trick.</p>
+<p>At this point we have had to compile for a couple times already. It would be easier if we could compile continuously.<br>
+This can be achieved by means of another <code class="language-text">fable-splitter</code>, so let’s add a new build script <code class="language-text">watch</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">    &quot;scripts&quot;: {
+        &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+        &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;,
+        &quot;watch&quot;: &quot;yarn run build --watch&quot;
+    },</code></pre></div>
+<blockquote>
+<p>yarn watch</p>
+</blockquote>
+<p>Our compiled code looks like</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import { toConsole, printf } from &quot;./fable-library.2.1.8/String&quot;;  
+export function activate(_arg1) {  
+  toConsole(printf(&quot;Fable extension is activated!&quot;));
+}</code></pre></div>
+<p>and we can launch the extension in code by hitting the play button in the Debug panel.<br>
+However in our current setup we want our extension to run when VS Code starts.</p>
+<p>Change the <code class="language-text">activationEvents</code> to <code class="language-text">*</code> in the <code class="language-text">package.json</code>.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  &quot;activationEvents&quot;: [
+    &quot;*&quot;
+  ]</code></pre></div>
+<p>and start debugging.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 460px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 102.17391304347827%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABuElEQVQ4y62U3Y7BUBDH+xrYi0W11Q+tVbbFUiHxFRKWFUQiceOplgdwaZ/vv2fGyvoIydpe/DPp6cxv5pwzZyT3tQivWIZpmnCcLCwrA103xLclrA7DMGFYJmzHRqlUYtm2I/wslm3b8P0iMhlb+BqQGvU6up0O0iK4UqnA83wGqaoGTUsjmZBRrJQxGL8jm31BPl/A83McyaTMyRzHQbn8xsWk0zok13XZyfd9tFot9Pt91Go15HI5sZ4XkCyCoIb9/gvb7Rabzw12ux1msxnvynXzDCV/slK1WkWz2YSiqJz1KFlOnWk4HGKxWGDyMRGwORcRjyeQSiks8qE4yfM8UJWapvHi0eFUsqwgFntCJBJFNBpje4SdxsiyANbFGbbbbbGQ4sBr2CGAdqCqKlvS6b9fK4C090KhwM63KjwGXeoyKQOn0ynW6/XPuSk3gfd0Buz1epjP51dZHwYGQYBGo8HnEgqw2+1iNBpd3djDQGpoek70MkIB0hmOx+OHYVdAampqm3uN/Scgvd/BYBDepdAAODR2SBUul0usVquzh/4vIE0bUmhbphlGomEaCpCGAymsW/4GEphanOxa5RsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="debug"
+        title="debug"
+        src="/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png"
+        srcset="/static/a96927a8495bf0fe0fe99a17d9e683a6/00d96/debug.png 148w,
+/static/a96927a8495bf0fe0fe99a17d9e683a6/0b23c/debug.png 295w,
+/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png 460w"
+        sizes="(max-width: 460px) 100vw, 460px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>This opens a new instance of <code class="language-text">vscode</code> and should contain our extension.</p>
+<p>Yikes, this isn’t really doing anything at all!<br>
+We even see a crash when we toggle the developer tools.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f8c37c50c7bdca4652a227666fe38dec/bd44f/debug-failure-line-one-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.20560747663551%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACnUlEQVQozz2S204TURSG5wUsFbjQHubQaWfaKaVAO22lhBATX0kTSaAC1RsTr3wCX0CvTDTGEKMXakQTAbHSAj0OPTGddhhoye+aqTLJyr/2JPvb/7/2ZtLZZWTuLCKTTiOZVJFIJEmTSKVSUFXV0UQiAUVRkM8/xreDJl5/KuH912Ontncq+LjbwofvDWz/qINJJBYQCErw+1l4vR74fD5SLwIBkSrg9Czrh9vtxvp6DgPrCvWmDq1toNHSUTvVUS3uo1PaQbNSBJNKqRDkWfDyHFhOoM0swf0IBoOQZRlelqBcEDfck3iUy8H+rkbDazX7ffz+8gJv3j1Bbf8lmGw2C57nCMTBz3LXQNtdOBxGSJIgCAG4b46Bl4MBtIaGbvcM3bMuKTn8+Qr7n5+jVXgLJpNOIajMQ4qpTnRB4J3YNlAURae3D3G5XMhvbeHSsqBpGnRdh2EYpD2YZx3A6sMgZZbIISfNQYyqEOUouIBEoDGM53kHZveT09PYWFuD1enAtM4xGo1gEbxPkXvlCs4HJrTTJph4PO5s9Pu8TlT2X+xQKOTM0YbZ6wn3BHIEvLKGMCimYTvs9dButdClQzrttqNMLDbjOOOlGDhRpoux4ePINlQQhLHDqSlsPFzFRb2FZqGEzskJtFIJ1UIBerUKo17HgEbBxGYIFklCiK+AFULOzDwej+PaBv6/JBc9m837D4BKDb29XzAPDnCxtwerWIRB8N7REQa1mh2ZnkxIpqejkDsWclBENKpglv7PLcwjQn1EieCW9zY2V1cxLGlo7/6BfngIk2AWuRxWaIYEtGyHd9V7UKU00uEMkiFSKYOl2AoWZ5ahyotOZSJLiPrjeJp/hlZbx/FxGSflMioUtUGQeqOB02YTpmniL0AvEAfAcxzDAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="crash in logs"
+        title="crash in logs"
+        src="/static/f8c37c50c7bdca4652a227666fe38dec/799d3/debug-failure-line-one-1.png"
+        srcset="/static/f8c37c50c7bdca4652a227666fe38dec/00d96/debug-failure-line-one-1.png 148w,
+/static/f8c37c50c7bdca4652a227666fe38dec/0b23c/debug-failure-line-one-1.png 295w,
+/static/f8c37c50c7bdca4652a227666fe38dec/799d3/debug-failure-line-one-1.png 590w,
+/static/f8c37c50c7bdca4652a227666fe38dec/2a3d6/debug-failure-line-one-1.png 885w,
+/static/f8c37c50c7bdca4652a227666fe38dec/ae92f/debug-failure-line-one-1.png 1180w,
+/static/f8c37c50c7bdca4652a227666fe38dec/bd44f/debug-failure-line-one-1.png 1284w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>What code is telling us here is that it doesn’t know how to deal with the <code class="language-text">import</code> and <code class="language-text">export</code> keywords.<br>
+I believe this whole thing is running in a node context, so we should be using <code class="language-text">module.exports</code> instead.</p>
+<p>One small Babel plugin can do this for us. We need to download it with <code class="language-text">yarn</code> and tell <code class="language-text">fable-splitter</code> to use it as well.</p>
+<blockquote>
+<p>PS> yarn add -D “@babel/plugin-transform-modules-commonjs” “@babel/core”</p>
+</blockquote>
+<p><code class="language-text">splitter.config.js</code> becomes</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">const path = require(&quot;path&quot;);
+
+function resolve(relativePath) {  
+  return path.join(__dirname, relativePath);
+}
+
+module.exports = {  
+  entry: resolve(&quot;src/AdventExtension.fsproj&quot;),
+  outDir: resolve(&quot;out&quot;),
+  babel: {
+    plugins: [&quot;@babel/plugin-transform-modules-commonjs&quot;]
+  },
+  allFiles: true
+};</code></pre></div>
+<p>The JavaScript output now looks like</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&quot;use strict&quot;;
+
+Object.defineProperty(exports, &quot;__esModule&quot;, {  
+  value: true
+});
+exports.activate = activate;
+
+var _String = require(&quot;./fable-library.2.1.8/String&quot;);
+
+function activate(_arg1) {  
+  (0, _String.toConsole)((0, _String.printf)(&quot;Fable extension is activated!&quot;));
+}</code></pre></div>
+<p>and our extension now runs!</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/3d556a0ded333155570b83687dc1ffff/3eaa1/extension-loaded.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 71.16060961313013%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC7UlEQVQ4y2WTW07bQBSGvYEGEl7aJL7FdhJTQrm0PFZq2r60UrfQhxYIsIaqu2ABSBW0L1RiGUAlhEgJF5MbsWM7iRMCIUHJ3zOGQCUsfTozHvufc878w0mSBIYoij6KoiAUCmEpk0HfrqJkGLjudjEYDHB1deXTue6gUauhRWtdz0Oz1US73cbm5ia4SCSCIdFoFKIg+IILC4vo1D04VZsEuuh0rv3Y7fZogx48r4mGaeGi3oDXbOHmpo+NjQ1wmqYhmUxCVVVfVCDBkZFREvyKy7YDr17C5YWNeq0C8/wMrl1Gq2mjUTdh09hrWD5AD79+roOLx+NgosOyY7KM0dEgVpbn0WrUYBznUMznYFUM2NYZ6m4ZdadIsXSPXc2T4CW2tn6D03Xdz04mISaqxGIIBkPILH5Gy6ugVC6iSpmY1gn1isTqBTiugUajiJpjkLhBbTkGBh5l+AMcK5FlxsoNh8N+HwOBADLLK+hTsy/+HqBnnGJQLhFU7ukpnNwh3GwWzvk5XNdFtcpKBtbW1sBNpiaRSqUow5gvzLIdC40hk1lCz6Ue7u/j+uQE/UoFfdNEu1SCQ3P36Ag2zR0maFUfBJ9Fn4IREcI+gszjSTCAxfkvuCzYqBxSn85MeBZBP7vFIkzbhuk41AYLFlGhzdizvk6HkpY+gPFGvCUtfcT75Cd8W/yO3M4uDnb/IEsc7Gwju72N4709FPL5WwoF5Cka5Mca+XJ1dRXcuJrCkOcsKhOIiwkokuafeIwOShYlinfjmIIYIdPh/Q97J9E3nKKpGKISskKLaoy8qVA/Zeh6HFNTKZrHoROaQvYSolBkgTbkaZNbJJH333GaSh8N0eJkGxUvEyrezep4O6Pj9YsE0jPjSE/rmJuQMT0hYSIhYpbizB1T4xImdQnjcZHdlFshTdX8qNJdniajv0rqPjNk/NlEEnN0mxSB7MXz4HmB4B8RJe4F1aEgRbbAkx+ZJ3k++jAWeP9qCvfxMf8ALTyayZHgR88AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="extension runs"
+        title="extension runs"
+        src="/static/3d556a0ded333155570b83687dc1ffff/799d3/extension-loaded.png"
+        srcset="/static/3d556a0ded333155570b83687dc1ffff/00d96/extension-loaded.png 148w,
+/static/3d556a0ded333155570b83687dc1ffff/0b23c/extension-loaded.png 295w,
+/static/3d556a0ded333155570b83687dc1ffff/799d3/extension-loaded.png 590w,
+/static/3d556a0ded333155570b83687dc1ffff/3eaa1/extension-loaded.png 853w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h3>F# dependencies</h3>
+<p>Ok, after some trial and error we have the basics in place. However, a little intelliSense would not hurt.<br>
+There is a NuGet package for that: <a href="https://www.nuget.org/packages/Fable.Import.VSCode/">Fable.Import.VSCode</a>.</p>
+<p>We could install it into our <code class="language-text">fsproj</code> with <code class="language-text">dotnet add</code>, but I would prefer to download it with <code class="language-text">paket</code> instead.<br>
+Paket can easily be added to a project using:</p>
+<blockquote>
+<p>PS> dotnet tool install —tool-path “.paket” Paket —add-source <a href="https://api.nuget.org/v3/index.json">https://api.nuget.org/v3/index.json</a></p>
+</blockquote>
+<p>This downloads the <code class="language-text">.NETCore</code> version of Paket into a <code class="language-text">.paket</code> folder. This should be familiar to most of us.<br>
+Next we enter <code class="language-text">.paket\paket.exe init</code>.</p>
+<p>Open the <code class="language-text">paket.dependencies</code> file and add</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">source https://www.nuget.org/api/v2  
+storage:none  
+framework: netstandard2.0
+
+# nuget Fable.Import.Jest // Use when ready for Fable2
+github nojaf/fable-jest:fable2 fable/Bindings.fs  
+github nojaf/fable-jest:fable2 fable/Exports.fs  
+github nojaf/fable-jest:fable2 fable/Matchers.fs  
+nuget FSharp.Core redirects:force  
+nuget Fable.Import.VSCode  
+nuget Fable.Parsimmon  </code></pre></div>
+<p>It will download <code class="language-text">VS Code</code> bindings, <code class="language-text">Jest</code> bindings and <code class="language-text">Fable.Parsimmon</code>. I’ll explain later why we need those.<br>
+Then, create a <code class="language-text">paket.references</code> file next to the fsproj.</p>
+<p>Add</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Fable.Import.VSCode  
+Fable.Parsimmon  
+File:Bindings.fs Jest  
+File:Exports.fs Jest  
+File:Matchers.fs Jest  </code></pre></div>
+<p>Run <code class="language-text">.paket\paket.exe install</code>, which should add everything on <strong>.NET</strong> side.</p>
+<h3>Those last npm packages</h3>
+<p>To wrap up the setup of the project, we still need a few npm packages.</p>
+<blockquote>
+<p>yarn add -D “jest” “markdown-it”</p>
+</blockquote>
+<p>That should be it. Thanks for sticking around if you are still here 😊.<br>
+Now we can finally start coding.</p>
+<h2>Revelations</h2>
+<p>I feel like we have been through a lot already, and I haven’t really revealed the master plan of all this.<br>
+I mentioned that we would extend Markdown. In this blogpost we will add two new features:</p>
+<ul>
+<li>Fable logo</li>
+<li>Fable font</li>
+</ul>
+<h3>Fable logo</h3>
+<p>Whenever we type <code class="language-text">:fable:</code> in our Markdown file, we would like to <a href="https://fable.io/img/fable_logo.png">the Fable logo</a> to show in our preview.</p>
+<h3>Fable text</h3>
+<p>If we add text between two <code class="language-text">🐉</code> emoji, it should rendered in a different font.</p>
+<p>Both features should also be <strong>highlighted</strong> in the editor itself.</p>
+<h2>Test-driven development</h2>
+<p>Now that we know what we want, we can start thinking about solving the problem.<br>
+Without considering VS Code we know that we will need a way to detect<code class="language-text">:fable:</code> and text between <code class="language-text">🐉</code>.</p>
+<p>What better way of parsing text than using <a href="https://github.com/Zaid-Ajaj/Fable.Parsimmon">Fable.Parsimmon</a>?<br>
+If you have any experience with <a href="http://www.quanttec.com/fparsec/">FParsec</a>, the API is very similar.</p>
+<p>In order to have a <strong>short feedback loop</strong>, we can easily do some <strong>TDD</strong> instead of trying things out in the extension itself.</p>
+<p>We already installed <a href="https://jestjs.io/">Jest</a> and the accompanying F# bindings. Note that these bindings were installed with paket through <code class="language-text">github</code> instead of <code class="language-text">nuget</code>. This has to do with the fact that <a href="https://github.com/jgrund/fable-jest/issues/13">Fable.Jest doesn’t work 100% with Fable 2.X</a>.</p>
+<p>My fork of <a href="https://github.com/jgrund/fable-jest/pull/14">Fable.Jest</a> contains a workaround for this.<br>
+Here you can already see that using <code class="language-text">paket</code> instead of <code class="language-text">NuGet</code> was a smart move.</p>
+<p><strong>Unit testing in Fable</strong> is described to some extent in the <a href="https://fable.io/faq/#unit-tests">FAQ</a>. In our case everything is almost fully set up. We need to change the <code class="language-text">test</code> script in our package.json.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+    &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;,
+    &quot;watch&quot;: &quot;yarn run build --watch&quot;,
+    &quot;test&quot;: &quot;jest&quot;
+},</code></pre></div>
+<p>Add a file that matches the following convention <code class="language-text">*.test.fs</code> to our project, and the <code class="language-text">*.test.js</code> should be picked up by <strong>Jest</strong>.<br>
+<code class="language-text">Parser.test.fs</code> with a <em>simple unit test</em> should be enough for now.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.Tests.Parser
+
+open Fable.Import.Jest  
+open Fable.Import.Jest.Matchers
+
+test &quot;simple Jest test should be picked up&quot; &lt;| fun () -&gt;  
+    &quot;42&quot; == &quot;the answer of the Universe&quot;</code></pre></div>
+<p>Execute with</p>
+<blockquote>
+<p>PS> yarn build</p>
+<p>PS> yarn test</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2c528b939633877846a9884dc9ea30c3/41c64/failing-test.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 93.2367149758454%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB40lEQVQ4y41TSZKcMBDs/3/EFx/nIZ6rY3phQKxCe2mXmKI99g3aGRAhFKQqlZV1sR6GlYxT3zwazpj3wQCAMUop5/22bbXW7QAX1ba/f/6Qcy+lUnKHBUgpxRBzztspLn6amrc38rhPdJ3maRiHha7WOSElShCcO+cOyaiq5hwZywDR6KRU5CwpHZY1SJFTKqUckvFOwYJcWcRfOQMpBV2ZWWfoXYAXsvGNMXDJ7dMnAxoFx5ziFkstr8khhM+l+eTdqGcKyyB7GlZf/PYKOxm9lfPsnP23W/EyW31N/tNGFBxTTnXLpWCbUkandqtwr5R6Ri45SyEk2Pswt6S/Xa9d196uH4SQx6PB7p9WrtV7j7FIwccQYtzjgUZ4XIdYzysjMAyAB9QNdQbv8AjvLCrHkzAk5SBq32TsE9eGGrdqGFe2cIGBk0ZTShnjRzl53rkUSpemuS/L0jD9saoHN5/aE2H6cQILR6PxXVlrzTnHSWJCKPzwgYLnNnAXtPNH8b5YawfST9hnA5lSjxqeUrf/wAWz/P7rnXPhrCW3GwpAi/3fST4Z5p0MWs19zxjDkm3XgbXlCQz8OXMnBxcE5UNPSEeGfiBd1xEyTWPXtrsLUmL4rAWMitYKcG60xmk3WuPzBfRqULSVphPzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="failing test"
+        title="failing test"
+        src="/static/2c528b939633877846a9884dc9ea30c3/799d3/failing-test.png"
+        srcset="/static/2c528b939633877846a9884dc9ea30c3/00d96/failing-test.png 148w,
+/static/2c528b939633877846a9884dc9ea30c3/0b23c/failing-test.png 295w,
+/static/2c528b939633877846a9884dc9ea30c3/799d3/failing-test.png 590w,
+/static/2c528b939633877846a9884dc9ea30c3/41c64/failing-test.png 621w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p><a href="https://www.youtube.com/watch?v=VzDN7mCDoC0">Coolio</a>, we can unit test now! The way I like to proceed now is having two console windows. One to run <code class="language-text">fable-splitter</code> with <code class="language-text">yarn watch</code>, and other to run tests with <code class="language-text">yarn test --watchAll</code>.</p>
+<h2>Fable.Parsimmon</h2>
+<p>Since we are going to parse text, we need a type to capture the result of our parsing.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">type ParserResult =  
+    | Text of string
+    | FableFontText of NodeResult&lt;string&gt;
+    | FableLogo of NodeResult&lt;string&gt;</code></pre></div>
+<p>We may now have found some text, text between dragons (🐉) or <code class="language-text">:fable:</code>.<br>
+When we have found one or both of the latter two, we would need to know where in our text we have found them.<br>
+This is where <code class="language-text">Parsimmon.node</code> comes in handy, as it returns a <code class="language-text">NodeResult&lt;&#39;t&gt;</code>.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">type TokenPosition =  
+    { offset: int
+      line: int
+      column: int }
+
+type NodeResult&lt;&#39;t&gt; =  
+    { name: string
+      value: &#39;t
+      start: TokenPosition
+      ``end``: TokenPosition }</code></pre></div>
+<p>Next we need a function that takes a string and returns <code class="language-text">Fable.Parsimmon.ParseResult&lt;ParserResult array&gt;</code>.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">let parseText input : ParseResult&lt;ParserResult array&gt; = failwith &quot;Nothing here yet.&quot;  </code></pre></div>
+<p>And we can quickly write some tests.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">test &quot;basic fable font&quot; &lt;| fun () -&gt;  
+    let input = &quot;🐉vibes🐉&quot;
+    let parsed = Parser.parseText input
+    parsed.status == true
+
+test &quot;no fable font&quot; &lt;| fun () -&gt;  
+    let input = &quot;fableless vibes&quot;
+    let parsed = Parser.parseText input
+    parsed.status == true
+
+test &quot;fable logo is found&quot; &lt;| fun () -&gt;  
+    let input = &quot;Once upon a :fable:...&quot;
+    let parsed = Parser.parseText input
+
+    parsed.status == true
+
+    match parsed.value with
+    | [| Text _; FableLogo logo; Text _|] -&gt;
+        logo.start.offset == 12
+        logo.value.Length == 7
+    | _ -&gt; failwith &quot;Expected logo in center&quot;</code></pre></div>
+<p>Notice that <code class="language-text">==</code> is a shorthand for <code class="language-text">Fable.Import.Jest.Exports.expect.Invoke(&quot;foo&quot;).toBe(&quot;bar&quot;)</code>.</p>
+<p>To make these tests pass we’ll write some custom parsers, mostly based on regular expressions.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.Parser
+
+open Fable.Parsimmon  
+open Fable.Core  
+open System.Text.RegularExpressions
+
+type ParserResult =  
+    | Text of string
+    | FableFontText of NodeResult&lt;string&gt;
+    | FableLogo of NodeResult&lt;string&gt;
+
+// no /g flag
+[&lt;Emit(&quot;new RegExp($0)&quot;)&gt;]
+let createRegex pattern : Regex = jsNative
+
+let dragonParser = Parsimmon.str &quot;🐉&quot;
+
+let noDragonParser =  
+    Parsimmon.regex (createRegex @&quot;[^🐉]+&quot;)
+
+let fableFontParser =  
+    Parsimmon.between dragonParser dragonParser noDragonParser
+    |&gt; Parsimmon.node &quot;FableFont&quot;
+    |&gt; Parsimmon.map (ParserResult.FableFontText)
+
+let halfDragon =  
+    &quot;🐉&quot;.ToCharArray()
+    |&gt; Array.head
+    |&gt; (string)
+
+let noDragonsParser =  
+    Parsimmon.satisfy (fun token -&gt; token &lt;&gt; halfDragon &amp;&amp; token &lt;&gt; &quot;:&quot;)
+        |&gt; Parsimmon.atLeastOneOrMany
+        |&gt; Parsimmon.concat
+        |&gt; Parsimmon.map (ParserResult.Text)
+
+let fableLogoParser =  
+    Parsimmon.str &quot;:fable:&quot;
+    |&gt; Parsimmon.node &quot;FableLogo&quot;
+    |&gt; Parsimmon.map (FableLogo)
+
+let parseText input : ParseResult&lt;ParserResult array&gt; =  
+    Parsimmon.choose [ 
+        fableLogoParser
+        noDragonsParser
+        fableFontParser
+    ] 
+    |&gt; fun parser -&gt; parser.many().parse(input)</code></pre></div>
+<p>I won’t go into detail about exactly how this works but I do want to highlight two things:</p>
+<ul>
+<li><code class="language-text">&quot;🐉&quot;.Length</code> returns <code class="language-text">2</code>. And <code class="language-text">Parsimmon.satisfy</code> only compares a single token at a time.</li>
+<li>Creating a <code class="language-text">Regex</code> via the .NET API compiles to a JavaScript Regex that uses the <code class="language-text">/g</code> flag. This is something we don’t want in this case, so I’ve added a little helper that emits a <code class="language-text">Regex</code>.</li>
+</ul>
+<p>Presumably this code is more or less readable, and we can continue 😅.</p>
+<h2>Highlighting code</h2>
+<p>Highlighting in VS Code is surprisingly easily. All we need to do is tell code which <code class="language-text">range</code> should be decorated with which <code class="language-text">style</code>.</p>
+<p>Let’s first create some <code class="language-text">TextDecorationEditorStyle</code> objects.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.Extension
+
+open Fable.Core.JsInterop  
+open Fable.Import.vscode
+
+let createFontOptions color backgroundColor fontWeight : DecorationRenderOptions =  
+    jsOptions (fun options -&gt;
+        options.color &lt;- Some color
+        options?fontWeight &lt;- fontWeight
+        options.backgroundColor &lt;- backgroundColor
+    )
+
+let activate _ =  
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; (Some &quot;white&quot;) None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; None (Some &quot;bold&quot;))
+
+    printfn &quot;Fable extension activated!&quot;</code></pre></div>
+<p>Now we need to subscribe to certain events.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">let activate (context: ExtensionContext) =  
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; (Some &quot;white&quot;) None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; None (Some &quot;bold&quot;))
+
+    // Capture the active editor.
+    let mutable activeEditor = window.activeTextEditor
+
+    let updateDecorations() = failwithf &quot;Nothing here yet.&quot;
+
+    let mutable timeoutKey = None;
+    let triggerUpdateDecorations _ =
+        timeoutKey
+        |&gt; Option.iter (JS.clearTimeout)
+
+        timeoutKey &lt;- Some (JS.setTimeout updateDecorations 500)
+
+    // User is typing
+    window.onDidChangeActiveTextEditor.Invoke((fun editor -&gt;
+        activeEditor &lt;- Some editor
+        triggerUpdateDecorations()
+        null
+    ))
+    |&gt; context.subscriptions.Add
+
+    // Change of document
+    workspace.onDidChangeTextDocument.Invoke((fun event -&gt;
+        match activeEditor with
+        | Some aEditor when (event.document = aEditor.document) -&gt;
+            triggerUpdateDecorations()
+        | _ -&gt; ()
+        null
+    ))
+    |&gt; context.subscriptions.Add
+
+    activeEditor
+    |&gt; Option.iter (triggerUpdateDecorations)
+
+    printfn &quot;Fable extension activated!&quot;</code></pre></div>
+<p>Notice that the event handlers call <code class="language-text">triggerUpdateDecorations</code>, which prevents us from re-rendering too much.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">// Parsimmon ranges are 1-based, VS Code works with 0-based indexing.
+let nodeResultToRange&lt;&#39;t&gt; (nr: NodeResult&lt;&#39;t&gt;) =  
+    let zeroBasedFloat r = r - 1 |&gt; (float)
+    vscode.Range(zeroBasedFloat nr.start.line,
+                 zeroBasedFloat nr.start.column,
+                 zeroBasedFloat nr.``end``.line,
+                 zeroBasedFloat nr.``end``.column)
+
+let updateDecorations() =  
+    activeEditor
+    |&gt; Option.iter (fun aEditor -&gt;
+        if aEditor.document.languageId = &quot;markdown&quot; then
+            let text = aEditor.document.getText()
+            let parsed = Parser.parseText text
+
+            if parsed.status then
+                parsed.value
+                |&gt; Array.map (fun node -&gt;
+                    match node with
+                    | ParserResult.FableLogo logo -&gt;
+                        Some (fableLogoStyle, nodeResultToRange logo)
+
+                    | ParserResult.FableFontText fableText -&gt;
+                        Some (fableFontStyle, nodeResultToRange fableText)
+
+                    | _ -&gt;
+                        None
+
+                )
+                |&gt; Array.choose id
+                |&gt; Array.groupBy (fun (style,_) -&gt; style.key)
+                |&gt; Array.iter (fun (styleKey, ranges) -&gt;
+                    let r =
+                        Array.map snd ranges
+                        |&gt; ResizeArray
+
+                    let style = if fableFontStyle.key = styleKey then fableFontStyle else fableLogoStyle
+
+                    aEditor.setDecorations(style, !^ r)
+                )
+    )</code></pre></div>
+<p><code class="language-text">updateDecorations</code> is rather straightforward as well. We map the result of <code class="language-text">parseText</code> and make ranges out of it. The result looks as follows:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 440px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.31818181818181%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACSUlEQVQoz31S2XLaQBDU/39AXvIFSbmSOFCJQyDEQbINMrdAAoTQARb3Ja0Ors6wIna5KslD185qe3tnuiU09BbqPQXjgYyJVYHdl+FaVXQVEUOjjNHgEVavhCezwtFri7D1EiZOHX3tjnPGdg1mt4j1VIXQVe/RIZLWvMWDnIdS+Y5WNQulnMFALWA57WDutrCatOEturSq0NsS6o8ZNAhKJUv8HJrE11u3EJqlFMqFd6hV8rj+kYEsfUZRTKH68AV9IqxXJmauiqXbRuyZiLcmDFWCmP8A+S5N/DRKUorXSvkbhJ6Sh9bIwZu2sdsOEKwNeCTijg2OxcKBOz3Dxo45QDTCgdkEK4H/gj1B0OpZFH+9hzfvYOc7CKmD2LOwWZpgGwvbWQeLscofCjfG8xpuBgnWfb6PLhA6jSzUaoYENRK0+WHsj+BOTMynOoVVgqFJ8Ocq/MUF8xfEJOoveryhMwS1lkH1/poONerOorFGcAwJY1dHFIdgoY94FyCOfARUs8BDeP5GexYx9DoiddbnVhwDJxEsSx/BKMGIRo39IUZOEU9jjYtt/SUYWyGKViR4QUD7YEnrGroukg06TuGQe0sj5yidr88jB+Qhtg72I/KURHfDNvY0Ukx1THVktxBT6kdm4kQgEk5BIsY7lAtXuPn0BmyZdOivB0SmRDcm9mTBnoLhq3euTY4DPXygywdKfc/TTsR4h3rrJ85JezMymIiMTD7R4fEfONBofy7/7VyQxStk028pqW5iLP/H/gfnVUdH9lrwNw5wcG3UcUJ0AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Markdown highlighting in VS Code"
+        title="Markdown highlighting in VS Code"
+        src="/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png"
+        srcset="/static/9241f006892f0dab63b9108ff3f3dd96/00d96/markdown-highlighting-1.png 148w,
+/static/9241f006892f0dab63b9108ff3f3dd96/0b23c/markdown-highlighting-1.png 295w,
+/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png 440w"
+        sizes="(max-width: 440px) 100vw, 440px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h2>Preview mode</h2>
+<p>When we switch to preview mode of the Markdown file, we don’t really see any changes.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 440px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACJUlEQVQ4y31T2XLaQBDU/z/nOY8pVyWVcio2dioYHMyNEYhDJwgJBFgCxI257M7smPKRGD907exot6enZyWVzRr6dh5+uwTHyuGuXYZRu4HbyCPwFLiU8zsK+vS907yFWU/SmRJsIwNLTfH5hpZCz5Ex9lVIhpaGVU+gULxGvRSFWo6hLkdhVuPQq9eoylfQlRj0SpzXpppE6BsYdqsY9mqYBBqvY1/DbGhAKiROoNClb79/IfPnFCmCnD2HWrxEIRNB8uYnsolTFNNnUHLncI0UxoMGk4R3KsaEsK9iGhhYhhYkXYlSogosXTys2ozdwsF27nD8KHLLJ+zpzGbWolwHj/ceocPxA++fVimf+Ir5UCfpBmpyHFolgW5LhmfLaGoZmLUUeZpEy8gx7ic2k+1FkQPZa0jV2wjJVbGetth0zy5icPBHxD2nxBBFeoT11Gay3cJ9F8+EoqpIiCrigthj0wXWb3GM6JkwEz/hljczF31XYXWDbu3FI149LoR1D9j6R9vllo3KFREa5GGFWstiNbZpb2I2MLAYWTy9+chk7wJPtJ5mpXse0v+QIt8/YRU24XfzMNULzAKL39ioX8dy3OD3JVTPBiacRhL1yg9WenQoSv6MPVyGNg1FhmOKP4TUtkpoqGkehlDEnm77wC74uOVU7AtV13nKIakSiqaBjim1LB7shOKXltw3g3uXMHbxmQg0migZvvYO0/Rexd0PCf7FX6p0utsLBokXAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Preview mode before"
+        title="Preview mode before"
+        src="/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png"
+        srcset="/static/6723609f69c56431830f4b400567a18d/00d96/preview-before-1.png 148w,
+/static/6723609f69c56431830f4b400567a18d/0b23c/preview-before-1.png 295w,
+/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png 440w"
+        sizes="(max-width: 440px) 100vw, 440px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>This can be changed by writing our own <a href="https://markdown-it.github.io/">markdown-it</a> extension.<br>
+To be fair, it took me a while to figure out how this works. Even after reading the <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md">documentation</a>, I was still somewhat puzzled.</p>
+<p>What <code class="language-text">markdown-it</code> does is it parses the Markdown content to a token stream.</p>
+<p>Ex.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">This is some **markdown text**  </code></pre></div>
+<p>Will be parsed to</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[
+  {
+    &quot;type&quot;: &quot;paragraph_open&quot;,
+    &quot;tag&quot;: &quot;p&quot;,
+  },
+  {
+    &quot;type&quot;: &quot;inline&quot;,
+    &quot;tag&quot;: &quot;&quot;,
+    &quot;map&quot;: [
+      0,
+      1
+    ],
+    &quot;nesting&quot;: 0,
+    &quot;level&quot;: 1,
+    &quot;children&quot;: [
+      {
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
+        &quot;content&quot;: &quot;This is some &quot;,
+      },
+      {
+        &quot;type&quot;: &quot;strong_open&quot;,
+        &quot;tag&quot;: &quot;strong&quot;,
+      },
+      {
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
+        &quot;content&quot;: &quot;markdown text&quot;,
+      },
+      {
+        &quot;type&quot;: &quot;strong_close&quot;,
+        &quot;tag&quot;: &quot;strong&quot;,
+      },
+      {
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
+      }
+    ],
+    &quot;content&quot;: &quot;This is some **markdown text**&quot;,
+  },
+  {
+    &quot;type&quot;: &quot;paragraph_close&quot;,
+    &quot;tag&quot;: &quot;p&quot;,
+  }
+]</code></pre></div>
+<p>Note that this is a simplified version. We need to break down any tokens of <code class="language-text">type:&quot;text&quot;</code> and replace them with our own token type (<code class="language-text">fable-logo</code> and <code class="language-text">fable-text</code>).</p>
+<p>Once we’ve updated the tree, we can hook into the render engine by adding custom rules.</p>
+<h3>F# bindings</h3>
+<p>I found that there are TypeScript bindings on <a href="https://www.npmjs.com/package/@types/markdown-it">npm</a>. With <a href="https://github.com/fable-compiler/ts2fable">ts2fable</a> I cooked up some <a href="https://github.com/nojaf/fable-markdown-extension/blob/master/src/MarkdownIt.fs">minimal F# bindings</a> which we can use.</p>
+<h3>Unit tests</h3>
+<p>Since this is a rather tricky situation, we should add some tests first.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.Tests.MarkdownPlugin
+
+open Fable.Import.Jest  
+open AdventExtension.MarkdownPlugin
+
+jest.unmock(&quot;markdown-it&quot;)
+
+let md = MarkdownItModule.Exports.Invoke().``use``(fableMarkdownPlugin)
+
+test &quot;fable img is rendered&quot; &lt;| fun () -&gt;  
+    let input = &quot;:fable:&quot;
+    let parsed = md.render input
+    expect.Invoke(parsed.StartsWith(&quot;&lt;p&gt;&lt;img class=&#39;fable-logo&#39; src&quot;)).toBeTruthy()
+
+test &quot;fable font is rendered&quot; &lt;| fun () -&gt;  
+    let input = &quot;Over the seas 🐉we shall rise🐉!&quot;
+    let parsed = md.render input
+    expect.Invoke(parsed.Contains(&quot;&lt;span class=&#39;fable&#39;&gt;we shall rise&lt;/span&gt;&quot;)).toBeTruthy()</code></pre></div>
+<p>The plugin function <code class="language-text">fableMarkdownPlugin</code> looks like</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.MarkdownPlugin
+
+open MarkdownItModule  
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = failwith &quot;Nothing yet&quot;  </code></pre></div>
+<p>Inside this function, we need to replace the tokens and add custom render rules.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module AdventExtension.MarkdownPlugin
+
+open MarkdownItModule  
+open Fable.Core  
+open AdventExtension.Parser
+
+[&lt;Emit(&quot;new $0.Token($1,$2,$3)&quot;)&gt;]
+let createToken state name tag nesting: Token = jsNative
+
+[&lt;Emit(&quot;$0[$1] = $2&quot;)&gt;]
+let addRenderRule rules name fn: unit = jsNative
+
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) =  
+    // Phase one: replace text tokens to custom tokens
+    let replaceTokens (state: State) =
+        let parseTextToken (parentToken: Token) (textToken: Token) = 
+            let textContent = textToken.content
+            let parsedContent = parseText textContent
+            let updatedChildren =
+                if not parsedContent.status then
+                    Array.empty
+                else
+                    parsedContent.value
+                    |&gt; Array.map (fun node -&gt;
+                        match node with
+                        | ParserResult.Text text -&gt;
+                            let t = createToken state &quot;text&quot; &quot;&quot; 0
+                            t.content &lt;- text
+                            t
+
+                        | ParserResult.FableLogo _ -&gt;
+                            createToken state &quot;fable-logo&quot; &quot;img&quot; 0
+
+                        | ParserResult.FableFontText fontText -&gt;
+                            let t = createToken state &quot;fable-font&quot; &quot;span&quot; 0
+                            t.content &lt;- fontText.value.Replace(&quot;🐉&quot;, &quot;&quot;)
+                            t
+                    )
+
+            parentToken.children &lt;- new ResizeArray&lt;Token&gt;(updatedChildren)
+
+        let rec parseToken (parentToken: Token) (token: Token) =
+            if token.children &lt;&gt; null &amp;&amp; not(Seq.isEmpty token.children) then
+                token.children
+                |&gt; Seq.iter (fun childToken -&gt;
+                    if childToken.``type`` = &quot;inline&quot; then
+                        parseToken token childToken
+                    else
+                        parseTextToken token childToken 
+                )
+
+            if token.``type`` = &quot;text&quot; then
+                parseTextToken parentToken token
+
+        state.tokens
+        |&gt; Seq.filter (fun t -&gt; t.``type`` = &quot;inline&quot; &amp;&amp; t.children &lt;&gt; null &amp;&amp; not (Seq.isEmpty t.children))
+        |&gt; Seq.iter (fun token -&gt;
+            token.children
+            |&gt; Seq.iter (parseToken token)
+        )
+
+    md.core.ruler.push(&quot;fable&quot;, replaceTokens)</code></pre></div>
+<p>This code might not look like much, but we are traversing the tree, replacing the <code class="language-text">children</code> of a parent node that contains <code class="language-text">text</code>.</p>
+<p>Our unit tests remain unaffected, as the render part will just ignore the <code class="language-text">fable-logo</code> and <code class="language-text">fable-text</code> tokens and render them as regular <code class="language-text">text</code>.</p>
+<p>Part two determines how our own nodes should render:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[&lt;Emit(&quot;$0[$1] = $2&quot;)&gt;]
+let addRenderRule rules name fn: unit = jsNative
+
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = ...  
+    // Phase one ...
+
+    // Phase two
+    let renderFableLogo tokens idx = &quot;&lt;img class=&#39;fable-logo&#39; src=&#39;data:image/png;base64,iVBORw0KGgoAAAANSUhEU...&#39; /&gt;&quot;
+
+    let renderFableText (tokens: Token array) (idx: int) =
+        let token = tokens.[idx]
+        sprintf &quot;&lt;span class=&#39;fable&#39;&gt;%s&lt;/span&gt;&quot; (token.content.Replace(&quot;🐉&quot;, &quot;&quot;))
+
+    addRenderRule md.renderer.rules &quot;fable-logo&quot; (new System.Func&lt;Token array,int,string&gt;(fun tokens idx -&gt; renderFableLogo tokens idx))
+    addRenderRule md.renderer.rules &quot;fable-font&quot; (new System.Func&lt;Token array,int,string&gt;(fun tokens idx -&gt; renderFableText tokens idx))</code></pre></div>
+<p>We need to wrap our render functions inside a <code class="language-text">System.Func&lt;_,_,_&gt;</code> in order to preserve compatibility with JavaScript.<br>
+The reason for this is that Fable compiles these into functions that can be curried, and markdown-it doesn’t like this.</p>
+<p>Once more our tests show green, and the times has come to shove this into our VS Code extension.</p>
+<h3>Tag on code</h3>
+<p>To see all this in code we need to extend the <code class="language-text">contributes</code> section in our <code class="language-text">package.json</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  &quot;contributes&quot;: {
+    &quot;markdown.markdownItPlugins&quot;: true,
+    &quot;markdown.previewStyles&quot;: [
+      &quot;./fable.css&quot;
+    ]
+  }</code></pre></div>
+<p>Create a <code class="language-text">fable.css</code> file</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">// this works in code, I was somewhat surprised by this. Should be a local url in real world scenario.
+@import url(&#39;https://fonts.googleapis.com/css?family=Josefin+Slab:400,600i&#39;); 
+
+.fable {
+    font-family: &#39;Josefin Slab&#39;, serif;
+    font-weight: 600;
+    font-style: italic;
+    color: #87c5fd;
+    font-size: 18px;
+}
+
+.fable-logo {
+    display: inline-block;
+    width: 24px;
+}</code></pre></div>
+<p>And make the final change to <code class="language-text">Extension.fs</code> by adding</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">    // Add render plugin
+    createObj [
+        &quot;extendMarkdownIt&quot; ==&gt; (fun md -&gt; md?``use``(MarkdownPlugin.fableMarkdownPlugin))
+    ]</code></pre></div>
+<p>at the end.</p>
+<p>Final outcome:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 459px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.605664488017425%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB10lEQVQoz4WSW3eaQBSF+f+v/Qd97FptH7qSNiHNxRpjKyCUi4DRKDcvUUHkYhKTncNAE2td6cO3zpxhZs/ew3CKrWF808JoIMC/EeH1BdhaHWNHpl5AMJAwGrYZXeOS1WH3F647DTbuW1eYuDLCiYHFRAfXNerQlAtc/jyFIfFQRR4aYatnUKQTqDSnt09gyt9h/T7DNNAxY2hMpKjxrYX5SEefDuGk+geI4jmOajzExhe0GgfQpWOYbR7N5je0rg4gEppwhJ5+gXBabDYQjgs6iCadUpCEbfUHOEs9RTo3gdzBU+4Ca49qSTku57D28Zi5Ve9Xc9U6ovi2SR1wQv0jsrALfyBDah5Da5/DuW6hbzbZuKCj1Ni93noqEyg27lIIFnA2OVzNLGySAZZ0J9HEpN5mMYo4S6phFSsLe3hIhrgnHna4r+DExmfkCwuzaITpIqAYdFL+GnubP7HegtPEr8hIME0CjMY9zDwZjyzCvzxVdVPF2wdzmMwtcuXjLnGQxQ7WKw/rxEO+euUucV8qE033u+Vq/Huk5DAjh/PQxyIKGPHSRxJ7CCOfKPslkcbei+Beh6bC008w2RPYjbfNX5FTt1q3R/Dw0ztyaG89B/e/vOXwGab8dsZZOYzaAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="preview after"
+        title="preview after"
+        src="/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png"
+        srcset="/static/975c1e5833c830738e040a5169778c37/00d96/preview-after.png 148w,
+/static/975c1e5833c830738e040a5169778c37/0b23c/preview-after.png 295w,
+/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png 459w"
+        sizes="(max-width: 459px) 100vw, 459px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h2>The Source</h2>
+<p>You can find all code on my <a href="https://github.com/nojaf/fable-markdown-extension">github</a>.</p>
+<h2>Remarks</h2>
+<ul>
+<li>The extension has not been published in the store, nor do I have the intention to so.</li>
+<li>This was my first <strong>VS Code</strong> and <strong>markdown-it</strong> plugin, so there is some room for improvement.</li>
+<li><code class="language-text">fable-splitter</code> is very fast. I didn’t miss <code class="language-text">fable-loader</code> and <code class="language-text">webpack</code> for a single moment.</li>
+<li>Many thanks to <a href="https://github.com/Zaid-Ajaj">Zaid Ajaj</a> for the help with Fable.Parsimmon.</li>
+</ul>
+<h2>Final words</h2>
+<p>I hope you enjoyed this blogpost and it all makes sense to you. If you have any suggestions or questions, please leave a comment.</p>
+<p>Yours truly,<br>
+nojaf</p>
+<p>Photo by <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@playjack01?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Massimo Rinaldi"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Massimo Rinaldi</span></a></p></div></article></div><div class="container"><div class="author animated fadeIn clearfix"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:125px;height:125px"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIEBQP/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAGnGfYoNcZtgMkH/8QAHBAAAgICAwAAAAAAAAAAAAAAAQIAAxEjBBIx/9oACAEBAAEFAuPSrBqxOpMoOIrYbUBUdj+kkn//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAeEAACAQMFAAAAAAAAAAAAAAAAARECIYEiMTJBcf/aAAgBAQAGPwJuvBo6LnHdWIaReMlHo2Sz/8QAGhABAQEBAQEBAAAAAAAAAAAAAREAIUExcf/aAAgBAQABPyFnJw+tCvplF4fxzJtQK1gjkXCIkz1llyaZ7MoSrv/aAAwDAQACAAMAAAAQ8Mg8/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHRABAQEAAQUBAAAAAAAAAAAAAREAMSFBUYGRsf/aAAgBAQABPxAIZUBC238zZjCxuXJ2EtlYPJMTlPuM7BkJ71xeFIPUymCEgmDnQUvBkQIqu//Z" alt="Florian Verdonck" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/3e08b98e7029bdbaa47d72f5fe1247cf/9f4fa/profile-pic.jpg 1x" /><img loading="lazy" width="125" height="125" srcset="/static/3e08b98e7029bdbaa47d72f5fe1247cf/9f4fa/profile-pic.jpg 1x" src="/static/3e08b98e7029bdbaa47d72f5fe1247cf/9f4fa/profile-pic.jpg" alt="Florian Verdonck" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="info"><a href="https://twitter.com/verdonckflorian" class="name">Florian Verdonck</a><p class="bio">Florian Verdonck is web &amp; .NET developer. He is passionate about clean code and is eager to learn new technologies.</p></div></div></div></div><footer class="animated fadeIn" id="footer"><div class="container text-center"><p class="copyright"><span>© blog.nojaf.com</span></p></div></footer></div></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-62282942-2', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2018/12/17/writing-a-vscode-extension-with-fable-2-1/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-aa68771f91db7ba0214e.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-53f371ffffb43e02d7f9.js"],"component---src-templates-blog-list-template-js":["/component---src-templates-blog-list-template-js-bb1779ec0e0e7c3d56b4.js"],"component---src-templates-tags-js":["/component---src-templates-tags-js-67e3e3adc25b0abf7a8a.js"],"component---src-pages-404-js":["/component---src-pages-404-js-b6d6f737388432c3bd9b.js"],"component---src-pages-about-nojaf-com-js":["/component---src-pages-about-nojaf-com-js-e60966b10782a5b1ce4a.js"],"component---src-pages-contact-nojaf-com-js":["/component---src-pages-contact-nojaf-com-js-6cd26d19240ebd06e87b.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3b9604f4228c3eab6ea4.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-53f371ffffb43e02d7f9.js" async=""></script><script src="/commons-c8681a085e71ed13f9bf.js" async=""></script><script src="/styles-dd7782f29eeb2d6ba84a.js" async=""></script><script src="/app-aa68771f91db7ba0214e.js" async=""></script><script src="/webpack-runtime-4483d765503bd875a95a.js" async=""></script><script src="/scripts/jquery-2.2.4.min.js"></script><script src="/scripts/nojaf-body.min.js?v=cbf5158763"></script></body></html>
