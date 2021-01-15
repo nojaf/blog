@@ -64,7 +64,7 @@ const About = props => {
                 Over the years, I've been involved in the <strong>F# community</strong> and I have contributed to numerous projects.
                 In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas project</a><br />
               </p>
-              <p>If you like what I do there, you could consider <a href="https://github.com/sponsors/nojaf">sponsoring</a> me to show your support.</p>
+              <p>If you like what I do, you could consider <a href="https://github.com/sponsors/nojaf">sponsoring</a> me to show your support.</p>
 
               <h2 id="thingsthatarecoolnow">Things that are cool now ;)</h2>
 
