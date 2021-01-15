@@ -45,9 +45,8 @@ const About = props => {
               <h2 id="florianverdonck">Florian Verdonck</h2>
 
               <p>
-                I'm a young <strong>developer</strong> with ambitions and a
-                progressive mindset. I'm into functional programming and have my
-                own company based in Ghent.
+                I'm an eccentric <strong>developer</strong> with ambitions and a
+                progressive mindset. I'm into functional programming and have a strong affinity for the web.
               </p>
 
               <h2 id="talesonnojafcom">Tales on nojaf.com</h2>
@@ -56,13 +55,16 @@ const About = props => {
                 As a <strong>software craftsman</strong> I frequently come
                 across new technologies and interesting things about code.{' '}
                 <br />
-                I'm passionate about the <strong>web</strong>,{' '}
-                <strong>.NET</strong>, <strong>Docker</strong> and many other
-                things. I read a lot of <strong>software</strong> blogs and it's
-                time I returned the favor. So I decided to take{' '}
-                <a href="http://simpleprogrammer.com/about-me/">John Sonmez</a>'
-                advice and start my own blog.
+                And every once in a while, I try to blog about my adventures.
               </p>
+
+              <h2>Open-source adventures</h2>
+
+              <p>
+                Over the years, I've been involved in the <strong>F# community</strong> and I have contributed to numerous projects.
+                In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas project</a><br />
+              </p>
+              <p>If you like what I do there, you could consider <a href="https://github.com/sponsors/nojaf">sponsoring</a> me to show your support.</p>
 
               <h2 id="thingsthatarecoolnow">Things that are cool now ;)</h2>
 
