@@ -13,6 +13,7 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <meta name="robots" content="index, follow"/>
+          <base target="_blank" />
           {this.props.headComponents}
           <script src={'/scripts/nojaf-head.min.js'}></script>
         </head>
