@@ -8,6 +8,10 @@
   Gatsby's blog starter
 </h1>
 
+Run in Docker:
+
+> docker run -it --rm -v "${PWD}:/app" -w "/app" -p 8000:8000 node:14  bash
+
 Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
 _Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
