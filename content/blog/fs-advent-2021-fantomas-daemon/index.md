@@ -11,32 +11,31 @@ cover: './nojaf.com.fantomas-daemon-fsadvent-2021.jpg'
 The F# advent calendar is a wonderful initiative that inspires the community to create new content in a short period of time.
 I've been fortunate enough to be part of this for some years now. This year, I had in mind to sit this one out actually.
 Sometimes, there are just no new tales to tell and it is better suited to give others an opportunity.
-When I noticed that [Sergey still had some spots left to fill](https://twitter.com/sergey_tihon/status/1459794038115155969?s=20), I did happily volunteer, thought didn't think it through that much.
+When I noticed that [Sergey still had some spots left to fill](https://twitter.com/sergey_tihon/status/1459794038115155969?s=20), I did happily volunteer, though didn't think it through that much.
 
-My original thoughts for this post, was to create some content around the F# compiler. 
+My original thought for this post was to create some content around the F# compiler. 
 To the benefits of the Fantomas project, I have been contributing [some PR's to the compiler](https://github.com/dotnet/fsharp/pulls?q=is%3Apr+author%3Anojaf) and I wanted to elaborate a bit how a change there can simplify Fantomas.
-This idea for a blogpost sounds reasonable, but life happens and I don't have this content ready at the time of writing.
-So, instead I'd like to write about some of the recent Fantomas changes. Partly because I know this stuff quite well, and partly because it something that I'm proud of.
+This idea for a blogpost sounds reasonable, but life happens and I didn't have this content ready at the time of writing.
+So, instead I'd like to write about some of the recent Fantomas changes.
 
 ## Pre-Daemon mode
 
 The next version of [Fantomas 4.6](https://github.com/fsprojects/fantomas/tree/4.6) will contain an improvement in IDE integration.
 Versions 4.5 and prior were available in Ionide, Rider and the Visual Studio extensions.
 Installing those plugins or IDE was sufficient to format code using a shortcut or action.
-Doing this, would call the format function that is present in the [Fantomas NuGet package](https://www.nuget.org/packages/Fantomas/).
-Not only found this format the current file, it would also sync up with the rest of the editor intellisense.
+Doing this would call the format function that is present in the [Fantomas NuGet package](https://www.nuget.org/packages/Fantomas/).
+Not only will this format the current file, it would also trigger the correct logic inside the editor that the file has changed. Imagine autocomplete and other refactoring options.
 *And that really is a relevant integration aspect* that you would not get when you format the code using the commandline.
 
 The **downside** of this optimal **integration** is that you are **not in control of the version that is being used in the editor**.
-Fantomas bugfixes almost happen on a weekly basis. I encourage people to scratch their own itch 
+Fantomas bugfixes happen almost on a weekly basis. I encourage people to scratch their own itch 
 and many people are able to contribute after checking out the [Contribution Guidelines](https://github.com/fsprojects/fantomas/blob/master/CONTRIBUTING.md) and watching some [YouTube videos](https://www.youtube.com/playlist?list=PLvw_J2kfZCX3Mf6tEbIPZXbzJOD1VGl4K).
 
 Solving your own bug is very rewarding and I try to publish these fixes to NuGet frequently.
-Unfortunately, having a fix on NuGet doesn't bring it available in your IDE.
-> The stars really have to align before newer versions of Fantomas can be integrated.
-Mainly, because the version of FCS has to be in sync with what the editor has and well that can be challenging.
+However, it's important to note that having a fix on NuGet doesn't make it available in your IDE.
+> The stars really have to align before newer versions of Fantomas can be integrated, mainly because the version of FCS has to be in sync with what the editor has, and that can be challenging.
 
-Another downside that the IDE controls the version of Fantomas, is that you can have formatted a file yesterday and have a different result today.
+Another downside that the IDE controlling the version of Fantomas is that you can have formatted a file yesterday and have a different result today.
 You notice this in your source control diff and that is overall just not what you want.
 
 ## Daemon mode
@@ -64,7 +63,6 @@ My hopes are that we can ship bug fixes to Fantomas at a high pace. If it gets o
 Ever since 4.5, I have been releasing revisions on a frequent pace and people seem to have faith in this.
 Download numbers are significantly higher than say the first alpha of 4.4. Alpha and beta just don't have a stable ring to it for most people.
 I completely understand this, and that is why I'd like to move forward to a model were bugfixes are considered stable and people should not fear to upgrade.
-There is truth to this as these revisions mostly contain a fix for problem and nothing more.
 
 ## What about Rider and Visual Studio?
 
@@ -77,18 +75,18 @@ Progress can be tracked [here](https://github.com/fsprojects/fantomas-for-vs/iss
 ## Acknowledgements
 
 During the development of `Fantomas.Client`, I had a lot of mentoring by [Chet Husk](https://github.com/baronfel) (the one and only `@baronfel` on GitHub).
-We working together on the Ionide integration in FSAutocomplete (or F-Sack as the cool kids say it).
+We worked together on the Ionide integration in FSAutocomplete (or F-Sack as the cool kids say it).
 And over a timespan of several months we were able to come up with a prototype.
 
-For the Visual Studio integration I'd like to thanks [Christopher-Marcel Esser](https://github.com/bddckr) and [Asti](https://github.com/deviousasti).
+For the Visual Studio integration I'd like to thank [Christopher-Marcel Esser](https://github.com/bddckr) and [Asti](https://github.com/deviousasti).
 Christopher-Marcel implemented the port to `Fantomas.Client` and Asti is the core maintainer of the project.
 
 ## Closing thoughts
 
-The whole Fantomas daemon thing is pretty mind-blowing. We can upgrade to different compiler version without a breeze.
+The whole Fantomas daemon thing is pretty mind-blowing. We can upgrade to different compiler versions in a breeze.
 This used to take months and always involved a lot of coordination. Now it happens overnight.
 
-If you have any further question about this, you can always reach out to our gitter channel.
+If you have any further questions about this, you can always reach out to our [Gitter channel](https://gitter.im/fsprojects/fantomas).
 
 Enjoy the rest of the advent calendar, happy holidays and stay safe!
 
