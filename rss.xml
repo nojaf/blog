@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 Jan 2021 14:08:33 GMT</lastBuildDate><item><title><![CDATA[Gitpod & Snowpack]]></title><description><![CDATA[Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 07 Dec 2021 07:29:48 GMT</lastBuildDate><item><title><![CDATA[Fantomas Daemon]]></title><description><![CDATA[Intro The F# advent calendar is a wonderful initiative that inspires the community to create new content in a short period of time.
+I’ve…]]></description><link>https://blog.nojaf.com/fs-advent-2021-fantomas-daemon/</link><guid isPermaLink="false">https://blog.nojaf.com/fs-advent-2021-fantomas-daemon/</guid><pubDate>Tue, 07 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;The F# advent calendar is a wonderful initiative that inspires the community to create new content in a short period of time.
+I’ve been fortunate enough to be part of this for some years now. This year, I had in mind to sit this one out actually.
+Sometimes, there are just no new tales to tell and it is better suited to give others an opportunity.
+When I noticed that &lt;a href=&quot;https://twitter.com/sergey_tihon/status/1459794038115155969?s=20&quot;&gt;Sergey still had some spots left to fill&lt;/a&gt;, I did happily volunteer, though didn’t think it through that much.&lt;/p&gt;
+&lt;p&gt;My original thought for this post was to create some content around the F# compiler.
+To the benefits of the Fantomas project, I have been contributing &lt;a href=&quot;https://github.com/dotnet/fsharp/pulls?q=is%3Apr+author%3Anojaf&quot;&gt;some PR’s to the compiler&lt;/a&gt; and I wanted to elaborate a bit how a change there can simplify Fantomas.
+This idea for a blogpost sounds reasonable, but life happens and I didn’t have this content ready at the time of writing.
+So, instead I’d like to write about some of the recent Fantomas changes.&lt;/p&gt;
+&lt;h2&gt;Pre-Daemon mode&lt;/h2&gt;
+&lt;p&gt;The next version of &lt;a href=&quot;https://github.com/fsprojects/fantomas/tree/4.6&quot;&gt;Fantomas 4.6&lt;/a&gt; will contain an improvement in IDE integration.
+Versions 4.5 and prior were available in Ionide, Rider and the Visual Studio extensions.
+Installing those plugins or IDE was sufficient to format code using a shortcut or action.
+Doing this would call the format function that is present in the &lt;a href=&quot;https://www.nuget.org/packages/Fantomas/&quot;&gt;Fantomas NuGet package&lt;/a&gt;.
+Not only will this format the current file, it would also trigger the correct logic inside the editor that the file has changed. Imagine autocomplete and other refactoring options.
+&lt;em&gt;And that really is a relevant integration aspect&lt;/em&gt; that you would not get when you format the code using the commandline.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;downside&lt;/strong&gt; of this optimal &lt;strong&gt;integration&lt;/strong&gt; is that you are &lt;strong&gt;not in control of the version that is being used in the editor&lt;/strong&gt;.
+Fantomas bugfixes happen almost on a weekly basis. I encourage people to scratch their own itch
+and many people are able to contribute after checking out the &lt;a href=&quot;https://github.com/fsprojects/fantomas/blob/master/CONTRIBUTING.md&quot;&gt;Contribution Guidelines&lt;/a&gt; and watching some &lt;a href=&quot;https://www.youtube.com/playlist?list=PLvw_J2kfZCX3Mf6tEbIPZXbzJOD1VGl4K&quot;&gt;YouTube videos&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Solving your own bug is very rewarding and I try to publish these fixes to NuGet frequently.
+However, it’s important to note that having a fix on NuGet doesn’t make it available in your IDE.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The stars really have to align before newer versions of Fantomas can be integrated, mainly because the version of FCS has to be in sync with what the editor has, and that can be challenging.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another downside that the IDE controlling the version of Fantomas is that you can have formatted a file yesterday and have a different result today.
+You notice this in your source control diff and that is overall just not what you want.&lt;/p&gt;
+&lt;h2&gt;Daemon mode&lt;/h2&gt;
+&lt;p&gt;To move beyond this limitation, we tried to rethink how the editor integration should look like.
+What if you could bring your own version of Fantomas? Well, you can do this today by installing it as a local .NET tool.
+This works, but lacks the editor integration.&lt;/p&gt;
+&lt;p&gt;In 4.6 we tried to solve this problem by introducing &lt;a href=&quot;https://www.nuget.org/packages/Fantomas.Client/&quot;&gt;Fantomas.Client&lt;/a&gt;, a companion NuGet package for editors.
+The client exposes a &lt;code class=&quot;language-text&quot;&gt;FantomasService&lt;/code&gt; that can execute the traditional format requests as found in &lt;code class=&quot;language-text&quot;&gt;Fantomas&lt;/code&gt;, but it proxies those to &lt;a href=&quot;https://www.nuget.org/packages/fantomas-tool/&quot;&gt;fantomas-tool&lt;/a&gt; instead.
+When formatting inside an editor, &lt;code class=&quot;language-text&quot;&gt;Fantomas Client&lt;/code&gt; will try and find a compatible version for the current file and spin up a daemon process of &lt;code class=&quot;language-text&quot;&gt;fantomas-tool&lt;/code&gt;.
+This daemon process will act as an &lt;a href=&quot;https://microsoft.github.io/language-server-protocol/&quot;&gt;LSP server&lt;/a&gt; that send json messages back and forward to the &lt;code class=&quot;language-text&quot;&gt;FantomasService&lt;/code&gt;.
+As user of an editor, you don’t need to worry about &lt;code class=&quot;language-text&quot;&gt;Fantomas.Client&lt;/code&gt;, just know that the editor will use a locally or globally installed version of &lt;code class=&quot;language-text&quot;&gt;fantomas-tool&lt;/code&gt;.
+Meaning, you control the version and you upgrade at your own pace.&lt;/p&gt;
+&lt;p&gt;At the time of writing, there is support for VSCode (as part of the Ionide plugin).
+If you have Ionide installed, it will prompt you to install &lt;code class=&quot;language-text&quot;&gt;fantomas-tool&lt;/code&gt; if no compatible version can be found.
+After installing, you should be good to go as demonstrated in this video:&lt;/p&gt;
+&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/1jb6K_HZaEY&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;
+&lt;h2&gt;Post-Daemon mode&lt;/h2&gt;
+&lt;p&gt;My hopes are that we can ship bug fixes to Fantomas at a high pace. If it gets on NuGet, it can be used in your IDE.
+Ever since 4.5, I have been releasing revisions on a frequent pace and people seem to have faith in this.
+Download numbers are significantly higher than say the first alpha of 4.4. Alpha and beta just don’t have a stable ring to it for most people.
+I completely understand this, and that is why I’d like to move forward to a model were bugfixes are considered stable and people should not fear to upgrade.&lt;/p&gt;
+&lt;h2&gt;What about Rider and Visual Studio?&lt;/h2&gt;
+&lt;p&gt;JetBrains has slightly different plans, although it is on their radar to support custom versions of Fantomas.
+They won’t go with &lt;code class=&quot;language-text&quot;&gt;Fantomas.Client&lt;/code&gt; for technical reason as can be read in &lt;a href=&quot;https://github.com/JetBrains/resharper-fsharp/issues/320&quot;&gt;this GitHub issue&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Integration of &lt;code class=&quot;language-text&quot;&gt;Fantomas.Client&lt;/code&gt; is ongoing for the Visual Studio extension.
+Progress can be tracked &lt;a href=&quot;https://github.com/fsprojects/fantomas-for-vs/issues/21&quot;&gt;here&lt;/a&gt;. Please don’t hesitate to contribute any of the remaining work.&lt;/p&gt;
+&lt;h2&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;During the development of &lt;code class=&quot;language-text&quot;&gt;Fantomas.Client&lt;/code&gt;, I had a lot of mentoring by &lt;a href=&quot;https://github.com/baronfel&quot;&gt;Chet Husk&lt;/a&gt; (the one and only &lt;code class=&quot;language-text&quot;&gt;@baronfel&lt;/code&gt; on GitHub).
+We worked together on the Ionide integration in FSAutocomplete (or F-Sack as the cool kids say it).
+And over a timespan of several months we were able to come up with a prototype.&lt;/p&gt;
+&lt;p&gt;For the Visual Studio integration I’d like to thank &lt;a href=&quot;https://github.com/bddckr&quot;&gt;Christopher-Marcel Esser&lt;/a&gt; and &lt;a href=&quot;https://github.com/deviousasti&quot;&gt;Asti&lt;/a&gt;.
+Christopher-Marcel implemented the port to &lt;code class=&quot;language-text&quot;&gt;Fantomas.Client&lt;/code&gt; and Asti is the core maintainer of the project.&lt;/p&gt;
+&lt;h2&gt;Closing thoughts&lt;/h2&gt;
+&lt;p&gt;The whole Fantomas daemon thing is pretty mind-blowing. We can upgrade to different compiler versions in a breeze.
+This used to take months and always involved a lot of coordination. Now it happens overnight.&lt;/p&gt;
+&lt;p&gt;If you have any further questions about this, you can always reach out to our &lt;a href=&quot;https://gitter.im/fsprojects/fantomas&quot;&gt;Gitter channel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enjoy the rest of the advent calendar, happy holidays and stay safe!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;/p&gt;
+&lt;p&gt;Florian&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Photo by &lt;a href=&quot;https://unsplash.com/@donnehhhh?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Donovan Reeves&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gitpod & Snowpack]]></title><description><![CDATA[Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.
 You can find the result in this video: Take…]]></description><link>https://blog.nojaf.com/fs-advent-2020-gitpod-snowpack-fable/</link><guid isPermaLink="false">https://blog.nojaf.com/fs-advent-2020-gitpod-snowpack-fable/</guid><pubDate>Tue, 15 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hey all,&lt;/p&gt;
 &lt;p&gt;For my F# Advent calendar entry of 2020 I messed around with &lt;a href=&quot;https://gitpod.io/&quot;&gt;Gitpod&lt;/a&gt;, &lt;a href=&quot;https://www.snowpack.dev/&quot;&gt;Snowpack&lt;/a&gt; &amp;#x26; &lt;a href=&quot;https://fable.io/&quot;&gt;Fable&lt;/a&gt;.&lt;br /&gt;
 You can find the result in this video:&lt;/p&gt;
@@ -249,7 +314,7 @@ printfn &lt;span class=&quot;token string&quot;&gt;&quot;Fable compiled this&quo
 &lt;blockquote&gt;
 &lt;p&gt;yarn add fable-splitter fable-compiler&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Add &lt;code class=&quot;language-text&quot;&gt;import &amp;#39;./bin/Main&amp;#39;;&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;App.js&lt;/code&gt; and start the development server using &lt;code class=&quot;language-text&quot;&gt;yarn start&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Add &lt;code class=&quot;language-text&quot;&gt;import &apos;./bin/Main&apos;;&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;App.js&lt;/code&gt; and start the development server using &lt;code class=&quot;language-text&quot;&gt;yarn start&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;Adjust Create React App&lt;/h3&gt;
 &lt;p&gt;And just like that:&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -512,7 +577,7 @@ Check out &lt;a href=&quot;https://reactjs.org/docs/context.html&quot;&gt;React 
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; App&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Fable splitter compiles our code to &lt;code class=&quot;language-text&quot;&gt;src/bin&lt;/code&gt;, so now we can wrap the existing &lt;code class=&quot;language-text&quot;&gt;&amp;lt;App /&amp;gt;&lt;/code&gt; with &lt;code class=&quot;language-text&quot;&gt;ElmishCapture&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Fable splitter compiles our code to &lt;code class=&quot;language-text&quot;&gt;src/bin&lt;/code&gt;, so now we can wrap the existing &lt;code class=&quot;language-text&quot;&gt;&amp;lt;App /&gt;&lt;/code&gt; with &lt;code class=&quot;language-text&quot;&gt;ElmishCapture&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;Hooks&lt;/h3&gt;
 &lt;p&gt;How do we access the &lt;code class=&quot;language-text&quot;&gt;Model&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Dispatch&lt;/code&gt; directly? The answer here lies within &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot;&gt;React Hooks&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useModel&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
@@ -568,7 +633,7 @@ export &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; Msg$&lt
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Test.Msg&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Msg&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;AddIncome&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Transaction$&lt;span class=&quot;token function&quot;&gt;reflection&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;AddExpense&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Transaction$&lt;span class=&quot;token function&quot;&gt;reflection&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 export &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; myExpense &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Msg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;AddExpense&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Transaction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Movie night&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;new Msg(1, &amp;quot;AddExpense&amp;quot;, new Transaction(&amp;quot;Movie night&amp;quot;, 30, null, now()));&lt;/code&gt; part isn’t really what we want to write ourselves here.
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;new Msg(1, &quot;AddExpense&quot;, new Transaction(&quot;Movie night&quot;, 30, null, now()));&lt;/code&gt; part isn’t really what we want to write ourselves here.
 It would be better to encapsulate this in a hook.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useAddEntry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; dispatch &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useDispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -603,7 +668,7 @@ When we create a function in Fable that returns a function it doesn’t compile 
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;So, when calling the function &lt;code class=&quot;language-text&quot;&gt;a&lt;/code&gt;, it will immediately be executed.
-To overcome this we can wrap the lambda in a &lt;code class=&quot;language-text&quot;&gt;System.Func&amp;lt;_,_&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+To overcome this we can wrap the lambda in a &lt;code class=&quot;language-text&quot;&gt;System.Func&amp;lt;_,_&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; a &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Func&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;fun&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;so that it compiles to&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -900,21 +965,21 @@ First, we will add them with yarn.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This created a &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; folder with a &lt;code class=&quot;language-text&quot;&gt;Library.fs&lt;/code&gt; file in it. Let us try and compile this to JavaScript using &lt;code class=&quot;language-text&quot;&gt;fable-splitter&lt;/code&gt;.&lt;br&gt;
 In our &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; we can add a new script called &lt;code class=&quot;language-text&quot;&gt;build&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &amp;quot;scripts&amp;quot;: {
-    &amp;quot;postinstall&amp;quot;: &amp;quot;node ./node_modules/vscode/bin/install&amp;quot;,
-    &amp;quot;build&amp;quot;: &amp;quot;fable-splitter --config splitter.config.js&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+    &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And as you would expect we will also need a &lt;code class=&quot;language-text&quot;&gt;splitter.config.js&lt;/code&gt; file.&lt;br&gt;
 The configuration looks like this:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const path = require(&amp;quot;path&amp;quot;);
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const path = require(&quot;path&quot;);
 
 function resolve(relativePath) {  
   return path.join(__dirname, relativePath);
 }
 
 module.exports = {  
-  entry: resolve(&amp;quot;src/AdventExtension.fsproj&amp;quot;),
-  outDir: resolve(&amp;quot;out&amp;quot;),
+  entry: resolve(&quot;src/AdventExtension.fsproj&quot;),
+  outDir: resolve(&quot;out&quot;),
   allFiles: true
 };&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Execute by running &lt;code class=&quot;language-text&quot;&gt;yarn build&lt;/code&gt;. This is the equivalent of running &lt;code class=&quot;language-text&quot;&gt;npm run build&lt;/code&gt;. Yarn just doesn’t need the &lt;code class=&quot;language-text&quot;&gt;run&lt;/code&gt; word.&lt;br&gt;
@@ -922,9 +987,9 @@ We see that all the files in the project are compiled to the &lt;code class=&quo
 &lt;p&gt;Now let us rename &lt;code class=&quot;language-text&quot;&gt;Library.fs&lt;/code&gt; and change it to &lt;code class=&quot;language-text&quot;&gt;Extension.fs&lt;/code&gt;, compile again and try to run our extension.&lt;/p&gt;
 &lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; property of our &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; is pointing to &lt;code class=&quot;language-text&quot;&gt;./extension&lt;/code&gt;, so we will need to change that into &lt;code class=&quot;language-text&quot;&gt;out/Extension.js&lt;/code&gt;.&lt;br&gt;
 However if we look at the existing &lt;code class=&quot;language-text&quot;&gt;extension.js&lt;/code&gt; file it seems to expose an &lt;code class=&quot;language-text&quot;&gt;activate&lt;/code&gt; function.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// The module &amp;#39;vscode&amp;#39; contains the VS Code extensibility API
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// The module &apos;vscode&apos; contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-const vscode = require(&amp;#39;vscode&amp;#39;);
+const vscode = require(&apos;vscode&apos;);
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -932,16 +997,16 @@ function activate(context) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log(&amp;#39;Congratulations, your extension &amp;quot;fable-markdown-extension&amp;quot; is now active!&amp;#39;);
+    console.log(&apos;Congratulations, your extension &quot;fable-markdown-extension&quot; is now active!&apos;);
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand(&amp;#39;extension.sayHello&amp;#39;, function () {
+    let disposable = vscode.commands.registerCommand(&apos;extension.sayHello&apos;, function () {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
-        vscode.window.showInformationMessage(&amp;#39;Hello World!&amp;#39;);
+        vscode.window.showInformationMessage(&apos;Hello World!&apos;);
     });
 
     context.subscriptions.push(disposable);
@@ -957,28 +1022,28 @@ Changing &lt;code class=&quot;language-text&quot;&gt;Extension.fs&lt;/code&gt; t
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;module AdventExtension.Extension
 
 let activate _ =  
-    printfn &amp;quot;Fable extension is activated!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    printfn &quot;Fable extension is activated!&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;should do the trick.&lt;/p&gt;
 &lt;p&gt;At this point we have had to compile for a couple times already. It would be easier if we could compile continuously.&lt;br&gt;
 This can be achieved by means of another &lt;code class=&quot;language-text&quot;&gt;fable-splitter&lt;/code&gt;, so let’s add a new build script &lt;code class=&quot;language-text&quot;&gt;watch&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;    &amp;quot;scripts&amp;quot;: {
-        &amp;quot;postinstall&amp;quot;: &amp;quot;node ./node_modules/vscode/bin/install&amp;quot;,
-        &amp;quot;build&amp;quot;: &amp;quot;fable-splitter --config splitter.config.js&amp;quot;,
-        &amp;quot;watch&amp;quot;: &amp;quot;yarn run build --watch&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;    &quot;scripts&quot;: {
+        &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+        &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;,
+        &quot;watch&quot;: &quot;yarn run build --watch&quot;
     },&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;yarn watch&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Our compiled code looks like&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import { toConsole, printf } from &amp;quot;./fable-library.2.1.8/String&amp;quot;;  
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import { toConsole, printf } from &quot;./fable-library.2.1.8/String&quot;;  
 export function activate(_arg1) {  
-  toConsole(printf(&amp;quot;Fable extension is activated!&amp;quot;));
+  toConsole(printf(&quot;Fable extension is activated!&quot;));
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and we can launch the extension in code by hitting the play button in the Debug panel.&lt;br&gt;
 However in our current setup we want our extension to run when VS Code starts.&lt;/p&gt;
 &lt;p&gt;Change the &lt;code class=&quot;language-text&quot;&gt;activationEvents&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;*&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &amp;quot;activationEvents&amp;quot;: [
-    &amp;quot;*&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &quot;activationEvents&quot;: [
+    &quot;*&quot;
   ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and start debugging.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -1052,32 +1117,32 @@ I believe this whole thing is running in a node context, so we should be using &
 &lt;p&gt;PS&gt; yarn add -D “@babel/plugin-transform-modules-commonjs” “@babel/core”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;splitter.config.js&lt;/code&gt; becomes&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const path = require(&amp;quot;path&amp;quot;);
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const path = require(&quot;path&quot;);
 
 function resolve(relativePath) {  
   return path.join(__dirname, relativePath);
 }
 
 module.exports = {  
-  entry: resolve(&amp;quot;src/AdventExtension.fsproj&amp;quot;),
-  outDir: resolve(&amp;quot;out&amp;quot;),
+  entry: resolve(&quot;src/AdventExtension.fsproj&quot;),
+  outDir: resolve(&quot;out&quot;),
   babel: {
-    plugins: [&amp;quot;@babel/plugin-transform-modules-commonjs&amp;quot;]
+    plugins: [&quot;@babel/plugin-transform-modules-commonjs&quot;]
   },
   allFiles: true
 };&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The JavaScript output now looks like&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;use strict&amp;quot;;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;use strict&quot;;
 
-Object.defineProperty(exports, &amp;quot;__esModule&amp;quot;, {  
+Object.defineProperty(exports, &quot;__esModule&quot;, {  
   value: true
 });
 exports.activate = activate;
 
-var _String = require(&amp;quot;./fable-library.2.1.8/String&amp;quot;);
+var _String = require(&quot;./fable-library.2.1.8/String&quot;);
 
 function activate(_arg1) {  
-  (0, _String.toConsole)((0, _String.printf)(&amp;quot;Fable extension is activated!&amp;quot;));
+  (0, _String.toConsole)((0, _String.printf)(&quot;Fable extension is activated!&quot;));
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and our extension now runs!&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -1170,11 +1235,11 @@ If you have any experience with &lt;a href=&quot;http://www.quanttec.com/fparsec
 &lt;p&gt;My fork of &lt;a href=&quot;https://github.com/jgrund/fable-jest/pull/14&quot;&gt;Fable.Jest&lt;/a&gt; contains a workaround for this.&lt;br&gt;
 Here you can already see that using &lt;code class=&quot;language-text&quot;&gt;paket&lt;/code&gt; instead of &lt;code class=&quot;language-text&quot;&gt;NuGet&lt;/code&gt; was a smart move.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Unit testing in Fable&lt;/strong&gt; is described to some extent in the &lt;a href=&quot;https://fable.io/faq/#unit-tests&quot;&gt;FAQ&lt;/a&gt;. In our case everything is almost fully set up. We need to change the &lt;code class=&quot;language-text&quot;&gt;test&lt;/code&gt; script in our package.json.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;scripts&amp;quot;: {
-    &amp;quot;postinstall&amp;quot;: &amp;quot;node ./node_modules/vscode/bin/install&amp;quot;,
-    &amp;quot;build&amp;quot;: &amp;quot;fable-splitter --config splitter.config.js&amp;quot;,
-    &amp;quot;watch&amp;quot;: &amp;quot;yarn run build --watch&amp;quot;,
-    &amp;quot;test&amp;quot;: &amp;quot;jest&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+    &quot;build&quot;: &quot;fable-splitter --config splitter.config.js&quot;,
+    &quot;watch&quot;: &quot;yarn run build --watch&quot;,
+    &quot;test&quot;: &quot;jest&quot;
 },&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Add a file that matches the following convention &lt;code class=&quot;language-text&quot;&gt;*.test.fs&lt;/code&gt; to our project, and the &lt;code class=&quot;language-text&quot;&gt;*.test.js&lt;/code&gt; should be picked up by &lt;strong&gt;Jest&lt;/strong&gt;.&lt;br&gt;
 &lt;code class=&quot;language-text&quot;&gt;Parser.test.fs&lt;/code&gt; with a &lt;em&gt;simple unit test&lt;/em&gt; should be enough for now.&lt;/p&gt;
@@ -1183,8 +1248,8 @@ Here you can already see that using &lt;code class=&quot;language-text&quot;&gt;
 open Fable.Import.Jest  
 open Fable.Import.Jest.Matchers
 
-test &amp;quot;simple Jest test should be picked up&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    &amp;quot;42&amp;quot; == &amp;quot;the answer of the Universe&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+test &quot;simple Jest test should be picked up&quot; &amp;lt;| fun () -&gt;  
+    &quot;42&quot; == &quot;the answer of the Universe&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Execute with&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;PS&gt; yarn build&lt;/p&gt;
@@ -1225,46 +1290,46 @@ test &amp;quot;simple Jest test should be picked up&amp;quot; &amp;lt;| fun () -
 &lt;p&gt;Since we are going to parse text, we need a type to capture the result of our parsing.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;type ParserResult =  
     | Text of string
-    | FableFontText of NodeResult&amp;lt;string&amp;gt;
-    | FableLogo of NodeResult&amp;lt;string&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    | FableFontText of NodeResult&amp;lt;string&gt;
+    | FableLogo of NodeResult&amp;lt;string&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We may now have found some text, text between dragons (🐉) or &lt;code class=&quot;language-text&quot;&gt;:fable:&lt;/code&gt;.&lt;br&gt;
 When we have found one or both of the latter two, we would need to know where in our text we have found them.&lt;br&gt;
-This is where &lt;code class=&quot;language-text&quot;&gt;Parsimmon.node&lt;/code&gt; comes in handy, as it returns a &lt;code class=&quot;language-text&quot;&gt;NodeResult&amp;lt;&amp;#39;t&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+This is where &lt;code class=&quot;language-text&quot;&gt;Parsimmon.node&lt;/code&gt; comes in handy, as it returns a &lt;code class=&quot;language-text&quot;&gt;NodeResult&amp;lt;&apos;t&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;type TokenPosition =  
     { offset: int
       line: int
       column: int }
 
-type NodeResult&amp;lt;&amp;#39;t&amp;gt; =  
+type NodeResult&amp;lt;&apos;t&gt; =  
     { name: string
-      value: &amp;#39;t
+      value: &apos;t
       start: TokenPosition
       ``end``: TokenPosition }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Next we need a function that takes a string and returns &lt;code class=&quot;language-text&quot;&gt;Fable.Parsimmon.ParseResult&amp;lt;ParserResult array&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;let parseText input : ParseResult&amp;lt;ParserResult array&amp;gt; = failwith &amp;quot;Nothing here yet.&amp;quot;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next we need a function that takes a string and returns &lt;code class=&quot;language-text&quot;&gt;Fable.Parsimmon.ParseResult&amp;lt;ParserResult array&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;let parseText input : ParseResult&amp;lt;ParserResult array&gt; = failwith &quot;Nothing here yet.&quot;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And we can quickly write some tests.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;test &amp;quot;basic fable font&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    let input = &amp;quot;🐉vibes🐉&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;test &quot;basic fable font&quot; &amp;lt;| fun () -&gt;  
+    let input = &quot;🐉vibes🐉&quot;
     let parsed = Parser.parseText input
     parsed.status == true
 
-test &amp;quot;no fable font&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    let input = &amp;quot;fableless vibes&amp;quot;
+test &quot;no fable font&quot; &amp;lt;| fun () -&gt;  
+    let input = &quot;fableless vibes&quot;
     let parsed = Parser.parseText input
     parsed.status == true
 
-test &amp;quot;fable logo is found&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    let input = &amp;quot;Once upon a :fable:...&amp;quot;
+test &quot;fable logo is found&quot; &amp;lt;| fun () -&gt;  
+    let input = &quot;Once upon a :fable:...&quot;
     let parsed = Parser.parseText input
 
     parsed.status == true
 
     match parsed.value with
-    | [| Text _; FableLogo logo; Text _|] -&amp;gt;
+    | [| Text _; FableLogo logo; Text _|] -&gt;
         logo.start.offset == 12
         logo.value.Length == 7
-    | _ -&amp;gt; failwith &amp;quot;Expected logo in center&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Notice that &lt;code class=&quot;language-text&quot;&gt;==&lt;/code&gt; is a shorthand for &lt;code class=&quot;language-text&quot;&gt;Fable.Import.Jest.Exports.expect.Invoke(&amp;quot;foo&amp;quot;).toBe(&amp;quot;bar&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
+    | _ -&gt; failwith &quot;Expected logo in center&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notice that &lt;code class=&quot;language-text&quot;&gt;==&lt;/code&gt; is a shorthand for &lt;code class=&quot;language-text&quot;&gt;Fable.Import.Jest.Exports.expect.Invoke(&quot;foo&quot;).toBe(&quot;bar&quot;)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;To make these tests pass we’ll write some custom parsers, mostly based on regular expressions.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;module AdventExtension.Parser
 
@@ -1274,49 +1339,49 @@ open System.Text.RegularExpressions
 
 type ParserResult =  
     | Text of string
-    | FableFontText of NodeResult&amp;lt;string&amp;gt;
-    | FableLogo of NodeResult&amp;lt;string&amp;gt;
+    | FableFontText of NodeResult&amp;lt;string&gt;
+    | FableLogo of NodeResult&amp;lt;string&gt;
 
 // no /g flag
-[&amp;lt;Emit(&amp;quot;new RegExp($0)&amp;quot;)&amp;gt;]
+[&amp;lt;Emit(&quot;new RegExp($0)&quot;)&gt;]
 let createRegex pattern : Regex = jsNative
 
-let dragonParser = Parsimmon.str &amp;quot;🐉&amp;quot;
+let dragonParser = Parsimmon.str &quot;🐉&quot;
 
 let noDragonParser =  
-    Parsimmon.regex (createRegex @&amp;quot;[^🐉]+&amp;quot;)
+    Parsimmon.regex (createRegex @&quot;[^🐉]+&quot;)
 
 let fableFontParser =  
     Parsimmon.between dragonParser dragonParser noDragonParser
-    |&amp;gt; Parsimmon.node &amp;quot;FableFont&amp;quot;
-    |&amp;gt; Parsimmon.map (ParserResult.FableFontText)
+    |&gt; Parsimmon.node &quot;FableFont&quot;
+    |&gt; Parsimmon.map (ParserResult.FableFontText)
 
 let halfDragon =  
-    &amp;quot;🐉&amp;quot;.ToCharArray()
-    |&amp;gt; Array.head
-    |&amp;gt; (string)
+    &quot;🐉&quot;.ToCharArray()
+    |&gt; Array.head
+    |&gt; (string)
 
 let noDragonsParser =  
-    Parsimmon.satisfy (fun token -&amp;gt; token &amp;lt;&amp;gt; halfDragon &amp;amp;&amp;amp; token &amp;lt;&amp;gt; &amp;quot;:&amp;quot;)
-        |&amp;gt; Parsimmon.atLeastOneOrMany
-        |&amp;gt; Parsimmon.concat
-        |&amp;gt; Parsimmon.map (ParserResult.Text)
+    Parsimmon.satisfy (fun token -&gt; token &amp;lt;&gt; halfDragon &amp;amp;&amp;amp; token &amp;lt;&gt; &quot;:&quot;)
+        |&gt; Parsimmon.atLeastOneOrMany
+        |&gt; Parsimmon.concat
+        |&gt; Parsimmon.map (ParserResult.Text)
 
 let fableLogoParser =  
-    Parsimmon.str &amp;quot;:fable:&amp;quot;
-    |&amp;gt; Parsimmon.node &amp;quot;FableLogo&amp;quot;
-    |&amp;gt; Parsimmon.map (FableLogo)
+    Parsimmon.str &quot;:fable:&quot;
+    |&gt; Parsimmon.node &quot;FableLogo&quot;
+    |&gt; Parsimmon.map (FableLogo)
 
-let parseText input : ParseResult&amp;lt;ParserResult array&amp;gt; =  
+let parseText input : ParseResult&amp;lt;ParserResult array&gt; =  
     Parsimmon.choose [ 
         fableLogoParser
         noDragonsParser
         fableFontParser
     ] 
-    |&amp;gt; fun parser -&amp;gt; parser.many().parse(input)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    |&gt; fun parser -&gt; parser.many().parse(input)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I won’t go into detail about exactly how this works but I do want to highlight two things:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;🐉&amp;quot;.Length&lt;/code&gt; returns &lt;code class=&quot;language-text&quot;&gt;2&lt;/code&gt;. And &lt;code class=&quot;language-text&quot;&gt;Parsimmon.satisfy&lt;/code&gt; only compares a single token at a time.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;🐉&quot;.Length&lt;/code&gt; returns &lt;code class=&quot;language-text&quot;&gt;2&lt;/code&gt;. And &lt;code class=&quot;language-text&quot;&gt;Parsimmon.satisfy&lt;/code&gt; only compares a single token at a time.&lt;/li&gt;
 &lt;li&gt;Creating a &lt;code class=&quot;language-text&quot;&gt;Regex&lt;/code&gt; via the .NET API compiles to a JavaScript Regex that uses the &lt;code class=&quot;language-text&quot;&gt;/g&lt;/code&gt; flag. This is something we don’t want in this case, so I’ve added a little helper that emits a &lt;code class=&quot;language-text&quot;&gt;Regex&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Presumably this code is more or less readable, and we can continue 😅.&lt;/p&gt;
@@ -1329,60 +1394,60 @@ open Fable.Core.JsInterop
 open Fable.Import.vscode
 
 let createFontOptions color backgroundColor fontWeight : DecorationRenderOptions =  
-    jsOptions (fun options -&amp;gt;
+    jsOptions (fun options -&gt;
         options.color &amp;lt;- Some color
         options?fontWeight &amp;lt;- fontWeight
         options.backgroundColor &amp;lt;- backgroundColor
     )
 
 let activate _ =  
-    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &amp;quot;#87c5fd&amp;quot; (Some &amp;quot;white&amp;quot;) None)
-    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &amp;quot;#87c5fd&amp;quot; None (Some &amp;quot;bold&amp;quot;))
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; (Some &quot;white&quot;) None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; None (Some &quot;bold&quot;))
 
-    printfn &amp;quot;Fable extension activated!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    printfn &quot;Fable extension activated!&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now we need to subscribe to certain events.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;let activate (context: ExtensionContext) =  
-    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &amp;quot;#87c5fd&amp;quot; (Some &amp;quot;white&amp;quot;) None)
-    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &amp;quot;#87c5fd&amp;quot; None (Some &amp;quot;bold&amp;quot;))
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; (Some &quot;white&quot;) None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions &quot;#87c5fd&quot; None (Some &quot;bold&quot;))
 
     // Capture the active editor.
     let mutable activeEditor = window.activeTextEditor
 
-    let updateDecorations() = failwithf &amp;quot;Nothing here yet.&amp;quot;
+    let updateDecorations() = failwithf &quot;Nothing here yet.&quot;
 
     let mutable timeoutKey = None;
     let triggerUpdateDecorations _ =
         timeoutKey
-        |&amp;gt; Option.iter (JS.clearTimeout)
+        |&gt; Option.iter (JS.clearTimeout)
 
         timeoutKey &amp;lt;- Some (JS.setTimeout updateDecorations 500)
 
     // User is typing
-    window.onDidChangeActiveTextEditor.Invoke((fun editor -&amp;gt;
+    window.onDidChangeActiveTextEditor.Invoke((fun editor -&gt;
         activeEditor &amp;lt;- Some editor
         triggerUpdateDecorations()
         null
     ))
-    |&amp;gt; context.subscriptions.Add
+    |&gt; context.subscriptions.Add
 
     // Change of document
-    workspace.onDidChangeTextDocument.Invoke((fun event -&amp;gt;
+    workspace.onDidChangeTextDocument.Invoke((fun event -&gt;
         match activeEditor with
-        | Some aEditor when (event.document = aEditor.document) -&amp;gt;
+        | Some aEditor when (event.document = aEditor.document) -&gt;
             triggerUpdateDecorations()
-        | _ -&amp;gt; ()
+        | _ -&gt; ()
         null
     ))
-    |&amp;gt; context.subscriptions.Add
+    |&gt; context.subscriptions.Add
 
     activeEditor
-    |&amp;gt; Option.iter (triggerUpdateDecorations)
+    |&gt; Option.iter (triggerUpdateDecorations)
 
-    printfn &amp;quot;Fable extension activated!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    printfn &quot;Fable extension activated!&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Notice that the event handlers call &lt;code class=&quot;language-text&quot;&gt;triggerUpdateDecorations&lt;/code&gt;, which prevents us from re-rendering too much.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// Parsimmon ranges are 1-based, VS Code works with 0-based indexing.
-let nodeResultToRange&amp;lt;&amp;#39;t&amp;gt; (nr: NodeResult&amp;lt;&amp;#39;t&amp;gt;) =  
-    let zeroBasedFloat r = r - 1 |&amp;gt; (float)
+let nodeResultToRange&amp;lt;&apos;t&gt; (nr: NodeResult&amp;lt;&apos;t&gt;) =  
+    let zeroBasedFloat r = r - 1 |&gt; (float)
     vscode.Range(zeroBasedFloat nr.start.line,
                  zeroBasedFloat nr.start.column,
                  zeroBasedFloat nr.``end``.line,
@@ -1390,31 +1455,31 @@ let nodeResultToRange&amp;lt;&amp;#39;t&amp;gt; (nr: NodeResult&amp;lt;&amp;#39;
 
 let updateDecorations() =  
     activeEditor
-    |&amp;gt; Option.iter (fun aEditor -&amp;gt;
-        if aEditor.document.languageId = &amp;quot;markdown&amp;quot; then
+    |&gt; Option.iter (fun aEditor -&gt;
+        if aEditor.document.languageId = &quot;markdown&quot; then
             let text = aEditor.document.getText()
             let parsed = Parser.parseText text
 
             if parsed.status then
                 parsed.value
-                |&amp;gt; Array.map (fun node -&amp;gt;
+                |&gt; Array.map (fun node -&gt;
                     match node with
-                    | ParserResult.FableLogo logo -&amp;gt;
+                    | ParserResult.FableLogo logo -&gt;
                         Some (fableLogoStyle, nodeResultToRange logo)
 
-                    | ParserResult.FableFontText fableText -&amp;gt;
+                    | ParserResult.FableFontText fableText -&gt;
                         Some (fableFontStyle, nodeResultToRange fableText)
 
-                    | _ -&amp;gt;
+                    | _ -&gt;
                         None
 
                 )
-                |&amp;gt; Array.choose id
-                |&amp;gt; Array.groupBy (fun (style,_) -&amp;gt; style.key)
-                |&amp;gt; Array.iter (fun (styleKey, ranges) -&amp;gt;
+                |&gt; Array.choose id
+                |&gt; Array.groupBy (fun (style,_) -&gt; style.key)
+                |&gt; Array.iter (fun (styleKey, ranges) -&gt;
                     let r =
                         Array.map snd ranges
-                        |&amp;gt; ResizeArray
+                        |&gt; ResizeArray
 
                     let style = if fableFontStyle.key = styleKey then fableFontStyle else fableLogoStyle
 
@@ -1490,50 +1555,50 @@ To be fair, it took me a while to figure out how this works. Even after reading 
 &lt;p&gt;Will be parsed to&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[
   {
-    &amp;quot;type&amp;quot;: &amp;quot;paragraph_open&amp;quot;,
-    &amp;quot;tag&amp;quot;: &amp;quot;p&amp;quot;,
+    &quot;type&quot;: &quot;paragraph_open&quot;,
+    &quot;tag&quot;: &quot;p&quot;,
   },
   {
-    &amp;quot;type&amp;quot;: &amp;quot;inline&amp;quot;,
-    &amp;quot;tag&amp;quot;: &amp;quot;&amp;quot;,
-    &amp;quot;map&amp;quot;: [
+    &quot;type&quot;: &quot;inline&quot;,
+    &quot;tag&quot;: &quot;&quot;,
+    &quot;map&quot;: [
       0,
       1
     ],
-    &amp;quot;nesting&amp;quot;: 0,
-    &amp;quot;level&amp;quot;: 1,
-    &amp;quot;children&amp;quot;: [
+    &quot;nesting&quot;: 0,
+    &quot;level&quot;: 1,
+    &quot;children&quot;: [
       {
-        &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;,
-        &amp;quot;tag&amp;quot;: &amp;quot;&amp;quot;,
-        &amp;quot;content&amp;quot;: &amp;quot;This is some &amp;quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
+        &quot;content&quot;: &quot;This is some &quot;,
       },
       {
-        &amp;quot;type&amp;quot;: &amp;quot;strong_open&amp;quot;,
-        &amp;quot;tag&amp;quot;: &amp;quot;strong&amp;quot;,
+        &quot;type&quot;: &quot;strong_open&quot;,
+        &quot;tag&quot;: &quot;strong&quot;,
       },
       {
-        &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;,
-        &amp;quot;tag&amp;quot;: &amp;quot;&amp;quot;,
-        &amp;quot;content&amp;quot;: &amp;quot;markdown text&amp;quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
+        &quot;content&quot;: &quot;markdown text&quot;,
       },
       {
-        &amp;quot;type&amp;quot;: &amp;quot;strong_close&amp;quot;,
-        &amp;quot;tag&amp;quot;: &amp;quot;strong&amp;quot;,
+        &quot;type&quot;: &quot;strong_close&quot;,
+        &quot;tag&quot;: &quot;strong&quot;,
       },
       {
-        &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;,
-        &amp;quot;tag&amp;quot;: &amp;quot;&amp;quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;tag&quot;: &quot;&quot;,
       }
     ],
-    &amp;quot;content&amp;quot;: &amp;quot;This is some **markdown text**&amp;quot;,
+    &quot;content&quot;: &quot;This is some **markdown text**&quot;,
   },
   {
-    &amp;quot;type&amp;quot;: &amp;quot;paragraph_close&amp;quot;,
-    &amp;quot;tag&amp;quot;: &amp;quot;p&amp;quot;,
+    &quot;type&quot;: &quot;paragraph_close&quot;,
+    &quot;tag&quot;: &quot;p&quot;,
   }
 ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Note that this is a simplified version. We need to break down any tokens of &lt;code class=&quot;language-text&quot;&gt;type:&amp;quot;text&amp;quot;&lt;/code&gt; and replace them with our own token type (&lt;code class=&quot;language-text&quot;&gt;fable-logo&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;fable-text&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Note that this is a simplified version. We need to break down any tokens of &lt;code class=&quot;language-text&quot;&gt;type:&quot;text&quot;&lt;/code&gt; and replace them with our own token type (&lt;code class=&quot;language-text&quot;&gt;fable-logo&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;fable-text&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Once we’ve updated the tree, we can hook into the render engine by adding custom rules.&lt;/p&gt;
 &lt;h3&gt;F# bindings&lt;/h3&gt;
 &lt;p&gt;I found that there are TypeScript bindings on &lt;a href=&quot;https://www.npmjs.com/package/@types/markdown-it&quot;&gt;npm&lt;/a&gt;. With &lt;a href=&quot;https://github.com/fable-compiler/ts2fable&quot;&gt;ts2fable&lt;/a&gt; I cooked up some &lt;a href=&quot;https://github.com/nojaf/fable-markdown-extension/blob/master/src/MarkdownIt.fs&quot;&gt;minimal F# bindings&lt;/a&gt; which we can use.&lt;/p&gt;
@@ -1544,24 +1609,24 @@ To be fair, it took me a while to figure out how this works. Even after reading 
 open Fable.Import.Jest  
 open AdventExtension.MarkdownPlugin
 
-jest.unmock(&amp;quot;markdown-it&amp;quot;)
+jest.unmock(&quot;markdown-it&quot;)
 
 let md = MarkdownItModule.Exports.Invoke().``use``(fableMarkdownPlugin)
 
-test &amp;quot;fable img is rendered&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    let input = &amp;quot;:fable:&amp;quot;
+test &quot;fable img is rendered&quot; &amp;lt;| fun () -&gt;  
+    let input = &quot;:fable:&quot;
     let parsed = md.render input
-    expect.Invoke(parsed.StartsWith(&amp;quot;&amp;lt;p&amp;gt;&amp;lt;img class=&amp;#39;fable-logo&amp;#39; src&amp;quot;)).toBeTruthy()
+    expect.Invoke(parsed.StartsWith(&quot;&amp;lt;p&gt;&amp;lt;img class=&apos;fable-logo&apos; src&quot;)).toBeTruthy()
 
-test &amp;quot;fable font is rendered&amp;quot; &amp;lt;| fun () -&amp;gt;  
-    let input = &amp;quot;Over the seas 🐉we shall rise🐉!&amp;quot;
+test &quot;fable font is rendered&quot; &amp;lt;| fun () -&gt;  
+    let input = &quot;Over the seas 🐉we shall rise🐉!&quot;
     let parsed = md.render input
-    expect.Invoke(parsed.Contains(&amp;quot;&amp;lt;span class=&amp;#39;fable&amp;#39;&amp;gt;we shall rise&amp;lt;/span&amp;gt;&amp;quot;)).toBeTruthy()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    expect.Invoke(parsed.Contains(&quot;&amp;lt;span class=&apos;fable&apos;&gt;we shall rise&amp;lt;/span&gt;&quot;)).toBeTruthy()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The plugin function &lt;code class=&quot;language-text&quot;&gt;fableMarkdownPlugin&lt;/code&gt; looks like&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;module AdventExtension.MarkdownPlugin
 
 open MarkdownItModule  
-let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = failwith &amp;quot;Nothing yet&amp;quot;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = failwith &quot;Nothing yet&quot;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Inside this function, we need to replace the tokens and add custom render rules.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;module AdventExtension.MarkdownPlugin
 
@@ -1569,10 +1634,10 @@ open MarkdownItModule
 open Fable.Core  
 open AdventExtension.Parser
 
-[&amp;lt;Emit(&amp;quot;new $0.Token($1,$2,$3)&amp;quot;)&amp;gt;]
+[&amp;lt;Emit(&quot;new $0.Token($1,$2,$3)&quot;)&gt;]
 let createToken state name tag nesting: Token = jsNative
 
-[&amp;lt;Emit(&amp;quot;$0[$1] = $2&amp;quot;)&amp;gt;]
+[&amp;lt;Emit(&quot;$0[$1] = $2&quot;)&gt;]
 let addRenderRule rules name fn: unit = jsNative
 
 let fableMarkdownPlugin (md: MarkdownIt) (options: Options) =  
@@ -1586,80 +1651,80 @@ let fableMarkdownPlugin (md: MarkdownIt) (options: Options) =
                     Array.empty
                 else
                     parsedContent.value
-                    |&amp;gt; Array.map (fun node -&amp;gt;
+                    |&gt; Array.map (fun node -&gt;
                         match node with
-                        | ParserResult.Text text -&amp;gt;
-                            let t = createToken state &amp;quot;text&amp;quot; &amp;quot;&amp;quot; 0
+                        | ParserResult.Text text -&gt;
+                            let t = createToken state &quot;text&quot; &quot;&quot; 0
                             t.content &amp;lt;- text
                             t
 
-                        | ParserResult.FableLogo _ -&amp;gt;
-                            createToken state &amp;quot;fable-logo&amp;quot; &amp;quot;img&amp;quot; 0
+                        | ParserResult.FableLogo _ -&gt;
+                            createToken state &quot;fable-logo&quot; &quot;img&quot; 0
 
-                        | ParserResult.FableFontText fontText -&amp;gt;
-                            let t = createToken state &amp;quot;fable-font&amp;quot; &amp;quot;span&amp;quot; 0
-                            t.content &amp;lt;- fontText.value.Replace(&amp;quot;🐉&amp;quot;, &amp;quot;&amp;quot;)
+                        | ParserResult.FableFontText fontText -&gt;
+                            let t = createToken state &quot;fable-font&quot; &quot;span&quot; 0
+                            t.content &amp;lt;- fontText.value.Replace(&quot;🐉&quot;, &quot;&quot;)
                             t
                     )
 
-            parentToken.children &amp;lt;- new ResizeArray&amp;lt;Token&amp;gt;(updatedChildren)
+            parentToken.children &amp;lt;- new ResizeArray&amp;lt;Token&gt;(updatedChildren)
 
         let rec parseToken (parentToken: Token) (token: Token) =
-            if token.children &amp;lt;&amp;gt; null &amp;amp;&amp;amp; not(Seq.isEmpty token.children) then
+            if token.children &amp;lt;&gt; null &amp;amp;&amp;amp; not(Seq.isEmpty token.children) then
                 token.children
-                |&amp;gt; Seq.iter (fun childToken -&amp;gt;
-                    if childToken.``type`` = &amp;quot;inline&amp;quot; then
+                |&gt; Seq.iter (fun childToken -&gt;
+                    if childToken.``type`` = &quot;inline&quot; then
                         parseToken token childToken
                     else
                         parseTextToken token childToken 
                 )
 
-            if token.``type`` = &amp;quot;text&amp;quot; then
+            if token.``type`` = &quot;text&quot; then
                 parseTextToken parentToken token
 
         state.tokens
-        |&amp;gt; Seq.filter (fun t -&amp;gt; t.``type`` = &amp;quot;inline&amp;quot; &amp;amp;&amp;amp; t.children &amp;lt;&amp;gt; null &amp;amp;&amp;amp; not (Seq.isEmpty t.children))
-        |&amp;gt; Seq.iter (fun token -&amp;gt;
+        |&gt; Seq.filter (fun t -&gt; t.``type`` = &quot;inline&quot; &amp;amp;&amp;amp; t.children &amp;lt;&gt; null &amp;amp;&amp;amp; not (Seq.isEmpty t.children))
+        |&gt; Seq.iter (fun token -&gt;
             token.children
-            |&amp;gt; Seq.iter (parseToken token)
+            |&gt; Seq.iter (parseToken token)
         )
 
-    md.core.ruler.push(&amp;quot;fable&amp;quot;, replaceTokens)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    md.core.ruler.push(&quot;fable&quot;, replaceTokens)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This code might not look like much, but we are traversing the tree, replacing the &lt;code class=&quot;language-text&quot;&gt;children&lt;/code&gt; of a parent node that contains &lt;code class=&quot;language-text&quot;&gt;text&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Our unit tests remain unaffected, as the render part will just ignore the &lt;code class=&quot;language-text&quot;&gt;fable-logo&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;fable-text&lt;/code&gt; tokens and render them as regular &lt;code class=&quot;language-text&quot;&gt;text&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Part two determines how our own nodes should render:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[&amp;lt;Emit(&amp;quot;$0[$1] = $2&amp;quot;)&amp;gt;]
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[&amp;lt;Emit(&quot;$0[$1] = $2&quot;)&gt;]
 let addRenderRule rules name fn: unit = jsNative
 
 let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = ...  
     // Phase one ...
 
     // Phase two
-    let renderFableLogo tokens idx = &amp;quot;&amp;lt;img class=&amp;#39;fable-logo&amp;#39; src=&amp;#39;data:image/png;base64,iVBORw0KGgoAAAANSUhEU...&amp;#39; /&amp;gt;&amp;quot;
+    let renderFableLogo tokens idx = &quot;&amp;lt;img class=&apos;fable-logo&apos; src=&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEU...&apos; /&gt;&quot;
 
     let renderFableText (tokens: Token array) (idx: int) =
         let token = tokens.[idx]
-        sprintf &amp;quot;&amp;lt;span class=&amp;#39;fable&amp;#39;&amp;gt;%s&amp;lt;/span&amp;gt;&amp;quot; (token.content.Replace(&amp;quot;🐉&amp;quot;, &amp;quot;&amp;quot;))
+        sprintf &quot;&amp;lt;span class=&apos;fable&apos;&gt;%s&amp;lt;/span&gt;&quot; (token.content.Replace(&quot;🐉&quot;, &quot;&quot;))
 
-    addRenderRule md.renderer.rules &amp;quot;fable-logo&amp;quot; (new System.Func&amp;lt;Token array,int,string&amp;gt;(fun tokens idx -&amp;gt; renderFableLogo tokens idx))
-    addRenderRule md.renderer.rules &amp;quot;fable-font&amp;quot; (new System.Func&amp;lt;Token array,int,string&amp;gt;(fun tokens idx -&amp;gt; renderFableText tokens idx))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We need to wrap our render functions inside a &lt;code class=&quot;language-text&quot;&gt;System.Func&amp;lt;_,_,_&amp;gt;&lt;/code&gt; in order to preserve compatibility with JavaScript.&lt;br&gt;
+    addRenderRule md.renderer.rules &quot;fable-logo&quot; (new System.Func&amp;lt;Token array,int,string&gt;(fun tokens idx -&gt; renderFableLogo tokens idx))
+    addRenderRule md.renderer.rules &quot;fable-font&quot; (new System.Func&amp;lt;Token array,int,string&gt;(fun tokens idx -&gt; renderFableText tokens idx))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to wrap our render functions inside a &lt;code class=&quot;language-text&quot;&gt;System.Func&amp;lt;_,_,_&gt;&lt;/code&gt; in order to preserve compatibility with JavaScript.&lt;br&gt;
 The reason for this is that Fable compiles these into functions that can be curried, and markdown-it doesn’t like this.&lt;/p&gt;
 &lt;p&gt;Once more our tests show green, and the times has come to shove this into our VS Code extension.&lt;/p&gt;
 &lt;h3&gt;Tag on code&lt;/h3&gt;
 &lt;p&gt;To see all this in code we need to extend the &lt;code class=&quot;language-text&quot;&gt;contributes&lt;/code&gt; section in our &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &amp;quot;contributes&amp;quot;: {
-    &amp;quot;markdown.markdownItPlugins&amp;quot;: true,
-    &amp;quot;markdown.previewStyles&amp;quot;: [
-      &amp;quot;./fable.css&amp;quot;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  &quot;contributes&quot;: {
+    &quot;markdown.markdownItPlugins&quot;: true,
+    &quot;markdown.previewStyles&quot;: [
+      &quot;./fable.css&quot;
     ]
   }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create a &lt;code class=&quot;language-text&quot;&gt;fable.css&lt;/code&gt; file&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// this works in code, I was somewhat surprised by this. Should be a local url in real world scenario.
-@import url(&amp;#39;https://fonts.googleapis.com/css?family=Josefin+Slab:400,600i&amp;#39;); 
+@import url(&apos;https://fonts.googleapis.com/css?family=Josefin+Slab:400,600i&apos;); 
 
 .fable {
-    font-family: &amp;#39;Josefin Slab&amp;#39;, serif;
+    font-family: &apos;Josefin Slab&apos;, serif;
     font-weight: 600;
     font-style: italic;
     color: #87c5fd;
@@ -1673,7 +1738,7 @@ The reason for this is that Fable compiles these into functions that can be curr
 &lt;p&gt;And make the final change to &lt;code class=&quot;language-text&quot;&gt;Extension.fs&lt;/code&gt; by adding&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;    // Add render plugin
     createObj [
-        &amp;quot;extendMarkdownIt&amp;quot; ==&amp;gt; (fun md -&amp;gt; md?``use``(MarkdownPlugin.fableMarkdownPlugin))
+        &quot;extendMarkdownIt&quot; ==&gt; (fun md -&gt; md?``use``(MarkdownPlugin.fableMarkdownPlugin))
     ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;at the end.&lt;/p&gt;
 &lt;p&gt;Final outcome:&lt;/p&gt;
@@ -1932,9 +1997,9 @@ It was originally created by Anh-Dung Phan and people have suggested that it cou
 &lt;h2&gt;Test drive&lt;/h2&gt;
 &lt;h3&gt;NuGet&lt;/h3&gt;
 &lt;p&gt;Added the following code to your &lt;code class=&quot;language-text&quot;&gt;fsproj&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;ItemGroup&amp;gt;  
-    &amp;lt;DotNetCliToolReference Include=&amp;quot;dotnet-fantomas&amp;quot; Version=&amp;quot;2.7.1&amp;quot; /&amp;gt;
-&amp;lt;/ItemGroup&amp;gt;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;ItemGroup&gt;  
+    &amp;lt;DotNetCliToolReference Include=&quot;dotnet-fantomas&quot; Version=&quot;2.7.1&quot; /&gt;
+&amp;lt;/ItemGroup&gt;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Execute &lt;code class=&quot;language-text&quot;&gt;dotnet restore&lt;/code&gt; and you should be able to run &lt;code class=&quot;language-text&quot;&gt;dotnet fantomas YourFile.fs&lt;/code&gt;.&lt;br&gt;
 Check out &lt;code class=&quot;language-text&quot;&gt;dotnet fantomas --help&lt;/code&gt; for more options.&lt;/p&gt;
 &lt;h3&gt;Paket&lt;/h3&gt;
@@ -2342,36 +2407,36 @@ nojaf&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Running Laravel pr
 &lt;/ul&gt;
 &lt;h2&gt;Getting started&lt;/h2&gt;
 &lt;p&gt;Open a PowerShell window and create a new project folder.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&amp;gt;mkdir laravel-basic-task-list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&gt;mkdir laravel-basic-task-list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;ProTip: start using [Terminal Wings](&lt;a href=&quot;https://www.phrozensoft.com/2016/02/terminal&quot;&gt;https://www.phrozensoft.com/2016/02/terminal&lt;/a&gt;&lt;/em&gt;wings-12), it’s super fancy_&lt;/p&gt;
 &lt;p&gt;Enter the newly created folder&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&amp;gt;cd laravel-basic-task-list
-PS MyUser\Projects\laravel-basic-task-list&amp;gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&gt;cd laravel-basic-task-list
+PS MyUser\Projects\laravel-basic-task-list&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Add LaraDock as a &lt;a href=&quot;https://git-scm.com/docs/git-submodule&quot;&gt;git-submodule&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list&amp;gt;git submodule add https://github.com/LaraDock/laradock.git laradock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list&gt;git submodule add https://github.com/LaraDock/laradock.git laradock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We’ll make some slight changes to the &lt;code class=&quot;language-text&quot;&gt;laradock\docker-compose.yaml&lt;/code&gt; file:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Change the Nginx port forwarding from &lt;code class=&quot;language-text&quot;&gt;80:80&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;8300:80&lt;/code&gt; to avoid any possible collisions with IIS.&lt;/li&gt;
 &lt;li&gt;Change the volumes mapping in the &lt;em&gt;Laravel Application Code Container&lt;/em&gt; from &lt;code class=&quot;language-text&quot;&gt;../:/var/www/laravel&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;../laravel/:/var/www/laravel&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We basically want the following in our project folder:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; laravel-basic-task-list&amp;gt;
-     laradock ~&amp;gt; git submodule
-     laravel ~&amp;gt; our laravel installation folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; laravel-basic-task-list&gt;
+     laradock ~&gt; git submodule
+     laravel ~&gt; our laravel installation folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We didn’t install anything yet so let’s just create an empty &lt;code class=&quot;language-text&quot;&gt;laravel&lt;/code&gt; folder:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list&amp;gt;mkdir laravel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list&gt;mkdir laravel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Firing up Docker&lt;/h2&gt;
 &lt;p&gt;For the tutorial we need to list two containers: &lt;strong&gt;nginx&lt;/strong&gt; and &lt;strong&gt;mysql&lt;/strong&gt;.&lt;br&gt;
 Let’s move back to the laradock folder (since our docker-compose file is there) and create our containers:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&amp;gt;docker-compose up -d nginx mysql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&gt;docker-compose up -d nginx mysql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will create all the necessary container and run three containers in the background.&lt;br&gt;
 These being nginx, mysql and the workspace container.&lt;br&gt;
 Verify this by using &lt;em&gt;docker-compose ps&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&amp;gt;docker-compose ps
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&gt;docker-compose ps
 Name                        Command             State                      Ports
 ------------------------------------------------------------------------------------------------
-laradock_mysql_1            docker-entrypoint.sh mysqld   Up       0.0.0.0:3306-&amp;gt;3306/tcp
-laradock_nginx_1            nginx                         Up       0.0.0.0:443-&amp;gt;443/tcp, 0.0.0.0:8300-&amp;gt;80/tcp
+laradock_mysql_1            docker-entrypoint.sh mysqld   Up       0.0.0.0:3306-&gt;3306/tcp
+laradock_nginx_1            nginx                         Up       0.0.0.0:443-&gt;443/tcp, 0.0.0.0:8300-&gt;80/tcp
 laradock_php-fpm_1          php-fpm                       Up       9000/tcp
 laradock_volumes_data_1     true                          Exit 0
 laradock_volumes_source_1   true                          Exit 0
@@ -2383,7 +2448,7 @@ This is expected since we didn’t install anything yet.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Enter the Workspace container, to execute commands like (Artisan, Composer, PHPUnit, Gulp, …).&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&amp;gt;docker exec -it laradock_workspace_1 bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects\laravel-basic-task-list\laradock&gt;docker exec -it laradock_workspace_1 bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now we can run bash commands inside the workspace container. We’ll use Composer to create our new Laravel project.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;root@81acfe2e1e76:/var/www/laravel# composer create-project laravel/laravel .&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will install Laravel inside our laravel folder.&lt;br&gt;
@@ -2428,13 +2493,13 @@ So change &lt;code class=&quot;language-text&quot;&gt;DB_HOST=localhost&lt;/code
 &lt;p&gt;Assuming we completed the exercise, let’s take a look at our tasks table in the database.&lt;br&gt;
 Exit the workspace container and enter the mysql container&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;root@81acfe2e1e76:/var/www/laravel# exit
-PS MyUser\Projects\laravel-basic-task-list\laradock&amp;gt;docker exec -it laradock_mysql_1 bash
+PS MyUser\Projects\laravel-basic-task-list\laradock&gt;docker exec -it laradock_mysql_1 bash
 root@ebc73025ab6f:/# mysql --user=homestead --password=secret homestead&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To view our tables:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; mysql&amp;gt; show tables;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; mysql&gt; show tables;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(mind the &lt;strong&gt;;&lt;/strong&gt;)&lt;/p&gt;
 &lt;p&gt;Our tasks:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;mysql&amp;gt; select * from tasks;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;mysql&gt; select * from tasks;
 +----+---------+---------------------+---------------------+
 | id | name    | created_at          | updated_at          |
 +----+---------+---------------------+---------------------+
@@ -2632,7 +2697,7 @@ So initially the first three images are shown and the rest are hidden.&lt;/p&gt;
 &lt;p&gt;Notice that I do some validation in my scan callback.&lt;/p&gt;
 &lt;h3&gt;Subscribe!&lt;/h3&gt;
 &lt;p&gt;The missing piece of the puzzle is now to trigger the &lt;code class=&quot;language-text&quot;&gt;changeImages&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;showArrows&lt;/code&gt; functions. We can do this by &lt;em&gt;subscribing&lt;/em&gt; to &lt;code class=&quot;language-text&quot;&gt;source&lt;/code&gt; observable.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;source.subscribe((next) =&amp;gt; {  
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;source.subscribe((next) =&gt; {  
   changeImages(next);
   showArrows(next);
 });&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
