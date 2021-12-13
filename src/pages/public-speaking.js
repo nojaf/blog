@@ -46,7 +46,7 @@ const PublicSpeaking = props => {
 
                             <p>
                                 Over the years, I've had the opportunity to participate in various shapes of Public speaking.<br />
-                                From webinars to online and physical conferences, I've seen a fair share and wish to keep track of the wonderful occasions.<br />
+                                From webinars to online and physical conferences, I've seen a fair share and wish to keep track of these wonderful occasions.<br />
                                 Each and every one of them has been about a topic that is dear to me. My goal is to inspire, educate and help projects grow by doing these things.<br />
                                 And the best is yet to come!
                             </p>
