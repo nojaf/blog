@@ -55,7 +55,7 @@ const PublicSpeaking = props => {
                             <h3>2018 @ Techorama (Belgium) <small>(Partner Stage)</small></h3>
 
                             <p>
-                                My first taste of giving a talk at conference. In this short lighting talk I've talked about [Fable](https://fable.io/), the F# to JavaScript compiler.
+                                My first taste of giving a talk at conference. In this short lighting talk I've talked about <a href="https://fable.io">Fable</a>, the F# to JavaScript compiler.
                             </p>
 
                             <h2 id="webinar-jetbrains-2019">From F# to JavaScript with Fable</h2>
@@ -72,7 +72,7 @@ const PublicSpeaking = props => {
 
                             <h2 id="jetbrains-dotnetdays-2020">Formatting F# Code</h2>
                             <h3>May 2020 at JetBrains .NET Days (Online)</h3>
-                            <p>If you format F# code in Rider, a tool called Fantomas will be called to process this. Fantomas is open source and I happen to be the maintainer of this project. In this session I'd like to explain how Fantomas's high-level works, how I got involved in this project, and how it is wired into the FSharp support for Rider.</p>
+                            <p>If you format F# code in Rider, a tool called Fantomas will be called to process this. Fantomas is open source and I am one of the maintainers of this project. In this session I explained how Fantomas's high-level works, how I got involved in this project, and how it is wired into the FSharp support for Rider.</p>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/9kK57hMDLvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                             <h2 id="fsharpconf-2020">Formatting F# source code</h2>
