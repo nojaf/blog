@@ -91,7 +91,7 @@ const PublicSpeaking = props => {
                             <h2 id="ndc-olso-2021">Formatting F# code, There and Back Again</h2>
                             <h3>December 2021 at NDC Oslo (Norway)</h3>
                             <p>In recent years code formatters have done wonders in many languages. They can help a language by making it easier for newcomers on the "how should it look like". And overall, they can avoid pointless arguments in teams. In a perfect world, a formatter is available with the first release of the language. For F# this wasn't the case. In recent years the Fantomas project is rising to empty that void. And given the state of the language and ecosystem, it can be a tough climb.</p>
-                            <a href="https://ndcoslo.com/agenda/formatting-f-code-there-and-back-again/45d1b843abdd">Video coming soon!</a>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/R9Ob5Vp4a9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </article>
                 </div>
