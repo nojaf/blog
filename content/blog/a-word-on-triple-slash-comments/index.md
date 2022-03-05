@@ -1,7 +1,7 @@
 ---
 path: '2022/03/05/a-word-on-triple-slash-comments/'
 date: '2022-03-05'
-title: 'A word on triple slash comments'
+title: 'A word on triple-slash comments'
 tags: ['open-source', 'fsharp', 'fantomas', 'tooling' ]
 cover: './blog.nojaf.com-triple-slash-comments.jpg'
 ---
