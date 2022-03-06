@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-tags-js","path":"/tag/tooling/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"frontmatter":{"date":"2022-03-05","title":"A word on triple-slash comments","path":"2022/03/05/a-word-on-triple-slash-comments/","tags":["open-source","fsharp","fantomas","tooling"]}}},{"node":{"frontmatter":{"date":"2021-12-07","title":"Fantomas Daemon","path":"2021/12/07/fs-advent-2021-fantomas-daemon/","tags":["open-source","fsharp","fantomas","tooling"]}}}]}},"pageContext":{"tag":"tooling"}}}
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tag/tooling/",
+    "result": {"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"frontmatter":{"date":"2022-03-05","title":"A word on triple-slash comments","path":"2022/03/05/a-word-on-triple-slash-comments/","tags":["open-source","fsharp","fantomas","tooling"]}}},{"node":{"frontmatter":{"date":"2021-12-07","title":"Fantomas Daemon","path":"2021/12/07/fs-advent-2021-fantomas-daemon/","tags":["open-source","fsharp","fantomas","tooling"]}}}]}},"pageContext":{"tag":"tooling"}},
+    "staticQueryHashes": ["3128451518"]}

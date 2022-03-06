@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-tags-js","path":"/tag/react/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"frontmatter":{"date":"2019-12-10","title":"Using Create React App with Fable","path":"2019/12/10/using-create-react-app-with-fable/","tags":["javascript","fable","fsharp","react"]}}},{"node":{"frontmatter":{"date":"2018-11-10","title":"React hooks preview with Fable","path":"2018/11/10/react-hooks-in-fable/","tags":["javascript","fable","fp","fsharp","react"]}}}]}},"pageContext":{"tag":"react"}}}
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tag/react/",
+    "result": {"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"frontmatter":{"date":"2019-12-10","title":"Using Create React App with Fable","path":"2019/12/10/using-create-react-app-with-fable/","tags":["javascript","fable","fsharp","react"]}}},{"node":{"frontmatter":{"date":"2018-11-10","title":"React hooks preview with Fable","path":"2018/11/10/react-hooks-in-fable/","tags":["javascript","fable","fp","fsharp","react"]}}}]}},"pageContext":{"tag":"react"}},
+    "staticQueryHashes": ["3128451518"]}

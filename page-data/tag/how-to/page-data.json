@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-tags-js","path":"/tag/how-to/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"date":"2016-08-19","title":"Running Laravel projects on Windows 10 using Docker","path":"2016/08/19/laradock-on-windows-10/","tags":["laravel","docker","php","laradock","how-to"]}}}]}},"pageContext":{"tag":"how-to"}}}
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tag/how-to/",
+    "result": {"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"date":"2016-08-19","title":"Running Laravel projects on Windows 10 using Docker","path":"2016/08/19/laradock-on-windows-10/","tags":["laravel","docker","php","laradock","how-to"]}}}]}},"pageContext":{"tag":"how-to"}},
+    "staticQueryHashes": ["3128451518"]}

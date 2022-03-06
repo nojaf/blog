@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Mar 2022 18:28:32 GMT</lastBuildDate><item><title><![CDATA[A word on triple-slash comments]]></title><description><![CDATA[Intro Yesterday, pretty much out of nowhere, FCS 41.0.3 was published on NuGet.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 06 Mar 2022 17:32:30 GMT</lastBuildDate><item><title><![CDATA[A word on triple-slash comments]]></title><description><![CDATA[Intro Yesterday, pretty much out of nowhere, FCS 41.0.3 was published on NuGet.
 I must say, I’m pretty hyped about this release. It contains…]]></description><link>https://blog.nojaf.com/a-word-on-triple-slash-comments/</link><guid isPermaLink="false">https://blog.nojaf.com/a-word-on-triple-slash-comments/</guid><pubDate>Sat, 05 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Yesterday, pretty much out of nowhere, &lt;a href=&quot;https://www.nuget.org/packages/FSharp.Compiler.Service/41.0.3&quot;&gt;FCS 41.0.3&lt;/a&gt; was published on NuGet.
 I must say, I’m pretty hyped about this release. It contains a few &lt;a href=&quot;https://github.com/dotnet/fsharp/pulls?q=is%3Apr+is%3Aclosed+author%3Anojaf+merged%3A2021-10-30..2022-03-03&quot;&gt;PRs&lt;/a&gt; that improve the syntax tree and provide more information to work within Fantomas.&lt;/p&gt;
@@ -14,33 +14,34 @@ This can lead to some &lt;a href=&quot;https://github.com/fsprojects/fantomas/is
 &lt;p&gt;One example is &lt;a href=&quot;https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-syntax-synbinding.html&quot;&gt;SynBinding&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/d776f53fe59c651c2abf345449ae6f57/24c4a/synbinding-prexmldoc.png&quot;
+    href=&quot;/static/d776f53fe59c651c2abf345449ae6f57/81386/synbinding-prexmldoc.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 49.848484848484844%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAB2HAAAdhwGP5fFlAAABO0lEQVQoz4WQS07DMBCGc3dWXAABS67BDViwYQUCiZI2CSRp7PFz/Aq/i2ABqLVGkRPl+x/TCCEWsRhrOcYQU4jRczgMc6h3x+w8Ow7WuGmcL69ubi+u+fzs4e6+Yc8f09iN7bh/F2K/yH3KkGBJShknjffQq6LFMdSjxlelCxEkm1xyCHCtxqE+eV0zs5ckPfuh2w3DJKTURjkPe19KWb9PU0pa/xwIKUXQ1UoNm0HOs/ecM8C8ruVnml/vh6mwlDLEkHPqX57bp0frIpF2znpnkesELKSoZWOw1nTdjqQwJhCRrBeNpgCPwHCOKQWtVd93aKG1q6TFDh1++Op8BAYeEHKeJ1gqTcZ4JMfuU44nY1eYFE3TuNm8ttu3dtt2Qz+LGf4HOKd/YdTDtmGjdLVCVJRHCrStE2vnT+LnQlKlNTTVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAB2HAAAdhwGP5fFlAAABOUlEQVQoz4WRu04DMRBF8+1UlFQg8UV0VAhEAREbNpuQXa/t8Tz9gE0kBELA0RQu5nju2Cs3z7P3yCxqalnUWPRUn2cSIVZC6rrXi4vrm8srOj+7vXtcIdKwH/q3zcHtnZ98cLUWZgqQQqJIqpYtZ8mVJIvINLk0TeXwhkirUooIq4oeZ6hya5UII0REHPrNbj/64FMCZjLT9oVVraV9o7bWRBgASi2zc0O3C86JaC31S3NtrZ7k+r0WOYSw5DXrHu6H9RopxwjMyEyq8o/sQ7AFjdH3/QYgpqRhwSOCmdZafpXno5yzeT8PwxYWyM8OMRFhzvb/5JyVCMfxABAgAS5fSjlbKflv2esSW0Lwu/3w9PzUbbqX7mW768d5JMajfLzjpxxjLKVgUoBkpogpJSBGFmJZ3uxj53dg3kHys7eEUQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;SynBinding snippet&quot;
         title=&quot;SynBinding snippet&quot;
-        src=&quot;/static/d776f53fe59c651c2abf345449ae6f57/799d3/synbinding-prexmldoc.png&quot;
-        srcset=&quot;/static/d776f53fe59c651c2abf345449ae6f57/00d96/synbinding-prexmldoc.png 148w,
-/static/d776f53fe59c651c2abf345449ae6f57/0b23c/synbinding-prexmldoc.png 295w,
-/static/d776f53fe59c651c2abf345449ae6f57/799d3/synbinding-prexmldoc.png 590w,
-/static/d776f53fe59c651c2abf345449ae6f57/2a3d6/synbinding-prexmldoc.png 885w,
-/static/d776f53fe59c651c2abf345449ae6f57/ae92f/synbinding-prexmldoc.png 1180w,
-/static/d776f53fe59c651c2abf345449ae6f57/24c4a/synbinding-prexmldoc.png 2640w&quot;
+        src=&quot;/static/d776f53fe59c651c2abf345449ae6f57/fcda8/synbinding-prexmldoc.png&quot;
+        srcset=&quot;/static/d776f53fe59c651c2abf345449ae6f57/12f09/synbinding-prexmldoc.png 148w,
+/static/d776f53fe59c651c2abf345449ae6f57/e4a3f/synbinding-prexmldoc.png 295w,
+/static/d776f53fe59c651c2abf345449ae6f57/fcda8/synbinding-prexmldoc.png 590w,
+/static/d776f53fe59c651c2abf345449ae6f57/efc66/synbinding-prexmldoc.png 885w,
+/static/d776f53fe59c651c2abf345449ae6f57/c83ae/synbinding-prexmldoc.png 1180w,
+/static/d776f53fe59c651c2abf345449ae6f57/81386/synbinding-prexmldoc.png 2640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -89,7 +90,7 @@ Meaning, you control the version and you upgrade at your own pace.&lt;/p&gt;
 &lt;p&gt;At the time of writing, there is support for VSCode (as part of the Ionide plugin).
 If you have Ionide installed, it will prompt you to install &lt;code class=&quot;language-text&quot;&gt;fantomas-tool&lt;/code&gt; if no compatible version can be found.
 After installing, you should be good to go as demonstrated in this video:&lt;/p&gt;
-&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/1jb6K_HZaEY&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;
+&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/1jb6K_HZaEY&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;
 &lt;h2&gt;Post-Daemon mode&lt;/h2&gt;
 &lt;p&gt;My hopes are that we can ship bug fixes to Fantomas at a high pace. If it gets on NuGet, it can be used in your IDE.
 Ever since 4.5, I have been releasing revisions on a frequent pace and people seem to have faith in this.
@@ -113,12 +114,11 @@ This used to take months and always involved a lot of coordination. Now it happe
 &lt;p&gt;Enjoy the rest of the advent calendar, happy holidays and stay safe!&lt;/p&gt;
 &lt;p&gt;Cheers,&lt;/p&gt;
 &lt;p&gt;Florian&lt;/p&gt;
-&lt;p&gt;&lt;span&gt;Photo by &lt;a href=&quot;https://unsplash.com/@donnehhhh?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Donovan Reeves&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;
-&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gitpod & Snowpack]]></title><description><![CDATA[Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.
+&lt;p&gt;&lt;span&gt;Photo by &lt;a href=&quot;https://unsplash.com/@donnehhhh?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Donovan Reeves&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gitpod & Snowpack]]></title><description><![CDATA[Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.
 You can find the result in this video: Take…]]></description><link>https://blog.nojaf.com/fs-advent-2020-gitpod-snowpack-fable/</link><guid isPermaLink="false">https://blog.nojaf.com/fs-advent-2020-gitpod-snowpack-fable/</guid><pubDate>Tue, 15 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hey all,&lt;/p&gt;
 &lt;p&gt;For my F# Advent calendar entry of 2020 I messed around with &lt;a href=&quot;https://gitpod.io/&quot;&gt;Gitpod&lt;/a&gt;, &lt;a href=&quot;https://www.snowpack.dev/&quot;&gt;Snowpack&lt;/a&gt; &amp;#x26; &lt;a href=&quot;https://fable.io/&quot;&gt;Fable&lt;/a&gt;.&lt;br /&gt;
 You can find the result in this video:&lt;/p&gt;
-&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/yqOWx-6FXAs&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write;encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;
+&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/yqOWx-6FXAs&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write;encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;
 &lt;p&gt;Take care everyone!&lt;/p&gt;
 &lt;p&gt;Cheers,&lt;/p&gt;
 &lt;p&gt;nojaf&lt;/p&gt;
@@ -131,23 +131,24 @@ This means you can override the default settings using a JSON file.
 Check out &lt;a href=&quot;https://github.com/fsprojects/fantomas/blob/master/docs/Documentation.md#--config-path-to-file-or-folder&quot;&gt;the documentation&lt;/a&gt; for more information.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 483px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 483px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 57.34989648033127%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC0klEQVQozx2Sy28bBRjE/S9QgXioUZSSkDo1fsf22s7u2t6NnbW9Lz/W9nr92vVTSZumaRsqED2AOPTSC0hwQHBCqiLBiX/vx4rTN4fRaGa+iXyeTiDoCoanUx80UbsCJ7LP/vk92d5f5J0PZPr3iN4/5Jy/iVr/kmq+wZvIyFaNJ7USj6U0+/kYD2JfEfkkmUSyqjT6IcHMY1o5ur08RieH76shFmgbSeaTMt2BSKFRwnSqdAZVNFukeFEgr6Y5KiV5eBoj8kQW0EY29mKE6WqMPAnZWCK6H+hd3dMK/kRxf6Xt/87Z4DfS9h+0hnehWIEjMR+KCXRsAd0qkKlliDzMJClrAgkpQaUl4rg1Oo5Bqx/Q8dY40zXufIc7moYOZ9RMj3ZPZzkVqTVPkerJEMs8X2shp0rksBAnKsQQainycopiNc2FlkA3UnTNBON+FseK8zyo8M2uwZVf+b+SZ1uDu2uTgSuxmKtcLetoRpnIQS5OVhGYbz0ubwLWux7zmcab2wU7v0XgG2w2PYKJxqutyaXfZOapLGYNnm0u2K1UHKdEMA177YaCiYpMSaszWgxZbQfMF22WCyWMIVCv7qGox4iVA3LZB0zaj5gZRwS9FPN+Aa+Xpqsf06wfsvRKoQGJiGJZdCZ9nIHB0re53V5gmmPi6ltS6muOpVv2hBu+FF+RqX9Lsf0Thjnj6aTAaiwwtGIYWjS8cVaTUyJi2+BpGO/1C5eX1y6XSx256ZA9v0Xt39ENfqDtvaVo3KD07rAm39Mdzbmei7zcNPjuxuYqUFlPzvCHCSL1lhL2NuXF7ZrVeoy/dBCaAyT7knI4H6mzQe34xMsNksXz8Fk9audlBu0YfT2OokQRxUPG5te4epRIVlbDeYzQ3SGK3aemN3hcmvPF2c+c6u9pjn+hbL/npPGOo+qP7Ivv+Oi4RSHzMdnsHgfRT3kU/QypdBD2e8J/fn2mjRmLoLgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACzUlEQVQozwXBS2/aBgDAcX+CXapKVdq1WvMiaYDwNARj8zCYhzE2GIwhNg8TIIR0JG2yaVu1adNOu7Rbpa2XXSZN2jTtsn2/f38/4WE0Qt6qYPk69WGDWjdDQu2yp74l13uLPPiZbO8XauMPFIcfiFq/E2veMvKK1Owyp9UzjgtxnolhHkZDCI/iUSSzjNYvIxtprI6I40h0HZnlUmfgFtBbMcaeTNcpIGp57GEF0ylSMiTO6hnyWoKwEuOpGEY4zKdpjiysqYvtt/EmJQpGQGbwH8b6f/Tlv1TGf6HP/0Ye/kmi9w9V53vMfoYDOY1YyeL0criOhFwXER7HI6TUBCFxn1QpiWHLOK6KaVfpuTrDkY7nGUzdKp5bp2WpGB2Z9axIx86iaBECX+bVZRN/VEbYzYQJZU9QdYlyI4eiidTqMWw7T7+Txh9KOHaa7aLOm22Hu7XOYCCzubT49t5hPq8xnWpczavUWjmE52KMVCXHbD1he3/JZjtifmHwzRczroImY7/BcmXj9hS2swpLr8xkVMQflliMC1yM83Q6CWZ+AW+oICRUlVxDwz7vMpt3mEzqBH6JkZNGkZ6QlXaJZz7lReQB/do+nnHEvBdn4WYZO0ns1iFNbY9gJLIOZISyaeEtfTy/y3o54MtrHaM95aD8G0njPeH6O/bUdxxq74k2fyVp/kG1/YrPxxnWvsTUSWC3o/TNCAs/iSA1Gqxe+nx1d87t9YBV0Kbc0pFqDhXTpT9d0fMCzjSDcqvLuecxGJpsxgq3iypf33R4Oa+ymShMnQhCpVlieRVw83pDsJoRLIekGlNS1k9kuz+StX9Asb/jVN1wJF1QMu5JKTqWtoehhUiKT4nEH2NpB3jGMUIoU0Q1TQqtJmK1SVYtcnxm8Sh1R6JyQ2/0hlL7NfvyNbu5S3aSaz55rhA+ecBp7Al7JzscnOwgZT9jpB/xEVkwpMSEqRW6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Fantomas configuration via console&quot;
         title=&quot;Fantomas configuration via console&quot;
-        src=&quot;/static/e5d569f8790b13fd330d0627c652a8e9/f3ddf/nojaf-fantomas-configuration-console.png&quot;
-        srcset=&quot;/static/e5d569f8790b13fd330d0627c652a8e9/00d96/nojaf-fantomas-configuration-console.png 148w,
-/static/e5d569f8790b13fd330d0627c652a8e9/0b23c/nojaf-fantomas-configuration-console.png 295w,
-/static/e5d569f8790b13fd330d0627c652a8e9/f3ddf/nojaf-fantomas-configuration-console.png 483w&quot;
+        src=&quot;/static/e5d569f8790b13fd330d0627c652a8e9/77a9e/nojaf-fantomas-configuration-console.png&quot;
+        srcset=&quot;/static/e5d569f8790b13fd330d0627c652a8e9/12f09/nojaf-fantomas-configuration-console.png 148w,
+/static/e5d569f8790b13fd330d0627c652a8e9/e4a3f/nojaf-fantomas-configuration-console.png 295w,
+/static/e5d569f8790b13fd330d0627c652a8e9/77a9e/nojaf-fantomas-configuration-console.png 483w&quot;
         sizes=&quot;(max-width: 483px) 100vw, 483px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;In this post I wish to answer a couple of small questions about the Fantomas configuration files.&lt;/p&gt;
@@ -170,26 +171,27 @@ A fallback to the default configuration will happen when the parsing failed.&lt;
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 35.12841756420878%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABWUlEQVQoz1VQy1KDQBDk/79ArcSD3rxY5Uktc/YDzFvLCgIJLIQkYIB9QNtD1NKt6u2e586Op1SCRClk2wwpsUkSBGGIMIrIASJyQt8mjpGmCoq5Yse0BUl80n7gI2SdZ51Bsc1xSHM0uWAHW9WwdQ3XNOg6wBiLRlvUNdkYOOfo7/7BtS39LbyWokwUtsEGu48IRbA+NdO6hxxJtkwuSo1DUaJtu97f/YFc0tgzfNFYywJ3eqVjMW3NZtroniVHfB1jMkBLXfHr/Y+yDLosvyd08BSd7z53tYmxjhWCNSflFNluD4mlXEF+KFBpNuUUTiYmN8zRRMOYlhgbGsuGpf+KZDlFupggnr1AkY/hCtu3ObLlrNdV5APHPVAVwOf+BNGC44FLrvBzvOHjBIOnOc4fxoTo2a998Tjt9XC06PmSLDln92MMWHc1muJ6NMHN8wp3sz1uxzm+AOSYDWk9cDzgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 35.13513513513513%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABZElEQVQoz1WOyY7TUBBF/f+fQEcJC3rHBolNJ3S2/QHEmaRW49iJxzzHNrGf33SQHyCaK52aVLpVQVHkZHlOWVUUVUWa58RJ4jnFMUmSkGUZaZYx7RZF4fv3pFlKFEckSUxgjKYVNU0lkKL26L5HDwNGSpwDpTRyVAyDRiqFMQbn3H8YazHGEljr6IqSa3xBnM400dkbmnH0TLLWoo2l60ZuTev7Se4dU5iMA6UUSmu0Nb+vOIc2mnGaT4yjz1prnLXezGrDUJZIIZBVhey6Px8agrKueYtizmnGJS+ILyl123G9NRRCUIqaa9NylyPKgQGMA9l2yLZFNi2jHNHWorQh+Hl6JT9uKY9bst138kPIPfmBeD1SHnf058jDvYGhg/vtXz3Rt6B6/ipYrELmz3tmyw0Py5D5tx2L5z0PTxtmq9DXi/XB54/rA7NlyIenDfNVyKf1lsd1yOeXN77ub3zZCn4Bx0UNpkZyjroAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Warning in Ionide&quot;
         title=&quot;Warning in Ionide&quot;
-        src=&quot;/static/c5a10a2954ab354479da04a9d7b1a773/799d3/nojaf-fantomas-configuration-ionide-warning.png&quot;
-        srcset=&quot;/static/c5a10a2954ab354479da04a9d7b1a773/00d96/nojaf-fantomas-configuration-ionide-warning.png 148w,
-/static/c5a10a2954ab354479da04a9d7b1a773/0b23c/nojaf-fantomas-configuration-ionide-warning.png 295w,
-/static/c5a10a2954ab354479da04a9d7b1a773/799d3/nojaf-fantomas-configuration-ionide-warning.png 590w,
-/static/c5a10a2954ab354479da04a9d7b1a773/2a3d6/nojaf-fantomas-configuration-ionide-warning.png 885w,
-/static/c5a10a2954ab354479da04a9d7b1a773/ae92f/nojaf-fantomas-configuration-ionide-warning.png 1180w,
-/static/c5a10a2954ab354479da04a9d7b1a773/e7796/nojaf-fantomas-configuration-ionide-warning.png 1207w&quot;
+        src=&quot;/static/c5a10a2954ab354479da04a9d7b1a773/fcda8/nojaf-fantomas-configuration-ionide-warning.png&quot;
+        srcset=&quot;/static/c5a10a2954ab354479da04a9d7b1a773/12f09/nojaf-fantomas-configuration-ionide-warning.png 148w,
+/static/c5a10a2954ab354479da04a9d7b1a773/e4a3f/nojaf-fantomas-configuration-ionide-warning.png 295w,
+/static/c5a10a2954ab354479da04a9d7b1a773/fcda8/nojaf-fantomas-configuration-ionide-warning.png 590w,
+/static/c5a10a2954ab354479da04a9d7b1a773/efc66/nojaf-fantomas-configuration-ionide-warning.png 885w,
+/static/c5a10a2954ab354479da04a9d7b1a773/c83ae/nojaf-fantomas-configuration-ionide-warning.png 1180w,
+/static/c5a10a2954ab354479da04a9d7b1a773/78415/nojaf-fantomas-configuration-ionide-warning.png 1207w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h3&gt;Room for improvement&lt;/h3&gt;
@@ -244,7 +246,7 @@ I’m a Yarn guy, so:&lt;/p&gt;
 &lt;p&gt;yarn create react-app capital-guardian&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Create React Application&lt;/em&gt; has amazing documentation and the key takeaway here is that I don’t have to do any crazy webpack shizzle.
-It just works © and I don’t have to maintain anything. &lt;/p&gt;
+It just works © and I don’t have to maintain anything.&lt;/p&gt;
 &lt;h3&gt;Compiling FSharp&lt;/h3&gt;
 &lt;p&gt;There are a few moving pieces in setting up the front-end development experience.
 The F# files should be compiled to ES6 JavaScript before the React development server starts.
@@ -370,32 +372,33 @@ printfn &lt;span class=&quot;token string&quot;&gt;&quot;Fable compiled this&quo
 &lt;p&gt;And just like that:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/bcbcb/cra-failed-to-compile.png&quot;
+    href=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/e3189/cra-failed-to-compile.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 20.38647342995169%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAiklEQVQY03WQ4Q7DIAiEff/n7NbqrNq1KprpDWn2Z2kxXy6QwIGK7ApaHUi/8EkZI3rvAv5UHmtr7RaVfEBYtHBYh8jDRy06j53NRn4MQ7chGc/mG1pMl/RMUG9u8vMCP82w05N5iG7aII6Bw0SuCMjGibb9uIYvVLVWlFJQqJzKORHJ+nfx+5Irvn/tNxYSCqgOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAk0lEQVQY03WQ2QrDMAwE8/+/WTdtsHzVh2SwvSVuCCWQhWG0LxJoqWQgxkI2jZYz9owxJjh8gp9777csHAL8e5tkY5GtA/uA4jzS0ZN1EBfA5CE2oOeCXi7kgsGCJZKBW9+w6gVSK/RDgdRzHkiakDVNMzmUzYK1Q4sJPabpc/7EuXSptUJETvbOLGit4S7j+oo/voFwNv6OFSuBAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Create React App failed to compile&quot;
         title=&quot;Create React App failed to compile&quot;
-        src=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/799d3/cra-failed-to-compile.png&quot;
-        srcset=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/00d96/cra-failed-to-compile.png 148w,
-/static/f4dcb41061c0d3a51325cd22bb7f9714/0b23c/cra-failed-to-compile.png 295w,
-/static/f4dcb41061c0d3a51325cd22bb7f9714/799d3/cra-failed-to-compile.png 590w,
-/static/f4dcb41061c0d3a51325cd22bb7f9714/2a3d6/cra-failed-to-compile.png 885w,
-/static/f4dcb41061c0d3a51325cd22bb7f9714/bcbcb/cra-failed-to-compile.png 1035w&quot;
+        src=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/fcda8/cra-failed-to-compile.png&quot;
+        srcset=&quot;/static/f4dcb41061c0d3a51325cd22bb7f9714/12f09/cra-failed-to-compile.png 148w,
+/static/f4dcb41061c0d3a51325cd22bb7f9714/e4a3f/cra-failed-to-compile.png 295w,
+/static/f4dcb41061c0d3a51325cd22bb7f9714/fcda8/cra-failed-to-compile.png 590w,
+/static/f4dcb41061c0d3a51325cd22bb7f9714/efc66/cra-failed-to-compile.png 885w,
+/static/f4dcb41061c0d3a51325cd22bb7f9714/e3189/cra-failed-to-compile.png 1035w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -406,33 +409,34 @@ We want to tell the linter that it should ignore the &lt;code class=&quot;langua
 For the ignore file to be picked up add an &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt; file with &lt;code class=&quot;language-text&quot;&gt;EXTEND_ESLINT=true&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/0d910/fable-compiled-this.png&quot;
+    href=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/2ba99/fable-compiled-this.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.55855855855856%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB60lEQVQoz42TW08aURDH/RA15SIsy7pnFxSWXQq7IJcgoFWrRmO0BjUqKqLVxF7TS5o0fdOksan60O9nn1t9E5K/cw5qsLWBTSazuzP7m//MnO3RBp+Amx6yIE9PQlqcg395AdLzOUiV+dbz6iKU4SJ0LdbKvbFwNAmPpOHw6Bi//1zi/PwXem5hqp2B+/0u9IG4gHle19C3uwZ5ZgpKsYTg+DhCzLgHHDBsuP0M376fgl8XF5e3QBNqKgvPmzr6cwV43tbx+OtLuD7tw7tfRWB2Gkp55B+FHOjyqTg5+ymAzWazTSEHvtuBtDQP94cX6D3+iEc/Pgsgt+Do6INAdxvw6qrxt8JtMMuBd68K15cDKlCHr7YiYN0obDQabQqd1gxZPCUW0bezBt/WipihPDkB+dkEQirNMNINUCeF6Ry8r2rwr1eEKuE3luDbXIa/WhEd8MIdFfKAFrbQT5XlUhkB2ij3wug+QK0qBGNqFIxOgMi/8Q8rpOBgzIGVyMKM2oibaRiRJGJRehdLwTIcmCZ5O0959h3sv0BG6oz4EIbyI0hmisgOjyGVLcHJlJDOlYXZ/H3hKcxEBjy/c8tUVaVNM74c+kDJFxCkP0MmU2kUjJ8CHg932bLeNmidABodHWG0cT2SuBfv1PI1AFLKUIlIiy4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB70lEQVQoz43TXW/SUBgH8H0IzXC8tqPt6QprS3sKlBZaQAcONc6w6CZb3AZbjLqw7MJ44UtMvPTGr6KJV8bEOPWbcGGMV1xB/qaHTSFjm01OnpM+zS/n/7SdkVImiGJA0rKIr68isXILsQdrSKyujGrzNquiVQCRM2DPHy85TcEJabz/8BE/f/1Gr9fDjJQ2IQsquBsNhB9vgUgaou0Wrjx9iMjeJvhaDXy9jqTrgRD9FBifT+HT5y8Irn6/PwlGHm2Br9cQetXF7OsDhF7sI9rZQPzuHQh5F0SeBBcYqODo2w8GDofDfyC/fB1zh3ss9uybQ1x++wyX3j1HdOc+wvs7UyOfgF+PvjNwMBiMnfBmA5HdTYhGHnMHHYRedhF+so34WhPz15aQdEqnIp8L8o1lhLttiNRGtNNic4zsbrD5Bei0GZ4NihqLHICx7XUGBm821m6xGSbuNUEWrdHXcBEYNESiI6la4Eo+OLcEvuiDK3rgXI/dS6oUgqhCUgwGndTpJ1QMaKYDmi3B0G1YpgtdzcHMFEANh1WTFkHzPhTV+oudC2YsFzmnAmr7KHhLsAplWE4FObc62ttl2MWrSGm5i0EWeSEDQdZH0RdN8OUKuGoVnOdDOO4F678jk7FBkzRlv6EUxNOyk70x7CzwD2rO0aLoXHG5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Fable compiled this&quot;
         title=&quot;Fable compiled this&quot;
-        src=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/799d3/fable-compiled-this.png&quot;
-        srcset=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/00d96/fable-compiled-this.png 148w,
-/static/bf4e2598e89f1a3b43f5c1898c69e530/0b23c/fable-compiled-this.png 295w,
-/static/bf4e2598e89f1a3b43f5c1898c69e530/799d3/fable-compiled-this.png 590w,
-/static/bf4e2598e89f1a3b43f5c1898c69e530/2a3d6/fable-compiled-this.png 885w,
-/static/bf4e2598e89f1a3b43f5c1898c69e530/ae92f/fable-compiled-this.png 1180w,
-/static/bf4e2598e89f1a3b43f5c1898c69e530/0d910/fable-compiled-this.png 1221w&quot;
+        src=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/fcda8/fable-compiled-this.png&quot;
+        srcset=&quot;/static/bf4e2598e89f1a3b43f5c1898c69e530/12f09/fable-compiled-this.png 148w,
+/static/bf4e2598e89f1a3b43f5c1898c69e530/e4a3f/fable-compiled-this.png 295w,
+/static/bf4e2598e89f1a3b43f5c1898c69e530/fcda8/fable-compiled-this.png 590w,
+/static/bf4e2598e89f1a3b43f5c1898c69e530/efc66/fable-compiled-this.png 885w,
+/static/bf4e2598e89f1a3b43f5c1898c69e530/c83ae/fable-compiled-this.png 1180w,
+/static/bf4e2598e89f1a3b43f5c1898c69e530/2ba99/fable-compiled-this.png 1221w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -664,7 +668,7 @@ Check out &lt;a href=&quot;https://reactjs.org/docs/context.html&quot;&gt;React 
              Amount &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
              Rule &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
              Created &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; DateTime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Now &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;is compiled to &lt;/p&gt;
+&lt;p&gt;is compiled to&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token computation-expression keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Union&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; declare&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Record &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;token string&quot;&gt;&quot;fable-library/Types.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token computation-expression keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; union&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; record&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; option&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; float64&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; string &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;token string&quot;&gt;&quot;fable-library/Reflection.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token computation-expression keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; now &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;token string&quot;&gt;&quot;fable-library/Date.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -704,9 +708,9 @@ It would be better to encapsulate this in a hook.&lt;/p&gt;
 &lt;p&gt;This hook returns function that can be called in function component.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;HomePage&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; addEntry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useAddEntry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onClick&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;addEntry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;My new entry&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
-                                       &lt;span class=&quot;token string&quot;&gt;&quot;amount&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
-                                       &lt;span class=&quot;token string&quot;&gt;&quot;isIncome&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onClick&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;addEntry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token string-property property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;My new entry&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+                                       &lt;span class=&quot;token string-property property&quot;&gt;&quot;amount&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+                                       &lt;span class=&quot;token string-property property&quot;&gt;&quot;isIncome&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;imagine a form here...&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;br&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
               &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;onClick&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -869,32 +873,33 @@ At the time of writing I still have these intentions 😄.&lt;/p&gt;
 And it is fleshed out to have a first usable functionality.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/c112d/create-react-app-with-fable-result.png&quot;
+    href=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/33d1d/create-react-app-with-fable-result.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 72.60869565217392%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABaUlEQVQ4y61Ty26DMBD0/39Zjz301lQihRAIEAPmZfyYercBJY2iEikrjVjW9jLMrIXREsYYnM9nFGWJPD9xnqYpyvBOeV3XyLIMTdNy7RhyGWpxknB9mjR0/w07dxDOKDjnoFQXFnMkyYGbnE7FJZfcMNrvUVUViqLgD3ddhziOQy5hHQA/w3sLgaugxtZazPPMT4Ix9io3/E5PrTWfqcsd2vIdqvoIDBWEUoo3UHjv8Wy0MkYnPzE0X7Cmh0iP2fq1LQ2XHQvjvyHaVvEiNd0KNlFK1pTk0XpikGSCBB+G4SmM4wiSioyhfKkTMRFF+zAKFV4VbMri7laQ1m04R7PonL+piyrMHNHt+34zaL+UdZjP5uYs/zIJS8VnTCEjWL9pupjyW19NIdDteMyqu2PYNA03vWNI141YviJWDUng5ZoRbQLNmg2I4gOi3RucztdDj8AuX3cnx5bFxfl+GNGpCt5O/zYk/ADJr5Kfoi2p0AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 72.2972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABdUlEQVQ4y61T207DMAzN//8abzwM9sQ2WrquF5Y0zaVtcpBNWsrQNpCwdJTYjm+xLcJkEEaFKQQ0TYOiKLDfH/j+mmXI8pzvWZbjZbdD07Ysr+sGVV1jtz9AdQ5EcTIQuKBpmhjjOGKaQjq/ZDM/DAPrvVWQ9RZdu4XrSwjvPZxzrIwxLuCI6UzM6hoXfnAK7+UjzHkD379BtG2Lt6KA9wP+SpTpJYlOa2itWemcB2X8G1hrcSxLGGPhvYNzFuM4QEgpcTqd2Ck9MsbA0HkNxvK7vu9BtiSb7SiQqOsaRXGElAr/QaLrOo4WQly6eBepyzQ2lNV6KsRZSlRVxaVQ2uT8LoyB7jTbaZZ92nHJpKSyqTnzP7iEuQE0Vs67RTc3RScn1Ex6Q1kKulDZSiko1bHCpo+ewQ5Z7haegpPD9Xv6BkEdplWi9G/OWxxppO83xaZxmD+bEEJAiDGV5rB5fkKVPyAGu2zKNXzb5fXa/TScV/O2ww8gP0Xn/uDD0QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Create React App with Fable Result&quot;
         title=&quot;Create React App with Fable Result&quot;
-        src=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/799d3/create-react-app-with-fable-result.png&quot;
-        srcset=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/00d96/create-react-app-with-fable-result.png 148w,
-/static/2252e5e58a7f80c338fd07acecd7f9a0/0b23c/create-react-app-with-fable-result.png 295w,
-/static/2252e5e58a7f80c338fd07acecd7f9a0/799d3/create-react-app-with-fable-result.png 590w,
-/static/2252e5e58a7f80c338fd07acecd7f9a0/2a3d6/create-react-app-with-fable-result.png 885w,
-/static/2252e5e58a7f80c338fd07acecd7f9a0/c112d/create-react-app-with-fable-result.png 1150w&quot;
+        src=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/fcda8/create-react-app-with-fable-result.png&quot;
+        srcset=&quot;/static/2252e5e58a7f80c338fd07acecd7f9a0/12f09/create-react-app-with-fable-result.png 148w,
+/static/2252e5e58a7f80c338fd07acecd7f9a0/e4a3f/create-react-app-with-fable-result.png 295w,
+/static/2252e5e58a7f80c338fd07acecd7f9a0/fcda8/create-react-app-with-fable-result.png 590w,
+/static/2252e5e58a7f80c338fd07acecd7f9a0/efc66/create-react-app-with-fable-result.png 885w,
+/static/2252e5e58a7f80c338fd07acecd7f9a0/33d1d/create-react-app-with-fable-result.png 1150w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -912,9 +917,9 @@ There are pros and cons to it and it certainly is not a silver bullet.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Part of the application is no longer statically typed. It provides speed but a what cost, right?&lt;/li&gt;
 &lt;li&gt;The initial setup is rather time consuming. Doing the whole FAKE setup to have everything in place took some time. However, I really enjoyed it so I didn’t really mind.&lt;/li&gt;
-&lt;li&gt;The output of the console is less clear. Since we are using two processes to compile all the code to JavaScript, it can get hard to spot what is going wrong from time to time. Create React Application has the habit of clearing the screen when it compiles.
-Consequentially, you need to scroll to see the F# error you might have.&lt;/li&gt;
+&lt;li&gt;The output of the console is less clear. Since we are using two processes to compile all the code to JavaScript, it can get hard to spot what is going wrong from time to time. Create React Application has the habit of clearing the screen when it compiles.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Consequentially, you need to scroll to see the F# error you might have.&lt;/p&gt;
 &lt;p&gt;Overall, I like this, and time will tell if this ends up to be my new default or not.
 Thanks for reading this far and I hope you enjoy the rest the of &lt;strong&gt;F# Advent calendar&lt;/strong&gt;!&lt;/p&gt;
 &lt;p&gt;Yours truly,&lt;br&gt;
@@ -926,7 +931,7 @@ This blogpost is meant to capture what you knew then in case you sorta forgot.&l
 &lt;h2&gt;The good part&lt;/h2&gt;
 &lt;p&gt;Once you logged in to &lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis&lt;/a&gt;, create a project by selecting a repository. Don’t worry you log in with your GitHub account and hit the add button.
 They know you are you and you get to choose a repository you have on GitHub.&lt;/p&gt;
-&lt;p&gt;If you did that then create a &lt;code class=&quot;language-text&quot;&gt;.travis.yml&lt;/code&gt; similar to &lt;/p&gt;
+&lt;p&gt;If you did that then create a &lt;code class=&quot;language-text&quot;&gt;.travis.yml&lt;/code&gt; similar to&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; minimal
 
 &lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
@@ -969,32 +974,33 @@ nojaf&lt;/p&gt;
 &lt;p&gt;To get started we will follow the general approach of scaffolding a new extension. Using the &lt;a href=&quot;https://code.visualstudio.com/docs/extensions/yocode&quot;&gt;yeoman&lt;/a&gt; generator we will scaffold a new &lt;em&gt;JavaScript&lt;/em&gt; extension.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/473f82c71001c8c1871c1da20220b763/683fc/yo-code.png&quot;
+    href=&quot;/static/473f82c71001c8c1871c1da20220b763/59000/yo-code.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.30316248636859%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB7UlEQVQ4y41T7W7aQBD0w7TF8flsg+svjFUMTlCR+LKxCYGmRALe/w0muyucIEqk/hjd+c43N7OzZ/R6PpJ+gjgOEAQBPM8TdLtd2LYt0Fp/zK/B67cwTNNEVyn4vo9hnmM6nWIymSCnueu6ULT3FZnjOPLPNQzXdZAmIaIoENIsy0hxH6zcJaWaDjlf4JZMCBXd5jkK2lYwLQsdUtzpmFCWgqttghYIwR1CmfP+Bcbj5BFlWWG1KlGt1zIulkv8Itua1H5LEvyIIpik3qLDii61qAzqAou+bYLmMthEWNYlTsczzuczjqcTDocDjscjmt0OaVEgHI0QD4eI0hQpIaELGH0qS0rg8SeFqVgpE46fRti9vmC//4PD2xv2r3/x9HuK+WyG5XyOgkhTJoljOdwSMviCAcEnQpvts2XL/Y4497CuajSbDZarFeZEVFWVgBO3b9tGfc7ZNltt62vo3gMGRYB63QjhqiyxpBo2dY2crLp30pWW0c7doD4J6wab52dRWBPZhsizwUBseG2a/wFD+w/IJiERbLF92YpNJmQU47GQRpQyt4h3p+/+6UObFCYjn2yWKIlsNl9QDRdim5uc2+L6aX1Yvoy3ewZHHnGC3BJ9ejGhK6+GVbWpSpqklMd2PQxD+Zb2uezz2ju8o63FtXqlxQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB9klEQVQ4y4WT/ZKaMBTFeZd2OgokgCQKyofIzIK7WnFHQNC1O2PX93+Ds5OLVm1t+8eZ3CTkl9x7DxrnHEIICOHC931IKTEcDmk0TfOfYoyBMX4V59AMvQ/BOQGSZIbFYoE8zxHHMdRldJjdQAjUwdS+ZVl30izbgu9LuO4A3LII7AwG9PH/9DuMgAoiHAu2ZRFQ3axeomLbtq6A8/4dUI2UdicVa8VrgaZpsX97w26/R9u2aNoWs+US/SjClyDAN89Hz3VhcA7D0GEYxi/pug7TMLpSmAxa3Wzx8fOEj9MJx+MRP97fcTgcUNZbpFmGME0RJQnCKMJ0OkUURSRVYzWfxjHkaASDW90Lo9kEr9UKbbsjUN20SJ8yfF8uUaxWmKUphOvCdUXnBoo7CSEhhYDtONRhVQatb3/FJBWoyhplVWG9XqMoCpRlSfEsSSgVdlOrq2UYpcrPHScgc3uIn/w/gFVVwfc86L1ed4Cdm3HbBIKwu0ZpTCigh6raoqprAipYudkgDAJKceA4Z5s8sM5FF9sw2cN0Pkbb7NC0DTZlScCqrJAkCb1S1e6R5x76kLk6xlOJ55cFnhcvyLIcWZ5jPp/Tr6is8TcTPwRKOcRo5MHzfQxHA0hpQkoBtT4ej0lhGJKCIIDneZhMJvS/q7mKL/tq7ROuV64ubkVFOQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;vs code&quot;
         title=&quot;vs code&quot;
-        src=&quot;/static/473f82c71001c8c1871c1da20220b763/799d3/yo-code.png&quot;
-        srcset=&quot;/static/473f82c71001c8c1871c1da20220b763/00d96/yo-code.png 148w,
-/static/473f82c71001c8c1871c1da20220b763/0b23c/yo-code.png 295w,
-/static/473f82c71001c8c1871c1da20220b763/799d3/yo-code.png 590w,
-/static/473f82c71001c8c1871c1da20220b763/2a3d6/yo-code.png 885w,
-/static/473f82c71001c8c1871c1da20220b763/683fc/yo-code.png 917w&quot;
+        src=&quot;/static/473f82c71001c8c1871c1da20220b763/fcda8/yo-code.png&quot;
+        srcset=&quot;/static/473f82c71001c8c1871c1da20220b763/12f09/yo-code.png 148w,
+/static/473f82c71001c8c1871c1da20220b763/e4a3f/yo-code.png 295w,
+/static/473f82c71001c8c1871c1da20220b763/fcda8/yo-code.png 590w,
+/static/473f82c71001c8c1871c1da20220b763/efc66/yo-code.png 885w,
+/static/473f82c71001c8c1871c1da20220b763/59000/yo-code.png 917w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1099,30 +1105,31 @@ However in our current setup we want our extension to run when VS Code starts.&l
 &lt;p&gt;and start debugging.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 460px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 460px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png&quot;
+    href=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/08a84/debug.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 102.17391304347827%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABuElEQVQ4y62U3Y7BUBDH+xrYi0W11Q+tVbbFUiHxFRKWFUQiceOplgdwaZ/vv2fGyvoIydpe/DPp6cxv5pwzZyT3tQivWIZpmnCcLCwrA103xLclrA7DMGFYJmzHRqlUYtm2I/wslm3b8P0iMhlb+BqQGvU6up0O0iK4UqnA83wGqaoGTUsjmZBRrJQxGL8jm31BPl/A83McyaTMyRzHQbn8xsWk0zok13XZyfd9tFot9Pt91Go15HI5sZ4XkCyCoIb9/gvb7Rabzw12ux1msxnvynXzDCV/slK1WkWz2YSiqJz1KFlOnWk4HGKxWGDyMRGwORcRjyeQSiks8qE4yfM8UJWapvHi0eFUsqwgFntCJBJFNBpje4SdxsiyANbFGbbbbbGQ4sBr2CGAdqCqKlvS6b9fK4C090KhwM63KjwGXeoyKQOn0ynW6/XPuSk3gfd0Buz1epjP51dZHwYGQYBGo8HnEgqw2+1iNBpd3djDQGpoek70MkIB0hmOx+OHYVdAampqm3uN/Scgvd/BYBDepdAAODR2SBUul0usVquzh/4vIE0bUmhbphlGomEaCpCGAymsW/4GEphanOxa5RsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 102.02702702702702%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABt0lEQVQ4y61Uy07CUBDtTwjqBigtLRh621vog4KEgFZJSSQQwoKw5A+IbtSFLnTHb+hPHjNjMCiIRrs4ucnc0zNn7kxHEX4TbhDBsW1I6cK2bTiOhOu6sCwB6UhYQsB2bIRhA41Gg3m1Wo15UkoEQQAhBKrVKpT4vIfLixi6XuIPhLBRLGoMiuVzBXhRgM5ZF9JxWezo6Bi5XB6mWWZ+q3XKyQ3DhOJ5PjzPQxRFSJIEV1dDdDoduG6N4+Q4SQZ4eXnF48MDnp+esVqtMBgM+K5er7PLd8cOlHa7jV6vB9M0OWO5XOFMpZLBJ7msVE6wXC5xf3ePm+sb3N7eodlsoVBQmbMGcRV6E8pCAlSmpulboHg2e4iDgwwymSyf+XyBBb7ylG63C4Ku60z4DptO1m5IZJPDgr7vIwzDnYRN7HK+Gf8QHA6HGI/H0DRtr8N9+CQ4n8+xWCygqmo6gtQUAjVlX8m/FpxMJphOpx+D/G9BGl5Cag5HoxE3JVWH68FOxWG/3+d/9ac5/LUgDTbBMFJyOJvNQJ1W1WI6b0hrKI7jP7vbEqQta1kWr65USqbFSOueNkgagm/f7lseTlsktgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;debug&quot;
         title=&quot;debug&quot;
-        src=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png&quot;
-        srcset=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/00d96/debug.png 148w,
-/static/a96927a8495bf0fe0fe99a17d9e683a6/0b23c/debug.png 295w,
-/static/a96927a8495bf0fe0fe99a17d9e683a6/d5727/debug.png 460w&quot;
+        src=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/08a84/debug.png&quot;
+        srcset=&quot;/static/a96927a8495bf0fe0fe99a17d9e683a6/12f09/debug.png 148w,
+/static/a96927a8495bf0fe0fe99a17d9e683a6/e4a3f/debug.png 295w,
+/static/a96927a8495bf0fe0fe99a17d9e683a6/08a84/debug.png 460w&quot;
         sizes=&quot;(max-width: 460px) 100vw, 460px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1131,33 +1138,34 @@ However in our current setup we want our extension to run when VS Code starts.&l
 We even see a crash when we toggle the developer tools.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/bd44f/debug-failure-line-one-1.png&quot;
+    href=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/7a18f/debug-failure-line-one-1.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 54.20560747663551%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACnUlEQVQozz2S204TURSG5wUsFbjQHubQaWfaKaVAO22lhBATX0kTSaAC1RsTr3wCX0CvTDTGEKMXakQTAbHSAj0OPTGddhhoye+aqTLJyr/2JPvb/7/2ZtLZZWTuLCKTTiOZVJFIJEmTSKVSUFXV0UQiAUVRkM8/xreDJl5/KuH912Ontncq+LjbwofvDWz/qINJJBYQCErw+1l4vR74fD5SLwIBkSrg9Czrh9vtxvp6DgPrCvWmDq1toNHSUTvVUS3uo1PaQbNSBJNKqRDkWfDyHFhOoM0swf0IBoOQZRlelqBcEDfck3iUy8H+rkbDazX7ffz+8gJv3j1Bbf8lmGw2C57nCMTBz3LXQNtdOBxGSJIgCAG4b46Bl4MBtIaGbvcM3bMuKTn8+Qr7n5+jVXgLJpNOIajMQ4qpTnRB4J3YNlAURae3D3G5XMhvbeHSsqBpGnRdh2EYpD2YZx3A6sMgZZbIISfNQYyqEOUouIBEoDGM53kHZveT09PYWFuD1enAtM4xGo1gEbxPkXvlCs4HJrTTJph4PO5s9Pu8TlT2X+xQKOTM0YbZ6wn3BHIEvLKGMCimYTvs9dButdClQzrttqNMLDbjOOOlGDhRpoux4ePINlQQhLHDqSlsPFzFRb2FZqGEzskJtFIJ1UIBerUKo17HgEbBxGYIFklCiK+AFULOzDwej+PaBv6/JBc9m837D4BKDb29XzAPDnCxtwerWIRB8N7REQa1mh2ZnkxIpqejkDsWclBENKpglv7PLcwjQn1EieCW9zY2V1cxLGlo7/6BfngIk2AWuRxWaIYEtGyHd9V7UKU00uEMkiFSKYOl2AoWZ5ahyotOZSJLiPrjeJp/hlZbx/FxGSflMioUtUGQeqOB02YTpmniL0AvEAfAcxzDAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 54.05405405405405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACp0lEQVQozz2S224bBRRF5wuCsasK6rmPx+PEl7hp7Intllb8WblIadIkfUDiA3jiC5DgCUqrVkiNihBBsXGcTDK+jz0Zx57GUReaoXCkrX2elvY+OsLW/Uc07j+g0WiwtVXDtm1se4t6vU6tVqNWq1OpVCmWSuwfPOPweMiPr9o8PzzllzdnvHh7zus/R7x86/Lr7y7CxsYGesZEkiREMY0oRi6i6waapiGm0yiyTCqZ5MmTHbxgycmFx2l3SsedxHvn7xa99hHnZw5CZfMeWq6Maq0jKyqyLMdw0zSxrBx3JI20bLCSSPJ0d5d43i8/+A2L4JLmb9/x/OddRq0fEKJaUYIIJsnK/0BD12NgxrRQNYNEMsXuzg7XV1cMh0Omvs906uONPTqH3/PmxT7D5k8I1WqVzGoZM38XTTfRVJW0KGIYRixJEpFliZWVFZ4dHHAdhnS7XSaTCUEQ4Ps+i+kQZmNmkxFCo15DtjbIFG0Mq4Cim+i6HktR/k0cgVO3brG3vU04mbAIQ5bLJWEYxtDg/ILFPKQ3GCKUy2WUqK4oIklRdSUGRTeMQBE4OkEikWBne5v375YE/iWzIOBqNmPieUy9ceye5yEUCgWM7BpqZg1Zz8ZA8UPlCPpf2mQqxdOvvua65zFsdRg7Dr1Oh/NmE991Y10NBgjFQh51rYq2/hBZM+O3Sd9Jo6laDJSj1JLER4mP2Xv8GFyXy6O/mB8fEx4dsTg5IXAcgrMz5t0uQrFUQDFzqFYBSZHIZjSsnEW+WGC9vI61amHlstz+9BP2vviSm3YP749jLltNwlaLd+02N47DvN0m7PcRHm5+zr3sJpVchbtmBTtn86D8iHrpMyqrtVh2vkFeKfHN/rd4Yx/n1MFxHC5cl8FgQL/fZzQasZjP+QdKUBFge3bzXAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;crash in logs&quot;
         title=&quot;crash in logs&quot;
-        src=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/799d3/debug-failure-line-one-1.png&quot;
-        srcset=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/00d96/debug-failure-line-one-1.png 148w,
-/static/f8c37c50c7bdca4652a227666fe38dec/0b23c/debug-failure-line-one-1.png 295w,
-/static/f8c37c50c7bdca4652a227666fe38dec/799d3/debug-failure-line-one-1.png 590w,
-/static/f8c37c50c7bdca4652a227666fe38dec/2a3d6/debug-failure-line-one-1.png 885w,
-/static/f8c37c50c7bdca4652a227666fe38dec/ae92f/debug-failure-line-one-1.png 1180w,
-/static/f8c37c50c7bdca4652a227666fe38dec/bd44f/debug-failure-line-one-1.png 1284w&quot;
+        src=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/fcda8/debug-failure-line-one-1.png&quot;
+        srcset=&quot;/static/f8c37c50c7bdca4652a227666fe38dec/12f09/debug-failure-line-one-1.png 148w,
+/static/f8c37c50c7bdca4652a227666fe38dec/e4a3f/debug-failure-line-one-1.png 295w,
+/static/f8c37c50c7bdca4652a227666fe38dec/fcda8/debug-failure-line-one-1.png 590w,
+/static/f8c37c50c7bdca4652a227666fe38dec/efc66/debug-failure-line-one-1.png 885w,
+/static/f8c37c50c7bdca4652a227666fe38dec/c83ae/debug-failure-line-one-1.png 1180w,
+/static/f8c37c50c7bdca4652a227666fe38dec/7a18f/debug-failure-line-one-1.png 1284w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1198,31 +1206,32 @@ function activate(_arg1) {
 &lt;p&gt;and our extension now runs!&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/3d556a0ded333155570b83687dc1ffff/3eaa1/extension-loaded.png&quot;
+    href=&quot;/static/3d556a0ded333155570b83687dc1ffff/66caf/extension-loaded.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 71.16060961313013%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC7UlEQVQ4y2WTW07bQBSGvYEGEl7aJL7FdhJTQrm0PFZq2r60UrfQhxYIsIaqu2ABSBW0L1RiGUAlhEgJF5MbsWM7iRMCIUHJ3zOGQCUsfTozHvufc878w0mSBIYoij6KoiAUCmEpk0HfrqJkGLjudjEYDHB1deXTue6gUauhRWtdz0Oz1US73cbm5ia4SCSCIdFoFKIg+IILC4vo1D04VZsEuuh0rv3Y7fZogx48r4mGaeGi3oDXbOHmpo+NjQ1wmqYhmUxCVVVfVCDBkZFREvyKy7YDr17C5YWNeq0C8/wMrl1Gq2mjUTdh09hrWD5AD79+roOLx+NgosOyY7KM0dEgVpbn0WrUYBznUMznYFUM2NYZ6m4ZdadIsXSPXc2T4CW2tn6D03Xdz04mISaqxGIIBkPILH5Gy6ugVC6iSpmY1gn1isTqBTiugUajiJpjkLhBbTkGBh5l+AMcK5FlxsoNh8N+HwOBADLLK+hTsy/+HqBnnGJQLhFU7ukpnNwh3GwWzvk5XNdFtcpKBtbW1sBNpiaRSqUow5gvzLIdC40hk1lCz6Ue7u/j+uQE/UoFfdNEu1SCQ3P36Ag2zR0maFUfBJ9Fn4IREcI+gszjSTCAxfkvuCzYqBxSn85MeBZBP7vFIkzbhuk41AYLFlGhzdizvk6HkpY+gPFGvCUtfcT75Cd8W/yO3M4uDnb/IEsc7Gwju72N4709FPL5WwoF5Cka5Mca+XJ1dRXcuJrCkOcsKhOIiwkokuafeIwOShYlinfjmIIYIdPh/Q97J9E3nKKpGKISskKLaoy8qVA/Zeh6HFNTKZrHoROaQvYSolBkgTbkaZNbJJH333GaSh8N0eJkGxUvEyrezep4O6Pj9YsE0jPjSE/rmJuQMT0hYSIhYpbizB1T4xImdQnjcZHdlFshTdX8qNJdniajv0rqPjNk/NlEEnN0mxSB7MXz4HmB4B8RJe4F1aEgRbbAkx+ZJ3k++jAWeP9qCvfxMf8ALTyayZHgR88AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 70.94594594594594%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC9UlEQVQ4y33Ty24bVRzH8XmB4rhNghx7fJuLnXHqOioSYsMCyoIFLHgLtiysxKGXB0iEZEWVItSnaCJYlCxAtGZXRbRIrS/El9ieGY8nnsQep02/1Ry3acSCkT46Z87ip///f2akRCLBZel0mnA4zO2NDbAsWo0GZ69ecX7+Gt/38ScT/OkUx7IY1etMXZeB4zAZj9nZ2UGKRqNcFo/HReDa2hpT74SBPcD3p5yOx4zHE7EfT3yGwyFOr4/nHuMejwiecrmMpOs6hmGgaRqxWExUGQqFKJWK+BObgVnHczvYZotOu4plNvGO+wwHHSyrhTvsij2ccf/+NlImk0FRFFFZEJZKpQiF5rhzu4jnutRevKD570u6nRoDs4nrtBlYhzh2E8duCWavDvg8ePDzh8BgdslkEkVJMzcXZqP0A6den3a7gW21Mfs1PO8Iy6pj2w0c5xDbrOFYdazeS2BEufwTUhASWFpaIhKJiLY/unKFH+/eg5MTTp8/47xeg1Ybmk28ag37+T8M/n6G3euLCzFNS8xwa2sLaWVlRcwwaDUIDmYZvnqV0vo6014P6+lTTqtVzrpHnHW7DA8P6Var9KpVjjodur0unU6bN2/O2dzc/HDLsiwLQWj42jXurZd4bXpYDQvvaIBnW5w4DsdBqOcxHI1wXVdwHEdUuL29jXQr9Q1Ccuar9Ld8nfuOO9/f5fdff+G3vT3293bZ391l/+FD/nj0iMpfFSpPnlCpVITHj//k4OCAYrGIpKsZLmgZVEUjEQ9mGmNh8WMW/yM4W1hYZH5+4Z1F5t+9RyJLSKqmIagamqaTVhQyuko+p5PLqqzmDT79pMD1XJZCfhkjk0ZTkhiZFMv6TFZLoatJMmoSSVN1ZmaBalrhM0Pn1k1D+Dyf5YtVgy8Ly9w0EuSNBIaeYDWX5IaRpGAkuZ5NCLoaRwpChEuBN1SVgqYL+Yu9RkKOE43JxGRZrO/FLrkIfN+yoqpEYzHxPQrybA3O5Lgs/qj/8xbLtJXumGAJXAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;extension runs&quot;
         title=&quot;extension runs&quot;
-        src=&quot;/static/3d556a0ded333155570b83687dc1ffff/799d3/extension-loaded.png&quot;
-        srcset=&quot;/static/3d556a0ded333155570b83687dc1ffff/00d96/extension-loaded.png 148w,
-/static/3d556a0ded333155570b83687dc1ffff/0b23c/extension-loaded.png 295w,
-/static/3d556a0ded333155570b83687dc1ffff/799d3/extension-loaded.png 590w,
-/static/3d556a0ded333155570b83687dc1ffff/3eaa1/extension-loaded.png 853w&quot;
+        src=&quot;/static/3d556a0ded333155570b83687dc1ffff/fcda8/extension-loaded.png&quot;
+        srcset=&quot;/static/3d556a0ded333155570b83687dc1ffff/12f09/extension-loaded.png 148w,
+/static/3d556a0ded333155570b83687dc1ffff/e4a3f/extension-loaded.png 295w,
+/static/3d556a0ded333155570b83687dc1ffff/fcda8/extension-loaded.png 590w,
+/static/3d556a0ded333155570b83687dc1ffff/66caf/extension-loaded.png 853w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1308,31 +1317,32 @@ test &quot;simple Jest test should be picked up&quot; &amp;lt;| fun () -&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/2c528b939633877846a9884dc9ea30c3/41c64/failing-test.png&quot;
+    href=&quot;/static/2c528b939633877846a9884dc9ea30c3/3075e/failing-test.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 93.2367149758454%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB40lEQVQ4y41TSZKcMBDs/3/EFx/nIZ6rY3phQKxCe2mXmKI99g3aGRAhFKQqlZV1sR6GlYxT3zwazpj3wQCAMUop5/22bbXW7QAX1ba/f/6Qcy+lUnKHBUgpxRBzztspLn6amrc38rhPdJ3maRiHha7WOSElShCcO+cOyaiq5hwZywDR6KRU5CwpHZY1SJFTKqUckvFOwYJcWcRfOQMpBV2ZWWfoXYAXsvGNMXDJ7dMnAxoFx5ziFkstr8khhM+l+eTdqGcKyyB7GlZf/PYKOxm9lfPsnP23W/EyW31N/tNGFBxTTnXLpWCbUkandqtwr5R6Ri45SyEk2Pswt6S/Xa9d196uH4SQx6PB7p9WrtV7j7FIwccQYtzjgUZ4XIdYzysjMAyAB9QNdQbv8AjvLCrHkzAk5SBq32TsE9eGGrdqGFe2cIGBk0ZTShnjRzl53rkUSpemuS/L0jD9saoHN5/aE2H6cQILR6PxXVlrzTnHSWJCKPzwgYLnNnAXtPNH8b5YawfST9hnA5lSjxqeUrf/wAWz/P7rnXPhrCW3GwpAi/3fST4Z5p0MWs19zxjDkm3XgbXlCQz8OXMnBxcE5UNPSEeGfiBd1xEyTWPXtrsLUmL4rAWMitYKcG60xmk3WuPzBfRqULSVphPzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 93.24324324324323%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB3UlEQVQ4y5WUSY4bMQxFff9bZJGL9A2SLJIAcbvaNatUoihqHoNyemsX8gEtH0h+fupiHC0wrWzu771EdN4TkSZCRO9De6mL+PXz99cvijMpUSFKAGttzjnFWEo5gcO6jm9v8zhunLONLcuyC2GsAQDSWgjhvX8K19pqShGgGJOIslJJQiIKnCei+tBTuNXqtJZCRMQsQSPCLnbLmVt8dCdtt9Z88AKPVpVWSitQMtWUW66tnsPW2W699TBshu+Wr7Tsfg/lxOpPOMZAG08xtv/UYVgphZTyKbtcQor+UAghpJx8CC8WdlTOMSpENLabln4Y39+v49Dfrn/Gaey6D2v0i8q1luqcSzHUnEou5bGenEs+XjmZuZQMQmgfTaree6vJWWs0hRCMc8YcgXsBF6O1QLVrt5FZdskAmQDUetsYonq2ssfMOTO2dt2NcX7j+L6rDsxd+QHUtDLj3DPPjplLKUodlpEmidIYrX0EF9BH9NH4EJ6c14VIfXQdY1s0Ji2L43xZVwnQWnuR6k+Yc/792w/S2mi6X69Wm+MeHw7VdpLPi0bcl5lvG2NsGEfr3AGnIx7nlZ3zgot5msZxmud5uPd93y/z1N97IQQIoMfPIgEQ8Z81xlopgUj9BUvnUGoUqgY/AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;failing test&quot;
         title=&quot;failing test&quot;
-        src=&quot;/static/2c528b939633877846a9884dc9ea30c3/799d3/failing-test.png&quot;
-        srcset=&quot;/static/2c528b939633877846a9884dc9ea30c3/00d96/failing-test.png 148w,
-/static/2c528b939633877846a9884dc9ea30c3/0b23c/failing-test.png 295w,
-/static/2c528b939633877846a9884dc9ea30c3/799d3/failing-test.png 590w,
-/static/2c528b939633877846a9884dc9ea30c3/41c64/failing-test.png 621w&quot;
+        src=&quot;/static/2c528b939633877846a9884dc9ea30c3/fcda8/failing-test.png&quot;
+        srcset=&quot;/static/2c528b939633877846a9884dc9ea30c3/12f09/failing-test.png 148w,
+/static/2c528b939633877846a9884dc9ea30c3/e4a3f/failing-test.png 295w,
+/static/2c528b939633877846a9884dc9ea30c3/fcda8/failing-test.png 590w,
+/static/2c528b939633877846a9884dc9ea30c3/3075e/failing-test.png 621w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1540,30 +1550,31 @@ let updateDecorations() =
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;updateDecorations&lt;/code&gt; is rather straightforward as well. We map the result of &lt;code class=&quot;language-text&quot;&gt;parseText&lt;/code&gt; and make ranges out of it. The result looks as follows:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 440px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 440px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png&quot;
+    href=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/48c0e/markdown-highlighting-1.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 59.31818181818181%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACSUlEQVQoz31S2XLaQBDU/39AXvIFSbmSOFCJQyDEQbINMrdAAoTQARb3Ja0Ors6wIna5KslD185qe3tnuiU09BbqPQXjgYyJVYHdl+FaVXQVEUOjjNHgEVavhCezwtFri7D1EiZOHX3tjnPGdg1mt4j1VIXQVe/RIZLWvMWDnIdS+Y5WNQulnMFALWA57WDutrCatOEturSq0NsS6o8ZNAhKJUv8HJrE11u3EJqlFMqFd6hV8rj+kYEsfUZRTKH68AV9IqxXJmauiqXbRuyZiLcmDFWCmP8A+S5N/DRKUorXSvkbhJ6Sh9bIwZu2sdsOEKwNeCTijg2OxcKBOz3Dxo45QDTCgdkEK4H/gj1B0OpZFH+9hzfvYOc7CKmD2LOwWZpgGwvbWQeLscofCjfG8xpuBgnWfb6PLhA6jSzUaoYENRK0+WHsj+BOTMynOoVVgqFJ8Ocq/MUF8xfEJOoveryhMwS1lkH1/poONerOorFGcAwJY1dHFIdgoY94FyCOfARUs8BDeP5GexYx9DoiddbnVhwDJxEsSx/BKMGIRo39IUZOEU9jjYtt/SUYWyGKViR4QUD7YEnrGroukg06TuGQe0sj5yidr88jB+Qhtg72I/KURHfDNvY0Ukx1THVktxBT6kdm4kQgEk5BIsY7lAtXuPn0BmyZdOivB0SmRDcm9mTBnoLhq3euTY4DPXygywdKfc/TTsR4h3rrJ85JezMymIiMTD7R4fEfONBofy7/7VyQxStk028pqW5iLP/H/gfnVUdH9lrwNw5wcG3UcUJ0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 59.45945945945946%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACRklEQVQoz3WSa1PaQBSG8/9/RD+0/drLdLROUQtWQQWiIpdwT5YEEJFAQrK5KD6dLA692Q/PvHt2zrzn7DmrlTstjP4td2aFqaXjmDrOsEq3ecbEusIelLEHFcamruJO41Sdp+KavlFSmsWjfgVv3kYzWkX6xin12gkX5WOaV4c0MvRv2L0L3HmXxbTJamYQuD3caZN2/YSbSo7bao7G1ZHKr+uH9JsnaNelT9RKH7isFtjPf0MvfaFc3Of68iuie85qKZhPWixnBo+BIPaGtGsFSoXPVM/3qZb2KBf30M/3aV3l0HqNPN16nnjZVcmxb+K5FtO7IbN7k8XCYXpvM5uP2EgH4jFP4YhNOFL6C6EKak39gGrxI4lvEvmCJBBEnsXKFYSZzgzcmUHkDYlWQ+RqsD2/8HucNaS1a4d0bo+JVgNi3yJZZ8ZjJncm7rzHuH+O6F0Sum2ChUG4MAgetoSLNolvsV50d2gN/YBaeY/EHxJ6Jo9yzKDzHdedIOOIMJakqSSOA8JoSxQHJEmIF6zoGgU2oc1z5Ch2hqlvIj2TNHQQZpEHVxBIj3XgIkOXOHKRcqmIpEsSLVmv5wwGp2p2G2mrWWrGTY7WdY7YGxCvhYLViNQxSO/aJE6LJ7dPMjFI7BbxqEF632EjBc9SQDrbmWWqnR69I3/wRlXJnix9i022Mc/i0Rdb1i9kd57YblWZ2DyGYmemOuw3C3Trx8TZtnxB5Fs8S1slvMaTdP7o6G+0s6P3/Mi9JV1baqj//q/X+Z/pTxJzcRMl99aSAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Markdown highlighting in VS Code&quot;
         title=&quot;Markdown highlighting in VS Code&quot;
-        src=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png&quot;
-        srcset=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/00d96/markdown-highlighting-1.png 148w,
-/static/9241f006892f0dab63b9108ff3f3dd96/0b23c/markdown-highlighting-1.png 295w,
-/static/9241f006892f0dab63b9108ff3f3dd96/bafff/markdown-highlighting-1.png 440w&quot;
+        src=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/48c0e/markdown-highlighting-1.png&quot;
+        srcset=&quot;/static/9241f006892f0dab63b9108ff3f3dd96/12f09/markdown-highlighting-1.png 148w,
+/static/9241f006892f0dab63b9108ff3f3dd96/e4a3f/markdown-highlighting-1.png 295w,
+/static/9241f006892f0dab63b9108ff3f3dd96/48c0e/markdown-highlighting-1.png 440w&quot;
         sizes=&quot;(max-width: 440px) 100vw, 440px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1571,30 +1582,31 @@ let updateDecorations() =
 &lt;p&gt;When we switch to preview mode of the Markdown file, we don’t really see any changes.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 440px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 440px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png&quot;
+    href=&quot;/static/6723609f69c56431830f4b400567a18d/48c0e/preview-before-1.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACJUlEQVQ4y31T2XLaQBDU/z/nOY8pVyWVcio2dioYHMyNEYhDJwgJBFgCxI257M7smPKRGD907exot6enZyWVzRr6dh5+uwTHyuGuXYZRu4HbyCPwFLiU8zsK+vS907yFWU/SmRJsIwNLTfH5hpZCz5Ex9lVIhpaGVU+gULxGvRSFWo6hLkdhVuPQq9eoylfQlRj0SpzXpppE6BsYdqsY9mqYBBqvY1/DbGhAKiROoNClb79/IfPnFCmCnD2HWrxEIRNB8uYnsolTFNNnUHLncI0UxoMGk4R3KsaEsK9iGhhYhhYkXYlSogosXTys2ozdwsF27nD8KHLLJ+zpzGbWolwHj/ceocPxA++fVimf+Ir5UCfpBmpyHFolgW5LhmfLaGoZmLUUeZpEy8gx7ic2k+1FkQPZa0jV2wjJVbGetth0zy5icPBHxD2nxBBFeoT11Gay3cJ9F8+EoqpIiCrigthj0wXWb3GM6JkwEz/hljczF31XYXWDbu3FI149LoR1D9j6R9vllo3KFREa5GGFWstiNbZpb2I2MLAYWTy9+chk7wJPtJ5mpXse0v+QIt8/YRU24XfzMNULzAKL39ioX8dy3OD3JVTPBiacRhL1yg9WenQoSv6MPVyGNg1FhmOKP4TUtkpoqGkehlDEnm77wC74uOVU7AtV13nKIakSiqaBjim1LB7shOKXltw3g3uXMHbxmQg0migZvvYO0/Rexd0PCf7FX6p0utsLBokXAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 62.83783783783784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACEklEQVQ4y32SW2/aQBCF/f+f+gP61peofalUpQ0FSkLaGGJsYvCV2EAwF4PBYASBKGm/ahdBLkryMNqd3Z2z58wZpebbDIIKk55Bx1eJe1d4jTJtX2XSNw9nw65BFGq4jTPiXp2OX6Fl/5Z3oXtBv6OzmLgonnWK3zyjdFGkfnmCqeVo1HJ4VwWaRgH9cpdbeh7HyBM6ZWaTFrORTTqyJUgaO3JdJj5K9fQIxyzxvfwLTT1GuzjG1E7wzQKmnueycoKu7s5sPceN/4dsGpKOHOZjl8XEYx47LKctbucBit8oko4acBfBJoJtn3+biId1T+7ZiLx/2N+vbuT97t3z+HsboailI+axRZa0MKo/udIKtP0KvUDDNctY9VMso4TfPMdrnrOaXcti8eHLkIBOPUc6avKwjmRPRG+yiSclJAPr0KvZ0GY6tNhmbcnyrVAM9asEFOjr9Jq7ZYdt1pE528FBzl66KHqN3T6Uavkzi7EtGSb9RzZPe7PvK3dDuJ8c5L0WUnImrB+bBG6e1SxkMXYlcJb4Ozdjl9UsYHCj4Vs/YDN4m+G3Lx/Ixi7Z1KLdKrJMruVcCZD1PJCzJXJhRhwZBF7umSmvMpzHTdZpm26rRuiqDLt1+m1dutptVR/HRkpO3pdcPP4ox0Y8EiwEKxGbRcg63e2fShKmiMI3GZ7nP0mXxe/i4OWw7gf2PVZPAf8DOrS6zdu903YAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Preview mode before&quot;
         title=&quot;Preview mode before&quot;
-        src=&quot;/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png&quot;
-        srcset=&quot;/static/6723609f69c56431830f4b400567a18d/00d96/preview-before-1.png 148w,
-/static/6723609f69c56431830f4b400567a18d/0b23c/preview-before-1.png 295w,
-/static/6723609f69c56431830f4b400567a18d/bafff/preview-before-1.png 440w&quot;
+        src=&quot;/static/6723609f69c56431830f4b400567a18d/48c0e/preview-before-1.png&quot;
+        srcset=&quot;/static/6723609f69c56431830f4b400567a18d/12f09/preview-before-1.png 148w,
+/static/6723609f69c56431830f4b400567a18d/e4a3f/preview-before-1.png 295w,
+/static/6723609f69c56431830f4b400567a18d/48c0e/preview-before-1.png 440w&quot;
         sizes=&quot;(max-width: 440px) 100vw, 440px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1795,30 +1807,31 @@ The reason for this is that Fable compiles these into functions that can be curr
 &lt;p&gt;Final outcome:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 459px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 459px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png&quot;
+    href=&quot;/static/975c1e5833c830738e040a5169778c37/48711/preview-after.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.605664488017425%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB10lEQVQoz4WSW3eaQBSF+f+v/Qd97FptH7qSNiHNxRpjKyCUi4DRKDcvUUHkYhKTncNAE2td6cO3zpxhZs/ew3CKrWF808JoIMC/EeH1BdhaHWNHpl5AMJAwGrYZXeOS1WH3F647DTbuW1eYuDLCiYHFRAfXNerQlAtc/jyFIfFQRR4aYatnUKQTqDSnt09gyt9h/T7DNNAxY2hMpKjxrYX5SEefDuGk+geI4jmOajzExhe0GgfQpWOYbR7N5je0rg4gEppwhJ5+gXBabDYQjgs6iCadUpCEbfUHOEs9RTo3gdzBU+4Ca49qSTku57D28Zi5Ve9Xc9U6ovi2SR1wQv0jsrALfyBDah5Da5/DuW6hbzbZuKCj1Ni93noqEyg27lIIFnA2OVzNLGySAZZ0J9HEpN5mMYo4S6phFSsLe3hIhrgnHna4r+DExmfkCwuzaITpIqAYdFL+GnubP7HegtPEr8hIME0CjMY9zDwZjyzCvzxVdVPF2wdzmMwtcuXjLnGQxQ7WKw/rxEO+euUucV8qE033u+Vq/Huk5DAjh/PQxyIKGPHSRxJ7CCOfKPslkcbei+Beh6bC008w2RPYjbfNX5FTt1q3R/Dw0ztyaG89B/e/vOXwGab8dsZZOYzaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB70lEQVQoz32SW1PaUBSF8/+f+tw/0JlOp7V2xul4qQpFRQnmQjjipeZ2kiAQQEmoFPg6OYilFfvwzT5nZbL22jvRai2HxK3R9uuEtzqJb3DdrBB55+osCy0wFLetEyJXJ7ytcSOOiNw63lUV6er02036bQdNiBOunBKn+iHC2EOY+zT0Ha4aBwjrAMf4Rsva59I+UM9j36QbOdyFFmnSpCttZTbsXChz7ezwHWZ9j09721RLG1QONzBOtxD6V44qWxyVN6mWP2NUtxDn23TjJp2oqcx6sUM/EQzaF6pe2iW0C3OXnjQh95jlPvNxoGoB44B5oeWB0qeZ96SHzP9hlgdMHly0s/IH+kkRu4VZK0Yu4V/XCH/otOzvCKvMZaPCjTgm8U314jTzXzB7aqoJY5s0tpmOPFJpcRfapHGxYKH21IscOqFNN2pw32nxa+S9ymTkodUqH+nHFtkoop3GMJHMx1KNwU/5F4W2Lt0qmlHdZJDYjLMIP/HoBAaP967a2yxb7FLV5TlfjPcaWv14g15kqVRFh3zo8jgKmIwCVZdMVrRlg7UJd768pScNHrOIbipJBzG9fsRgIHkYSlWL+3AonylSTrNA8SKh+m0iS+1o9vzFFszz1TH/sDBaP762+f4NndBQhqtmywTr+F/C341+dW1r4R+jAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;preview after&quot;
         title=&quot;preview after&quot;
-        src=&quot;/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png&quot;
-        srcset=&quot;/static/975c1e5833c830738e040a5169778c37/00d96/preview-after.png 148w,
-/static/975c1e5833c830738e040a5169778c37/0b23c/preview-after.png 295w,
-/static/975c1e5833c830738e040a5169778c37/1f645/preview-after.png 459w&quot;
+        src=&quot;/static/975c1e5833c830738e040a5169778c37/48711/preview-after.png&quot;
+        srcset=&quot;/static/975c1e5833c830738e040a5169778c37/12f09/preview-after.png 148w,
+/static/975c1e5833c830738e040a5169778c37/e4a3f/preview-after.png 295w,
+/static/975c1e5833c830738e040a5169778c37/48711/preview-after.png 459w&quot;
         sizes=&quot;(max-width: 459px) 100vw, 459px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2104,11 +2117,11 @@ You can find the image on &lt;a href=&quot;https://hub.docker.com/r/nojaf/fable/
 &lt;h2&gt;Building a new app&lt;/h2&gt;
 &lt;h3&gt;New project&lt;/h3&gt;
 &lt;p&gt;Create a new folder first. I’m currently on Windows and using Powershell, the steps are very similar on other operating systems.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects&gt; mkdir my&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app  
-&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects&gt; cd my&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects&gt; mkdir my-&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app  
+&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects&gt; cd my-&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Run the Docker image, map port &lt;code class=&quot;language-text&quot;&gt;8080&lt;/code&gt; and add the current folder as a volume.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects\my&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&gt; &lt;span class=&quot;token variable&quot;&gt;$path&lt;/span&gt; = &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token function&quot;&gt;$&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Replace&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;C:\&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/c/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Replace&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;\&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  
-&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects\my&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&gt; docker run &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;it &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;v &lt;span class=&quot;token string&quot;&gt;&quot;${path}:/usr/src/app&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;w &lt;span class=&quot;token string&quot;&gt;&quot;/usr/src/app&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;p 8080:8080 nojaf&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;fable bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects\my-&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&gt; &lt;span class=&quot;token variable&quot;&gt;$path&lt;/span&gt; = &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token function&quot;&gt;$&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Replace&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;C:\&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/c/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Replace&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;\&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  
+&lt;span class=&quot;token function&quot;&gt;PS&lt;/span&gt; C:\Users\nojaf\Projects\my-&lt;span class=&quot;token function&quot;&gt;new-fable&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&gt; docker run &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;it &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;v &lt;span class=&quot;token string&quot;&gt;&quot;${path}:/usr/src/app&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;w &lt;span class=&quot;token string&quot;&gt;&quot;/usr/src/app&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;p 8080:8080 nojaf/fable bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Once inside the container you can just create project with &lt;code class=&quot;language-text&quot;&gt;dotnet new fable&lt;/code&gt;.&lt;br&gt;
 The &lt;a href=&quot;https://github.com/fable-compiler/fable-templates/tree/master/simple/Content&quot;&gt;Fable Simple Template&lt;/a&gt; and the &lt;a href=&quot;https://github.com/fable-elmish/templates&quot;&gt;Elmish template&lt;/a&gt; are already installed in this image.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;root@7e9435460a64:/usr/src/app&lt;span class=&quot;token comment&quot;&gt;# dotnet new fable -lang F#&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2125,10 +2138,10 @@ root@7e9435460a64:/usr/src/app/src&lt;span class=&quot;token comment&quot;&gt;# 
 &lt;p&gt;If you browse to &lt;em&gt;&lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt;&lt;/em&gt; you wouldn’t be able to connect. But why? Didn’t we map the ports in Docker when we ran the &lt;code class=&quot;language-text&quot;&gt;run&lt;/code&gt; command? Yeah, we did, but Docker can’t figure out how to map &lt;em&gt;localhost:8080&lt;/em&gt; to our desktop. It can figure out &lt;strong&gt;&lt;a href=&quot;http://0.0.0.0:8080&quot;&gt;http://0.0.0.0:8080&lt;/a&gt;&lt;/strong&gt; though.&lt;/p&gt;
 &lt;p&gt;So we’ll need to change the webpack config &lt;a href=&quot;https://webpack.js.org/configuration/dev-server/#devserver-host&quot;&gt;devServer host setting&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
-  devServer&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    contentBase&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./public&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    port&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    host&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;
+  &lt;span class=&quot;token literal-property property&quot;&gt;devServer&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;contentBase&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./public&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ow yeah, we now see our Fable app in our browser.&lt;/p&gt;
@@ -2136,12 +2149,12 @@ root@7e9435460a64:/usr/src/app/src&lt;span class=&quot;token comment&quot;&gt;# 
 Because we make the changes outside the container, the file change events aren’t picked up inside the container.&lt;br&gt;
 Luckily, we can configure webpack to &lt;a href=&quot;https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-&quot;&gt;poll our files&lt;/a&gt; to detect changes.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
-  devServer&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    contentBase&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./public&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    port&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    host&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    watchOptions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-      poll&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;token literal-property property&quot;&gt;devServer&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;contentBase&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./public&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;watchOptions&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;poll&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2459,7 +2472,7 @@ nojaf&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Running Laravel pr
 &lt;h2&gt;Getting started&lt;/h2&gt;
 &lt;p&gt;Open a PowerShell window and create a new project folder.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&gt;mkdir laravel-basic-task-list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;ProTip: start using [Terminal Wings](&lt;a href=&quot;https://www.phrozensoft.com/2016/02/terminal&quot;&gt;https://www.phrozensoft.com/2016/02/terminal&lt;/a&gt;&lt;/em&gt;wings-12), it’s super fancy_&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ProTip: start using &lt;a href=&quot;https://www.phrozensoft.com/2016/02/terminal_wings-12&quot;&gt;Terminal Wings&lt;/a&gt;, it’s super fancy&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Enter the newly created folder&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PS MyUser\Projects&gt;cd laravel-basic-task-list
 PS MyUser\Projects\laravel-basic-task-list&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2506,30 +2519,31 @@ This is expected since we didn’t install anything yet.&lt;/p&gt;
 Open up the project folder in a text editor. It should look somewhat like this:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 344px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 344px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/5f1e4/file-structure.png&quot;
+    href=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/75d93/file-structure.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 243.3139534883721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAxCAIAAABVih7fAAAACXBIWXMAABJ0AAASdAHeZh94AAADiklEQVRIx5VW227bOBDt/39MXpx9CdKH7lOQIFi0tWMrsiRKlCiRFHW/yy72UOruNovGoQeQJcMenbmcOcNPjEX7/WG32+4PVtv142Bqfd9/apqGC5GmaVmW+N79Y/pxuS45V1X1/fvWtl9ZElMaBJR5HmFR5BMX3ziX4zi+64wbwMPFmqYuFtOgi30Q9vr0/Pz8x+0tgieB71Patt17gL9BpmEYRVFZFlmW1XXzoed/zm3b2rZ9PB6rqkTwRVmZOuPCX0+nk+s6X778CeRUpetvRsgw+FNKn56elFJZnuNd4ziZOuNpv9/f399LKaIw9H2S8ORy8G+QkyR5eXmp6yrPc3QLxbsCebvd3m42WaZcx0HPELlpn6dpEkJYltU2DTBXql6BvNvtNpsNi5jruscFHG+88Io3OTPGEDlGAtXuu96UYash5ru7uyRmvu+XZTXNs2nOwPE87/HxsVoYKqUE/mDYKhgAHx4eUG0hUTsBsozmzgj78+d7ODMWw67LeS0YtEGlSgh5Ratg8ESrwEpIyjRPpiO5GvJ0HAfIRQ4laa9z/vb1683NjUpT38NUiMEw535pVV3XccI18sJNUw3DDUyEj+sHmC0h5fnHeZ5P8zybkgTI8MQwInme8DiJueBGYU/jWFS1yxJoEEfBWRxGIfptgtwP4zSWxQ9nh5gxz8T3IMHAv0CVX6o9jn1TDyEBKwXnUDIEL1Np4IyqTtNQZPP+L8Y5RJh4JBZcF8xknlfkLg4xUiAZlKAoiytaBcl9OXosDO3DQSp1Pp91zEY5D6Pepy04UmUqQ8/ROSgZlpaR8zi081Cg1Z6D5XF0feJ5rlKFxv9d/P8jSZNwiXWVyhTVzoscwV9Yev/mrKU3Bz2jKFMp9anes5BRQlCIaRr7y8gaumkm54juBmHgh1RvrPlkTpKms+04TkKQkyeZxjTRbWzZaWqzrLAOjJKA4DxCiB9QGo5GYrAi60phNDAbHCSHpAyGzkNbzSrAmeTVtfFJiSNViojeY+ibVnU4CslYH0vyDA2rwJCmNaPnPGepeN0+It2DdQBJHL3rsgs1+xV5aJtOihIno3oxQBttjBW5qAfHElFEPSyegNiu3X08Vesw52qiTpovGsAljzl2rQHyT+1UZ8+iUC1s95AFhBqFvfjOkrNX6xvBIJHAdo6MhTgJm4i+PgRUZS5iqpcr9FYrCfZz+aHz3yey5PGG0gQQAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 243.24324324324326%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAxCAIAAABVih7fAAAACXBIWXMAABJ0AAASdAHeZh94AAADvklEQVRIx5WWa2/bNhSG+///TpduaRCg+9AVuRirkya2Y10pUaQkkoekKPEiBRiUZBtSNLZyPhkWXjwkz8v38ENRFJvtw48ft/socs6/Kjf/4d6oYRg+GGMIIZzzruv6vu/MXL15qb7vD4mllLe3t2maVJSUJSrKKs9yjCuUpQUq2pb7N+Cz2Hs/DEMcx0mSdMYIIQDAPW/g6LKff11eXv755QsXHJUFxngYrDtWL2StdZIkZVEIztu27Uzv3wb+TO77Po5jhFDXaUJIZ8wC7ZPYWuu9n6ZpvV6fn58zxhjnIYSl5OdCCG02GwBQSoUQjq78heycs9auVqvT0z/apikKlCZJXVPv/fPXI2TvPcY4iqK+7yVIrbUx5h3k6+vr3z99AhBJHAuQ0zQdwP5MLori4eGh0514qmEYlh6YtXa9Xp+dnTV1nWd5mqUAEJbvOYqim5sbY0zLmHMuhLB02c65zWbz9evXtm0wrozp3ye+u7v79u0vKaFlLSFECDjc6lfiNE3X67WUwDjnjEmp3iFerVafP59yzhGaL9bs0OXLrqoqjmNjOgABIN/n7aurq5OTE1pTWtfjOL5PTCl9vpUS5IHo+rX44uLit48fQYg8y5q3o+sX4hCC0rpuWpAglXJu9tbSPgfvuQBU4qapBcDj4+M4Tod3/ooMIKuKcMEJIWWJUYEIpX5JegbvQWvcMADgnDVNQxvKOPMLyNaGMbD6cfe9IHS72UTxPo6ipWTnve20pVhICUIopUAIKaVbRB5H39LpfpVXZLvdRvuI0Nkqi+6z877vOs3mVjHGtNZLk8RaN4ZQt2yXZLgs9rsdlzBNkz9olFcOc7Z3tlNKccbmcSelENz0vfPHxd47E5wkhGZplqVpjhDKcyn1oRH7r0m8AIkrKiVQUrdtw4SgTdN1ZoHYeyFlUTcgeFViXJYVpagopFpAtt4HKf1uhylNsiTJc5DwOD0eOLHXJtG6T9O6aZu2ZYwppZbNKmv9OJq6gc19kSdpnMT7KJrbVi6z59ypflDy+U3C2pYL3uluWZL44DsIDMVZuk+iDOUoi/kc3WHJuAmdAkZLNcO51kopdTjJ/rOnDePImirdfS9Qto8ilCVZlgGoEPwSstPK1FQpLZXST0kmD4+r/087TKNQQx63GM+vQISyNE8X3Kr5Tk2urkL2QJqaElKVpCqrYRgWzCprXRiDaH2ZYVo3s76uMDHGHBfbOUVGXGTb+7/jOI7idPewLUtU18y7JVPS+05LyVsAEAIEzOml9fHX0D8Iq+SRRpDNqgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;file structure&quot;
         title=&quot;file structure&quot;
-        src=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/5f1e4/file-structure.png&quot;
-        srcset=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/00d96/file-structure.png 148w,
-/static/3999ca3ce4427f46f77241bcfae4e85a/0b23c/file-structure.png 295w,
-/static/3999ca3ce4427f46f77241bcfae4e85a/5f1e4/file-structure.png 344w&quot;
+        src=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/75d93/file-structure.png&quot;
+        srcset=&quot;/static/3999ca3ce4427f46f77241bcfae4e85a/12f09/file-structure.png 148w,
+/static/3999ca3ce4427f46f77241bcfae4e85a/e4a3f/file-structure.png 295w,
+/static/3999ca3ce4427f46f77241bcfae4e85a/75d93/file-structure.png 344w&quot;
         sizes=&quot;(max-width: 344px) 100vw, 344px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2573,36 +2587,7 @@ nojaf&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A leap in RxJS]]><
 &lt;h2&gt;Explaining the problem&lt;/h2&gt;
 &lt;p&gt;The way the slideshow works is that it shows three images and moves up one frame at a time.&lt;br&gt;
 So initially the first three images are shown and the rest are hidden.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/09b2882a3ce0ec9b0b5802a3089f867d/22cd6/nojaf-slideshow-example.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 28.335301062573787%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABdElEQVQY002Ry0rCURCHz3u4cOvCQHsMhaTQbuBCUMGd6cadi3yGatfFLnZ1W1maEWWllmbRBdpEFkVXMzWrr3P+KDQwDDNz5mN+c0T964dKtU5NxvL9IyOjY8TmF1leiTMXW2B8YpKp6DRLy3FSW9ucX1xSKJbY29unfPdArfHNx2eDz3oTiUDcSUi19kVTJoXiKSaTCZfLRTy+QjQapae7G4fdjtPpJBKJEA6HGRwYwNbVRXp7BzmmAZ9e3ri8ukbMzMZQ1mj+kj8+wWAwYLFYCAQCuN0egsEgNpsNh8PBcAvo8/mwWq0kU2m+f9GW2dnN0NvXj3j/qGmSVSObL6DX69HpdAghMJs78Xg8eL1eCXfjHxoiFArh9/vpMBpJbCS1ZSotxvNrBaHktm+gCuvy0epagrXEJgfZPPuHOel5iqUz7STZ3BG7mQM2k2lubu9Rf6DmFUcxRDtpQ/+buk9V1irVBu9yAyVNKflp9f/DVFT+BxnXgVGO77YOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;slideshow example&quot;
-        title=&quot;slideshow example&quot;
-        src=&quot;/static/09b2882a3ce0ec9b0b5802a3089f867d/799d3/nojaf-slideshow-example.png&quot;
-        srcset=&quot;/static/09b2882a3ce0ec9b0b5802a3089f867d/00d96/nojaf-slideshow-example.png 148w,
-/static/09b2882a3ce0ec9b0b5802a3089f867d/0b23c/nojaf-slideshow-example.png 295w,
-/static/09b2882a3ce0ec9b0b5802a3089f867d/799d3/nojaf-slideshow-example.png 590w,
-/static/09b2882a3ce0ec9b0b5802a3089f867d/22cd6/nojaf-slideshow-example.png 847w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/09b2882a3ce0ec9b0b5802a3089f867d/nojaf-slideshow-example.png&quot; alt=&quot;slideshow example&quot;&gt;&lt;/p&gt;
 &lt;p&gt;You press the right button to move forward and the left to move backwards. Of course at the beginning of the slideshow you can’t move backwards. Thus the left button is hidden. Once you are at the end of the slideshow you don’t see the right button anymore.&lt;/p&gt;
 &lt;h2&gt;The initial approach&lt;/h2&gt;
 &lt;p&gt;We keep track of the current index (starting at zero). When one of the buttons is clicked, we update the index, validate whether the index is still in range, show the correct images and update the buttons.&lt;/p&gt;
@@ -2677,66 +2662,8 @@ So initially the first three images are shown and the rest are hidden.&lt;/p&gt;
 &lt;h3&gt;Rx Marbles&lt;/h3&gt;
 &lt;p&gt;One very helpful site to wrap your head around all the RxJS functions is &lt;a href=&quot;http://rxmarbles.com/&quot;&gt;RxMarbles&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To determine the value of my index I need to do a &lt;strong&gt;merge&lt;/strong&gt; and a &lt;strong&gt;scan&lt;/strong&gt; on my sources.&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/c87be/merge.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.19105199516324%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABdklEQVQoz5VSa08bMRC8//+P+NBWQmoRBQFqKREQkuaSHo2Pq30Xv1/D2lAEiAp1pdFY9u5od9ZNDAlsWkOaCd4oSL5GSBmyW8MrCaEMfg0CKUb8FitoqxBCgPf+BYwxlZvkgbP1J3S8hRZbsJuPsBHYHhCzW9wwjv3ZEomSvy72MIxbOOOgtILW+gnDMEBKSYKJqv8R+T/vSzTWuqosaTylFFQ5E7QP6L98AJ/PIF3ANE1IzuDzVYuj+QbRWezkQ03J7/u+5jRl7kj+vIVgDSK9l45yzkgpwToPS3fpdS75WrgKvhzkkfMDl3fGWEUIHu9FUwwtGilmhJhAC66FxdmC0pUjOzjnyH/tzumpo8IFJa92GFzCrDvEVnTQY4++PaSREu7OT8CP9rG8nuO0ZUhUdNkd4HixwFU3IJCH6tmWhRDVTxKMWLJzDLseevcH/PY7Cca6jOnHCTarFhfdHby1+Mm+4WKzwYqJKqjp75lHjONYBe8BWLG2zLUdq18AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;merge&quot;
-        title=&quot;merge&quot;
-        src=&quot;/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/799d3/merge.png&quot;
-        srcset=&quot;/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/00d96/merge.png 148w,
-/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/0b23c/merge.png 295w,
-/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/799d3/merge.png 590w,
-/static/d4c6a4e1b360ecf7f6e87bf38c27f7cc/c87be/merge.png 827w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/9f45856ce47788a348bd20253f532b44/2cc4f/scan.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 34.74576271186441%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABJ0lEQVQoz2VRy07DMBDM//8OFwRIhUNB3OBWEKigiubpxHH8jpPBa9KqpZbGG8/OesebzDkH5z1MlUMMA0quwFWNXrUwooS1OuWTLkKVezhjzjiCiZy1FlkSaYN+fYPv3Q6rTYG34hHv5SvE1z1EX0WxhdYaOhbVD9eQLYO2C7eg6zr0fY/Mx060Jlyu+fR7nmn7x13WJId/N06paI6xbVvkRYGmrqCUghDi6EQpmZ7GOUcI4djsgIxE5NLFgx8D3DQjeAfvLIybYJf5HGYV/ByjP3JUe4qMug1SolnfgX1sIJ5XePr8wcs2B9/egnfk0kBGjZIq5q7AeAWduCHxBMZYmmNGtsmqbUqMasDY1mDSxD9t47lAGH3KT8tIGrnHGM45inQP4RepUB0MhEyt3wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;scan&quot;
-        title=&quot;scan&quot;
-        src=&quot;/static/9f45856ce47788a348bd20253f532b44/799d3/scan.png&quot;
-        srcset=&quot;/static/9f45856ce47788a348bd20253f532b44/00d96/scan.png 148w,
-/static/9f45856ce47788a348bd20253f532b44/0b23c/scan.png 295w,
-/static/9f45856ce47788a348bd20253f532b44/799d3/scan.png 590w,
-/static/9f45856ce47788a348bd20253f532b44/2cc4f/scan.png 826w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/d4c6a4e1b360ecf7f6e87bf38c27f7cc/merge.png&quot; alt=&quot;merge&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/9f45856ce47788a348bd20253f532b44/scan.png&quot; alt=&quot;scan&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; source &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Rx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Observable  
   &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;rightClickSource&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; leftClickSource&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; arrowKeysSource&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;acc&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; currentValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -2770,15 +2697,15 @@ nojaf&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Redux Thunk, javas
 &lt;p&gt;The main reason why we can’t use async is due to the way a reducer function works. The concept of a reducer is that it takes the current state and an action and it returns the next state. It’s a pure function that does not modify the current state.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myReducer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;previousState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; someAction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
     &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; nextState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-        foo&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;previousState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        bar&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;someAction&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bar
+        &lt;span class=&quot;token literal-property property&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;previousState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;someAction&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bar
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If would we want to do some async stuff we would have to wait until a Promise is resolved and then return the next state. We could just return the previous state and dispatch a new action once our Promise is resolved.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myReducer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;previousState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; someAction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
     &lt;span class=&quot;token function&quot;&gt;someAsyncMethod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;someAction&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bar&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            myStore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;SOME_TYPE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; bar&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            myStore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;SOME_TYPE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; previousState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2819,29 +2746,29 @@ We’ll create a little app that fetches github repositories from a user.&lt;/p&
 &lt;h3&gt;The application state&lt;/h3&gt;
 &lt;p&gt;When creating a Redux application I always find it helpful to have an idea of the application state. We need to store the username, the repositories and a flag whether we are loading the repos or not.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;nojaf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&quot;repos&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&quot;isLoading&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;nojaf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;repos&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;isLoading&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Actions and Action creators&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;addReposAction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;jsonResult&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ADD_TWEETS&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    repos&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; jsonResult
+    &lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ADD_TWEETS&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;repos&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; jsonResult
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;userChangedAction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;USER_CHANGED&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    value&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; value
+    &lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;USER_CHANGED&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; value
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;loadingChangedAction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;IS_LOADING&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    isLoading&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; isLoading
+    &lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;IS_LOADING&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; isLoading
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The first three action creators are easy to understand, they return an action, the end. As we saw in the code of Thunk the action can also be a function.&lt;br&gt;
@@ -2877,9 +2804,9 @@ So our action creator that eventually does some async code should return a funct
 &lt;p&gt;Nothing special here:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;initialState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;  
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    user&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    repos&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    isLoading&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;repos&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
