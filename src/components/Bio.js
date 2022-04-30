@@ -1,6 +1,5 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 function Bio() {
   return (
@@ -11,10 +10,10 @@ function Bio() {
         return (
           <div className="container">
             <div className="author animated fadeIn clearfix">
-              <Image
-                fixed={data.avatar.childImageSharp.fixed}
-                alt={author}
-              />
+              {/*<Image*/}
+              {/*  fixed={data.avatar.childImageSharp.fixed}*/}
+              {/*  alt={author}*/}
+              {/*/>*/}
               <div className="info">
                 <a href="https://twitter.com/verdonckflorian" className="name">
                   Florian Verdonck

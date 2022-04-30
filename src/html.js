@@ -25,8 +25,6 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
-          <script src="/scripts/jquery-2.2.4.min.js"></script>
-          <script src="/scripts/nojaf-body.min.js?v=cbf5158763"></script>
         </body>
       </html>
     )
