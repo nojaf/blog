@@ -1,39 +1,25 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import {Link} from 'gatsby'
 import TimeAgo from 'react-timeago/lib/index'
 
-const BlogPostPreview = ({ node }) => {
-  const { excerpt, frontmatter } = node
-  return [
-    <div key="sample" className="sample animated fadeIn">
-      <div className="container">
-        <div className="title animated fadeInUp">
-          <Link to={frontmatter.path}>
-            <h1>{frontmatter.title}</h1>
-          </Link>
+const BlogPostPreview = ({node}) => {
+    const {excerpt, frontmatter} = node
+    return <div className="row blog-post-preview">
+        <div className="d-none d-md-block col-md-3 meta">
+            <h3>Published</h3>
+            <TimeAgo date={frontmatter.date} className={'timeago'}/>
+            <h4>Tags</h4>
+            <ul className="list-unstyled">
+                {frontmatter.tags.map((t, i) => <li key={i}><Link key={i} to={`/tag/${t}`}>{t}</Link></li>)}
+            </ul>
         </div>
-        <div className="sidebar text-right meta">
-          <div className="published animated fadeInUp">
-            <strong>Published</strong>
-            <TimeAgo date={frontmatter.date} className={'timeago'} />
-          </div>
-          <span className="separator animated fadeInUp">//</span>
-          <div className="tags animated fadeInUp">
-            <strong>Tags</strong>
-            {frontmatter.tags.map((t,i) => <Link key={i} to={`/tag/${t}`}>{t}</Link>)}
-          </div>
-        </div>
-      </div>
-    </div>,
-    <article
-      key="article"
-      className="excerpt animated fadeIn post tag-f tag-fable tag-vscode"
-    >
-      <div className="container">
-        <p>{excerpt}&hellip;</p>
-      </div>
-    </article>,
-  ]
+        <article className="col-md-9">
+            <Link to={`/${frontmatter.path}`}>
+                <h2>{frontmatter.title}</h2>
+            </Link>
+            <p>{excerpt}&hellip;</p>
+        </article>
+    </div>
 }
 
 export default BlogPostPreview

@@ -14,12 +14,12 @@ export default class BlogList extends React.Component {
       <BodyClassName className="paged archive-template">
         <Layout location={this.props.location} title={siteTitle}>
           <SEO title={`Page`} keywords={[`blog`, `blog.nojaf.com`]} />
-          <div className="main">
+          <main className="py-5 container">
             {posts.map((post, idx) => {
               return <BlogPostPreview key={`preview-${idx}`} {...post} />
             })}
             <Navigation total={this.props.data.allMarkdownRemark.totalCount} skip={this.props.pageContext.skip} />
-          </div>
+          </main>
         </Layout>
       </BodyClassName>
     )
