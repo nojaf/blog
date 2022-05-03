@@ -6,7 +6,7 @@ import BlogPostPreview from '../components/BlogPostPreview'
 import { graphql } from 'gatsby'
 
 const Header = ({tag, total}) => {
-  return <header className="animated fadeIn">
+  return <header className="tag-header">
     <div className="container" data-stellar-ratio="0.75">
       <div className="title animated fadeInUp">
         <h1 className="text-capitalize">{tag}</h1>

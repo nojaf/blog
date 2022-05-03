@@ -21,6 +21,9 @@ $pagination-active-color: $black
 $pagination-hover-color: $black
 $pagination-hover-bg: $primary
 
+$paragraph-margin-bottom: 1.5rem
+$headings-margin-bottom: 1.5rem
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables"
 @import "../../../node_modules/bootstrap/scss/mixins"
@@ -90,6 +93,7 @@ nav.navbar
     padding-top: 3rem
     padding-right: 5rem
     text-align: right
+
     h3, time, h4, ul li a
       font-size: 1.4rem
       line-height: 1.5rem
@@ -108,11 +112,103 @@ nav.navbar
 
     ul
       margin-bottom: 0.5rem
+
       li
         a
           text-transform: capitalize
-          transition: color 0.2s ease  
+          transition: color 0.2s ease
+
           &:hover
             color: $primary
             background-color: $black
             padding: 0 5px
+
+  article
+    p
+      margin-bottom: 0
+
+
+.tag-header
+  background-color: $white
+      
+// Blog post
+header
+  position: relative
+  background-position: 50%
+  background-repeat: no-repeat
+  background-size: cover
+  background-color: $primary
+  background-blend-mode: darken
+  
+  .inner
+    position: absolute
+    height: 100%
+    width: 100%
+    background-color: transparentize($dark, 0.33)
+
+  .content
+    z-index: 2
+    position: relative
+    color: white
+    
+    .meta
+      color: $primary
+      text-align: right
+      max-width: 149px
+      padding-top: 3rem
+      padding-bottom: 3rem
+      text-transform: capitalize
+
+      strong, time, ul li, ul li a
+        font-size: 1.2rem
+        line-height: 1.4rem
+        padding: 0
+        margin: 0
+
+      ul
+        margin: 0
+
+      strong
+        font-weight: 700
+        display: block
+        margin: 0
+
+      ul li a
+        color: $primary
+        text-decoration: none
+    
+    h1
+      font-weight: 700
+      margin: 0
+      font-size: 3rem
+      line-height: 3.2rem
+
+    .share
+      color: white
+      text-decoration: none
+      
+      &:hover
+        color: $primary
+      
+      img
+        height: 1.5rem
+        margin-left: 0.5rem
+
+// General
+h2, h3, h4, h5, strong
+  font-weight: 700
+
+a
+  color: $black
+  text-decoration-color: $primary
+
+blockquote
+  background-color: $primary
+  padding: 2rem
+  p
+    margin: 0
+    padding: 0
+    font-style: italic
+
+code.language-text
+  color: $primary

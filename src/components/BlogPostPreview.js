@@ -13,7 +13,7 @@ const BlogPostPreview = ({node}) => {
                 {frontmatter.tags.map((t, i) => <li key={i}><Link key={i} to={`/tag/${t}`}>{t}</Link></li>)}
             </ul>
         </div>
-        <article className="col-md-9">
+        <article className="col col-md-9">
             <Link to={`/${frontmatter.path}`}>
                 <h2>{frontmatter.title}</h2>
             </Link>
