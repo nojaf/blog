@@ -10,7 +10,7 @@ const Contact = props => {
     return (<BodyClassName className="post-template page-template page">
         <Layout
             location={props.location}
-            title="Contact Florian Verdonck at nojaf.com"
+            title="Contact"
         >
             <SEO
                 title="Contact Florian Verdonck at nojaf.com"

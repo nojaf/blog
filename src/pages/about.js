@@ -11,7 +11,7 @@ const About = props => {
         <BodyClassName className="post-template page-template page">
             <Layout location={props.location} title="About blog.nojaf.com">
                 <SEO
-                    title="About blog.nojaf.com"
+                    title="About"
                     keywords={[`blog`, `blog.nojaf.com`]}
                 />
                 <Cover image={image} title={"About Nojaf"} date={"2022-05-07"}/>
