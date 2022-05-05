@@ -13,6 +13,11 @@ $navbar-dark-color: $white
 $navbar-dark-hover-color: $primary
 $nav-link-padding-y: 0
 $font-size-base: 1.4rem
+// $h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.2 !default
+$h4-font-size:                $font-size-base * 1.1 !default
+$h5-font-size:                $font-size-base * 1.05 !default
+$h6-font-size:                $font-size-base !default
 $font-weight-normal: 300
 
 $pagination-color: $black
@@ -70,6 +75,14 @@ nav.navbar
           @include media-breakpoint-up(lg)
             border-left: 3px solid $primary
 
+html, body
+  height: 100%
+    
+footer
+  position: sticky
+  top: 100vh
+  padding-bottom: 0.5rem
+  font-size: 0.9rem
 
 // Blog overview
 .blog-post-preview
@@ -212,3 +225,6 @@ blockquote
 
 code.language-text
   color: $primary
+
+.page .cover .content
+  padding: 3.75rem 0

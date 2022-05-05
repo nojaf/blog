@@ -1,46 +1,10 @@
 import React from 'react'
-import {Link, graphql} from 'gatsby'
+import {graphql} from 'gatsby'
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import BodyClassName from 'react-body-classname'
-import TimeAgo from 'react-timeago/lib/index'
-import twitterIcon from "../components/images/twitter-nojaf-blog.svg"
-
-const Cover = ({path, title, image, tags, date}) => {
-    const url = `https://blog.nojaf.com/${path}`
-    const twitterText = `${title} by @verdonckflorian`;
-
-    return (
-        <header style={{backgroundImage: `url(${image})`}}>
-            <div className="inner"></div>
-            <div className="content">
-                <div className="container">
-                    <div className="row">
-                        <div className="d-none d-md-block col col-md-3 col-lg-2 meta">
-                            <strong>Published</strong>
-                            <TimeAgo date={date} className={'timeago'}/>
-                            <strong className="pt-2">Tags</strong>
-                            <ul className="list-unstyled">
-                                {tags.map((t, i) => <li key={i}><Link key={t} to={`/tag/${t}/`}>{t}</Link></li>)}
-                            </ul>
-                        </div>
-                        <div className="col col-md-9 col-lg-10 d-flex align-content-center flex-wrap">
-                            <div className="py-5 ms-md-5">
-                                <h1>{title}</h1>
-                                <a className="share d-flex align-items-center pt-1"
-                                   href={`http://twitter.com/share?text=${twitterText};url=${url}`}>
-                                    <span>Share this on&nbsp;</span>
-                                    <img src={twitterIcon} alt="Twitter icon"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-    )
-}
+import Cover from "../components/Cover";
 
 class BlogPostTemplate extends React.Component {
     render() {
@@ -62,8 +26,6 @@ class BlogPostTemplate extends React.Component {
                     />
                     <main className="py-5 container">
                         <article dangerouslySetInnerHTML={{__html: post.html}}/>
-                        <hr/>
-                        <Bio/>
                     </main>
                 </Layout>
             </BodyClassName>

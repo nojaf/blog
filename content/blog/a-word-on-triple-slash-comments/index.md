@@ -14,7 +14,6 @@ I must say, I'm pretty hyped about this release. It contains a few [PRs](https:/
 It also contains some [XML documentation improvements](https://github.com/dotnet/fsharp/pulls?q=is%3Apr+11973+12484+12783) that Alex of the Rider team has been working on.
 You can read the details about this new XML collecting mechanism in this [RFC](https://github.com/fsharp/fslang-design/blob/main/tooling/FST-1035-xml-documentation-collecting-mechanism.md). It is a nice improvement and I've decided to implement an [enhancement in Fantomas](https://github.com/fsprojects/fantomas/issues/1878) due to these changes.
 
-
 ## There actually are comments in the syntax tree
 
 In the past, I had the luxury of [speaking about Fantomas](/public-speaking) at conferences. In a lot of these talks, I explain how Fantomas works and rant a bit [about code comments not being a part of the syntax tree](https://youtu.be/R9Ob5Vp4a9c?t=1580). Now that isn't exactly true. You see, at some very specific locations, triple-slash comments are preserved in the untyped syntax tree as [PreXmlDoc](https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-xml-prexmldoc.html).

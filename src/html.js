@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Footer from "./components/Footer";
 
 export default class HTML extends React.Component {
   render() {
@@ -25,6 +26,7 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
+          <Footer />
         </body>
       </html>
     )

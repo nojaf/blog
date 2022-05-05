@@ -21,12 +21,12 @@ export default () => {
                             <Link className="nav-link" to={'/public-speaking'}>Public speaking</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about-nojaf-com">
+                            <Link className="nav-link" to="/about">
                                 About
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact-nojaf-com">
+                            <Link className="nav-link" to="/contact">
                                 Contact
                             </Link>
                         </li>
