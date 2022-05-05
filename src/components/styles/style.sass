@@ -13,11 +13,12 @@ $navbar-dark-color: $white
 $navbar-dark-hover-color: $primary
 $nav-link-padding-y: 0
 $font-size-base: 1.4rem
+$line-height-base: 1.55
 // $h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.2 !default
-$h4-font-size:                $font-size-base * 1.1 !default
-$h5-font-size:                $font-size-base * 1.05 !default
-$h6-font-size:                $font-size-base !default
+$h3-font-size: $font-size-base * 1.2 !default
+$h4-font-size: $font-size-base * 1.1 !default
+$h5-font-size: $font-size-base * 1.05 !default
+$h6-font-size: $font-size-base !default
 $font-weight-normal: 300
 
 $pagination-color: $black
@@ -77,7 +78,7 @@ nav.navbar
 
 html, body
   height: 100%
-    
+
 footer
   position: sticky
   top: 100vh
@@ -104,12 +105,12 @@ footer
 
   .meta
     padding-top: 3rem
-    padding-right: 5rem
+    padding-right: 3rem
     text-align: right
 
-    h3, time, h4, ul li a
+    h3, time, h4, ul li, ul li a
       font-size: 1.4rem
-      line-height: 1.5rem
+      line-height: 1.4
 
     h3
       font-weight: bold
@@ -134,7 +135,7 @@ footer
           &:hover
             color: $primary
             background-color: $black
-            padding: 0 5px
+            padding: 0 2px
 
   article
     p
@@ -143,7 +144,7 @@ footer
 
 .tag-header
   background-color: $white
-      
+
 // Blog post
 header
   position: relative
@@ -152,7 +153,7 @@ header
   background-size: cover
   background-color: $primary
   background-blend-mode: darken
-  
+
   .inner
     position: absolute
     height: 100%
@@ -163,7 +164,7 @@ header
     z-index: 2
     position: relative
     color: white
-    
+
     .meta
       color: $primary
       text-align: right
@@ -189,7 +190,7 @@ header
       ul li a
         color: $primary
         text-decoration: none
-    
+
     h1
       font-weight: 700
       margin: 0
@@ -199,10 +200,10 @@ header
     .share
       color: white
       text-decoration: none
-      
+
       &:hover
         color: $primary
-      
+
       img
         height: 1.5rem
         margin-left: 0.5rem
@@ -218,6 +219,7 @@ a
 blockquote
   background-color: $primary
   padding: 2rem
+
   p
     margin: 0
     padding: 0
@@ -228,3 +230,6 @@ code.language-text
 
 .page .cover .content
   padding: 3.75rem 0
+
+.gatsby-resp-iframe-wrapper
+  margin-bottom: 1.5rem

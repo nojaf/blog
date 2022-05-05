@@ -47,7 +47,7 @@
     "prettier": "2.5.1",
     "rimraf": "3.0.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/nojaf/blog#readme",
   "keywords": [
     "gatsby"
   ],
@@ -55,7 +55,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/nojaf/blog.git"
   },
   "scripts": {
     "dev": "gatsby develop",
@@ -67,6 +67,7 @@
     "clean": "rimraf public && rimraf .cache",
     "build": "npm run clean && gatsby build",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public",
+    "serve": "gatsby serve"
   }
 }
