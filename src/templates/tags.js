@@ -6,15 +6,10 @@ import BlogPostPreview from '../components/BlogPostPreview'
 import { graphql } from 'gatsby'
 
 const Header = ({tag, total}) => {
-  return <header className="animated fadeIn">
+  return <header className="tag-header">
     <div className="container" data-stellar-ratio="0.75">
       <div className="title animated fadeInUp">
-        <h1>{tag}</h1>
-        <div className="share">
-          Share this on <a id="twitter"
-                           href={`http://twitter.com/share?text=${tag} on &amp;url=http://blog.nojaf.com/tag/${tag}/`}><i
-          className="fa nojaf-share-icon fa-twitter" /></a>
-        </div>
+        <h1 className="text-capitalize">{tag}</h1>
       </div>
       <div className="sidebar text-right meta">
         <div className="published animated fadeInUp">
@@ -35,12 +30,12 @@ const Tags = ({ pageContext, data, location }) => {
     <BodyClassName className={`tag-template tag-${tag}`}>
       <Layout location={location} title={siteTitle}>
         <SEO title={tag} keywords={[`blog`, `blog.nojaf.com`]} />
-        <div className="main">
+        <main className="py-5 container">
           <Header total={totalCount} tag={tag} />
           {posts.map((post, idx) => {
             return <BlogPostPreview key={`preview-${idx}`} {...post} />
           })}
-        </div>
+        </main>
       </Layout>
     </BodyClassName>
   )
@@ -63,6 +58,7 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 560)
           frontmatter {
             date
             title

@@ -17,12 +17,13 @@ class BlogIndex extends React.Component {
       <BodyClassName className="home-template">
         <Layout location={this.props.location} title={siteTitle}>
           <SEO title="Home" keywords={[`blog`, `blog.nojaf.com`]} />
-          <div className="main">
+          <main className="py-5 container">
+            <h1 className="d-none">Nojaf Blog Homepage</h1>
             {posts.map((post, idx) => {
               return <BlogPostPreview key={`preview-${idx}`} {...post} />
             })}
             <Navigation total={data.pages.totalCount} skip={0} />
-          </div>
+          </main>
         </Layout>
       </BodyClassName>
     )
