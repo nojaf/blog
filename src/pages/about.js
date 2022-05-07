@@ -5,6 +5,7 @@ import SEO from '../components/seo'
 import TimeAgo from 'react-timeago/lib/index'
 import image from './about.jpg'
 import Cover from "../components/Cover";
+import {Link} from "gatsby";
 
 const About = props => {
     return (
@@ -16,14 +17,44 @@ const About = props => {
                 />
                 <Cover image={image} title={"About Nojaf"} date={"2022-05-07"}/>
                 <main className="py-5 container page">
+                    <h2 id="nojaf">So what is Nojaf anyway?</h2>
+                    <p>
+                        Nojaf currently is two things:
+                        <ul>
+                            <li>The internet alias of <em>Florian Verdonck</em>.</li>
+                            <li>A Belgian company that represent the freelance activities of said Florian Verdonck.</li>
+                        </ul>
+                    </p>
                     <h2 id="florianverdonck">Florian Verdonck</h2>
 
-                    <p>
-                        I'm an eccentric <strong>developer</strong> with ambitions and a
-                        progressive mindset. I'm into functional programming and have a strong affinity for the web.
+                    <p>Hey there, a bit about me: I'm an eccentric <strong>developer</strong> with ambitions and a
+                        progressive mindset. I'm into <strong>functional programming</strong> and have a strong affinity for the web.
+                        I have a background in <strong>.NET</strong> and I'm passionate about <strong>software tooling</strong>.
                     </p>
+                    
+                    <h2 id="freelance">Freelancer you say?</h2>
+                    <p>That is right! These days I sail under my own banner as an <strong>indepent</strong> professional software <strong>consultant</strong>.<br />
+                    I'm most interested in adventures in the <em>open-source</em> space, where I truly believe I can make a difference for you and your enterprise.
+                    </p>
+                    <h2>Open-source endeavours</h2>
 
-                    <h2 id="talesonnojafcom">Tales on nojaf.com</h2>
+                    <p>
+                        Over the years, I've been involved in the <strong>F# community</strong> and I have contributed
+                        to numerous projects.
+                        In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas
+                        project</a><br/>
+                        Fantomas really was my jumping point to getting involved in numerous projects.<br />
+                        That journey really made me explore a lot of the <strong>F# tooling ecoystem</strong>:
+                        <ul>
+                            <li><a href="https://github.com/dotnet/fsharp/pulls?q=is%3Apr+author%3Anojaf">The F# compiler</a></li>
+                            <li><a href="https://github.com/fsharp/FsAutoComplete/pulls?q=is%3Apr+author%3Anojaf">FSAutocomplete</a>, the F# language server</li>
+                            <li><a href="https://github.com/JetBrains/resharper-fsharp/pulls?q=is%3Apr+author%3Anojaf">The F# Rider plugin</a></li>
+                            <li><a href="https://github.com/dotnet/docs/pulls?q=is%3Apr+author%3Anojaf">The .NET documentation</a>, where the <a href="https://docs.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting">F#
+                                style guide</a> lives.</li>
+                        </ul>
+                    </p>
+                    <p>If you like what I do, consider <Link to="/contact">reaching out</Link> to see what I could do tailored to your needs.</p>
+                    <h2 id="blognojafcom">Tales on blog.nojaf.com</h2>
 
                     <p>
                         As a <strong>software craftsman</strong> I frequently come
@@ -31,56 +62,6 @@ const About = props => {
                         <br/>
                         And every once in a while, I try to blog about my adventures.
                     </p>
-
-                    <h2>Open-source adventures</h2>
-
-                    <p>
-                        Over the years, I've been involved in the <strong>F# community</strong> and I have contributed
-                        to numerous projects.
-                        In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas
-                        project</a><br/>
-                    </p>
-                    <p>If you like what I do, you could consider <a
-                        href="https://github.com/sponsors/nojaf">sponsoring</a> me to show your support.</p>
-
-                    <h2 id="thingsthatarecoolnow">Things that are cool now ;)</h2>
-
-                    <p>
-                        I'd like to give you some links and buzzwords of stuff I'm
-                        looking into at the moment:
-                    </p>
-
-                    <ul>
-                        <li>
-                            <a href="https://facebook.github.io/react">React js</a>
-                        </li>
-                        <li>
-                            <a href="http://www.asp.net/vnext">ASP NET Core</a>
-                        </li>
-                        <li>
-                            <a href="https://www.jetbrains.com/rider">Rider</a>
-                        </li>
-                        <li>
-                            <a href="http://fsharp.org">F#</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/giraffe-fsharp/Giraffe">
-                                Giraffe
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://fable.io">Fable</a>
-                        </li>
-                        <li>
-                            <a href="https://fable-elmish.github.io/elmish">Elmish</a>
-                        </li>
-                        <li>
-                            <a href="http://bulma.io">Bulma</a>
-                        </li>
-                        <li>
-                            <a href="http://elm-lang.org">Elm</a>
-                        </li>
-                    </ul>
                 </main>
             </Layout>
         </BodyClassName>
