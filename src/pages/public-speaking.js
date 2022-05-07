@@ -15,7 +15,7 @@ const PublicSpeaking = props => {
                 <Cover
                     image={image}
                     title="Public Speaking"
-                    date={"2021-12-09"}
+                    date={"2022-05-07"}
                 />
                 <main className="py-5 container page">
                     <article>
@@ -112,6 +112,10 @@ const PublicSpeaking = props => {
                                         title="YouTube video player" frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen></iframe>
+                            </p>
+                            <h2 id="youtube">YouTube</h2>
+                            <h3>Est. 2020</h3>
+                            <p>I also have a <a href="https://www.youtube.com/user/nojaf/videos">YouTube channel</a> where I post some more niche technical content.
                             </p>
                         </div>
                     </article>
