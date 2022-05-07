@@ -22,7 +22,7 @@ const About = props => {
                         Nojaf currently is two things:
                         <ul>
                             <li>The internet alias of <em>Florian Verdonck</em>.</li>
-                            <li>A Belgian company that represent the freelance activities of said Florian Verdonck.</li>
+                            <li>A Belgian company that represents the freelance activities of said Florian Verdonck.</li>
                         </ul>
                     </p>
                     <h2 id="florianverdonck">Florian Verdonck</h2>
@@ -33,8 +33,8 @@ const About = props => {
                     </p>
                     
                     <h2 id="freelance">Freelancer you say?</h2>
-                    <p>That is right! These days I sail under my own banner as an <strong>indepent</strong> professional software <strong>consultant</strong>.<br />
-                    I'm most interested in adventures in the <em>open-source</em> space, where I truly believe I can make a difference for you and your enterprise.
+                    <p>That is right! These days I sail under my own banner as an <strong>independent</strong> professional software <strong>consultant</strong>.<br />
+                    I'm most interested in the <em>open-source</em> space, where I truly believe I can make a difference for you and your enterprise.
                     </p>
                     <h2>Open-source endeavours</h2>
 
@@ -44,7 +44,7 @@ const About = props => {
                         In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas
                         project</a><br/>
                         Fantomas really was my jumping point to getting involved in numerous projects.<br />
-                        That journey really made me explore a lot of the <strong>F# tooling ecoystem</strong>:
+                        That journey made me explore a lot of the <strong>F# tooling ecosystem</strong>:
                         <ul>
                             <li><a href="https://github.com/dotnet/fsharp/pulls?q=is%3Apr+author%3Anojaf">The F# compiler</a></li>
                             <li><a href="https://github.com/fsharp/FsAutoComplete/pulls?q=is%3Apr+author%3Anojaf">FSAutocomplete</a>, the F# language server</li>
@@ -57,7 +57,7 @@ const About = props => {
                     <h2 id="blognojafcom">Tales on blog.nojaf.com</h2>
 
                     <p>
-                        As a <strong>software craftsman</strong> I frequently come
+                        As a <strong>software craftsman</strong>, I frequently come
                         across new technologies and interesting things about code.{' '}
                         <br/>
                         And every once in a while, I try to blog about my adventures.
