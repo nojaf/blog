@@ -36,7 +36,7 @@ const Contact = props => {
                     </p>
                     <h4>GitHub</h4>
                     <p>
-                        The one and only <a href="https://github.com/nojaf"><strong>&#64;nojaf</strong></a> on{' '}
+                        The one and only <a href="https://github.com/nojaf"><strong>nojaf</strong></a> on{' '}
                         <a href="https://github.com/nojaf">Github</a>.
                     </p>
                     <h4>YouTube</h4>
