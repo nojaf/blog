@@ -187,12 +187,12 @@ And that's a good thing!
 ## Bare metal Alchemist
 
 All these changes on the compiler side at `dotnet/fsharp` are shipped as the [FSharp.Compiler.Service](https://www.nuget.org/packages/FSharp.Compiler.Service) NuGet package.
-The release schedule of these packages is a bit of mystery and appears to be tied to the .NET SDK releases. As I'm not known for patience, I started looking for a way we could have these changes faster.
-*TD;DR*, we are now creating our own [Fantomas flavoured FSharp.Compiler.Service](https://www.nuget.org/packages/Fantomas.FCS) package. 
+The release schedule of these packages is a bit of mystery and appears to be tied to the .NET SDK releases. As I'm not known for my patience, I started looking for a way we could have these changes faster.
+Long story short, we are now creating our own [Fantomas flavoured FSharp.Compiler.Service](https://www.nuget.org/packages/Fantomas.FCS) package. 
 
 ![Fantomas FCS Bender meme](fantomas-fcs.png)
 
-I wrote some prose on [the technical details](https://github.com/fsprojects/fantomas/blob/master/docs/Fantomas-V.md), but the short version is that we take the files we need from `dotnet/fsharp` at a known commit pointer and expose the parser tailored to the needs of Fantomas.
+I wrote some prose on [the technical details](https://github.com/fsprojects/fantomas/blob/master/docs/Fantomas-V.md), but the gist is that we take the files we need from `dotnet/fsharp` at a known commit pointer and expose the parser tailored to the needs of Fantomas.
 End-users don't need to worry about this, as this is all happening under the hood.
 
 ### Code generation
@@ -252,8 +252,7 @@ And afterwards they are disappointed when their expectations aren't met.
 
 **Please try this out and participate on GitHub!!**
 
-There are a lot of open technical and philosophical questions regarding this topic, so if this matters to you.
-Please help to push this forward.
+There are a lot of open technical and philosophical questions regarding this topic, so if this matters to you, please help to push this forward!
 
 ### Concerning Hobbits
 
@@ -263,18 +262,22 @@ As this blogpost already foreshadows, I've been quite busy with other Balrogs.
 So, I'm once again looking for a Hobbit to deliver a certain Ring to Mount Doom.
 
 [Jimmy Byrd](https://github.com/TheAngryByrd) [heard my call](https://github.com/fsprojects/fantomas/pull/2200) to arms.
-He is taking a break right now, so I'm hoping to inspire the next developer.
+We kicked things off during a live stream on Discord and then life happened, Jimmy is taking a break from open-source right now.
+So back to square one, I'm hoping to inspire the next developer.
 
-Because, a couple of things I do want to make crystal clear:
+Because, there are a couple of things I do want to make crystal clear:
 - **Fantomas is not a paid product** with any support whatsoever. You'd surprised how many people are acting otherwise.
 - The company or open collective behind **your favorite editor is not supporting me** in any financial way.
   My **secret ingredient** for any significant Fantomas development **has always been money**.
   Money buys me time to do things right and allows me to tackle things at the root.
+- The good people of **G-Research have been sponsoring me for three years now**.
+  I would not be writing any blogpost about performance improvements if it wasn't for their support.
+  It doesn't feel right that they are the only ones that keep the lights on.
 
 Now I don't want to sound all grumpy and negative. The point I'm trying to make is that I can't do it all.
-And I'm not motivated to fix every single thing anyone asks or demands.
+And I'm not motivated to fix every single feature or issue anyone is asking or demanding.
 
-In the case of *Stroustrup, I'm ok with having this*. But I really need someone to step up, and then I'll say "I will help you bear this burden, Frodo Baggins, as long as it is yours to bear.".
+Circling back to *Stroustrup, I'm ok with having this*. But I really need someone to step up, and then I'll say "I will help you bear this burden, Frodo Baggins, as long as it is yours to bear.".
 I want to mentor you, every step along the way.
 
 > "I will help you bear this burden, Frodo Baggins, as long as it is yours to bear."
