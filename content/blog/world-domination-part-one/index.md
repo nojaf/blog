@@ -8,7 +8,7 @@ cover: './blog.nojaf.com-world-domination-part-one.jpg'
 
 ## Intro
 
-Last week, I was able to merge in a [huge refactoring effort](https://github.com/fsprojects/fantomas/pull/2218) into [the next major version of Fantomas](https://github.com/fsprojects/fantomas/issues/2160).
+Last week, I was able to merge in a [huge refactoring effort](https://github.com/fsprojects/fantomas/pull/2218) into [the next major version of Fantomas](https://github.com/fsprojects/fantomas/issues/2160).  
 The result of these changes make Fantomas **at least twice as fast as the v4 release**.
 
 *Before*
@@ -239,48 +239,122 @@ Before re-opening that issue, I wanted to see how far the rabbit hole went.
 And though it is not shallow, it is also not Pandora's box either.
 I made an initial proof of concept and got something working.
 
-Later [Josh DeGraw](https://github.com/josh-degraw) ported the code and you can now activate it by adding:
+Later [Josh DeGraw](https://github.com/josh-degraw) [ported the code](https://github.com/fsprojects/fantomas/pull/2161) and you can now activate it by adding:
 ```
 [*.fs]
 fsharp_multiline_block_brackets_on_same_column=true
 fsharp_ragnarok=true
 ```
 
+Thank you Josh!
+
+> It is a small step for Fantomas, but a giant leap for the F# community
+
 It has been around since [5.0.0-alpha-001](https://www.nuget.org/packages/fantomas-tool/5.0.0-alpha-001) (March 19th 2022), yet I haven't really received any feedback on this.
-That is a know problem in Fantomas, people will only try new features once they are considered stable.
+This is a know problem in Fantomas, people will only try new features once they are considered stable.
 And afterwards they are disappointed when their expectations aren't met.
 
 **Please try this out and participate on GitHub!!**
 
 There are a lot of open technical and philosophical questions regarding this topic, so if this matters to you, please help to push this forward!
 
-### Concerning Hobbits
+### Elmish no more
 
-While listening to the community, I also aim to involve them more directly into the coding aspect of Fantomas.
-Wanting a certain feature is one thing, but at the end of the day someone has to write the code.
-As this blogpost already foreshadows, I've been quite busy with other Balrogs.
-So, I'm once again looking for a Hobbit to deliver a certain Ring to Mount Doom.
+#### Beware the vanity alignment PD
 
-[Jimmy Byrd](https://github.com/TheAngryByrd) [heard my call](https://github.com/fsprojects/fantomas/pull/2200) to arms.
-We kicked things off during a live stream on Discord and then life happened, Jimmy is taking a break from open-source right now.
-So back to square one, I'm hoping to inspire the next developer.
+The Fantomas default setting are not respecting the F# style guides when you have a function application that take a list (or two lists) as its last argument.
+In the common tongue, this often reflects to an Elmish DSL.
 
-Because, there are a couple of things I do want to make crystal clear:
-- **Fantomas is not a paid product** with any support whatsoever. You'd surprised how many people are acting otherwise.
-- The company or open collective behind **your favorite editor is not supporting me** in any financial way.
-  My **secret ingredient** for any significant Fantomas development **has always been money**.
-  Money buys me time to do things right and allows me to tackle things at the root.
-- The good people of **G-Research have been sponsoring me for three years now**.
-  I would not be writing any blogpost about performance improvements if it wasn't for their support.
-  It doesn't feel right that they are the only ones that keep the lights on.
+```fsharp
+let v =
+    Input.input [ Input.Custom [ Placeholder placeholder
+                                 OnChange(fun ev -> ev.Value |> onChange)
+                                 DefaultValue value
+                                 Key key ] ]
 
-Now I don't want to sound all grumpy and negative. The point I'm trying to make is that I can't do it all.
-And I'm not motivated to fix every single feature or issue anyone is asking or demanding.
+```
 
-Circling back to *Stroustrup, I'm ok with having this*. But I really need someone to step up, and then I'll say "I will help you bear this burden, Frodo Baggins, as long as it is yours to bear.".
-I want to mentor you, every step along the way.
+Though this looks okay-ish when you are coding something with Fable, it doesn't make sense for other things like:
 
-> "I will help you bear this burden, Frodo Baggins, as long as it is yours to bear."
+```fsharp
+let sorted =
+    List.sortDescending [ "Alpha"
+                          "Beta"
+                          "Gamma"
+                          "Delta"
+                          "Epsilon" ]
+
+```
+
+And if you change the `List.sort` to `List.sortDescending`, all the items of the list will jump around.
+This is known as *the dreaded vanity alignment problem*, where the name of the identifier has an influence on the positioning of the remainder of the expression.
+
+Anyway, the point I'm trying to make is that the style guide would proses these constructs to be formatted as:
+
+```fsharp
+let v =
+    Input.input
+        [ Input.Custom
+              [ Placeholder placeholder
+                OnChange(fun ev -> ev.Value |> onChange)
+                DefaultValue value
+                Key key ] ]
+
+let sorted =
+    List.sortDescending
+        [ "Alpha"
+          "Beta"
+          "Gamma"
+          "Delta"
+          "Epsilon" ]
+```
+
+In the 4.x series, you were able to do this using the setting `fsharp_disable_elmish_syntax=true`, but it was always a bit an unfortunate default setting.
+With a major release, we can address these things.
+
+#### Expanding on lists at the end
+
+The Elmish-like shapes that did not follow the style guide were fairly restricted.
+If a small detail was altered, the shape would not match anymore and so there would have been a difference between:
+
+```fsharp
+// matches the AST shape of a function application with two lists
+div [] [
+    // some comment
+    p [] [ str "x" ]
+]
+
+// does not match the AST shape of a function application with two lists
+// because of that extra string argument
+div
+    "some string"
+    []
+    [
+      // some comment
+      p [] [ str "y" ] ]
+```
+
+This had its limitations and we want to [revisit](https://github.com/fsprojects/fantomas/issues/2180) this as well.
+We want to get rid of all the Elmish specific settings (`fsharp_max_elmish_width`, `fsharp_single_argument_web_mode`, `fsharp_disable_elmish_syntax`) and instead consider this as a part of the Stroustrup setting.
+
+Maybe something like:
+
+```fsharp
+// list at the end
+div [] [
+    // some comment
+    p [] [ str "x" ]
+]
+
+// also list at the end
+div "some string" [] [
+    // some comment
+    p [] [ str "y" ]
+]
+```
+
+[Jimmy Byrd](https://github.com/TheAngryByrd) started working on this in [PR 2200](https://github.com/fsprojects/fantomas/pull/2200).  
+Thank you Jimmy!
 
 ## Closing thoughts
 
