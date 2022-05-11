@@ -289,7 +289,7 @@ let sorted =
 And if you change the `List.sort` to `List.sortDescending`, all the items of the list will jump around.
 This is known as *the dreaded vanity alignment problem*, where the name of the identifier has an influence on the positioning of the remainder of the expression.
 
-Anyway, the point I'm trying to make is that the style guide would proses these constructs to be formatted as:
+Anyway, the point I'm trying to make is that the style guide would suggest to formatted this as:
 
 ```fsharp
 let v =
@@ -309,7 +309,7 @@ let sorted =
           "Epsilon" ]
 ```
 
-In the 4.x series, you were able to do this using the setting `fsharp_disable_elmish_syntax=true`, but it was always a bit an unfortunate default setting.
+In the 4.x series, you were able to do this using the setting `fsharp_disable_elmish_syntax=true`, but it was always a bit an unfortunate this wasn't the default behavior.
 With a major release, we can address these things.
 
 #### Expanding on lists at the end
