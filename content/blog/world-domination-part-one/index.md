@@ -1,6 +1,6 @@
 ---
-path: '2022/05/09/word-domination-part-one/'
-date: '2022-05-09'
+path: '2022/05/15/word-domination-part-one/'
+date: '2022-05-15'
 title: 'World domination, part one'
 tags: ['open-source', 'fsharp', 'fantomas', 'tooling' ]
 cover: './blog.nojaf.com-world-domination-part-one.jpg'
@@ -243,7 +243,7 @@ Later [Josh DeGraw](https://github.com/josh-degraw) [ported the code](https://gi
 ```
 [*.fs]
 fsharp_multiline_block_brackets_on_same_column=true
-fsharp_ragnarok=true
+fsharp_experimental_stroupstrup_style=true
 ```
 
 Thank you Josh!
