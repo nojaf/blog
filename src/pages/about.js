@@ -15,7 +15,7 @@ const About = props => {
                     title="About"
                     keywords={[`blog`, `blog.nojaf.com`]}
                 />
-                <Cover image={image} title={"About Nojaf"} date={"2022-05-07"}/>
+                <Cover image={image} title={"About Nojaf"}/>
                 <main className="py-5 container page">
                     <h2 id="nojaf">So what is Nojaf anyway?</h2>
                     <p>
@@ -42,7 +42,7 @@ const About = props => {
                         Over the years, I've been involved in the <strong>F# community</strong> and I have contributed
                         to numerous projects.
                         In 2018 I became the maintainer of the <a href="https://github.com/fsprojects/fantomas">Fantomas
-                        project</a><br/>
+                        project</a>.<br/>
                         Fantomas really was my jumping point to getting involved in numerous projects.<br />
                         That journey made me explore a lot of the <strong>F# tooling ecosystem</strong>:
                         <ul>

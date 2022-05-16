@@ -16,7 +16,7 @@ const Contact = props => {
                 title="Contact Florian Verdonck at nojaf.com"
                 keywords={[`blog`, `blog.nojaf.com`]}
             />
-            <Cover image={image} title={"Contact Nojaf"} date={"2022-05-07"}/>
+            <Cover image={image} title={"Contact Nojaf"} />
             <main className="py-5 container page">
                 <article>
                     <h2 id="howtopingme">Reach out, touch faith</h2>

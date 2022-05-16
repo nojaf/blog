@@ -14,8 +14,8 @@ const Cover = ({path, title, image, tags, date}) => {
                 <div className="container">
                     <div className="row">
                         <div className="d-none d-md-block col col-md-3 col-lg-2 meta">
-                            <strong>Published</strong>
-                            <TimeAgo date={date} className={'timeago'}/>
+                            {date && <strong>Published</strong>}
+                            {date && <TimeAgo date={date} className={'timeago'}/>}
                             {tags && <strong className="pt-2">Tags</strong>}
                             {tags && <ul className="list-unstyled">{tags.map((t, i) => <li key={i}><Link key={t} to={`/tag/${t}/`}>{t}</Link></li>)}</ul>}
                         </div>

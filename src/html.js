@@ -22,7 +22,7 @@ export default class HTML extends React.Component {
                 <meta name="msapplication-TileColor" content="#da532c"/>
                 <meta name="theme-color" content="#ffffff"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                 <base target="_blank"/>
                 {this.props.headComponents}
                 <script src={'/scripts/nojaf-head.min.js'}></script>
