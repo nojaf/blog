@@ -141,7 +141,7 @@ Identifiers are all over the place so this really is an immense performance boos
 
 ## No tokens, No cry
 
-As eluded with the concept of Trivia, not everything was present in the syntax tree. Originally, we also processed the tokens of each file.
+As allude with the concept of Trivia, not everything was present in the syntax tree. Originally, we also processed the tokens of each file.
 Inside these tokens were addition clues to what the user actually wrote. We needed to find these clues (`trivia`) and link them to the actual syntax tree nodes (`trivia nodes`).
 This was a tedious operation and it never really sparkled much joy.
 
@@ -222,7 +222,7 @@ A first step here was looking for a new logo:
 
 I'm well aware that having a faster formatter won't necessarily bring you in if you are not using Fantomas today.
 All change is hard and even though Fantomas follows the [F# style guide](https://docs.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting), some people still don't use it.
-At the end of last year I had a change of heart about [Stroupstrup bracket style](https://github.com/fsprojects/fantomas/issues/1408#issuecomment-1000197855).
+At the end of last year I had a change of heart about [Stroustrup bracket style](https://github.com/fsprojects/fantomas/issues/1408#issuecomment-1000197855).
 The re-opening of this issue was well received by the community:
 
 ![Community feedback](Stroustrup-bracket-style-feedback.png)
@@ -243,7 +243,7 @@ Later [Josh DeGraw](https://github.com/josh-degraw) [ported the code](https://gi
 ```
 [*.fs]
 fsharp_multiline_block_brackets_on_same_column=true
-fsharp_experimental_stroupstrup_style=true
+fsharp_experimental_stroustrup_style=true
 ```
 
 Thank you Josh!
