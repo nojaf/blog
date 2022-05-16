@@ -208,7 +208,7 @@ Besides the performance there are some [other topics](https://github.com/fsproje
 We renamed the dotnet tool from [fantomas-tool](https://www.nuget.org/packages/fantomas-tool/4.7.9) to [fantomas](https://www.nuget.org/packages/fantomas/5.0.0-alpha-005).
 From now on, you can just install it using `dotnet tool install fantomas`.
 
-> dotnet tool install fantomas
+> dotnet tool install fantomas --prerelease
 
 ### Logo
 
