@@ -1,6 +1,6 @@
 ---
-path: '2022/05/15/word-domination-part-one/'
-date: '2022-05-15'
+path: '2022/05/24/word-domination-part-one/'
+date: '2022-05-24'
 title: 'World domination, part one'
 tags: ['open-source', 'fsharp', 'fantomas', 'tooling' ]
 cover: './blog.nojaf.com-world-domination-part-one.jpg'
@@ -8,7 +8,7 @@ cover: './blog.nojaf.com-world-domination-part-one.jpg'
 
 ## Intro
 
-Last week, I was able to merge in a [huge refactoring effort](https://github.com/fsprojects/fantomas/pull/2218) into [the next major version of Fantomas](https://github.com/fsprojects/fantomas/issues/2160).  
+Some time ago, I was able to merge in a [huge refactoring effort](https://github.com/fsprojects/fantomas/pull/2218) into [the next major version of Fantomas](https://github.com/fsprojects/fantomas/issues/2160).  
 The result of these changes make Fantomas **at least twice as fast as the v4 release**.
 
 *Before*
@@ -48,9 +48,9 @@ In this blogpost, I'll elaborate a bit how we did this and what you can expect f
 Last October, I had the opportunity to speak at [F# eXchange](https://skillsmatter.com/skillscasts/17236-fantomas-v).
 There I announced that what the plan was for the next major of Fantomas and how to get there.
 A crucial part of that talk was about how improving the `Syntax tree` at [dotnet/fsharp](https://github.com/dotnet/fsharp/blob/main/src/fsharp/SyntaxTree.fsi) was the key to everything.
-In short, a better syntax tree, leads to less shenanigans in the Fantomas codebase.
+In short, a better syntax tree, leads to fewer shenanigans in the Fantomas codebase.
 
-> In short, a better syntax tree, leads to less shenanigans in the Fantomas codebase.
+> In short, a better syntax tree, leads to fewer shenanigans in the Fantomas codebase.
 
 ## Trivia
 
@@ -63,7 +63,7 @@ Having [additional trivia information](https://github.com/dotnet/fsharp/blob/mai
 
 ### Keywords
 
-Having more information about keyword allows us to better release what the user originally wrote.
+Having more information about keywords allows us to better release what the user originally wrote.
 If we take a look at the AST for
 
 ```fsharp
@@ -123,7 +123,7 @@ Consider
 let (+) a b = a + b + 1
 ```
 
-The compiled function name the F# compiler will use in the typed tree is `op_Addition`. We can deduce this back to the `+` operator, however, there is no mentioning of the parentheses.
+The compiled function name the F# compiler will use in the typed tree is `op_Addition`. We can determine this from tracing it back to the `+` operator, however, there is no mentioning of the parentheses.
 Luckily the AST looks like:
 
 ```fsharp
@@ -136,14 +136,13 @@ SynLongIdent(
 
 Because of [OriginalNotationWithParen](https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-syntaxtrivia-identtrivia.html#OriginalNotationWithParen) we can very efficiently restore the function name as `(+)`.
 
-This is very significant because beforehand, we needed to **check every identifier** within a file to determine **if they were an operator or not**.
+This is very significant because beforehand we needed to **check every identifier** within a file to determine **if it is an operator or not**.
 Identifiers are all over the place so this really is an immense performance boost.
 
-## No tokens, No cry
+## No Tokens, No Cry
 
-As allude with the concept of Trivia, not everything was present in the syntax tree. Originally, we also processed the tokens of each file.
-Inside these tokens were addition clues to what the user actually wrote. We needed to find these clues (`trivia`) and link them to the actual syntax tree nodes (`trivia nodes`).
-This was a tedious operation and it never really sparkled much joy.
+Talking about Trivia, not everything was present in the syntax tree. Originally, we also processed the tokens of each file.
+Inside these tokens were addition clues to what the user actually wrote. We needed to find these clues (`trivia`) and link them to the actual syntax tree nodes (`trivia nodes`). This was a tedious operation.
 
 Though we still have the concept of trivia, we don't need to process the tokens anymore to detect the missing pieces.
 The syntax tree carries enough information for us to extract the remaining trivia from source code.
@@ -180,19 +179,15 @@ ImplFile
         CodeComments = [LineComment tmp.fsx (1,11--1,26)] }))
 ```
 
-will contain the `range` of `// some comment`. This doesn't tell us yet that it belong to `v`, but it is a step in the right direction.
-We don't need to process any tokens to learn about the existence of the comment.
-And that's a good thing!
+The example above will contain the `range` of `// some comment`. This doesn't tell us yet that it belong to `v`, but it is a step in the right direction.
+We don't need to process any tokens to learn about the existence of the comment. And that's a good thing!
 
-## Bare metal Alchemist
+## Fullmetal Alchemist
 
 All these changes on the compiler side at `dotnet/fsharp` are shipped as the [FSharp.Compiler.Service](https://www.nuget.org/packages/FSharp.Compiler.Service) NuGet package.
-The release schedule of these packages is a bit of mystery and appears to be tied to the .NET SDK releases. As I'm not known for my patience, I started looking for a way we could have these changes faster.
-Long story short, we are now creating our own [Fantomas flavoured FSharp.Compiler.Service](https://www.nuget.org/packages/Fantomas.FCS) package. 
+The release schedule of these packages is a bit of mystery and appears to be tied to the .NET SDK releases. I started looking for a way we could have these changes faster and we are now creating our own [Fantomas flavoured FSharp.Compiler.Service](https://www.nuget.org/packages/Fantomas.FCS) package.
 
-![Fantomas FCS Bender meme](fantomas-fcs.png)
-
-I wrote some prose on [the technical details](https://github.com/fsprojects/fantomas/blob/master/docs/Fantomas-V.md), but the gist is that we take the files we need from `dotnet/fsharp` at a known commit pointer and expose the parser tailored to the needs of Fantomas.
+I wrote some prose on [the technical details](https://github.com/fsprojects/fantomas/blob/master/docs/Fantomas-V.md) and I invite you to read it. But the gist is that we take the files we need from `dotnet/fsharp` at a known commit pointer and expose the parser tailored to the needs of Fantomas.
 End-users don't need to worry about this, as this is all happening under the hood.
 
 ### Code generation
@@ -201,43 +196,38 @@ If you are using Fantomas to generate code, that is still possible. `Fantomas.FC
 
 ## Fantomas Five
 
-Besides the performance there are some [other topics](https://github.com/fsprojects/fantomas/issues/2160) planned for the next major.
+Besides the performance there are some [other topics](https://github.com/fsprojects/fantomas/issues/2160) planned for the next major release.
 
 ### fantomas-tool -> fantomas
 
-We renamed the dotnet tool from [fantomas-tool](https://www.nuget.org/packages/fantomas-tool/4.7.9) to [fantomas](https://www.nuget.org/packages/fantomas/5.0.0-alpha-005).
-From now on, you can just install it using `dotnet tool install fantomas`.
+We renamed the .NET tool from [fantomas-tool](https://www.nuget.org/packages/fantomas-tool/4.7.9) to [fantomas](https://www.nuget.org/packages/fantomas/5.0.0-alpha-007).
+From now on, you can just install it using `dotnet tool install fantomas --prerelease`.
 
 > dotnet tool install fantomas --prerelease
 
 ### Logo
 
-A while ago, we posted [a poll](https://en.99designs.be/logo-design/contests/redesign-software-program-logo-make-more-compelling-1157921/poll/436a424158/vote?utm_source=voting_app&utm_medium=web&utm_campaign=voting) for a logo contest.
-For the next major, we want to work on the Fantomas branding as well.
+We posted [a poll](https://en.99designs.be/logo-design/contests/redesign-software-program-logo-make-more-compelling-1157921/poll/436a424158/vote?utm_source=voting_app&utm_medium=web&utm_campaign=voting) for a logo contest.
+For the next major release, we want to work on the Fantomas branding as well.
 A first step here was looking for a new logo:
 
 ![New Fantomas logo](new_fantomas_logo.jpg)
 
 ## Get Back
 
-I'm well aware that having a faster formatter won't necessarily bring you in if you are not using Fantomas today.
-All change is hard and even though Fantomas follows the [F# style guide](https://docs.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting), some people still don't use it.
-At the end of last year I had a change of heart about [Stroustrup bracket style](https://github.com/fsprojects/fantomas/issues/1408#issuecomment-1000197855).
+Having a faster formatter won't necessarily bring you in if you are not using Fantomas today.
+Even though Fantomas follows the [F# style guide](https://docs.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting), some people still don't use it.
+
+At the end of last year, I had a change of heart about [Stroustrup bracket style](https://github.com/fsprojects/fantomas/issues/1408#issuecomment-1000197855).
 The re-opening of this issue was well received by the community:
 
 ![Community feedback](Stroustrup-bracket-style-feedback.png)
 
-Settings are evil and I prefer an opinionated view on the style of things.
-Yet at the same time, I do want to be open to feedback of the community.
-It is a very polarizing matter for me personally, it is bad idea and I do want to allow it at the same time.
-
-> it is bad idea and I do want to allow it at the same time
+I prefer an opinionated view on the style of things, yet at the same time I want to be open to feedback of the community.
 
 ### Ragnarok
 
-Before re-opening that issue, I wanted to see how far the rabbit hole went.
-And though it is not shallow, it is also not Pandora's box either.
-I made an initial proof of concept and got something working.
+Before re-opening that issue, I made an initial proof of concept and got something working.
 
 Later [Josh DeGraw](https://github.com/josh-degraw) [ported the code](https://github.com/fsprojects/fantomas/pull/2161) and you can now activate it by adding:
 ```
@@ -251,8 +241,7 @@ Thank you Josh!
 > It is a small step for Fantomas, but a giant leap for the F# community
 
 It has been around since [5.0.0-alpha-001](https://www.nuget.org/packages/fantomas-tool/5.0.0-alpha-001) (March 19th 2022), yet I haven't really received any feedback on this.
-This is a know problem in Fantomas, people will only try new features once they are considered stable.
-And afterwards they are disappointed when their expectations aren't met.
+This is a known problem when developing any software, and one I've seen in Fantomas: people will only try new features once they are considered stable.
 
 **Please try this out and participate on GitHub!!**
 
@@ -262,7 +251,7 @@ There are a lot of open technical and philosophical questions regarding this top
 
 #### Beware the vanity alignment PD
 
-The Fantomas default setting are not respecting the F# style guides when you have a function application that take a list (or two lists) as its last argument.
+The Fantomas default settings do not respect the F# style guides when you have a function application that take a list (or two lists) as its last argument.
 In the common tongue, this often reflects to an Elmish DSL.
 
 ```fsharp
@@ -287,9 +276,9 @@ let sorted =
 ```
 
 And if you change the `List.sort` to `List.sortDescending`, all the items of the list will jump around.
-This is known as *the dreaded vanity alignment problem*, where the name of the identifier has an influence on the positioning of the remainder of the expression.
+This is known as *the dreaded vanity alignment problem*, where the name of the identifier influences the positioning of the remainder of the expression.
 
-Anyway, the point I'm trying to make is that the style guide would suggest to formatted this as:
+The style guide would suggest to format this as:
 
 ```fsharp
 let v =
@@ -309,7 +298,7 @@ let sorted =
           "Epsilon" ]
 ```
 
-In the 4.x series, you were able to do this using the setting `fsharp_disable_elmish_syntax=true`, but it was always a bit an unfortunate this wasn't the default behavior.
+In the 4.x series, you were able to do this using the setting `fsharp_disable_elmish_syntax=true`, but it was unfortunate this wasn't the default behavior.
 With a major release, we can address these things.
 
 #### Expanding on lists at the end
@@ -358,7 +347,7 @@ Thank you Jimmy!
 
 ## Closing thoughts
 
-I'm really excited for version five. The changes are significant, I'm in a state of bliss and the best is yet to come!
+The changes are significant in version five and I believe that the best is yet to come.
 Please try this one out, report issues using [our online tool](https://fsprojects.github.io/fantomas-tools/#/fantomas/preview) and let us know on [Discord](https://discord.gg/D5QXvQrBVa) how thing are going.
 
 Cheers,
