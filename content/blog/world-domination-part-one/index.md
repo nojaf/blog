@@ -30,15 +30,15 @@ Intel Xeon Platinum 8171M CPU 2.60GHz, 1 CPU, 2 logical and 2 physical cores
 
 ```
 BenchmarkDotNet=v0.13.1, OS=ubuntu 20.04
-Intel Xeon Platinum 8272CL CPU 2.60GHz, 1 CPU, 2 logical and 2 physical cores
+Intel Xeon Platinum 8171M CPU 2.60GHz, 1 CPU, 2 logical and 2 physical cores
 .NET SDK=6.0.200
   [Host]     : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT DEBUG
   DefaultJob : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT
 
 
-| Method |     Mean |   Error |  StdDev | Rank |      Gen 0 |     Gen 1 |     Gen 2 | Allocated |
-|------- |---------:|--------:|--------:|-----:|-----------:|----------:|----------:|----------:|
-| Format | 594.4 ms | 6.98 ms | 6.53 ms |    1 | 12000.0000 | 4000.0000 | 1000.0000 |    207 MB |
+| Method |     Mean |    Error |   StdDev | Rank |      Gen 0 |     Gen 1 |     Gen 2 | Allocated |
+|------- |---------:|---------:|---------:|-----:|-----------:|----------:|----------:|----------:|
+| Format | 715.2 ms | 13.48 ms | 18.46 ms |    1 | 12000.0000 | 4000.0000 | 1000.0000 |    202 MB |
 ```
 
 In this blogpost, I'll elaborate a bit how we did this and what you can expect from the V5 release.
