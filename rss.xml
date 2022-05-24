@@ -1,4 +1,311 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 16 May 2022 13:05:35 GMT</lastBuildDate><item><title><![CDATA[A word on triple-slash comments]]></title><description><![CDATA[Intro Yesterday, pretty much out of nowhere, FCS 41.0.3 was published on NuGet.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 May 2022 08:24:15 GMT</lastBuildDate><item><title><![CDATA[World domination, part one]]></title><description><![CDATA[Intro Some time ago, I was able to merge in a huge refactoring effort into the next major version of Fantomas. The result of these changes…]]></description><link>https://blog.nojaf.com/world-domination-part-one/</link><guid isPermaLink="false">https://blog.nojaf.com/world-domination-part-one/</guid><pubDate>Tue, 24 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Some time ago, I was able to merge in a &lt;a href=&quot;https://github.com/fsprojects/fantomas/pull/2218&quot;&gt;huge refactoring effort&lt;/a&gt; into &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/2160&quot;&gt;the next major version of Fantomas&lt;/a&gt;.&lt;br&gt;
+The result of these changes make Fantomas &lt;strong&gt;at least twice as fast as the v4 release&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Before&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;BenchmarkDotNet=v0.13.1, OS=ubuntu 20.04
+Intel Xeon Platinum 8171M CPU 2.60GHz, 1 CPU, 2 logical and 2 physical cores
+.NET SDK=6.0.200
+  [Host]     : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT DEBUG
+  DefaultJob : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT
+
+
+| Method |    Mean |    Error |   StdDev | Rank |      Gen 0 |      Gen 1 |     Gen 2 | Allocated |
+|------- |--------:|---------:|---------:|-----:|-----------:|-----------:|----------:|----------:|
+| Format | 2.434 s | 0.0415 s | 0.0388 s |    1 | 92000.0000 | 33000.0000 | 2000.0000 |      2 GB |&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;After&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;BenchmarkDotNet=v0.13.1, OS=ubuntu 20.04
+Intel Xeon Platinum 8171M CPU 2.60GHz, 1 CPU, 2 logical and 2 physical cores
+.NET SDK=6.0.200
+  [Host]     : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT DEBUG
+  DefaultJob : .NET 6.0.2 (6.0.222.6406), X64 RyuJIT
+
+
+| Method |     Mean |    Error |   StdDev | Rank |      Gen 0 |     Gen 1 |     Gen 2 | Allocated |
+|------- |---------:|---------:|---------:|-----:|-----------:|----------:|----------:|----------:|
+| Format | 715.2 ms | 13.48 ms | 18.46 ms |    1 | 12000.0000 | 4000.0000 | 1000.0000 |    202 MB |&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this blogpost, I’ll elaborate a bit how we did this and what you can expect from the V5 release.&lt;/p&gt;
+&lt;h2&gt;F# eXchange 2021&lt;/h2&gt;
+&lt;p&gt;Last October, I had the opportunity to speak at &lt;a href=&quot;https://skillsmatter.com/skillscasts/17236-fantomas-v&quot;&gt;F# eXchange&lt;/a&gt;.
+There I announced that what the plan was for the next major of Fantomas and how to get there.
+A crucial part of that talk was about how improving the &lt;code class=&quot;language-text&quot;&gt;Syntax tree&lt;/code&gt; at &lt;a href=&quot;https://github.com/dotnet/fsharp/blob/main/src/fsharp/SyntaxTree.fsi&quot;&gt;dotnet/fsharp&lt;/a&gt; was the key to everything.
+In short, a better syntax tree, leads to fewer shenanigans in the Fantomas codebase.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In short, a better syntax tree, leads to fewer shenanigans in the Fantomas codebase.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Trivia&lt;/h2&gt;
+&lt;p&gt;A significant part of improving the syntax tree was the introduction of &lt;a href=&quot;https://github.com/dotnet/fsharp/issues/12418&quot;&gt;Trivia&lt;/a&gt;.
+&lt;code class=&quot;language-text&quot;&gt;Trivia&lt;/code&gt; has a bit of dual meaning:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In Fantomas, we use it as a denominator for additional information that was present in the source code, but not captured in the AST. For example code comments or newlines.&lt;/li&gt;
+&lt;li&gt;In the F# compiler, we use it as a denominator for addition information about syntax, that the compiler doesn’t need to compile to binary. For example the range of the &lt;code class=&quot;language-text&quot;&gt;let&lt;/code&gt; keyword in a binding.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Having &lt;a href=&quot;https://github.com/dotnet/fsharp/blob/main/src/fsharp/SyntaxTree.fsi&quot;&gt;additional trivia information&lt;/a&gt; in the syntax tree is of immense value to Fantomas.&lt;/p&gt;
+&lt;h3&gt;Keywords&lt;/h3&gt;
+&lt;p&gt;Having more information about keywords allows us to better release what the user originally wrote.
+If we take a look at the AST for&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MyType&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;abstract&lt;/span&gt; One &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;unit &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; unit&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;member&lt;/span&gt; Two&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;unit &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; unit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;we get something along the lines of&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;Types
+ &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;SynTypeDefn
+     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SynComponentInfo
+        &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;MyType&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+         PreXmlDoc &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; FSharp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Compiler&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Xml&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;XmlDocCollector&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      ObjectModel
+        &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Unspecified&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;AbstractSlot
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SynValSig
+               &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SynIdent &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;One&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+             &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; IsInstance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;true&lt;/span&gt;
+               IsDispatchSlot &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;true&lt;/span&gt;
+               IsOverrideOrExplicitImpl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;
+               IsFinal &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;
+               MemberKind &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Member
+               Trivia &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; MemberRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                          OverrideRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                          AbstractRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Some tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                          StaticRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                          DefaultRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+             tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          AbstractSlot
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SynValSig
+               &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SynIdent &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Two&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+             &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; IsInstance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;true&lt;/span&gt;
+               IsDispatchSlot &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;true&lt;/span&gt;
+               IsOverrideOrExplicitImpl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;
+               IsFinal &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;
+               MemberKind &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Member
+               Trivia &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; MemberRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Some tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                          OverrideRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                          AbstractRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Some tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                          StaticRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                          DefaultRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can see in the &lt;code class=&quot;language-text&quot;&gt;Trivia&lt;/code&gt; of &lt;a href=&quot;https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-syntax-synmemberflags.html#Trivia&quot;&gt;SynMemberFlags&lt;/a&gt; what exact keywords were used for &lt;code class=&quot;language-text&quot;&gt;One&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Two&lt;/code&gt;.
+Because of this new information, we can restore exactly what was written.&lt;/p&gt;
+&lt;h3&gt;Identifier&lt;/h3&gt;
+&lt;p&gt;Consider&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; a b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The compiled function name the F# compiler will use in the typed tree is &lt;code class=&quot;language-text&quot;&gt;op_Addition&lt;/code&gt;. We can determine this from tracing it back to the &lt;code class=&quot;language-text&quot;&gt;+&lt;/code&gt; operator, however, there is no mentioning of the parentheses.
+Luckily the AST looks like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token function&quot;&gt;SynLongIdent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;op_Addition&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Some &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;OriginalNotationWithParen&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;+&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Because of &lt;a href=&quot;https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-syntaxtrivia-identtrivia.html#OriginalNotationWithParen&quot;&gt;OriginalNotationWithParen&lt;/a&gt; we can very efficiently restore the function name as &lt;code class=&quot;language-text&quot;&gt;(+)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This is very significant because beforehand we needed to &lt;strong&gt;check every identifier&lt;/strong&gt; within a file to determine &lt;strong&gt;if it is an operator or not&lt;/strong&gt;.
+Identifiers are all over the place so this really is an immense performance boost.&lt;/p&gt;
+&lt;h2&gt;No Tokens, No Cry&lt;/h2&gt;
+&lt;p&gt;Talking about Trivia, not everything was present in the syntax tree. Originally, we also processed the tokens of each file.
+Inside these tokens were addition clues to what the user actually wrote. We needed to find these clues (&lt;code class=&quot;language-text&quot;&gt;trivia&lt;/code&gt;) and link them to the actual syntax tree nodes (&lt;code class=&quot;language-text&quot;&gt;trivia nodes&lt;/code&gt;). This was a tedious operation.&lt;/p&gt;
+&lt;p&gt;Though we still have the concept of trivia, we don’t need to process the tokens anymore to detect the missing pieces.
+The syntax tree carries enough information for us to extract the remaining trivia from source code.&lt;/p&gt;
+&lt;p&gt;For example the ranges of any code comments are now part of the syntax tree:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// some comment&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;the matching tree&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;ImplFile
+  &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ParsedImplFileInput
+     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;tmp.fsx&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; QualifiedNameOfFile Tmp$fsx&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;SynModuleOrNamespace
+         &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Tmp&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; AnonModule&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Let
+             &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;SynBinding
+                 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  PreXmlDoc &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; FSharp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Compiler&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Xml&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;XmlDocCollector&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  SynValData
+                    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SynValInfo &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SynArgInfo &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  Named &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SynIdent &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Const &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Int32 &lt;span class=&quot;token number&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Yes tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                  &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; LetKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Some tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                    EqualsRange &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Some tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; PreXmlDocEmpty&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; None&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; ModuleKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None
+                                 NamespaceKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; None &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; ConditionalDirectives &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+        CodeComments &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;LineComment tmp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fsx &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The example above will contain the &lt;code class=&quot;language-text&quot;&gt;range&lt;/code&gt; of &lt;code class=&quot;language-text&quot;&gt;// some comment&lt;/code&gt;. This doesn’t tell us yet that it belong to &lt;code class=&quot;language-text&quot;&gt;v&lt;/code&gt;, but it is a step in the right direction.
+We don’t need to process any tokens to learn about the existence of the comment. And that’s a good thing!&lt;/p&gt;
+&lt;h2&gt;Fullmetal Alchemist&lt;/h2&gt;
+&lt;p&gt;All these changes on the compiler side at &lt;code class=&quot;language-text&quot;&gt;dotnet/fsharp&lt;/code&gt; are shipped as the &lt;a href=&quot;https://www.nuget.org/packages/FSharp.Compiler.Service&quot;&gt;FSharp.Compiler.Service&lt;/a&gt; NuGet package.
+The release schedule of these packages is a bit of mystery and appears to be tied to the .NET SDK releases. I started looking for a way we could have these changes faster and we are now creating our own &lt;a href=&quot;https://www.nuget.org/packages/Fantomas.FCS&quot;&gt;Fantomas flavoured FSharp.Compiler.Service&lt;/a&gt; package.&lt;/p&gt;
+&lt;p&gt;I wrote some prose on &lt;a href=&quot;https://github.com/fsprojects/fantomas/blob/master/docs/Fantomas-V.md&quot;&gt;the technical details&lt;/a&gt; and I invite you to read it. But the gist is that we take the files we need from &lt;code class=&quot;language-text&quot;&gt;dotnet/fsharp&lt;/code&gt; at a known commit pointer and expose the parser tailored to the needs of Fantomas.
+End-users don’t need to worry about this, as this is all happening under the hood.&lt;/p&gt;
+&lt;h3&gt;Code generation&lt;/h3&gt;
+&lt;p&gt;If you are using Fantomas to generate code, that is still possible. &lt;code class=&quot;language-text&quot;&gt;Fantomas.FCS&lt;/code&gt; has exactly the same namespaces as the &lt;code class=&quot;language-text&quot;&gt;FSharp.Compiler.Service&lt;/code&gt; has, so migrating should be doable.&lt;/p&gt;
+&lt;h2&gt;Fantomas Five&lt;/h2&gt;
+&lt;p&gt;Besides the performance there are some &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/2160&quot;&gt;other topics&lt;/a&gt; planned for the next major release.&lt;/p&gt;
+&lt;h3&gt;fantomas-tool -&gt; fantomas&lt;/h3&gt;
+&lt;p&gt;We renamed the .NET tool from &lt;a href=&quot;https://www.nuget.org/packages/fantomas-tool/4.7.9&quot;&gt;fantomas-tool&lt;/a&gt; to &lt;a href=&quot;https://www.nuget.org/packages/fantomas/5.0.0-alpha-007&quot;&gt;fantomas&lt;/a&gt;.
+From now on, you can just install it using &lt;code class=&quot;language-text&quot;&gt;dotnet tool install fantomas --prerelease&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dotnet tool install fantomas —prerelease&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Logo&lt;/h3&gt;
+&lt;p&gt;We posted &lt;a href=&quot;https://en.99designs.be/logo-design/contests/redesign-software-program-logo-make-more-compelling-1157921/poll/436a424158/vote?utm_source=voting_app&amp;#x26;utm_medium=web&amp;#x26;utm_campaign=voting&quot;&gt;a poll&lt;/a&gt; for a logo contest.
+For the next major release, we want to work on the Fantomas branding as well.
+A first step here was looking for a new logo:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 420px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/91a90479f35e1f5510abd6abe97eb2e8/65f94/new_fantomas_logo.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAECAwQF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAe/ViTYQUAD/xAAYEAEBAQEBAAAAAAAAAAAAAAABAAIgIf/aAAgBAQABBQKNDqWPHj//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAaEAEAAQUAAAAAAAAAAAAAAAABABASIDFB/9oACAEBAAY/AonSmotrj//EABwQAQACAQUAAAAAAAAAAAAAAAEAIREQIFFhcf/aAAgBAQABPyGAF5NMFZPkJeL1CzZ//9oADAMBAAIAAwAAABC8zzz/xAAWEQEBAQAAAAAAAAAAAAAAAAARASD/2gAIAQMBAT8Qqwx//8QAFhEAAwAAAAAAAAAAAAAAAAAAAREg/9oACAECAQE/EAo//8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAMRAhQSD/2gAIAQEAAT8QjZiUVOsXw5HDgAaHjQhIKIYo+P/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;New Fantomas logo&quot;
+        title=&quot;New Fantomas logo&quot;
+        src=&quot;/static/91a90479f35e1f5510abd6abe97eb2e8/65f94/new_fantomas_logo.jpg&quot;
+        srcset=&quot;/static/91a90479f35e1f5510abd6abe97eb2e8/a80bd/new_fantomas_logo.jpg 148w,
+/static/91a90479f35e1f5510abd6abe97eb2e8/1c91a/new_fantomas_logo.jpg 295w,
+/static/91a90479f35e1f5510abd6abe97eb2e8/65f94/new_fantomas_logo.jpg 420w&quot;
+        sizes=&quot;(max-width: 420px) 100vw, 420px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Get Back&lt;/h2&gt;
+&lt;p&gt;Having a faster formatter won’t necessarily bring you in if you are not using Fantomas today.
+Even though Fantomas follows the &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/fsharp/style-guide/formatting&quot;&gt;F# style guide&lt;/a&gt;, some people still don’t use it.&lt;/p&gt;
+&lt;p&gt;At the end of last year, I had a change of heart about &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/1408#issuecomment-1000197855&quot;&gt;Stroustrup bracket style&lt;/a&gt;.
+The re-opening of this issue was well received by the community:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e75772016bf426a45720826194c01564/bad1b/Stroustrup-bracket-style-feedback.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABB0lEQVQoz42R2W7EIAxF+/+/OWGy2WCHzRCWlqnaidRO1SOEbMF5uPabIZ7ndduhtd57b61fi/ak/zjtzXt3HFxKrbU87lrLqEodTX/NkHPylpGIicgYMkRErLUxxMScUhKR8zxfywTakNYaAAEHgBpR7wDMh0jMOf8u7wD3+yM0Yinl8nb9dw3fnplFxDlvrfM+xCiDlPqfPGVn7TRNy7Iqdb/dlJrUpNS2w7pt87xa60QkxhhijFFC8N8RhhxCQESjadOodl4gLOhncAu4BT1Q3HQwZEMIKWcRyV/D+1yVN8Ywj2lvfOxHxaNom2NMtfXaemm9vVqVD/7Mvp7hzDmn3P/Nh/wObaJGhgw7mEoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Community feedback&quot;
+        title=&quot;Community feedback&quot;
+        src=&quot;/static/e75772016bf426a45720826194c01564/fcda8/Stroustrup-bracket-style-feedback.png&quot;
+        srcset=&quot;/static/e75772016bf426a45720826194c01564/12f09/Stroustrup-bracket-style-feedback.png 148w,
+/static/e75772016bf426a45720826194c01564/e4a3f/Stroustrup-bracket-style-feedback.png 295w,
+/static/e75772016bf426a45720826194c01564/fcda8/Stroustrup-bracket-style-feedback.png 590w,
+/static/e75772016bf426a45720826194c01564/bad1b/Stroustrup-bracket-style-feedback.png 841w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I prefer an opinionated view on the style of things, yet at the same time I want to be open to feedback of the community.&lt;/p&gt;
+&lt;h3&gt;Ragnarok&lt;/h3&gt;
+&lt;p&gt;Before re-opening that issue, I made an initial proof of concept and got something working.&lt;/p&gt;
+&lt;p&gt;Later &lt;a href=&quot;https://github.com/josh-degraw&quot;&gt;Josh DeGraw&lt;/a&gt; &lt;a href=&quot;https://github.com/fsprojects/fantomas/pull/2161&quot;&gt;ported the code&lt;/a&gt; and you can now activate it by adding:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[*.fs]
+fsharp_multiline_block_brackets_on_same_column=true
+fsharp_experimental_stroustrup_style=true&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Thank you Josh!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is a small step for Fantomas, but a giant leap for the F# community&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It has been around since &lt;a href=&quot;https://www.nuget.org/packages/fantomas-tool/5.0.0-alpha-001&quot;&gt;5.0.0-alpha-001&lt;/a&gt; (March 19th 2022), yet I haven’t really received any feedback on this.
+This is a known problem when developing any software, and one I’ve seen in Fantomas: people will only try new features once they are considered stable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Please try this out and participate on GitHub!!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There are a lot of open technical and philosophical questions regarding this topic, so if this matters to you, please help to push this forward!&lt;/p&gt;
+&lt;h3&gt;Elmish no more&lt;/h3&gt;
+&lt;h4&gt;Beware the vanity alignment PD&lt;/h4&gt;
+&lt;p&gt;The Fantomas default settings do not respect the F# style guides when you have a function application that take a list (or two lists) as its last argument.
+In the common tongue, this often reflects to an Elmish DSL.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    Input&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;input &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; Input&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Custom &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; Placeholder placeholder
+                                 &lt;span class=&quot;token function&quot;&gt;OnChange&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;fun&lt;/span&gt; ev &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; ev&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Value &lt;span class=&quot;token operator&quot;&gt;|&gt;&lt;/span&gt; onChange&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                                 DefaultValue value
+                                 Key key &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Though this looks okay-ish when you are coding something with Fable, it doesn’t make sense for other things like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; sorted &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    List&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sortDescending &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Alpha&quot;&lt;/span&gt;
+                          &lt;span class=&quot;token string&quot;&gt;&quot;Beta&quot;&lt;/span&gt;
+                          &lt;span class=&quot;token string&quot;&gt;&quot;Gamma&quot;&lt;/span&gt;
+                          &lt;span class=&quot;token string&quot;&gt;&quot;Delta&quot;&lt;/span&gt;
+                          &lt;span class=&quot;token string&quot;&gt;&quot;Epsilon&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And if you change the &lt;code class=&quot;language-text&quot;&gt;List.sort&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;List.sortDescending&lt;/code&gt;, all the items of the list will jump around.
+This is known as &lt;em&gt;the dreaded vanity alignment problem&lt;/em&gt;, where the name of the identifier influences the positioning of the remainder of the expression.&lt;/p&gt;
+&lt;p&gt;The style guide would suggest to format this as:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    Input&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;input
+        &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; Input&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Custom
+              &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; Placeholder placeholder
+                &lt;span class=&quot;token function&quot;&gt;OnChange&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;fun&lt;/span&gt; ev &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; ev&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Value &lt;span class=&quot;token operator&quot;&gt;|&gt;&lt;/span&gt; onChange&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+                DefaultValue value
+                Key key &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; sorted &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    List&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sortDescending
+        &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Alpha&quot;&lt;/span&gt;
+          &lt;span class=&quot;token string&quot;&gt;&quot;Beta&quot;&lt;/span&gt;
+          &lt;span class=&quot;token string&quot;&gt;&quot;Gamma&quot;&lt;/span&gt;
+          &lt;span class=&quot;token string&quot;&gt;&quot;Delta&quot;&lt;/span&gt;
+          &lt;span class=&quot;token string&quot;&gt;&quot;Epsilon&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In the 4.x series, you were able to do this using the setting &lt;code class=&quot;language-text&quot;&gt;fsharp_disable_elmish_syntax=true&lt;/code&gt;, but it was unfortunate this wasn’t the default behavior.
+With a major release, we can address these things.&lt;/p&gt;
+&lt;h4&gt;Expanding on lists at the end&lt;/h4&gt;
+&lt;p&gt;The Elmish-like shapes that did not follow the style guide were fairly restricted.
+If a small detail was altered, the shape would not match anymore and so there would have been a difference between:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// matches the AST shape of a function application with two lists&lt;/span&gt;
+div &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// some comment&lt;/span&gt;
+    p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; str &lt;span class=&quot;token string&quot;&gt;&quot;x&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// does not match the AST shape of a function application with two lists&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// because of that extra string argument&lt;/span&gt;
+div
+    &lt;span class=&quot;token string&quot;&gt;&quot;some string&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token comment&quot;&gt;// some comment&lt;/span&gt;
+      p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; str &lt;span class=&quot;token string&quot;&gt;&quot;y&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This had its limitations and we want to &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/2180&quot;&gt;revisit&lt;/a&gt; this as well.
+We want to get rid of all the Elmish specific settings (&lt;code class=&quot;language-text&quot;&gt;fsharp_max_elmish_width&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;fsharp_single_argument_web_mode&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;fsharp_disable_elmish_syntax&lt;/code&gt;) and instead consider this as a part of the Stroustrup setting.&lt;/p&gt;
+&lt;p&gt;Maybe something like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// list at the end&lt;/span&gt;
+div &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// some comment&lt;/span&gt;
+    p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; str &lt;span class=&quot;token string&quot;&gt;&quot;x&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// also list at the end&lt;/span&gt;
+div &lt;span class=&quot;token string&quot;&gt;&quot;some string&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// some comment&lt;/span&gt;
+    p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; str &lt;span class=&quot;token string&quot;&gt;&quot;y&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/TheAngryByrd&quot;&gt;Jimmy Byrd&lt;/a&gt; started working on this in &lt;a href=&quot;https://github.com/fsprojects/fantomas/pull/2200&quot;&gt;PR 2200&lt;/a&gt;.&lt;br&gt;
+Thank you Jimmy!&lt;/p&gt;
+&lt;h2&gt;Closing thoughts&lt;/h2&gt;
+&lt;p&gt;The changes are significant in version five and I believe that the best is yet to come.
+Please try this one out, report issues using &lt;a href=&quot;https://fsprojects.github.io/fantomas-tools/#/fantomas/preview&quot;&gt;our online tool&lt;/a&gt; and let us know on &lt;a href=&quot;https://discord.gg/D5QXvQrBVa&quot;&gt;Discord&lt;/a&gt; how thing are going.&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;/p&gt;
+&lt;p&gt;Florian&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Photo by &lt;a href=&quot;https://unsplash.com/@david_bxl?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;David Bruyndonckx&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/photos/4XLdfSieqP0?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink&quot;&gt;Unsplash&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A word on triple-slash comments]]></title><description><![CDATA[Intro Yesterday, pretty much out of nowhere, FCS 41.0.3 was published on NuGet.
 I must say, I’m pretty hyped about this release. It contains…]]></description><link>https://blog.nojaf.com/a-word-on-triple-slash-comments/</link><guid isPermaLink="false">https://blog.nojaf.com/a-word-on-triple-slash-comments/</guid><pubDate>Sat, 05 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Yesterday, pretty much out of nowhere, &lt;a href=&quot;https://www.nuget.org/packages/FSharp.Compiler.Service/41.0.3&quot;&gt;FCS 41.0.3&lt;/a&gt; was published on NuGet.
 I must say, I’m pretty hyped about this release. It contains a few &lt;a href=&quot;https://github.com/dotnet/fsharp/pulls?q=is%3Apr+is%3Aclosed+author%3Anojaf+merged%3A2021-10-30..2022-03-03&quot;&gt;PRs&lt;/a&gt; that improve the syntax tree and provide more information to work within Fantomas.&lt;/p&gt;

@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-blog-list-template-js",
+    "path": "/page/4",
+    "result": {"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":16,"edges":[{"node":{"excerpt":"Introduction Lately I’ve been using a lot of Reactjs goodness in my side projects. React is only the V in a modern day MVW (Model, View Whatever) pattern and that’s an interesting subject. Facebook uses its own Flux library/pattern/architecture to cope with the other stuff, however there seem to be a lot of different opinions when it’s comes to flux. One of those flux variants is Redux, created by Dan Abramov and others. If you never heard of Redux or don’t really know how it works, I suggest you watch these videos first. In this blogpost I’ll explain a…","fields":{"slug":"/redux-thunk/"},"frontmatter":{"date":"2015-12-06","title":"Redux Thunk, javascript middleware for Redux","path":"2015/12/06/redux-thunk/","tags":["javascript"]}}}]}},"pageContext":{"limit":5,"skip":15}},
+    "staticQueryHashes": ["3128451518"]}
