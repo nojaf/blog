@@ -1,4 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 24 Jul 2022 15:39:40 GMT</lastBuildDate><item><title><![CDATA[World domination, part one]]></title><description><![CDATA[Intro Some time ago, I was able to merge in a huge refactoring effort into the next major version of Fantomas. The result of these changes…]]></description><link>https://blog.nojaf.com/world-domination-part-one/</link><guid isPermaLink="false">https://blog.nojaf.com/world-domination-part-one/</guid><pubDate>Tue, 24 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 25 Aug 2022 09:58:07 GMT</lastBuildDate><item><title><![CDATA[Say Hello to Fantomas 5]]></title><description><![CDATA[Introduction Fantomas 5 is here! The API of v5 is finalized! In this blogpost I will explain how you can migrate to v5 from v4. The latest…]]></description><link>https://blog.nojaf.com/say-hello-to-fantomas-five/</link><guid isPermaLink="false">https://blog.nojaf.com/say-hello-to-fantomas-five/</guid><pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Fantomas 5&lt;/strong&gt; is here! The API of v5 is finalized! In this blogpost I will explain how you can migrate to v5 from v4.&lt;/p&gt;
+&lt;p&gt;The latest preview versions are labelled as beta’s, meaning &lt;strong&gt;the API is stable&lt;/strong&gt;.&lt;br&gt;
+Please start using these latest versions, as the final product will be very close to what is out there today.&lt;/p&gt;
+&lt;p&gt;Install Fantomas using&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dotnet tool install fantomas —prerelease&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;What changed?&lt;/h2&gt;
+&lt;p&gt;Under the good, we achieve a massive performance boost. I explained this in a &lt;a href=&quot;/2022/05/24/word-domination-part-one/&quot;&gt;previous blogpost&lt;/a&gt;, Fantomas v5 is &lt;strong&gt;twice or more&lt;/strong&gt;, as fast as v4. Achieving this required some serious changes and a major version update.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is twice as fast, maybe even faster&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;House keeping&lt;/h3&gt;
+&lt;p&gt;I firmly believe in semantic versioning. If a feature is introduced, and part of the public API, you cannot simply remove it the next release.
+This level of stability is understandably a blessing, but also a curse when we also need to carry the weight of some choice that have not yielded the benefits that were initially anticipated.
+A major release is one of the rare opportunities where we can really question every past decision.&lt;/p&gt;
+&lt;h3&gt;Removal&lt;/h3&gt;
+&lt;p&gt;There are some settings and features that were completely removed.
+These settings were very much legacy and not specified anywhere in any of &lt;a href=&quot;https://fsprojects.github.io/fantomas/docs/end-users/StyleGuide.html&quot;&gt;the F# style guides&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have the following setings in your &lt;code class=&quot;language-text&quot;&gt;.editorconfig&lt;/code&gt;, please remove them, as they no longer have any influence on the working of Fantomas.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fsharp_semicolon_at_end_of_line&lt;/li&gt;
+&lt;li&gt;fsharp_keep_if_then_in_same_line&lt;/li&gt;
+&lt;li&gt;fsharp_indent_on_try_with&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Change&lt;/h3&gt;
+&lt;p&gt;We streamlined a few settings for efficiency’s sake. Please read our &lt;a href=&quot;https://github.com/fsprojects/fantomas/blob/master/CHANGELOG.md&quot;&gt;changelog&lt;/a&gt; to get the full scoop, or visit our &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/2160&quot;&gt;announcement issue&lt;/a&gt;.
+Here are some of the most interesting changes:&lt;/p&gt;
+&lt;h4&gt;Fantomas.Core and fantomas&lt;/h4&gt;
+&lt;p&gt;The NuGet package &lt;code class=&quot;language-text&quot;&gt;Fantomas&lt;/code&gt; was renamed to &lt;code class=&quot;language-text&quot;&gt;Fantomas.Core&lt;/code&gt;. This was done to free up the name &lt;code class=&quot;language-text&quot;&gt;fantomas&lt;/code&gt;, so it can be used as the name for the command line tool, previously known as &lt;code class=&quot;language-text&quot;&gt;fantomas-tool&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Revisit Elmish&lt;/h4&gt;
+&lt;p&gt;Elmish-inspired code is one of those nice-to-have features, but it didn’t make sense to enable this by default. We choose to remove the default Elmish behaviour that came with the default settings and move all things Elmish to the experimental Stroustrup feature.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;fsharp_disable_elmish_code&lt;/code&gt; should be removed from your &lt;code class=&quot;language-text&quot;&gt;.editorconfig&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Single argument web mode&lt;/h4&gt;
+&lt;p&gt;We took a step back when it came to Elmish domain- specific languages and tried to come up with something more generalized.
+The default Elmish behaviour (a function with two lists) and its sibling feature &lt;code class=&quot;language-text&quot;&gt;fsharp_single_argument_web_mode&lt;/code&gt; (a function with a single list) are now one and the same feature.
+The setting is also a bit more flexible so that, for example, it can become more usable for &lt;a href=&quot;https://fsprojects.github.io/fantomas-tools/#/fantomas/preview?data=N4KABGBEDGD2AmBTSAuKAbRAXMXEGct8wBeAHQCcyA7CPQgGQEtCwzIBBXAnAcwtgBXAA7swAbUo0IdHm0ixqiboTHAptGRACiAD2GJoWAHSIAjoICG6MAAoATAGp7ASjAAWeU-vsNWgL4afjL0OOyW1LBYABaIFCo4MZY4AGaWTOj4asFaegZGphbWdgDMjiVuAKzyZSW%2BVJoQgQ05CRz4AJ7U0PIxLGD9EWCWnd0J2Q1aEJhYAIRguqTDoz3AYBTYghS0ns3SU3mGJuZWNosOzm7s3vX7TUGTITwAKiMA1r3R-YO47%2BOQYHUjy0M3mtBIYFe%2BDexgAYgIALYAJQIgnQOB8wJkhwKJ2KtHs8moJB8kFae00AF1ggAfAB8CQYlgARogbOx8JYEcJMFkyS0GgB6QVgADK2CwTGovHwKA0wokACpjMAUvgADRq3T%2BalCkVq6KWCjCAD6CLRkvQUsQJuZ6Fg0Detoolkd2HwJsUJs5CJtcHQggRxKwFEEiHl%2BvwhuNJsQ%2BjiTF91Cw1m9IaEhFDpsIHUwJBDYag6vAUHwEqlMtQEhLEFAUygABIsB0DFXIFKsJBi-XIA2AG7WMNV8Q1qYABm79agAElqEhk6KmAAvZCT%2BvuUcQSmj-xrwGbxvN1todvJrsH3sDgPINAjqdgACMe60kAAspZdMwlAxENKYuf7wfewxwPbcAj3Ospl7I8bygX94AAeRSL9EFFZtMAAqD%2B0HWC7ynexnxkSBtDnJCUMwnt0BSSBQJ3CCLybFtYMgZlYFgdAKKI7Dr2HA8IBKQiIEgWcywoLBYSlawADlEAAdytJROK0AtEFo8DR0gl9GOPKBWPYpTGyvIdbz4jxBKgUVhFdRAACFEBSWANgABSNLlsDiAy6FDVT6zAmRdw0hiYLbPSOMIy8cN4%2B9KnMyBLOsuyHI2BhYFkuJoBGRBZz7B1kiYRRPNwby1P8%2Bie205jQoMiKeJM%2B8ADZYvi6BbPsxzEAAVWEAwKAyststyyUCvMtJMh8qY-KaMqsOCk8qvC7jjOre8AHYmqslrEvagBhdARnwbbFEzQQjEcwrRrLEqpsC8rZt0tiwoYozcNMgAOdaErajZX0QBFWQoc7rEu3y6JumamJCh7qsWl77wATg%2BzavsQQ77WoQGxqusAAq0TSuLulioYW56oqnB8J1MuKNsQDgUjwChDoRBFLEKlSsZxmQ8aEirIf04nIrqsmn0p5rWqS1DfqYf1htMi7xq0SbsemrSCfmp6BeWsmCJF6nafp8UESl9iZfvNmQfU3GgohuaifV2rNfrB8BJ16yOAEQQ5wAETZRMmHp1nivN0qwZV62oA7aGScFx33Fi99dGnFJnliahRWiRysAAdSYeB-3MkCg%2Buy3brD09O35%2B28MdmLKfjxPk9-bQxrTjPs9z6JCvqguJtB4vwZ0svI41qupgfRra4-WcUiYXQEJ65JHLyDZ8HwfL0fM17u4V3vOatgeI4rpaR60B81on3QUTgCh4DbvPTPcLeZEVjnaz35iD7to-TIfd7z8vxz4BSUDP9JC048AInwIVB87Nlb41LuadEGRrSwkcszLA9NngQ0PrDMmCNKb-2vq%2BC0SClAoIoGg-2sVoDRldPTE0skc7-hgSHOB%2B8zzYNJvWYCccPxuxdB0BCFBmCEFvh3Dej8tw71fiXNh5dP44K4cLe8b5eEUH4YI4RWAgF-TiKA8BkDzLQMLkrFh3MCYIMtMg1ByQMFYPkZwqY9htbKL4ZYARQiWBYCIYghSiAyEUI8lQmhRg4j0MYR3ZhfdQ6yKHpXUy9hnbKPjgANRwjZKU8AKyiMKpvSJu8ZHv3YfY6OjjY7n1hB7Iwa90lziyeEwqD88nSP7oUuR5Uo4O0cTXJJH5PZRAAOLYCXgQVeihsniKafuApvNHrtOHvE8eSTiG%2BJsvaR0NkXRuiIAhVOblUaBnXqZM2PcLb5JaTM2JX97z2DPsomS8lrR2SwGlX8mCDDe2ntQP2a8OBzh%2BjoigBijmBxOcHKJrDKq2zmXE65v8XFWl4NQCp3QhqpyYIi5IWxEDPFgLOecKZUUY2BqCouZzomQr5sUzpWh7B4PhfTageU%2ByIBStKf5-0PlSm%2BUdIl8sn5SKmecm2lLoVXKnCUCmSzEEoSZH9eAlhdqwFXtKe5vjeWTK5oeUuatRUKKmCUJRU5iLxgoImX8KZ0AAGlECIGEHi81s4NkRGoeq4xL9BXkouRwkpWgSjOKNasiIbwUL4DdkIOcMlCCIHgN4yxShhkrzXkC02ILt6nOaZ64VsysIdOPjIEoiSA1Gi2hsT2LBoCmsNoyvA8AOpfMUN7aAe0XSEpGkDPlkj00eohV6qleb%2BJlOUYcSt5rrBoXdsdYQaFcyrmBWGDVb82wf11Q4313SjXWttfHbRICUiBuoMG60yayZjgkWAZ%2BsCzHaqhTm%2BZ94SiLKNeOqWXiECzvvHLdmJZKSTnbPgWEq8qyfv8EAA&quot;&gt;Expecto tests&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To enable it, you need to add two settings: the existing &lt;code class=&quot;language-text&quot;&gt;fsharp_multiline_block_brackets_on_same_column&lt;/code&gt; setting, and the new &lt;code class=&quot;language-text&quot;&gt;fsharp_experimental_stroustrup_style&lt;/code&gt; setting.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;fsharp_single_argument_web_mode&lt;/code&gt; should be removed from your &lt;code class=&quot;language-text&quot;&gt;.editorconfig&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Why do I need two settings? Well, because Stroustrup is more of an extension of &lt;code class=&quot;language-text&quot;&gt;fsharp_multiline_block_brackets_on_same_column&lt;/code&gt; and it builds upon it.&lt;/p&gt;
+&lt;h3&gt;Addition&lt;/h3&gt;
+&lt;p&gt;Besides the core development of v5, there are also some community-driven features.&lt;/p&gt;
+&lt;h4&gt;Keep max empty lines&lt;/h4&gt;
+&lt;p&gt;Fantomas tries to respect the newlines you had in the original source code. The main reason for this is that it is very hard to come up with a good heuristic for when to introduce or remove newlines.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; foo &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+   a
+
+myFunction arg1 arg2 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fantomas will, in this example, restore the newline between &lt;code class=&quot;language-text&quot;&gt;if/then&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;myFunction&lt;/code&gt; function call.&lt;/p&gt;
+&lt;p&gt;However, if there were multiple blank lines between these code blocks, Fantomas would restore each one of them.&lt;/p&gt;
+&lt;p&gt;In v5, we’ve added a new setting that allows you to limit the amount of subsequential newlines that are are being restore.
+This amount can be controlled by &lt;code class=&quot;language-text&quot;&gt;fsharp_keep_max_number_of_blank_lines&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Stroustrup&lt;/h4&gt;
+&lt;p&gt;A controversial addition to v5 is the ability to format some code structures according to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup&quot;&gt;Stroustrup style&lt;/a&gt;.
+This style is quite popular in the F# community and there have been requests for it for some time now. More details about the origin of this setting can be found in &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/1408&quot;&gt;#1408&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MyRecord&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    X&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;int&lt;/span&gt;
+    Y&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;int&lt;/span&gt;
+    Z&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myRecordInstance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    X &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+    Y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+    Z &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;   
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myAsyncFunction a b c &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token computation-expression keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let!&lt;/span&gt; d &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; otherAsyncFunction a b
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; d &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; c
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The key problem with this feature request is that it is not a part of any F# style guide. This makes it hard on the maintainers to judge whether this setting is worth the maintenance trouble.
+It is &lt;strong&gt;quite an impactful change&lt;/strong&gt; and &lt;strong&gt;affect a lot of areas of the code base&lt;/strong&gt;. Very few people understand this impact when discussing about the code- style of things 😔.&lt;/p&gt;
+&lt;p&gt;It also doesn’t help that we already have two existing ways of dealing with this. A third option is excessive.
+Especially when you consider this is not a paid product and they’re very few active contributors to the project.&lt;/p&gt;
+&lt;p&gt;Luckily, a recent issue was raised on the &lt;a href=&quot;https://github.com/fsharp/fslang-design/issues/706&quot;&gt;F# style guide repository&lt;/a&gt;. Please engage in this thread and help us come to a positive solution.&lt;/p&gt;
+&lt;p&gt;Because this feature wasn’t discussed or properly debated, everything is still in an early stage. This will surely evolve over time, and time will tell where this is going.&lt;/p&gt;
+&lt;h5&gt;The inner workings&lt;/h5&gt;
+&lt;p&gt;The way Stroustrup works is that for certain multiline expressions the code is being printed on the current line instead of on the next line. This requires knowledge of the junction of two code constructs.
+Instead of rewriting these exact circumstances entirely, we made a trade-off at the junction, and let the second expression play out like it would when the &lt;code class=&quot;language-text&quot;&gt;fsharp_multiline_block_brackets_on_same_column&lt;/code&gt; is enabled.&lt;/p&gt;
+&lt;p&gt;To pull this off, you need to enable &lt;code class=&quot;language-text&quot;&gt;fsharp_multiline_block_brackets_on_same_column’&lt;/code&gt; in order to achieve valid code and the expected result.
+&lt;strong&gt;The technical changes to the code base were very drastic&lt;/strong&gt;, so the decision was made to piggy-back on an existing setting. This is the reason why you need to enable both settings.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;fsharp&quot;&gt;&lt;pre class=&quot;language-fsharp&quot;&gt;&lt;code class=&quot;language-fsharp&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// fsharp_multiline_block_brackets_on_same_column = true&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myRecordInstance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        X &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+        Y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+        Z &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;   
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// fsharp_multiline_block_brackets_on_same_column = true&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// fsharp_experimental_stroustrup_style = true&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myRecordInstance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    X &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+    Y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+    Z &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;   
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// The extra setting, will at certain junctions print the code at the current line, leading to the Stroustrup effect.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Thanks to my sponsor, G-Research&lt;/h2&gt;
+&lt;p&gt;I am grateful for the &lt;strong&gt;substantial support&lt;/strong&gt; I have received from &lt;a href=&quot;https://www.gresearch.co.uk/&quot;&gt;G-Research&lt;/a&gt;.
+It has allowed me to work on Fantomas for full working-days and really take the project to the next level – from Fantomas V4 to Fantomas V5.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f37d0e770f0849f3ca98c842f6c4c553/a2510/g-research.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EABgBAQADAQAAAAAAAAAAAAAAAAABAgQF/9oADAMBAAIQAxAAAAHk1lt5momoAH//xAAbEAEAAAcAAAAAAAAAAAAAAAABAAIQESAhIv/aAAgBAQABBQKCYaOzq+H/xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAwEBPwECP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABgQAAIDAAAAAAAAAAAAAAAAAAABECBR/9oACAEBAAY/ApaMr//EAB0QAQABAwUAAAAAAAAAAAAAAAEAEBExICFBYaH/2gAIAQEAAT8hiFh8oO0LQEeBnfOn/9oADAMBAAIAAwAAABCT777/xAAWEQEBAQAAAAAAAAAAAAAAAAABESD/2gAIAQMBAT8QQVcf/8QAFREBAQAAAAAAAAAAAAAAAAAAASD/2gAIAQIBAT8QVGP/xAAcEAEBAAICAwAAAAAAAAAAAAABEQAhQXEQIDH/2gAIAQEAAT8Qml4CuUyWU2B6efGxpescW/EKOnr/AP/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;G-Research logo&quot;
+        title=&quot;G-Research logo&quot;
+        src=&quot;/static/f37d0e770f0849f3ca98c842f6c4c553/1c72d/g-research.jpg&quot;
+        srcset=&quot;/static/f37d0e770f0849f3ca98c842f6c4c553/a80bd/g-research.jpg 148w,
+/static/f37d0e770f0849f3ca98c842f6c4c553/1c91a/g-research.jpg 295w,
+/static/f37d0e770f0849f3ca98c842f6c4c553/1c72d/g-research.jpg 590w,
+/static/f37d0e770f0849f3ca98c842f6c4c553/a8a14/g-research.jpg 885w,
+/static/f37d0e770f0849f3ca98c842f6c4c553/a2510/g-research.jpg 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Release party 🥳&lt;/h2&gt;
+&lt;p&gt;I would like to announce the official launch of Fantomas V5:
+On September 16th at 6PM (CEST), we will have a grand release feast on our &lt;a href=&quot;https://discord.gg/rUTUmq3n?event=1010483519073558539&quot;&gt;Discord server&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Please join us to celebrate!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;/p&gt;
+&lt;p&gt;Florian&lt;/p&gt;
+&lt;p&gt;Photo by &lt;a href=&quot;https://unsplash.com/@florianwehde?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Florian Wehde&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[World domination, part one]]></title><description><![CDATA[Intro Some time ago, I was able to merge in a huge refactoring effort into the next major version of Fantomas. The result of these changes…]]></description><link>https://blog.nojaf.com/world-domination-part-one/</link><guid isPermaLink="false">https://blog.nojaf.com/world-domination-part-one/</guid><pubDate>Tue, 24 May 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Some time ago, I was able to merge in a &lt;a href=&quot;https://github.com/fsprojects/fantomas/pull/2218&quot;&gt;huge refactoring effort&lt;/a&gt; into &lt;a href=&quot;https://github.com/fsprojects/fantomas/issues/2160&quot;&gt;the next major version of Fantomas&lt;/a&gt;.&lt;br&gt;
 The result of these changes make Fantomas &lt;strong&gt;at least twice as fast as the v4 release&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Before&lt;/em&gt;&lt;/p&gt;
