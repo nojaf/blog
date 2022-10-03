@@ -9,6 +9,16 @@ module.exports = {
         },
     },
     plugins: [
+        { // this must be loaded first in order to work
+            resolve: `gatsby-plugin-google-gtag`, // note this instead of gatsby-plugin-react-helmet
+            options: {
+                trackingIds: [ "UA-62282942-2" ],
+                pluginConfig: {
+                    head: true,
+                    anonymize: false
+                }
+            }
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -40,12 +50,6 @@ module.exports = {
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-        {
-            resolve: `gatsby-plugin-google-analytics`,
-            options: {
-                trackingId: `UA-62282942-2`,
-            },
-        },
         {
             resolve: `gatsby-plugin-feed`,
             options: {
