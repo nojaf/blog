@@ -1,4 +1,105 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 03 Oct 2022 20:10:45 GMT</lastBuildDate><item><title><![CDATA[Say Hello to Fantomas 5]]></title><description><![CDATA[Introduction Fantomas 5 is here! The API of v5 is finalized! In this blogpost I will explain how you can migrate to v5 from v4. The latest…]]></description><link>https://blog.nojaf.com/say-hello-to-fantomas-five/</link><guid isPermaLink="false">https://blog.nojaf.com/say-hello-to-fantomas-five/</guid><pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog.nojaf.com RSS Feed]]></title><description><![CDATA[Thoughts, stories and ideas on coding, web &amp; .NET development and other things.]]></description><link>https://blog.nojaf.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 22 Dec 2022 08:07:02 GMT</lastBuildDate><item><title><![CDATA[The oak sleeps in the acorn]]></title><description><![CDATA[Introduction We launched Fantomas v5 in September, and it was the first version to ship with a custom F# parser and an improved syntax tree…]]></description><link>https://blog.nojaf.com/the-oak-sleeps-in-the-acorn/</link><guid isPermaLink="false">https://blog.nojaf.com/the-oak-sleeps-in-the-acorn/</guid><pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;We launched Fantomas v5 in September, and it was the first version to ship with a custom F# parser and an improved syntax tree.
+Many view it as a big technical achievement – I know its launch was a point of personal pride.&lt;/p&gt;
+&lt;h2&gt;Release party&lt;/h2&gt;
+&lt;p&gt;Because version 5 was a big deal, I decided to organize a grand release party where we talked about how &lt;a href=&quot;https://github.com/fsprojects/fantomas/releases/tag/v5.0.0&quot;&gt;v5&lt;/a&gt; came to be,
+what exactly changes for end-users and I wrapped it up with a well-deserved glass of champagne. The project is in a good state. We have a brand new &lt;a href=&quot;https://fsprojects.github.io/fantomas/docs/index.html&quot;&gt;documentation website&lt;/a&gt;, I onboarded a new co-maintainer &lt;a href=&quot;https://github.com/dawedawe&quot;&gt;David&lt;/a&gt;, and overall the codebase has never been better.&lt;br&gt;
+Contributors who sent me their home address, received a tee-shirt in the mail too.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bad5f80b94bdcbfb038ba89afc4eec42/59de2/fantomas-release-party.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.2972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAV3My3JsgX//xAAcEAABAwUAAAAAAAAAAAAAAAACAAEzAwQREzL/2gAIAQEAAQUCpNkil0krfspV/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BR//EABcRAAMBAAAAAAAAAAAAAAAAAAABETH/2gAIAQIBAT8BWlZ//8QAGxAAAgEFAAAAAAAAAAAAAAAAAAEQESEjMYH/2gAIAQEABj8Cx3Y1Q0zk/wD/xAAcEAEAAgIDAQAAAAAAAAAAAAABADERQSFhsfD/2gAIAQEAAT8hwBkJXUZQuuC9E+gl8epGf//aAAwDAQACAAMAAAAQjz//xAAWEQEBAQAAAAAAAAAAAAAAAAABADH/2gAIAQMBAT8QckN//8QAFxEBAQEBAAAAAAAAAAAAAAAAAQAhMf/aAAgBAgEBPxDSIDjf/8QAHhABAQACAAcAAAAAAAAAAAAAAREAMSFBUaGxwfD/2gAIAQEAAT8QMpvaAUXYc8sDlQUeGjqPXC6tVrV+s7p5M3fWs3z/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Fantomas release party&quot;
+        title=&quot;Fantomas release party&quot;
+        src=&quot;/static/bad5f80b94bdcbfb038ba89afc4eec42/1c72d/fantomas-release-party.jpg&quot;
+        srcset=&quot;/static/bad5f80b94bdcbfb038ba89afc4eec42/a80bd/fantomas-release-party.jpg 148w,
+/static/bad5f80b94bdcbfb038ba89afc4eec42/1c91a/fantomas-release-party.jpg 295w,
+/static/bad5f80b94bdcbfb038ba89afc4eec42/1c72d/fantomas-release-party.jpg 590w,
+/static/bad5f80b94bdcbfb038ba89afc4eec42/a8a14/fantomas-release-party.jpg 885w,
+/static/bad5f80b94bdcbfb038ba89afc4eec42/fbd2c/fantomas-release-party.jpg 1180w,
+/static/bad5f80b94bdcbfb038ba89afc4eec42/59de2/fantomas-release-party.jpg 2247w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Work remains&lt;/h2&gt;
+&lt;p&gt;Fantomas will always be a very malleable project. This project demands a lot of care and maintenance over time, and exceptional endeavours have been undertaken to lessen the burden.
+But there is always something left to improve. Be it the syntax tree, be it the style guide, or the editor integration there will always be something left to update, make better, or to maintain.&lt;/p&gt;
+&lt;p&gt;Nowadays, I will personally only address topics of interest over the weekend as a hobby. This removes any weight from my shoulders that is implied by being a maintainer.&lt;/p&gt;
+&lt;h2&gt;Growing the community&lt;/h2&gt;
+&lt;p&gt;Ever since David  joined me as co-maintainer of Fantomas, I’m quite intrigued on how I can get more people involved in the project.
+A response to that was adding more and more documentation. I recently wrote &lt;a href=&quot;https://fsprojects.github.io/fantomas/docs/contributors/The%20Missing%20Comment.html&quot;&gt;a guide&lt;/a&gt; with steps that people can take to solve a missing-code comment problem.
+This is frustrating problem- space in Fantomas. Yet, once you get a sense of how things work, you can easily see solutions. I must admit, these seven steps in the guide do expose the fact that the overall flow is a bit complicated.&lt;/p&gt;
+&lt;p&gt;In a nutshell, when we process F# code, we only know that comments appeared in the file, as in “somewhere” in the file – and that is it.
+Via a caching system, we try and figure out what the best location is to restore the comment and hope that somewhat it plays out.
+We need that caching system because we can’t extend the F# syntax tree model which the parser creates.&lt;/p&gt;
+&lt;h2&gt;Project Dallas&lt;/h2&gt;
+&lt;p&gt;I’ve been working on a custom syntax tree that better suits the needs of Fantomas for some time.
+We transform the existing syntax tree into a custom syntax tree that has consists of out of Nodes. The &lt;code class=&quot;language-text&quot;&gt;Node&lt;/code&gt; interface allows us to retrieve child nodes and can store and retrieve trivia items, (like code comments).
+This allows us to insert the code comments directly into the tree and removes the need for a cache.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 475px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b97f28d3aa9c624a488891b111bdcaf1/466da/Node.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 90.54054054054053%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACF0lEQVR42pWU7W7bMAxF+/7vuTROLFnfIiXZZ7CWFOtQLK0AAvafq3PFS76VUghuJbo7ya24zbLvO+c5joOfnrdaFR8StWT2MabYKfSdel7698VvqXQuphPdSvLmg+475ysHb8exT5HNF0JStO9Ir5SWSRqprdBHpzelqdCkMnqb9SXhse/0sbNY5bYpWxRsvs+6xSsmLdQmtJrJwRK2Gzm6WV8KnnRj7FhfMK5gfcQGQ5JI1kQQP0nbaEgtjDFeWH4Q3p1gQiPLwFeLLxZXtwftSm2VFAO99y8E/7F8Et5swXidgkkDvm5sxRIlMHpHS6IkT00eKZGm9f9vaL1gfcXHgs8bSQJJ07R92uwqU6jmiNY8G/SiKcLVCKtLLP4dk+6YvLKmBVsMIpXg3Tdi87DsQiVmpY0DGfURnYIMmd+9/2nKy2A/Cd+NcLUNF5Ul/sKkFckZuy4c+/GS7HNs9h0fCikrfRwzzNJlvp2q/Ggc/yLUSbhFxdYz1JfZ5TPA50iW5CjRvV4OT0IXCjHLJOw6UBmMvs/cqepHndRnjJ7jd1JNjd4/E16NsmwNnwb+VjHvlbgptQjWWq7XK78ul9mYmgNhuxPsgrYxN9WZ0Sn4JLQ+E5LQ+kGTgZQ/hCeViHDuTdXG+FgU9UHI/N8fI/kgPLi5PuskDKuw3SolNlKKrMZwuVxYVzOFctjwZiGFDe2Qgv0I+m+FxIErQRVTGAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Node interface&quot;
+        title=&quot;Node interface&quot;
+        src=&quot;/static/b97f28d3aa9c624a488891b111bdcaf1/466da/Node.png&quot;
+        srcset=&quot;/static/b97f28d3aa9c624a488891b111bdcaf1/12f09/Node.png 148w,
+/static/b97f28d3aa9c624a488891b111bdcaf1/e4a3f/Node.png 295w,
+/static/b97f28d3aa9c624a488891b111bdcaf1/466da/Node.png 475w&quot;
+        sizes=&quot;(max-width: 475px) 100vw, 475px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Another benefit of our own tree is that we can customize it for our needs. The untyped tree from the compiler works for the F# compiler but stores the information sometimes a bit oddly for our use-case.&lt;/p&gt;
+&lt;p&gt;Some subtle differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Our tree doesn’t differentiate between implementation and signature files.&lt;/li&gt;
+&lt;li&gt;We can group certain nodes in a different way. For example, recursive types are considered as top-level.&lt;/li&gt;
+&lt;li&gt;We can skip combinations of nodes that the parser would never be able to create.&lt;/li&gt;
+&lt;li&gt;We can simplify a lot of nodes by reducing them to only expose the core information.&lt;/li&gt;
+&lt;li&gt;We can use more accurate ranges by combining positions instead of relying on the approximate information of the compiler.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Refactoring the codebase to use our custom tree was also quite a lot of work. I had to port all our code into a new model and shuffle a lot of things around.
+The result is that the flow is a lot less complicated than before. I am optimistic that this work will lead to more contributions from the community in the future.&lt;/p&gt;
+&lt;h2&gt;Give it a spin&lt;/h2&gt;
+&lt;p&gt;We currently have around 2380 unit tests for Fantomas, which may sound like a lot, but still may not fully cover your codebase. The F# language is vast and ever growing.
+So, I do ask you to give our new implementation a spin on your existing code. Make sure you are on the latest stable release before you compare it the &lt;code class=&quot;language-text&quot;&gt;v5.2&lt;/code&gt; alphas.
+Please report any issues you encounter so that we can continue to improve.&lt;/p&gt;
+&lt;p&gt;Happy formatting,&lt;/p&gt;
+&lt;p&gt;Florian&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Say Hello to Fantomas 5]]></title><description><![CDATA[Introduction Fantomas 5 is here! The API of v5 is finalized! In this blogpost I will explain how you can migrate to v5 from v4. The latest…]]></description><link>https://blog.nojaf.com/say-hello-to-fantomas-five/</link><guid isPermaLink="false">https://blog.nojaf.com/say-hello-to-fantomas-five/</guid><pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Fantomas 5&lt;/strong&gt; is here! The API of v5 is finalized! In this blogpost I will explain how you can migrate to v5 from v4.&lt;/p&gt;
 &lt;p&gt;The latest preview versions are labelled as beta’s, meaning &lt;strong&gt;the API is stable&lt;/strong&gt;.&lt;br&gt;
 Please start using these latest versions, as the final product will be very close to what is out there today.&lt;/p&gt;
@@ -114,7 +215,7 @@ It has allowed me to work on Fantomas for full working-days and really take the 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EABgBAQADAQAAAAAAAAAAAAAAAAABAgQF/9oADAMBAAIQAxAAAAHk1lt5momoAH//xAAbEAEAAAcAAAAAAAAAAAAAAAABAAIQESAhIv/aAAgBAQABBQKCYaOzq+H/xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAwEBPwECP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABgQAAIDAAAAAAAAAAAAAAAAAAABECBR/9oACAEBAAY/ApaMr//EAB0QAQABAwUAAAAAAAAAAAAAAAEAEBExICFBYaH/2gAIAQEAAT8hiFh8oO0LQEeBnfOn/9oADAMBAAIAAwAAABCT777/xAAWEQEBAQAAAAAAAAAAAAAAAAABESD/2gAIAQMBAT8QQVcf/8QAFREBAQAAAAAAAAAAAAAAAAAAASD/2gAIAQIBAT8QVGP/xAAcEAEBAAICAwAAAAAAAAAAAAABEQAhQXEQIDH/2gAIAQEAAT8Qml4CuUyWU2B6efGxpescW/EKOnr/AP/Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EABgBAQADAQAAAAAAAAAAAAAAAAABAgQF/9oADAMBAAIQAxAAAAHk1lt5momoAH//xAAbEAABBAMAAAAAAAAAAAAAAAABAAIQESAiQf/aAAgBAQABBQJBwMc2vD//xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAwEBPwECP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABgQAAIDAAAAAAAAAAAAAAAAAAABECBB/9oACAEBAAY/ApaFlf/EABwQAQACAQUAAAAAAAAAAAAAAAEAESEQIDFBUf/aAAgBAQABPyGIUOiX7CoC6BznG3//2gAMAwEAAgADAAAAEIPvvv/EABURAQEAAAAAAAAAAAAAAAAAAAEg/9oACAEDAQE/EECrH//EABURAQEAAAAAAAAAAAAAAAAAAAEg/9oACAECAQE/EFRj/8QAHRAAAgEEAwAAAAAAAAAAAAAAAREhABAxcSBBUf/aAAgBAQABPxBME+SakyORBR0e7TcntTqeEQlrj//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -337,7 +438,7 @@ The re-opening of this issue was well received by the community:&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 49.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABB0lEQVQoz42R2W7EIAxF+/+/OWGy2WCHzRCWlqnaidRO1SOEbMF5uPabIZ7ndduhtd57b61fi/ak/zjtzXt3HFxKrbU87lrLqEodTX/NkHPylpGIicgYMkRErLUxxMScUhKR8zxfywTakNYaAAEHgBpR7wDMh0jMOf8u7wD3+yM0Yinl8nb9dw3fnplFxDlvrfM+xCiDlPqfPGVn7TRNy7Iqdb/dlJrUpNS2w7pt87xa60QkxhhijFFC8N8RhhxCQESjadOodl4gLOhncAu4BT1Q3HQwZEMIKWcRyV/D+1yVN8Ywj2lvfOxHxaNom2NMtfXaemm9vVqVD/7Mvp7hzDmn3P/Nh/wObaJGhgw7mEoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 49.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABDklEQVR42o2Q6W7EIAyE9/1fc5eEgAlXMGCulqSrHtpW/TQ/BsTYxje9a7asK9/GGKNP9T4uev9LrfXbcXjnbCm1tkmtT53H8Tu991tO6K2yzhtjL5xzl3fOUaGcc631dZhycFrs2oJSUoKQEgCmB7UJaZ1DjJTpdVgpxTkXQm5CttbP/0zm0Ke53l22P28+wjFGfwTvjxAwTygTfe/wo+GXhXnvH4yJTS4rv98fjC1sWUCBBBBCBAxEOaZ01s0pJaLy2RkRQcG+a6EUk4bDsaljBb+C5+BBo9BBaYsYU0oxJnrONcMBUWttjNFGC+uFrdJVZSlgLnWUNkrtrfXXCwvBUw61IBGlmMe/eQ+/AWsJRnLpz/GlAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -473,7 +574,7 @@ This can lead to some &lt;a href=&quot;https://github.com/fsprojects/fantomas/is
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAB2HAAAdhwGP5fFlAAABOUlEQVQoz4WRu04DMRBF8+1UlFQg8UV0VAhEAREbNpuQXa/t8Tz9gE0kBELA0RQu5nju2Cs3z7P3yCxqalnUWPRUn2cSIVZC6rrXi4vrm8srOj+7vXtcIdKwH/q3zcHtnZ98cLUWZgqQQqJIqpYtZ8mVJIvINLk0TeXwhkirUooIq4oeZ6hya5UII0REHPrNbj/64FMCZjLT9oVVraV9o7bWRBgASi2zc0O3C86JaC31S3NtrZ7k+r0WOYSw5DXrHu6H9RopxwjMyEyq8o/sQ7AFjdH3/QYgpqRhwSOCmdZafpXno5yzeT8PwxYWyM8OMRFhzvb/5JyVCMfxABAgAS5fSjlbKflv2esSW0Lwu/3w9PzUbbqX7mW768d5JMajfLzjpxxjLKVgUoBkpogpJSBGFmJZ3uxj53dg3kHys7eEUQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAB2HAAAdhwGP5fFlAAABOklEQVR42oWRyU7DQBBE8/ncQEgcEP/ClQN8AbmQ4MTGsWdfepsZcIKQEAopldSn11WtXmljldYpJyQmFmIBpKMRiBcjZUBAijFppW9uHx7v7sv11fPTywoAxmkcDt2kRmVm7ZRUISZtXUhgQz4tRSkJhVmcD9mH6lzOeSUiRMiMzEQExNhaJUJtNBH2u+5jnIwxKQWAhIi1lvatuipF2h8JkzGmteqdGzaDmWckLqUcyfrjE1x/u4mw0lqEpchuvX5fv2Zg55bwnBMiXIBnpViYmWKM+/3OexsjWWedsyF4oqX/eVirJVnYe9cP+xCCc9FaE2PMKYnwv8lLbREmRJjnyVoTgo8RUorMdAlWx2Rm6+zhML5t3rbdtuu6fugnPWVIZ2FmMta2VgE4xsxCiJhTomXC8bX0dfMnlx9CJoCpxJQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -583,7 +684,7 @@ Check out &lt;a href=&quot;https://github.com/fsprojects/fantomas/blob/master/do
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACzUlEQVQozwXBS2/aBgDAcX+CXapKVdq1WvMiaYDwNARj8zCYhzE2GIwhNg8TIIR0JG2yaVu1adNOu7Rbpa2XXSZN2jTtsn2/f38/4WE0Qt6qYPk69WGDWjdDQu2yp74l13uLPPiZbO8XauMPFIcfiFq/E2veMvKK1Owyp9UzjgtxnolhHkZDCI/iUSSzjNYvIxtprI6I40h0HZnlUmfgFtBbMcaeTNcpIGp57GEF0ylSMiTO6hnyWoKwEuOpGEY4zKdpjiysqYvtt/EmJQpGQGbwH8b6f/Tlv1TGf6HP/0Ye/kmi9w9V53vMfoYDOY1YyeL0criOhFwXER7HI6TUBCFxn1QpiWHLOK6KaVfpuTrDkY7nGUzdKp5bp2WpGB2Z9axIx86iaBECX+bVZRN/VEbYzYQJZU9QdYlyI4eiidTqMWw7T7+Txh9KOHaa7aLOm22Hu7XOYCCzubT49t5hPq8xnWpczavUWjmE52KMVCXHbD1he3/JZjtifmHwzRczroImY7/BcmXj9hS2swpLr8xkVMQflliMC1yM83Q6CWZ+AW+oICRUlVxDwz7vMpt3mEzqBH6JkZNGkZ6QlXaJZz7lReQB/do+nnHEvBdn4WYZO0ns1iFNbY9gJLIOZISyaeEtfTy/y3o54MtrHaM95aD8G0njPeH6O/bUdxxq74k2fyVp/kG1/YrPxxnWvsTUSWC3o/TNCAs/iSA1Gqxe+nx1d87t9YBV0Kbc0pFqDhXTpT9d0fMCzjSDcqvLuecxGJpsxgq3iypf33R4Oa+ymShMnQhCpVlieRVw83pDsJoRLIekGlNS1k9kuz+StX9Asb/jVN1wJF1QMu5JKTqWtoehhUiKT4nEH2NpB3jGMUIoU0Q1TQqtJmK1SVYtcnxm8Sh1R6JyQ2/0hlL7NfvyNbu5S3aSaz55rhA+ecBp7Al7JzscnOwgZT9jpB/xEVkwpMSEqRW6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACyklEQVR42h3M227bBACAYT8BN0No6goSXZse1JxPdhs7TuIkTpw4dez4kINzjpI269KtG1rFuEFC3ACTJlUCruFiQlzB8/1IfA/wCV8kExS7NbrjFnrQQLdFUhWXSPVnZPcnFO8XLtwPNCaPlPqPxK5+J2NsGY5U6naFRPWCUzXFV/koT2LHCM8ySRSrQs2tUGznsG0R1yvg+CrrdYeep9A2U4xHKparkq8ruIMapqtSNgtIuohcT3NeTP6fCmdFidagizUNcMIOo0kZub1BCv6lc/0PxupvapNPGItPyP0/Sff+Qve/xXTyRJQcUk0icC8JPBlZzyHsp+NktRTHuSNylQymo+D5Fa4cjZ7foD9oEg4NZoFGGNRpX5W4smWuZ2UsW0TVYyzHKq83LQK/hHAoRjm9iFIzZTSjgFrP0zRSOD0F384T9gv4PZFXa4P3O5v7TQvfL/Lyust3b1zmC53ZrM71vErZkBAO8knEusJ8O+Pu7Yab24DVqsP7b2asJzqTicFyZdHvKeymGqthiUlfJeyXWI2LzMNLLCvFYlxiECgI2WqVQlPHHdnM5hbTsc48LBP0shQu95HkIxK5fc7jn+M2IozMMxa9DKtAYuylsdsRWvohi6HIzVxBqHa7jNchYWizXfu82xo02ksi2m9kOo9EGx851D5y0ngk0fqVjPUHjatbduM8m7DA1EvjmHF8K85ilEZQDIObXcjD/YBXLzxWM5NSq4WiO1QtD2+6xBlOkKpNaqbFcBjQ77fZjhVer+o83Fls5xrbqcKkF0XQ2xqbFwt291vm6xnTZUBaX5LtfkCyf0RyfkBxvieu3XKmbCiZ78jIDbr15xjVY1LZL4kl9+jqxwzbpwhnUoVKp0Ox1SSrNZAqKidil6fZO7K1W7zhA8X2S57LGw4uljxNrfjsa5FY9AnxxD5H53tEzvcoXh7QN074D3XipJ20IzWTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -623,7 +724,7 @@ A fallback to the default configuration will happen when the parsing failed.&lt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 35.13513513513513%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABZElEQVQoz1WOyY7TUBBF/f+fQEcJC3rHBolNJ3S2/QHEmaRW49iJxzzHNrGf33SQHyCaK52aVLpVQVHkZHlOWVUUVUWa58RJ4jnFMUmSkGUZaZYx7RZF4fv3pFlKFEckSUxgjKYVNU0lkKL26L5HDwNGSpwDpTRyVAyDRiqFMQbn3H8YazHGEljr6IqSa3xBnM400dkbmnH0TLLWoo2l60ZuTev7Se4dU5iMA6UUSmu0Nb+vOIc2mnGaT4yjz1prnLXezGrDUJZIIZBVhey6Px8agrKueYtizmnGJS+ILyl123G9NRRCUIqaa9NylyPKgQGMA9l2yLZFNi2jHNHWorQh+Hl6JT9uKY9bst138kPIPfmBeD1SHnf058jDvYGhg/vtXz3Rt6B6/ipYrELmz3tmyw0Py5D5tx2L5z0PTxtmq9DXi/XB54/rA7NlyIenDfNVyKf1lsd1yOeXN77ub3zZCn4Bx0UNpkZyjroAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 35.13513513513513%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABbklEQVR42k2P3W7aQBBG/f7P0KRQKZeVetGLloRc9gFMgNKoaqhtbK/xAt4Ue39PtKaJMtLRzn7zzcxu0jSCWgj2bUvTtlSiJi8KiqIgz3N2RUFd11RVRfQ2Qoz398TaNt+OPYl1llMrOTYtfSsZWok9n7F9jxsGQgBjLIO29L1lMAbnHCEWQhjPiPce5zxJTJRokHnFIdvRZSW2H3Ba44whRvRY51FKc+oU3odRD+/5Pzgx2mCsxTqHi1uCx1qL1voNY8yoheDHYd5azkIwSEnfNAxKXXqdIxFS8mebUZQlu6om25UcOsX+cKSRkr08IE8dZ22wATzgAmilLnSK+Cg7/sKRnJ4eKTdr6s2S3WpBtVmisieax5+IX2tUtuU5/wvPJ/jXgTqAOl7ySNT1mddIprcLJvMV17OU69mCyd2S6XzF1WzBx9sHpncrpvfr0fPpfs3V95QP31Ims5Sb+QM38wWff/zm62rPl1TwAh8HDZRtwidfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -831,7 +932,7 @@ printfn &lt;span class=&quot;token string&quot;&gt;&quot;Fable compiled this&quo
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAk0lEQVQY03WQ2QrDMAwE8/+/WTdtsHzVh2SwvSVuCCWQhWG0LxJoqWQgxkI2jZYz9owxJjh8gp9777csHAL8e5tkY5GtA/uA4jzS0ZN1EBfA5CE2oOeCXi7kgsGCJZKBW9+w6gVSK/RDgdRzHkiakDVNMzmUzYK1Q4sJPabpc/7EuXSptUJETvbOLGit4S7j+oo/voFwNv6OFSuBAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAi0lEQVR42nXQ2w7DIAgGYN//QdeDeKitE5LCv+i2i2Ut5NPABSQ4poBGAbx4aGP0MLP+/Oi9kWZQ1Vuupow0zcPuaagh4qCAsvpRF09olFDnvjxDa4Ue/4wFbg8RZfHYphXxMSNOb31Qi2l4xgRJG5jy+K+G6X5AmeFEBMwfIuh1Y8Z5Ku7Cvie48AJ2FjcizeytagAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -868,7 +969,7 @@ For the ignore file to be picked up add an &lt;code class=&quot;language-text&qu
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB70lEQVQoz43TXW/SUBgH8H0IzXC8tqPt6QprS3sKlBZaQAcONc6w6CZb3AZbjLqw7MJ44UtMvPTGr6KJV8bEOPWbcGGMV1xB/qaHTSFjm01OnpM+zS/n/7SdkVImiGJA0rKIr68isXILsQdrSKyujGrzNquiVQCRM2DPHy85TcEJabz/8BE/f/1Gr9fDjJQ2IQsquBsNhB9vgUgaou0Wrjx9iMjeJvhaDXy9jqTrgRD9FBifT+HT5y8Irn6/PwlGHm2Br9cQetXF7OsDhF7sI9rZQPzuHQh5F0SeBBcYqODo2w8GDofDfyC/fB1zh3ss9uybQ1x++wyX3j1HdOc+wvs7UyOfgF+PvjNwMBiMnfBmA5HdTYhGHnMHHYRedhF+so34WhPz15aQdEqnIp8L8o1lhLttiNRGtNNic4zsbrD5Bei0GZ4NihqLHICx7XUGBm821m6xGSbuNUEWrdHXcBEYNESiI6la4Eo+OLcEvuiDK3rgXI/dS6oUgqhCUgwGndTpJ1QMaKYDmi3B0G1YpgtdzcHMFEANh1WTFkHzPhTV+oudC2YsFzmnAmr7KHhLsAplWE4FObc62ttl2MWrSGm5i0EWeSEDQdZH0RdN8OUKuGoVnOdDOO4F678jk7FBkzRlv6EUxNOyk70x7CzwD2rO0aLoXHG5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB60lEQVR42o2S224SURSG+xJNUWA4DIcB2gIz0IHChCkD1lqISbWVFksPhFZTrdakF2o0JiZe9nGMiRfGxMSqL0I08Y476GdmU2prUdzJyp7M3vnWv/5/j4UnUwzKs7aM984S0uYq3pUlpEYNT+0W0t0VglkDJaKKe8q5CkVV3r57z/cfP2m324yJC0oS/+IN3DsNQjM5pI0azoMdnActAmYR2Sojl6+hhBJDgR8+fqJ3ckKn0/kN9FUWcbfW8d2scuXpHo5Xj5l4/QT3dl00k+cslPBlYDCS5PjLN+zV6/VOgREV/8J1rh7ew1NfZuLNIeNHzxk/eobrwbZoFDBM0XgY8PPxVwHsdrvnFFYrwjt7NOfDJo6Xj3C82BdeBuYsZKv0V4WXgZG+h677mwRzBaStNeGna28LuVQWNtj7/wPtUKoVXPtNpGYd9+5GH9pax73bwLt6m7CaQYlqo4EiKSWJrGXw2WqKFj6r1K+ihbdcJpDUCYXiZ7BwTPuHwphGPJVD1fKo8Qxacpb41AxqIiu+1biOmsqj6QWiU+kLsKFA+x2lsyZZo4RulDCKC+izRTJGibw5j563xJlhzjOZ0EcDB4/TPrBHD0yn8Z+O6yuY4v+gBrCRI591jKVQptOE1awIQQTxRwijFP4C4Y3SrKabC84AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1332,7 +1433,7 @@ And it is fleshed out to have a first usable functionality.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 72.2972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABdUlEQVQ4y61T207DMAzN//8abzwM9sQ2WrquF5Y0zaVtcpBNWsrQNpCwdJTYjm+xLcJkEEaFKQQ0TYOiKLDfH/j+mmXI8pzvWZbjZbdD07Ysr+sGVV1jtz9AdQ5EcTIQuKBpmhjjOGKaQjq/ZDM/DAPrvVWQ9RZdu4XrSwjvPZxzrIwxLuCI6UzM6hoXfnAK7+UjzHkD379BtG2Lt6KA9wP+SpTpJYlOa2itWemcB2X8G1hrcSxLGGPhvYNzFuM4QEgpcTqd2Ck9MsbA0HkNxvK7vu9BtiSb7SiQqOsaRXGElAr/QaLrOo4WQly6eBepyzQ2lNV6KsRZSlRVxaVQ2uT8LoyB7jTbaZZ92nHJpKSyqTnzP7iEuQE0Vs67RTc3RScn1Ex6Q1kKulDZSiko1bHCpo+ewQ5Z7haegpPD9Xv6BkEdplWi9G/OWxxppO83xaZxmD+bEEJAiDGV5rB5fkKVPyAGu2zKNXzb5fXa/TScV/O2ww8gP0Xn/uDD0QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 72.2972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABdUlEQVR42q1TaWvDMAz1//9r+zIYZR82WJqrpHHuw3fekJKMrjvawQQPW5Ys60mWCG5CcB289yilRJ7niKIjpKwQxwnSLENV10jTDNHxiLqukSQpqqrCuSzxFsVouxkkFEvgSpxzsNbBWAvnPCyvjmGM+dBpT3atOvT1C+buFVaVEGRQSnGGy7IwgIWDr/uvculjVIvq9IixeoKecgiilp9OMMZuzrhLyI8yvRYxDAOGceQMd0q/wWyr1hpFcYbSGtYaGKP5ATEMI9q2xTzPf8I0Tej7/pNOCYmiKBAnCZq2xX+I6PuVcghh7ab3N0HlIdr0zagEpNNdisE1rJuGO82p38K0UhzHEU3T8NknyrSRUvIBBdXGQGuzrju0XrHZ9q9GQc3ur7emkKHvenRdxyD9HlACxG7XKUsqgyjLEmmW86j9JFQbINzXFKrJuPHnojvPAUJYNmoah+cDZP6AJSiej32ivoO4HqnLcdt1zw9so3kj4Dt+jkW71RyqlAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1433,7 +1534,7 @@ nojaf&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB9klEQVQ4y4WT/ZKaMBTFeZd2OgokgCQKyofIzIK7WnFHQNC1O2PX93+Ds5OLVm1t+8eZ3CTkl9x7DxrnHEIICOHC931IKTEcDmk0TfOfYoyBMX4V59AMvQ/BOQGSZIbFYoE8zxHHMdRldJjdQAjUwdS+ZVl30izbgu9LuO4A3LII7AwG9PH/9DuMgAoiHAu2ZRFQ3axeomLbtq6A8/4dUI2UdicVa8VrgaZpsX97w26/R9u2aNoWs+US/SjClyDAN89Hz3VhcA7D0GEYxi/pug7TMLpSmAxa3Wzx8fOEj9MJx+MRP97fcTgcUNZbpFmGME0RJQnCKMJ0OkUURSRVYzWfxjHkaASDW90Lo9kEr9UKbbsjUN20SJ8yfF8uUaxWmKUphOvCdUXnBoo7CSEhhYDtONRhVQatb3/FJBWoyhplVWG9XqMoCpRlSfEsSSgVdlOrq2UYpcrPHScgc3uIn/w/gFVVwfc86L1ed4Cdm3HbBIKwu0ZpTCigh6raoqprAipYudkgDAJKceA4Z5s8sM5FF9sw2cN0Pkbb7NC0DTZlScCqrJAkCb1S1e6R5x76kLk6xlOJ55cFnhcvyLIcWZ5jPp/Tr6is8TcTPwRKOcRo5MHzfQxHA0hpQkoBtT4ej0lhGJKCIIDneZhMJvS/q7mKL/tq7ROuV64ubkVFOQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB9ElEQVR42n2T+5KaMBTGeZm2A5JAAgRERGCtrtoVkJuX6U537e77v8HXSbwUHds/fnMSQr4553wnmmXZ8ISA8FwIIcA5VziOA0IITNOEeYl3yPMT9Iqm6zpcSuG6LpI0xTrPsVwukSYJLMs6Cz4Wo5Sqf/polBIEgsN1OWzbhud5KjuZubxAzxevsce9mBK0GYNwORzOwTgHtSxQaqm9LJ3IvWWDMAZq27eCl/W5dBm15+UcddOgrmu0XYe6qrGpKsTzZwyiCF+GQ3wTAjrjGFgU5mCAwZnT2lCRyDaYBFrVVPh9/MDH5yfej0f8envD+/sR7W6HyWyGeDZDImOSIEtTJEmiSNMUWZYp/OEQhqxECsZZhGa7wX5/wM/XV2wPB0znc+TrNcqiUEZxxlR/GWMn+mvGVL/JuXzNsL8ifOJo6laVXJQl8qJAVVUoigLT6VT9SO769Xdcbs3SCNcRfffQNC267RabzQZ5nqNtW0ziGKZhqN703SZXEy7uk56go2OsBDuVYVmWSqxrW8Tj8clt6XDf1f+gEVdHPPfRdTvs9jtVqhSUPGUZwjBUL+jRzD2cQ5PpCCYOVj9e8LJeY7FYYbFYYrVaKTFDlvxgqP+Zoet58IMAQRgiCFwIj0AIV71vKSiJouiK7/vXrEej0c25/PYHEXet2ba9ZZMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1564,7 +1665,7 @@ However in our current setup we want our extension to run when VS Code starts.&l
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 102.02702702702702%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABt0lEQVQ4y61Uy07CUBDtTwjqBigtLRh621vog4KEgFZJSSQQwoKw5A+IbtSFLnTHb+hPHjNjMCiIRrs4ucnc0zNn7kxHEX4TbhDBsW1I6cK2bTiOhOu6sCwB6UhYQsB2bIRhA41Gg3m1Wo15UkoEQQAhBKrVKpT4vIfLixi6XuIPhLBRLGoMiuVzBXhRgM5ZF9JxWezo6Bi5XB6mWWZ+q3XKyQ3DhOJ5PjzPQxRFSJIEV1dDdDoduG6N4+Q4SQZ4eXnF48MDnp+esVqtMBgM+K5er7PLd8cOlHa7jV6vB9M0OWO5XOFMpZLBJ7msVE6wXC5xf3ePm+sb3N7eodlsoVBQmbMGcRV6E8pCAlSmpulboHg2e4iDgwwymSyf+XyBBb7ylG63C4Ku60z4DptO1m5IZJPDgr7vIwzDnYRN7HK+Gf8QHA6HGI/H0DRtr8N9+CQ4n8+xWCygqmo6gtQUAjVlX8m/FpxMJphOpx+D/G9BGl5Cag5HoxE3JVWH68FOxWG/3+d/9ac5/LUgDTbBMFJyOJvNQJ1W1WI6b0hrKI7jP7vbEqQta1kWr65USqbFSOueNkgagm/f7lseTlsktgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 102.02702702702702%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABpklEQVR42q1Uy27CQAzMp5SQV6MS8iKQTYCQ8BDixLG9AlLVO3/FhUN74OemGktRoa3aqtqD5fWud3bstW34eYNANSjVCHmukOc5JpMJqmqG4XAo69FohCzLxC7LUnRVVRiPx3JWFAXCMEQcxzBoTKdTOI6LMIzg+z66XQu27YhYlg2/5yNKIpTFGEopeN49bNsW3esFAhgEfbGN2WyG+XwuYIvFAnXdIElSPDz0EAQBPM/DfLnA88sLiqJEXdcYDAYC0O/3EceJRBZFsdwxeMgwqRkmQZX6CIEXC1Xg7fUN5/MZp9MJl8sFj09PwohAfJiEqA3momkaCe3uriPS6ZgS9rUQPMuGwj5NBwJmmt0bH9pGy851PckZc9nm71r4SPsYhQQ++3DPILv1ev2tQ+v03f712Ye2YKRpKiXhuu6Pl3+SG8DD4YDj8QjTNP8F9gWQn7JcLuE4jh6Gm80G2+3213z9GZCFSoZaAVnM2gBXqxUYNjctS8OntNOCha2FIfNHhtp+meOIDNlyWgD3+z12u530p5bCZuslSaIvhxxLFA5SHYDvmRpeHhYsZicAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1597,7 +1698,7 @@ We even see a crash when we toggle the developer tools.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 54.05405405405405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACp0lEQVQozz2S224bBRRF5wuCsasK6rmPx+PEl7hp7Intllb8WblIadIkfUDiA3jiC5DgCUqrVkiNihBBsXGcTDK+jz0Zx57GUReaoXCkrX2elvY+OsLW/Uc07j+g0WiwtVXDtm1se4t6vU6tVqNWq1OpVCmWSuwfPOPweMiPr9o8PzzllzdnvHh7zus/R7x86/Lr7y7CxsYGesZEkiREMY0oRi6i6waapiGm0yiyTCqZ5MmTHbxgycmFx2l3SsedxHvn7xa99hHnZw5CZfMeWq6Maq0jKyqyLMdw0zSxrBx3JI20bLCSSPJ0d5d43i8/+A2L4JLmb9/x/OddRq0fEKJaUYIIJsnK/0BD12NgxrRQNYNEMsXuzg7XV1cMh0Omvs906uONPTqH3/PmxT7D5k8I1WqVzGoZM38XTTfRVJW0KGIYRixJEpFliZWVFZ4dHHAdhnS7XSaTCUEQ4Ps+i+kQZmNmkxFCo15DtjbIFG0Mq4Cim+i6HktR/k0cgVO3brG3vU04mbAIQ5bLJWEYxtDg/ILFPKQ3GCKUy2WUqK4oIklRdSUGRTeMQBE4OkEikWBne5v375YE/iWzIOBqNmPieUy9ceye5yEUCgWM7BpqZg1Zz8ZA8UPlCPpf2mQqxdOvvua65zFsdRg7Dr1Oh/NmE991Y10NBgjFQh51rYq2/hBZM+O3Sd9Jo6laDJSj1JLER4mP2Xv8GFyXy6O/mB8fEx4dsTg5IXAcgrMz5t0uQrFUQDFzqFYBSZHIZjSsnEW+WGC9vI61amHlstz+9BP2vviSm3YP749jLltNwlaLd+02N47DvN0m7PcRHm5+zr3sJpVchbtmBTtn86D8iHrpMyqrtVh2vkFeKfHN/rd4Yx/n1MFxHC5cl8FgQL/fZzQasZjP+QdKUBFge3bzXAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 54.05405405405405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACr0lEQVR42j2SW08bZxCG9x8E41ZRsfdk764Pi4UDPhAOVVWpF/1nvatyUdEkjQGllfoL2qs2aqQGkZCQQgFVbh0TYH1e767NwTbwRN9G6ieNZr6bZ+Z9Z6Ty8iqLS0uUSiUKhSILCwUKhQLFYolisRjm+fl5bNumsr7B9lGXX7dqPNs55vedY56/PePFQY8/dhu8+LuJlM/n0ZMW8bhMLBYjHo+HYRgGuq4Ti82gyDLTkQhPnlS4nECj49PuDWh2A85afZz/9nHfvaV58g5JdFdTeTQrh6JqKIqMoiiYpoFppZiRdWKqwZ1IlM31dcS7uZmE+fp6wrDfZe/P7/nt2Tc4h78gCakhRNWQFTWEybKMYSRJp9MYpommJ4hMR9moVJhcXNBqtej3+3iej9vtcvLXz/zzao1O9TmS8CtpF7Bm59GTJrqmhZKTyWQoWdSi4Z2pKX58+pTx1RWddgff9xkOh3iexyjwuL0cEnguUrlcRk7dw7AXSFg2WsIMYYlEAlVVwxB19JNP2Xz0iFHgczUeMx6PGY1GBL7P4Mzh/PyCVruNlMsJ71TkeAxZVkLJAmKaZrgYARMWRCIRKo9/gPEtA9f7CPJ9et0unuvi9nr0XRdJnEMylQuXoiZS/3sophRQIVvU09EoG2trTJo9OtUavffvadZqONUqgeMwbDQYNJsfgZq9iJ5bRdESoWfifATINMwQLsdlpiLTbD54AKcO/sEh50dHXB0ccFGrEdTrDOp13ONjJHs2i2JYaGYaRZVJWwbZ2Sxz+Tnm7s2RsTNkshnuznzGTw8fQ8Nn8G+dy5MTbk5PuXUcaLe5FjkIkL4qf83K7Ofcz6xQMpe4b62wmvuS5ewX4b9sLbOYXiWvF/ju24fs7R+ytbXN9sttXu285s3ubhh7+/tUq1U+ALncEXRT/dc0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1665,7 +1766,7 @@ function activate(_arg1) {
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 70.94594594594594%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC9UlEQVQ4y33Ty24bVRzH8XmB4rhNghx7fJuLnXHqOioSYsMCyoIFLHgLtiysxKGXB0iEZEWVItSnaCJYlCxAtGZXRbRIrS/El9ieGY8nnsQep02/1Ry3acSCkT46Z87ip///f2akRCLBZel0mnA4zO2NDbAsWo0GZ69ecX7+Gt/38ScT/OkUx7IY1etMXZeB4zAZj9nZ2UGKRqNcFo/HReDa2hpT74SBPcD3p5yOx4zHE7EfT3yGwyFOr4/nHuMejwiecrmMpOs6hmGgaRqxWExUGQqFKJWK+BObgVnHczvYZotOu4plNvGO+wwHHSyrhTvsij2ccf/+NlImk0FRFFFZEJZKpQiF5rhzu4jnutRevKD570u6nRoDs4nrtBlYhzh2E8duCWavDvg8ePDzh8BgdslkEkVJMzcXZqP0A6den3a7gW21Mfs1PO8Iy6pj2w0c5xDbrOFYdazeS2BEufwTUhASWFpaIhKJiLY/unKFH+/eg5MTTp8/47xeg1Ybmk28ag37+T8M/n6G3euLCzFNS8xwa2sLaWVlRcwwaDUIDmYZvnqV0vo6014P6+lTTqtVzrpHnHW7DA8P6Var9KpVjjodur0unU6bN2/O2dzc/HDLsiwLQWj42jXurZd4bXpYDQvvaIBnW5w4DsdBqOcxHI1wXVdwHEdUuL29jXQr9Q1Ccuar9Ld8nfuOO9/f5fdff+G3vT3293bZ391l/+FD/nj0iMpfFSpPnlCpVITHj//k4OCAYrGIpKsZLmgZVEUjEQ9mGmNh8WMW/yM4W1hYZH5+4Z1F5t+9RyJLSKqmIagamqaTVhQyuko+p5PLqqzmDT79pMD1XJZCfhkjk0ZTkhiZFMv6TFZLoatJMmoSSVN1ZmaBalrhM0Pn1k1D+Dyf5YtVgy8Ly9w0EuSNBIaeYDWX5IaRpGAkuZ5NCLoaRwpChEuBN1SVgqYL+Yu9RkKOE43JxGRZrO/FLrkIfN+yoqpEYzHxPQrybA3O5Lgs/qj/8xbLtJXumGAJXAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 70.94594594594594%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC70lEQVR42n3Ty2obVxzH8XmBNJZCbcu6zEhz0WQky1YvWRZKs+gmiz5CFsGKm6wLfYHmMUzAwS24kGySbFoIhYJRF4EULXRxortmRnORZEsKtr9lRpGxNx348JvhwI//OYcRRFHkqkwmQzQaZXd3lwvTpNVoMJvPuTg/ZzabMZ1Ow293OMQP1lwHz/eZTCYcHh4ixONxlhKJBKlUikgkws7ODqeez9Cymc7mnJ5OQ7PZnOl0huf5OP0BI9fD90ecn8P+/jMETdMwDIMgg8Jgyps3V3hYesDpxMSxjhn7XYZWm067jjloMvIHuE4Xy2rhub3wHeb89uunQlmWw8mCsnQ6zcpKhEc/PmDkDqlXqzSPq/Q6dazBezynw9D6gGM3cexWyOwfAye8eP47QjabRVGU8OyCsqA8EomyW7rP2OvSbr/HstoMBg1Gow62fYxlNXCcD9hmHcdqYPVrcOHxbP8pQjCVJElsbGwQi8XCbX924wa7jx7DeMxJ5V/O6nVotaHZYlKrY1cqDN+9w+p2sR0H0zQJnr29PYR8Pk8ulw8nDIpVVeVW9BalUolpv4f99i0n1Sofu10+9nr4zSa9Wo1+rUqv3abf79PpdDg7O1sULm84mUyQTCaRJJFINMrjhyXmXRerYTLq2Iwtk7Hj4He7OJ6H4/s4rovrONi2HU54cHCAcFe6xzXpe3xv/MBP93/mr9evebP06hVvXr7k7z//4J9ymXK5fJlHR0dUKhWePPkFQVN0rssipdLE4ynW1mOsra2H1tcXuRpa4/PVhdUrYrENBEVVWQrOLyMrqKpMIadh6ApbeZ07X22zmdMpbOoYWRklI6JrErq6kFUlVFlCUyQEVdG4pGrIGZk7usrdL43QNwWdb4sG3xVv87UhsWWI5DSRYk5i21go3BbZ1EV0VUQISkKKGqYiKxQUhaKWpahpbCkq26rGF6pGOiUSTyTDywsycVVykZeFyrJQUT8tJq6JJxIkU8nwj/o//wGnkpa6Ql9STwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1776,7 +1877,7 @@ test &quot;simple Jest test should be picked up&quot; &amp;lt;| fun () -&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 93.24324324324323%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB3UlEQVQ4y5WUSY4bMQxFff9bZJGL9A2SLJIAcbvaNatUoihqHoNyemsX8gEtH0h+fupiHC0wrWzu771EdN4TkSZCRO9De6mL+PXz99cvijMpUSFKAGttzjnFWEo5gcO6jm9v8zhunLONLcuyC2GsAQDSWgjhvX8K19pqShGgGJOIslJJQiIKnCei+tBTuNXqtJZCRMQsQSPCLnbLmVt8dCdtt9Z88AKPVpVWSitQMtWUW66tnsPW2W699TBshu+Wr7Tsfg/lxOpPOMZAG08xtv/UYVgphZTyKbtcQor+UAghpJx8CC8WdlTOMSpENLabln4Y39+v49Dfrn/Gaey6D2v0i8q1luqcSzHUnEou5bGenEs+XjmZuZQMQmgfTaree6vJWWs0hRCMc8YcgXsBF6O1QLVrt5FZdskAmQDUetsYonq2ssfMOTO2dt2NcX7j+L6rDsxd+QHUtDLj3DPPjplLKUodlpEmidIYrX0EF9BH9NH4EJ6c14VIfXQdY1s0Ji2L43xZVwnQWnuR6k+Yc/792w/S2mi6X69Wm+MeHw7VdpLPi0bcl5lvG2NsGEfr3AGnIx7nlZ3zgot5msZxmud5uPd93y/z1N97IQQIoMfPIgEQ8Z81xlopgUj9BUvnUGoUqgY/AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 93.24324324324323%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB7UlEQVR42o2TOZJbMQxEdf+7OHJiH8NLaGkk6y8UqU8SJMEF4OKaX66yg5FmOmD2qkF04+CCXdS0rvPlcvHO5ZRDCIjonCOiMcbofTzQQX3/dvz8yYO11joABy6lxMxUSqt1PNUh/Pp1/vJ1XYWUSkq5CKGtxRiNg4BotP7r/yY8WquIRRtGJO/YAVlDzmV1J+9rra21x3Dv0Xswmq1lY7w1Ztu2qBQK4vLO2GOMlKIFEzGG4H3w4Bx3pk798ar+wYjhLF8mO8ugVJCrE7poajTe0ytcUgIl/19MH31/PwC3WoPzpTZqnWslJmJi5lorM7cnOY8xqBSwoD2+LLfrNJ1Op+n6++V0XJb5fLnkHPem9Lfh3lpOmUrhkol2T+aSSylERL23Z86VWW8aC+XWqZSSUsk5xcjMOeeU8qOod7hWDEH7sGG+g79tWhkrtXY+SCkdwKPM9j8TCbH+vpzVpk/an3Q4G5xCmTSIm0w5P4T7vm0AsMaAc9rYEBBSucdsUrGJQoylvF21g3NumWel7oTIQiSjhbx578cHdLgJ8fPHT0T0ANPxmAKmnHkvTN/1pC0Hp7e7EJvepJLXec6l7N2oTy7xHxwxabUt8zTP87qs0/U6z4tY12maLFgAwFcFAPDeh9fT8SklB4Ax/gFJJ1BkUFKrnwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2009,7 +2110,7 @@ let updateDecorations() =
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 59.45945945945946%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACRklEQVQoz3WSa1PaQBSG8/9/RD+0/drLdLROUQtWQQWiIpdwT5YEEJFAQrK5KD6dLA692Q/PvHt2zrzn7DmrlTstjP4td2aFqaXjmDrOsEq3ecbEusIelLEHFcamruJO41Sdp+KavlFSmsWjfgVv3kYzWkX6xin12gkX5WOaV4c0MvRv2L0L3HmXxbTJamYQuD3caZN2/YSbSo7bao7G1ZHKr+uH9JsnaNelT9RKH7isFtjPf0MvfaFc3Of68iuie85qKZhPWixnBo+BIPaGtGsFSoXPVM/3qZb2KBf30M/3aV3l0HqNPN16nnjZVcmxb+K5FtO7IbN7k8XCYXpvM5uP2EgH4jFP4YhNOFL6C6EKak39gGrxI4lvEvmCJBBEnsXKFYSZzgzcmUHkDYlWQ+RqsD2/8HucNaS1a4d0bo+JVgNi3yJZZ8ZjJncm7rzHuH+O6F0Sum2ChUG4MAgetoSLNolvsV50d2gN/YBaeY/EHxJ6Jo9yzKDzHdedIOOIMJakqSSOA8JoSxQHJEmIF6zoGgU2oc1z5Ch2hqlvIj2TNHQQZpEHVxBIj3XgIkOXOHKRcqmIpEsSLVmv5wwGp2p2G2mrWWrGTY7WdY7YGxCvhYLViNQxSO/aJE6LJ7dPMjFI7BbxqEF632EjBc9SQDrbmWWqnR69I3/wRlXJnix9i022Mc/i0Rdb1i9kd57YblWZ2DyGYmemOuw3C3Trx8TZtnxB5Fs8S1slvMaTdP7o6G+0s6P3/Mi9JV1baqj//q/X+Z/pTxJzcRMl99aSAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 59.45945945945946%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACRUlEQVR42n2Sa08aQRSG9///in6w35o0pkEj1nqpgshFRVgQFtibCMLCLsvMXgCfZmcbYpO2H56cub5z5rxHa/R1mr0mk9Ed41GNl1EdZ1Cl177mxWzgDqrYg6paz+i1fqr4at0z6JTU2B3WsI0qwayL1m1f09evaD5cUqqc0a4Xeaqf0qoXcY1b5m/PeK86y6mOWBgsJzrd5iUPdyc8Vk/U2Zwi/dYF2n35Kw+lL1RqFxxfFGmUv3FXKnBfOcY1Kiy8EW9jncVEZyts4mBI9/GC8tUh9fIRtVKBWrlA4/YIvVFE67fOlXK06LEJR6z9DIvXyZDpm8l87jCdu0xnDlvpQPzCTtp/InK2wkJ7qhW4vz0k8gckoU0cmsjAxF9YCH+EP+2o7KQ/2BP5wz1yaai7imCI1n08JctSLvskoaUWo3DMeGKynPV4HVawjQprr4vY02E976hxsjJZez3C32jNaoEsyzh7PRiRiheM7hme5yLjGBFL0jQiTgQiypGRIEklQejzrJ+zEw7vkcu7dNDa9WOeqgVVbLkySdYujlXCW1ispU+49pDCI4kWSJkTyXwehjNGwxvStclOOso0rfNQJCNaGqqG0coE3yaxddJJl3TcYbMwSMYdYrtNbLdIZz12wuRdWpBO9mJZ1K6/H3B58olkNVRmiMBUjm0Ck01os1lZbEKLbWixCSw134rc8SxuhLUXUxnmbZObEmemrExVi90/2EpXtUom9rd97ebHZ67PDpTtWWHzw//DyXvuwzc/Cv4C2oVxCfR2IlAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2041,7 +2142,7 @@ let updateDecorations() =
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 62.83783783783784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACEklEQVQ4y32SW2/aQBCF/f+f+gP61peofalUpQ0FSkLaGGJsYvCV2EAwF4PBYASBKGm/ahdBLkryMNqd3Z2z58wZpebbDIIKk55Bx1eJe1d4jTJtX2XSNw9nw65BFGq4jTPiXp2OX6Fl/5Z3oXtBv6OzmLgonnWK3zyjdFGkfnmCqeVo1HJ4VwWaRgH9cpdbeh7HyBM6ZWaTFrORTTqyJUgaO3JdJj5K9fQIxyzxvfwLTT1GuzjG1E7wzQKmnueycoKu7s5sPceN/4dsGpKOHOZjl8XEYx47LKctbucBit8oko4acBfBJoJtn3+biId1T+7ZiLx/2N+vbuT97t3z+HsboailI+axRZa0MKo/udIKtP0KvUDDNctY9VMso4TfPMdrnrOaXcti8eHLkIBOPUc6avKwjmRPRG+yiSclJAPr0KvZ0GY6tNhmbcnyrVAM9asEFOjr9Jq7ZYdt1pE528FBzl66KHqN3T6Uavkzi7EtGSb9RzZPe7PvK3dDuJ8c5L0WUnImrB+bBG6e1SxkMXYlcJb4Ozdjl9UsYHCj4Vs/YDN4m+G3Lx/Ixi7Z1KLdKrJMruVcCZD1PJCzJXJhRhwZBF7umSmvMpzHTdZpm26rRuiqDLt1+m1dutptVR/HRkpO3pdcPP4ox0Y8EiwEKxGbRcg63e2fShKmiMI3GZ7nP0mXxe/i4OWw7gf2PVZPAf8DOrS6zdu903YAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 62.83783783783784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACNElEQVR42nWTW1PaUBSF8//f+gP61AdnOu2MzqCdVlARSwXllnu4GEMIEAIEEIMK8nXO0VJa9GFNds5l7bX23kcpOQbdVpGBX+G2XiD0azh6DrdeIOqom7WeV6FzU5J7/XYF17mkblzIuGXl6bgl4tBEsc0LmsY5hasztNIxZiWDXj7GUU+w1TPUUhqrmsGqnWDXMvLsKHQYdnWJycBi1DOIQ4vZ0EEpnu2hVzJ8Tf8gf35APrtP+dchVvk7pcI3fuZSXJ4fUMqnUIuHuFaOOGoy7BqM+yZx32LcM5hGDvNRA8WupRkFNUg81kmb9cJnde+xnN++/CdtnrfwdCfWfdaLzhZ8iefERylkPxP3dWbDBlr5FLOaxW9dE7hlmuYvHO0CR8txY19K3I+bkmR135YQJNtQtOsjxj2dpzuP7m1FYhjo0o4g7XlV+l5VfsXeYtKSRMu59yYUtZhi3NNkVmFHHn7NzEOwg81lSboLJX+6xyQ0WM59+p7KMNCIOtprXf7W6SVBF5Yhq2TX6sayo6aZhibTyKDdypHEN8wih+nA5m5YZzKw5TgkcYtBUMVrZlkvgk0N/4eS+vKB2cBmHFaxjSNmUUPOl5gt0QBBGAUas6hOxy2i1/b/IdxRqF4dMu5rJLGL3yzjOgXCdk02oGHmaTevpWUeOvDYg1X0JtGGMHf8SY6NaIh4OkKRGFJhV0y/sC6a8EeRiMXFdxWeHH2UXeax+6okeFGziYMNwXuqtgl/A9Ofumpm3dqMAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2266,7 +2367,7 @@ The reason for this is that Fable compiles these into functions that can be curr
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB70lEQVQoz32SW1PaUBSF8/+f+tw/0JlOp7V2xul4qQpFRQnmQjjipeZ2kiAQQEmoFPg6OYilFfvwzT5nZbL22jvRai2HxK3R9uuEtzqJb3DdrBB55+osCy0wFLetEyJXJ7ytcSOOiNw63lUV6er02036bQdNiBOunBKn+iHC2EOY+zT0Ha4aBwjrAMf4Rsva59I+UM9j36QbOdyFFmnSpCttZTbsXChz7ezwHWZ9j09721RLG1QONzBOtxD6V44qWxyVN6mWP2NUtxDn23TjJp2oqcx6sUM/EQzaF6pe2iW0C3OXnjQh95jlPvNxoGoB44B5oeWB0qeZ96SHzP9hlgdMHly0s/IH+kkRu4VZK0Yu4V/XCH/otOzvCKvMZaPCjTgm8U314jTzXzB7aqoJY5s0tpmOPFJpcRfapHGxYKH21IscOqFNN2pw32nxa+S9ymTkodUqH+nHFtkoop3GMJHMx1KNwU/5F4W2Lt0qmlHdZJDYjLMIP/HoBAaP967a2yxb7FLV5TlfjPcaWv14g15kqVRFh3zo8jgKmIwCVZdMVrRlg7UJd768pScNHrOIbipJBzG9fsRgIHkYSlWL+3AonylSTrNA8SKh+m0iS+1o9vzFFszz1TH/sDBaP762+f4NndBQhqtmywTr+F/C341+dW1r4R+jAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB+klEQVR42oWR6W7aQBhF/f4P0b9VpUqtFKVZHIUkJBATjAnxFgfMYputgDE2SwjkVB4KTUir/jj65pvlzr0zUsE2eKyW6TWK+O4d3VaZhqNQNW/oBxVa1QLdlkanqeHXVapWjp5XxrXz1J1bMV+zcww7OqOugWQZ17hWljv1AkU5wyjJVIqnmJrMYyWDVpTRSzKGdoalnVEzsww6FoO2zrCtE/ZMMY6HDt1mGal4/RVd+U5WueTi+oRi7gD19geWJgvxfP4YNX+IphxhqCd41VvCvsOoaxKm9CzGPYt4kApqSI5+Ts28YhW7MGvBwoe5z+vch0Ug+te5txuvZ55Y3/ab9Q2raQvpvnDAQ/GQl6SJY+TQCjLm/SW+q+LoNzyUMujaBXYly5Nxw+Tn4+7wPullklWWca0rnid1llGNqGcy7tskwyeivr1jG2sRueLyZdwU9S3LpIlUyn/HKB2zThp4gw7xJI3isZ79ifKW1MXf3G2RrPIpzsM5q6ROGLXpBjZhRxfvtBYx3vP6u65mnhDfR1Jz39DVI5Zxg5epzyL2mE08FrHPfI/nxBN1mXgb0elHt1Iu85lUdJU0mUQBo7DNaNwmHAeiTyb+ro+jgPE4YPFG8IPDNPKTfi4+hbn3Lto+7yJPt3v3BDNHn1Auv+y+fWPd+y//cvgLsJBzGN009lAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2978,7 +3079,7 @@ Open up the project folder in a text editor. It should look somewhat like this:&
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 243.24324324324326%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAxCAIAAABVih7fAAAACXBIWXMAABJ0AAASdAHeZh94AAADvklEQVRIx5WWa2/bNhSG+///TpduaRCg+9AVuRirkya2Y10pUaQkkoekKPEiBRiUZBtSNLZyPhkWXjwkz8v38ENRFJvtw48ft/socs6/Kjf/4d6oYRg+GGMIIZzzruv6vu/MXL15qb7vD4mllLe3t2maVJSUJSrKKs9yjCuUpQUq2pb7N+Cz2Hs/DEMcx0mSdMYIIQDAPW/g6LKff11eXv755QsXHJUFxngYrDtWL2StdZIkZVEIztu27Uzv3wb+TO77Po5jhFDXaUJIZ8wC7ZPYWuu9n6ZpvV6fn58zxhjnIYSl5OdCCG02GwBQSoUQjq78heycs9auVqvT0z/apikKlCZJXVPv/fPXI2TvPcY4iqK+7yVIrbUx5h3k6+vr3z99AhBJHAuQ0zQdwP5MLori4eGh0514qmEYlh6YtXa9Xp+dnTV1nWd5mqUAEJbvOYqim5sbY0zLmHMuhLB02c65zWbz9evXtm0wrozp3ye+u7v79u0vKaFlLSFECDjc6lfiNE3X67WUwDjnjEmp3iFerVafP59yzhGaL9bs0OXLrqoqjmNjOgABIN/n7aurq5OTE1pTWtfjOL5PTCl9vpUS5IHo+rX44uLit48fQYg8y5q3o+sX4hCC0rpuWpAglXJu9tbSPgfvuQBU4qapBcDj4+M4Tod3/ooMIKuKcMEJIWWJUYEIpX5JegbvQWvcMADgnDVNQxvKOPMLyNaGMbD6cfe9IHS72UTxPo6ipWTnve20pVhICUIopUAIKaVbRB5H39LpfpVXZLvdRvuI0Nkqi+6z877vOs3mVjHGtNZLk8RaN4ZQt2yXZLgs9rsdlzBNkz9olFcOc7Z3tlNKccbmcSelENz0vfPHxd47E5wkhGZplqVpjhDKcyn1oRH7r0m8AIkrKiVQUrdtw4SgTdN1ZoHYeyFlUTcgeFViXJYVpagopFpAtt4HKf1uhylNsiTJc5DwOD0eOLHXJtG6T9O6aZu2ZYwppZbNKmv9OJq6gc19kSdpnMT7KJrbVi6z59ypflDy+U3C2pYL3uluWZL44DsIDMVZuk+iDOUoi/kc3WHJuAmdAkZLNcO51kopdTjJ/rOnDePImirdfS9Qto8ilCVZlgGoEPwSstPK1FQpLZXST0kmD4+r/087TKNQQx63GM+vQISyNE8X3Kr5Tk2urkL2QJqaElKVpCqrYRgWzCprXRiDaH2ZYVo3s76uMDHGHBfbOUVGXGTb+7/jOI7idPewLUtU18y7JVPS+05LyVsAEAIEzOml9fHX0D8Iq+SRRpDNqgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 243.24324324324326%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAxCAIAAABVih7fAAAACXBIWXMAABJ0AAASdAHeZh94AAADrklEQVR42pVWaWvkOBCd//97AgnsDFmYJRDSOaZzbJy2Lcmn7suHLLkzLO6E3g1supX6IFngx6tSvarSt6JAT38/369/vbxs3DR573fLbp/et/+1cRy/9X1PCJVCdJ11zo17e/90h8Ba6/X9fZ6lddOUZYHKCgJYVzWCeVkUjInPyBew977ve4RQXVd93+vFjFv43OQ+pX0HL385d3Fx8f37H0JwuHBX4+gORPuBues6hFDTNNpoIWU/DEeRH9xOkgQAYIypm7rr+liwc4uH8zw/PDz89fOnlFJI8RbLcfD+AABYr9dSSm30druNivmNYRzH29vbHz9+cEarqoQAUEK99wf4/2UOIZRl+fz83HWdUkprba2NZXbOrVars7NTpWSWZlKp7XbrYvL8xlzXdZqmwzAsKjEm6sL2zDc3N2dnZ23b5lmeZgt5CCEqZu89hPDx8WkcR6nUW/5iU+Wcu394OD8/JxgXRdn3/TzPsTFP05QkyWq1stYIKSmlWuvD5B/AWZbdXF9rpRhnjDGlzRfAd3d3f56fSyWrusYYhxCmeLf3IhGccy6iCmN/uLq6Oj09JQRjQuZ5/hoYYwwhtJ3V2ozjGFuSb4fLy8uTkxMlBAKQMv6FPAfvjbGEUmuMNXbXv9wXtM2lhGWFcSOl/P37dd5ZLLPWusVEKkkIbtu2aipCyZGmvwcLbVBLhOCE0rbFdVMTSqPALsxesm322FCWpSmEAEFIKYsCT95PVk9NwaVkjEq1W6WIAbspzJ6TkPyqMN5s0qWHcb49WFgfmEdretIsF0aplLLruqg8OzfNIRDGn3NUV+UmSaTWr9vXL1SVc4MbO2utFNIYY7vOmEM6/S/Y+6kPk27aFmQgzzOAEARAaXtoxO57mDYWE2aMoZRxzqWSlPOuH46DF3kqBZtWcl6isiyKqmkAhPrzfvLhtr0xPksxoahAqCy11rHanrx31gxp2mDS4BYTorWJ69vO+XnuKdVJUpcIAQRzACBq6jpWnq7vh2U6cykEJYRxboyJdDv4TgVeZhBuQLq8TGAmlPI+RI2b3hpFW2OMVNJ21hozDmPUayjMW4br9OkaQZC8JDDP8jxXSofgY5inzg6MmG4RaLc0MhM5MZwL21moAWxIVRWwKCACGcwjqmqpqXniOJQ5FZxSQlqKW7LLsD8OdvM8czKjtGwxwW1Tt2VZ93133O3ltsLc1sVLsgaLoU22aZqKUeGniJi991ZLQRrOOWOccSak0Mb6YzH/A8Jf5JDWHCuTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;

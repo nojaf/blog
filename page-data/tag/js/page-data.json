@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-tags-js",
-    "path": "/tag/js/",
-    "result": {"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"excerpt":"Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.\nYou can find the result in this video: Take care everyone! Cheers, nojaf Photo by Annie Spratt on Unsplash","frontmatter":{"date":"2020-12-15","title":"Gitpod & Snowpack","path":"2020/12/15/fs-advent-2020-gitpod-snowpack/","tags":["open-source","fsharp","js","docker"]}}}]}},"pageContext":{"tag":"js"}},
-    "staticQueryHashes": ["3128451518"]}
+{"componentChunkName":"component---src-templates-tags-js","path":"/tag/js/","result":{"data":{"site":{"siteMetadata":{"title":"blog.nojaf.com"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"excerpt":"Hey all, For my F# Advent calendar entry of 2020 I messed around with Gitpod, Snowpack & Fable.\nYou can find the result in this video: Take care everyone! Cheers, nojaf Photo by Annie Spratt on Unsplash","frontmatter":{"date":"2020-12-15","title":"Gitpod & Snowpack","path":"2020/12/15/fs-advent-2020-gitpod-snowpack/","tags":["open-source","fsharp","js","docker"]}}}]}},"pageContext":{"tag":"js"}},"staticQueryHashes":["3128451518"],"slicesMap":{}}
