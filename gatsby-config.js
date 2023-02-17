@@ -12,7 +12,7 @@ module.exports = {
         { // this must be loaded first in order to work
             resolve: `gatsby-plugin-google-gtag`, // note this instead of gatsby-plugin-react-helmet
             options: {
-                trackingIds: [ "UA-62282942-2", "354193759" ],
+                trackingIds: [ "UA-62282942-2", "354193759", "G-FY2Z2EFCT6", "4634919360" ],
                 pluginConfig: {
                     head: true,
                     anonymize: false
