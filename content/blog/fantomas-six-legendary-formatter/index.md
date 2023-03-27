@@ -10,7 +10,7 @@ backgroundPosition: 'initial'
 ## Introduction
 
 Early this year we announced our plans for [Fantomas 6](https://github.com/fsprojects/fantomas/issues/2709).   
-We are happy to announce that we have wrapped up the development of Fantomas 6 and a preview is now available on [NuGet](https://www.nuget.org/packages/fantomas/6.0.0-alpha-006).
+We are happy to announce that we have wrapped up the development of version 6 and a preview is now available on [NuGet](https://www.nuget.org/packages/fantomas/6.0.0-alpha-008).
 
 ### What's new?
 
@@ -20,7 +20,6 @@ Fantomas 6 is a major release and contains a lot of new features and improvement
 
 Fantomas 6 is now able to format multiple files in parallel. This is a huge improvement for large projects.  
 This happens out of the box and you don't have to do anything to benefit from this.
-While dogfooding this feature we noticed no reason to not enable it by default, or heck make it even configurable.
 
 ## A whole lot of Stroustrup
 
@@ -119,7 +118,7 @@ Fantomas can be used to [generate F&#x23; code](https://fsprojects.github.io/fan
 Tricky, as in, you had to know how your way around the [untyped AST](https://fsprojects.github.io/fantomas/reference/fsharp-compiler-syntax.html) to generate the code.
 The AST from the F&#x23; parser has historically always been a bit challenging to work with in Fantomas. Our use-case is slightly different than the compiler's and the tree we get is not always the most convenient to work with.
 
-We address this trial by inducing our own syntax tree in ["Project Dallas"](../../../../2022/12/22/the-oak-sleeps-in-the-acorn/#project-dallas). In v6, we made those types public and added an API to generate code from them.
+We addressed this trial by inducing our own syntax tree in ["Project Dallas"](../../../../2022/12/22/the-oak-sleeps-in-the-acorn/#project-dallas). In v6, we made those types public and added an API to generate code from them.
 The result is that you can now generate code in a much more convenient way.
 
 The old API:
@@ -229,7 +228,7 @@ Note that we do still support the old API, but we recommend using the new API in
 ### Fabulous.AST
 
 Even thought the Oak API simplifies generating code, it can still be a bit verbose. Depending on your use-case, you might want to generate code in a more declarative way.
-For this, a new library called [Fabulous.AST](https://github.com/edgarfgp/Fabulous.AST) has been created. It is a library that will provide a nice DSL similar other [Fabulous](https://docs.fabulous.dev/) projects.  
+For this, a new library called [Fabulous.AST](https://github.com/edgarfgp/Fabulous.AST) has been created. It is a library that will provide a nice DSL similar to other [Fabulous](https://docs.fabulous.dev/) projects.  
 More on that in the near future.
 
 ## Verbose output
