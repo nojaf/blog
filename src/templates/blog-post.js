@@ -23,6 +23,7 @@ class BlogPostTemplate extends React.Component {
                         title={post.frontmatter.title}
                         tags={tags}
                         date={post.frontmatter.date}
+                        backgroundPosition={post.frontmatter.backgroundPosition}
                     />
                     <main className="py-5 container">
                         <article dangerouslySetInnerHTML={{__html: post.html}}/>
@@ -55,6 +56,7 @@ export const pageQuery = graphql`
         cover {
           publicURL
         }
+        backgroundPosition
       }
     }
   }
