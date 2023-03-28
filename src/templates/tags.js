@@ -5,19 +5,21 @@ import BodyClassName from 'react-body-classname'
 import BlogPostPreview from '../components/BlogPostPreview'
 import { graphql } from 'gatsby'
 
-const Header = ({tag, total}) => {
-  return <header className="tag-header">
-    <div className="container" data-stellar-ratio="0.75">
-      <div className="title animated fadeInUp">
-        <h1 className="text-capitalize">{tag}</h1>
-      </div>
-      <div className="sidebar text-right meta">
-        <div className="published animated fadeInUp">
-          <strong>{total} articles</strong>
+const Header = ({ tag, total }) => {
+  return (
+    <header className="tag-header">
+      <div className="container" data-stellar-ratio="0.75">
+        <div className="title animated fadeInUp">
+          <h1 className="text-capitalize">{tag}</h1>
+        </div>
+        <div className="sidebar text-right meta">
+          <div className="published animated fadeInUp">
+            <strong>{total} articles</strong>
+          </div>
         </div>
       </div>
-    </div>
-  </header>;
+    </header>
+  )
 }
 
 const Tags = ({ pageContext, data, location }) => {
@@ -44,7 +46,7 @@ const Tags = ({ pageContext, data, location }) => {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     site {
       siteMetadata {
         title

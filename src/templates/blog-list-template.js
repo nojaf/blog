@@ -18,7 +18,10 @@ export default class BlogList extends React.Component {
             {posts.map((post, idx) => {
               return <BlogPostPreview key={`preview-${idx}`} {...post} />
             })}
-            <Navigation total={this.props.data.allMarkdownRemark.totalCount} skip={this.props.pageContext.skip} />
+            <Navigation
+              total={this.props.data.allMarkdownRemark.totalCount}
+              skip={this.props.pageContext.skip}
+            />
           </main>
         </Layout>
       </BodyClassName>

@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "nojaf-blog",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "0.2.0",
+  "author": "Florian Verdonck",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/nojaf/blog/issues"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
@@ -62,7 +62,7 @@
     "dev": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write src",
     "develop": "gatsby develop -H 0.0.0.0",
     "start": "npm run develop",
     "clean": "rimraf public && rimraf .cache",
