@@ -1,6 +1,11 @@
-name: Build
+name: Publish
 
-on: [pull_request]
+on:
+  - workflow_dispatch
+  - push:
+    branches:
+      - main
+
 
 jobs:
   build:
@@ -14,3 +19,8 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
