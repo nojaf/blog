@@ -33,19 +33,6 @@ export default () => {
                     </ul>
                 </div>
             </div>
-
-            {/*<div className="container">*/}
-            {/*  <Link to={'/'} className="text-right sidebar brand">*/}
-            {/*    <img src={logo} alt="nojaf.com" />*/}
-            {/*  </Link>*/}
-            {/*  <Link  className="teal content" to={'/public-speaking'}>Public speaking</Link>*/}
-            {/*  <Link className="teal content" to="/about-nojaf-com">*/}
-            {/*    About*/}
-            {/*  </Link>*/}
-            {/*  <Link className="teal content" to="/contact-nojaf-com">*/}
-            {/*    Contact*/}
-            {/*  </Link>*/}
-            {/*</div>*/}
         </nav>
     )
 }

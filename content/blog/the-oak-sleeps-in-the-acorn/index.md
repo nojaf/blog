@@ -4,6 +4,7 @@ date: '2022-12-22'
 title: 'The oak sleeps in the acorn'
 tags: ['open-source', 'fsharp', 'fantomas', 'tooling' ]
 cover: './blog.nojaf.com-the-oak-sleeps-in-the-acorn.jpg'
+backgroundPosition: 'initial'
 ---
 
 ## Introduction

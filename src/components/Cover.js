@@ -3,12 +3,14 @@ import {Link} from "gatsby";
 import twitterIcon from "../components/images/twitter-nojaf-blog.svg";
 import React from "react";
 
-const Cover = ({path, title, image, tags, date}) => {
+const Cover = ({path, title, image, tags, date, backgroundPosition}) => {
     const url = `https://blog.nojaf.com/${path}`
     const twitterText = `${title} by @verdonckflorian`;
+    const style = {backgroundImage: `url(${image})`}
+    if (backgroundPosition) { style.backgroundPosition = 'initial' }
 
     return (
-        <header style={{backgroundImage: `url(${image})`}} className="cover">
+        <header style={style} className="cover">
             <div className="inner"></div>
             <div className="content">
                 <div className="container">
