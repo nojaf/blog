@@ -86,7 +86,7 @@ fsharp_newline_before_multiline_computation_expression = true
 ```
 
 ```fsharp
-// Default: fsharp_newline_before_multiline_computation_expression = false
+// Default: fsharp_newline_before_multiline_computation_expression = true
 let something =
     task {
         let! thing = otherThing ()
@@ -95,7 +95,7 @@ let something =
 
 // versus
 
-// fsharp_newline_before_multiline_computation_expression = true
+// fsharp_newline_before_multiline_computation_expression = false
 let something = task {
     let! thing = otherThing ()
     return 5
