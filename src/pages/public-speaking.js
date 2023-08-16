@@ -34,7 +34,47 @@ const PublicSpeaking = (props) => {
                 <br />
                 And the best is yet to come!
               </p>
-
+              <h2 id="fsharpconf-2023">Amplifying F#</h2>
+              <h3>June 2023 at fsharpConf (Online)</h3>
+              <p>
+                Amplifying F# is a new initiative to encourage hands-on
+                collaboration on open-source F# software! We aim to inspire
+                developers all over the world to chime in and make F# better in
+                the process.
+              </p>
+              <p>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/69VVSnng8TY"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </p>
+              <h2 id="ndc-london-2023">Making a difference in open-source</h2>
+              <h3>January 2023 at NDC London (United Kingdom)</h3>
+              <p>
+                Currently, I'm able to improve open-source software in a way
+                where it really matters. In layman's terms, I'm being paid to
+                work on open-source projects and features that directly benefit
+                my customers. In this talk, I want to highlight the importance
+                of giving back to something you take for granted because it is
+                (mostly) free. How it looks like to contribute to and maintain
+                projects in the wild.
+              </p>
+              <p>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/_7qeX88E3sc"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </p>
               <h2 id="ndc-olso-2021">
                 Formatting F# code, There and Back Again
               </h2>
