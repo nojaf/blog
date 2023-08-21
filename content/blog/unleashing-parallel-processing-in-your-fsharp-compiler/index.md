@@ -13,7 +13,7 @@ In this post, I'm shining a spotlight on three of these gems that you absolutely
 
 ## Setup
 
-First things first, you need the latest [SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (`7.0.400` and beyond). Then, let's tweak some MSBuild flags to fine-tune the F# compiler.  
+First things first, you need the latest [SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (`7.0.400` and beyond). Then, let's tweak some `<OtherFlags>` to fine-tune the F# compiler in MSBuild.  
 Just drop this snippet into your `*.fsproj` or `Directory.Build.props` file:
 
 ```xml
@@ -22,7 +22,7 @@ Just drop this snippet into your `*.fsproj` or `Directory.Build.props` file:
 
 ([sample](https://github.com/fsprojects/fantomas/blob/0156a914d08a780745e777c995164be746c926f6/Directory.Build.props#L37))
 
-Want to double-check if it's working? Run `dotnet build --no-incremental -v n` and bask in the glory of these extra compiler flags in action:
+Want to double-check if it's working? Run `dotnet build --no-incremental -v n` and spot the extra compiler flags in `CoreCompile`:
 
 ```
 C:\Program Files\dotnet\dotnet.exe "C:\Program Files\dotnet\sdk\7.0.400\FSharp\fsc.dll" -o:obj\Debug\netstandard2.0\YourProject.dll
@@ -35,9 +35,9 @@ C:\Program Files\dotnet\dotnet.exe "C:\Program Files\dotnet\sdk\7.0.400\FSharp\f
 But what magic do these flags weave, you ask? They sprinkle their fairy dust over [the various phases of F# compilation](https://github.com/dotnet/fsharp/blob/main/docs/overview.md#key-compiler-phases).  
 Now, let's keep it breezy on the technical stuff:
 
-- `--test:GraphBasedChecking` juggles type-checking in parallel, wherever possible. [Check dotnet/fsharp#14494](https://github.com/dotnet/fsharp/pull/14494)
-- `--test:ParallelOptimization` hosts a parallel party during certain optimization phases. [Peep dotnet/fsharp#14390](https://github.com/dotnet/fsharp/pull/14390)
-- `--test:ParallelIlxGen` orchestrates parallel code generation for method bods in the IlxGen dance. [Swing by dotnet/fsharp#14372](https://github.com/dotnet/fsharp/pull/14372)
+- `--test:GraphBasedChecking` juggles type-checking in parallel, wherever possible. [See dotnet/fsharp#14494](https://github.com/dotnet/fsharp/pull/14494)
+- `--test:ParallelOptimization` hosts a parallel party during certain optimization phases. [See dotnet/fsharp#14390](https://github.com/dotnet/fsharp/pull/14390)
+- `--test:ParallelIlxGen` orchestrates parallel code generation for method bods in the IlxGen dance. [See dotnet/fsharp#14372](https://github.com/dotnet/fsharp/pull/14372)
 
 It's a kinda magic, that's what! ✨🎩
 
@@ -48,12 +48,11 @@ Big shout-out to [Janusz Wrobel](https://github.com/safesparrow) and [Tomas Gros
 ## Closing thoughts
 
 <div id="try-out-compiler-flags">
-You really need to try these flags out!<br />
+You really need to try out these flags!<br />
 Otherwise there is no way of telling if this can ever become the default in dotnet 8!
 </div>
 
 Clear enough I hope 😸.
-
 
 Cheers,
 
