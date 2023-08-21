@@ -37,7 +37,7 @@ Now, let's keep it breezy on the technical stuff:
 
 - `--test:GraphBasedChecking` juggles type-checking in parallel, wherever possible. [See dotnet/fsharp#14494](https://github.com/dotnet/fsharp/pull/14494)
 - `--test:ParallelOptimization` hosts a parallel party during certain optimization phases. [See dotnet/fsharp#14390](https://github.com/dotnet/fsharp/pull/14390)
-- `--test:ParallelIlxGen` orchestrates parallel code generation for method bods in the IlxGen dance. [See dotnet/fsharp#14372](https://github.com/dotnet/fsharp/pull/14372)
+- `--test:ParallelIlxGen` orchestrates parallel code generation for method bodies in the IlxGen dance. [See dotnet/fsharp#14372](https://github.com/dotnet/fsharp/pull/14372)
 
 It's a kinda magic, that's what! ✨🎩
 
