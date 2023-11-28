@@ -92,7 +92,6 @@ nuget Fake.Core.Target
 nuget Fake.IO.FileSystem
 nuget Fake.JavaScript.Yarn
 nuget Fake.DotNet.Paket
-nuget Fantomas
 ```
 
 And install everything with:
@@ -115,8 +114,6 @@ open Fake.IO.FileSystemOperators
 open Fake.IO.Globbing.Operators
 open Fake.JavaScript
 open System
-open Fantomas.FakeHelpers
-open Fantomas.FormatConfig
 
 let clientPath = Path.getFullName "./"
 let setYarnWorkingDirectory (args: Yarn.YarnParams) = { args with WorkingDirectory = clientPath }
@@ -691,7 +688,7 @@ To avoid this, add an `.prettierignore` file with `src/bin`.
 
 ### Fantomas
 
-Fantomas can easily be used in a FAKE target.
+Fantomas can easily be used in a FAKE target. [^1]*
 
 ```fsharp
 open Fake.IO.Globbing.Operators
@@ -715,6 +712,8 @@ Target.create "Format" (fun _ ->
 ```
 
 Trigger it with `dotnet fake run build.fsx -t Format` and both languages will be handled.
+
+[^1] Fantomas.FakeHelpers has been deprecated; see https://github.com/fsprojects/fantomas/issues/2269.
 
 ## The source
 
