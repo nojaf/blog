@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import BlogpostList from "../components/BlogpostList.astro";
+import Pagination from "../components/Pagination.astro";
+
+const postCollection = await getCollection("blog");
+const currentPosts = postCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+
+const pageCount = Math.ceil(postCollection.length / 5);
+---
+
+<Layout
+  title="Home"
+  description="Welcome to blog.nojaf.com, enjoy my many adventures in the realm of software development"
+  keywords="home, overview"
+>
+  <BlogpostList posts={currentPosts}>
+    <Pagination current={1} max={pageCount} slot="after" />
+  </BlogpostList>
+</Layout>

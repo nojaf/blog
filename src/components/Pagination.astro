@@ -1,0 +1,94 @@
+---
+interface Props {
+  current: number;
+  max: number;
+}
+
+const props = Astro.props;
+let prevLink: string | null;
+
+switch (props.current) {
+  case 1:
+    prevLink = null;
+    break;
+  case 2:
+    prevLink = "/";
+    break;
+  default:
+    prevLink = `/page/${props.current - 1}`;
+}
+
+const nextLink =
+  props.current === props.max ? null : `/page/${props.current + 1}`;
+---
+
+<nav role="navigation">
+  <a href={prevLink} class:list={[!prevLink && "hide"]}>
+    <iconify-icon icon="lets-icons:arrow-left-long-light" width="30" height="30"
+    ></iconify-icon>{" "}
+    Newer Posts
+  </a>
+  <span>Page {props.current} of {props.max}</span>
+  <a href={nextLink} class:list={[!nextLink && "hide"]}>
+    Older Posts{" "}
+    <iconify-icon
+      icon="lets-icons:arrow-right-long-light"
+      width="30"
+      height="30"></iconify-icon>
+  </a>
+</nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-400);
+    font-size: var(--font-500);
+  }
+
+  a,
+  span {
+    font-size: var(--font-200);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--black);
+    padding: var(--spacing-100);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--nojaf-500);
+    }
+
+    &.hide {
+      visibility: hidden;
+    }
+
+    & iconify-icon {
+      display: block;
+      margin-inline: var(--spacing-50);
+    }
+  }
+
+  span {
+    background-color: var(--nojaf-400);
+    display: block;
+    padding: var(--spacing-100) var(--spacing-200);
+  }
+
+  @media (min-width: 600px) {
+    a,
+    span {
+      font-size: var(--font-400);
+    }
+  }
+
+  @media (min-width: 960px) {
+    a,
+    span {
+      font-size: var(--font-500);
+    }
+  }
+</style>

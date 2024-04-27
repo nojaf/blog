@@ -1,0 +1,136 @@
+---
+import { Image } from "astro:assets";
+import logo from "../images/logo-nojaf.png";
+---
+
+<header>
+  <nav class="container">
+    <a href="/">
+      <Image height={50} src={logo} alt="Logo navigation blog.nojaf.com" />
+    </a>
+    <label for="menu">
+      <iconify-icon icon="solar:hamburger-menu-outline" width="50" height="50"
+      ></iconify-icon>
+    </label>
+    <input type="checkbox" />
+    <ul>
+      <li>
+        <a href="/public-speaking">Public speaking</a>
+      </li>
+      <li>
+        <a href="/about">About</a>
+      </li>
+      <li>
+        <a href="/contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<style>
+  header {
+    background-color: var(--black);
+    padding-block: var(--spacing-300);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  nav > a,
+  label {
+    flex: 0 0 auto;
+  }
+
+  ul {
+    list-style: none;
+    flex: 1 0 100%;
+    padding: 0;
+    display: block;
+    transition: all 200ms ease-out;
+    height: 0;
+    overflow-y: hidden;
+
+    & a {
+      color: var(--white);
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: var(--font-500);
+      padding-block: var(--spacing-100);
+      display: block;
+      transition: color 300ms;
+
+      &:hover {
+        color: var(--nojaf-500);
+      }
+    }
+  }
+
+  a {
+    color: var(--nojaf-500);
+  }
+
+  label {
+    color: var(--nojaf-500);
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 300ms;
+    max-height: 50px;
+  }
+
+  label:hover {
+    color: var(--nojaf-600);
+  }
+
+  label:active {
+    color: var(--nojaf-700);
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: var(--spacing-300);
+    top: 0;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:checked + ul {
+    height: 150px;
+    margin-top: var(--spacing-300);
+  }
+
+  @media (min-width: 600px) {
+    label,
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    ul {
+      flex: 0 0 auto;
+      height: initial;
+      display: flex;
+      align-self: flex-end;
+      transition: initial;
+      height: initial;
+      margin-top: 0;
+
+      & a {
+        padding: 0 var(--spacing-200);
+        line-height: calc(var(--font-500));
+        border-right: 3px solid var(--nojaf-500);
+      }
+
+      & li:last-child a {
+        border-right: none;
+      }
+    }
+  }
+</style>

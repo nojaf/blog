@@ -1,0 +1,127 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostExcerpt from "@igor.dvlpr/astro-post-excerpt";
+
+type Props = CollectionEntry<"blog">;
+const { title, date, tags, path } = Astro.props.data;
+const hasTags = tags && tags.length > 0;
+---
+
+<section>
+  <a href={`/${path}`}>
+    <h2>{title}</h2>
+  </a>
+  <div>
+    <h3>Published</h3>
+    <time datetime={date.toISOString()}
+      ><time-ago>{date.toISOString()}</time-ago></time
+    >
+    <h4>Tags</h4>
+    {
+      hasTags && (
+        <ul>
+          {tags.map((t) => (
+            <li>
+              <a href={`/tag/${t}`}>{t}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <article>
+    <p>
+      <PostExcerpt
+        post={Astro.props}
+        words={50}
+        addEllipsis={false}
+        headings={1}
+      />
+    </p>
+  </article>
+</section>
+<style>
+  div {
+    display: none;
+  }
+
+  section > a {
+    text-decoration: none;
+    font-size: var(--font-400);
+    color: var(--black);
+    transition: color 200ms;
+    display: block;
+    margin-bottom: var(--spacing-200);
+
+    &:hover {
+      color: var(--nojaf-500);
+    }
+  }
+
+  article p {
+    font-size: var(--font-400);
+    word-break: break-all;
+  }
+
+  @media (min-width: 768px) {
+    section {
+      display: grid;
+      grid-template-columns: 3fr 9fr;
+      grid-template-rows: auto auto;
+      grid-column-gap: var(--spacing-700);
+    }
+
+    a {
+      grid-area: 1 / 2 / 2/ 2;
+    }
+
+    div {
+      display: block;
+      grid-area: 2 / 1 / 2 / 2;
+      text-align: right;
+
+      > h3 {
+        font-size: var(--font-500);
+        margin-bottom: var(--spacing-50);
+      }
+
+      > time {
+        font-size: var(--font-400);
+        font-weight: 400;
+      }
+
+      > h4 {
+        margin-top: var(--spacing-400);
+        margin-bottom: var(--spacing-50);
+        font-size: var(--font-500);
+      }
+
+      > ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        gap: var(--spacing-50);
+
+        & a {
+          font-size: var(--font-300);
+          padding: 3px 6px;
+          border-radius: var(--radius);
+          word-break: keep-all;
+          text-decoration: none;
+          color: var(--black);
+        }
+
+        & a:hover {
+          color: var(--nojaf-500);
+          background-color: var(--black);
+        }
+      }
+    }
+
+    article {
+      grid-area: 2 / 2 / 2 / 2;
+    }
+  }
+</style>
+<script type="module" src="/Timeago.js"></script>

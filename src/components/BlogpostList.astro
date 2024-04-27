@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogPostPreview from "./BlogpostPreview.astro";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<main class="container">
+  <slot name="before" />
+  {
+    posts.map((p) => {
+      return <BlogPostPreview {...p} />;
+    })
+  }
+  <slot name="after" />
+</main>
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-600);
+  }
+</style>

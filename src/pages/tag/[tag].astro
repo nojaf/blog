@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogpostList from "../../components/BlogpostList.astro";
+
+export async function getStaticPaths() {
+  const postCollection = await getCollection("blog");
+  const tags = [...new Set(postCollection.flatMap((p) => p.data.tags))];
+
+  return tags.map((t) => {
+    return {
+      params: { tag: t },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+let posts = await getCollection("blog");
+posts = posts
+  .filter((p) => p.data.tags.indexOf(tag) !== -1)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const articleCount =
+  posts.length === 1 ? "A single article" : `${posts.length} articles`;
+---
+
+<Layout title={tag} description={`Blog post about ${tag}`} keywords={tag}>
+  <BlogpostList posts={posts}>
+    <div slot="before">
+      <h1>{tag}</h1>
+      <h2>{articleCount}</h2>
+    </div>
+  </BlogpostList>
+</Layout>
+<style>
+  h1 {
+    text-transform: capitalize;
+    font-size: var(--font-800);
+    font-weight: 300;
+    margin-bottom: var(--spacing-200);
+  }
+
+  h2 {
+    font-weight: 400;
+  }
+</style>

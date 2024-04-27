@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Pagination from "../../components/Pagination.astro";
+import BlogpostList from "../../components/BlogpostList.astro";
+import BlogPostPreview from "../../components/BlogpostPreview.astro";
+
+const postCollection = await getCollection("blog");
+
+export async function getStaticPaths() {
+  const postCollection = await getCollection("blog");
+  // first page is the home page.
+  const pageCount = Math.ceil(postCollection.length / 5) - 1;
+
+  return Array.from({ length: pageCount }, (e, i) => {
+    return { params: { page: String(i + 2) } };
+  });
+}
+
+const { page } = Astro.params;
+const pageNumber = parseInt(page);
+const start = (pageNumber - 1) * 5;
+const currentPosts = postCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(start, start + 5);
+const pageCount = Math.ceil(postCollection.length / 5);
+---
+
+<Layout
+  title={`Page ${page}`}
+  description={`Page ${page} with blog posts`}
+  keywords="page blog posts"
+>
+  <BlogpostList posts={currentPosts}>
+    <Pagination current={pageNumber} max={pageCount} slot="after" />
+  </BlogpostList>
+</Layout>
