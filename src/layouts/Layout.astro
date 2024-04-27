@@ -1,0 +1,314 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { pwaInfo } from "virtual:pwa-info";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead {...props} />
+    <ViewTransitions />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="blog.nojaf.com RSS Feed"
+      href="/rss.xml"
+    />
+    <script
+      src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"
+    ></script>
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Mohave:wght@300;400;500;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+
+      :root {
+        --nojaf-50: #fff9c8;
+        --nojaf-100: #fff7b3;
+        --nojaf-200: #fff38a;
+        --nojaf-300: #ffef62;
+        --nojaf-400: #ffeb39;
+        --nojaf-500: #ffe710;
+        --nojaf-600: #d7c100;
+        --nojaf-700: #9f8f00;
+        --nojaf-800: #675c00;
+        --nojaf-900: #2f2a00;
+        --nojaf-950: #131100;
+
+        --white: #fff;
+        --black: #000;
+        --link-blue: #2c82c9;
+
+        --spacing-50: 4px;
+        --spacing-100: 8px;
+        --spacing-200: 12px;
+        --spacing-300: 16px;
+        --spacing-400: 24px;
+        --spacing-500: 32px;
+        --spacing-600: 48px;
+        --spacing-700: 64px;
+        --spacing-800: 96px;
+        --spacing-900: 128px;
+        --spacing-950: 192px;
+
+        --font-50: 12px;
+        --font-100: 14px;
+        --font-200: 16px;
+        --font-300: 18px;
+        --font-400: 20px;
+        --font-500: 24px;
+        --font-600: 30px;
+        --font-700: 36px;
+        --font-800: 48px;
+        --font-900: 60px;
+        --font-950: 72px;
+
+        --line-height: 1.5;
+        --heading-line-height: 1.25;
+        --radius: 6px;
+        --container-sm: 768px;
+        --container-md: 960px;
+        --container-lg: 1024px;
+        --container-xl: 1200px;
+        --container-xxl: 1400px;
+        --container-xxxl: 1800px;
+
+        --code-font: "Fira Code", monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family: "Mohave", sans-serif;
+        display: flex;
+        flex-direction: column;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        --scrollbar-track-background: #222222;
+        --scrollbar-track-border: #4a4a4a;
+        --scrollbar-thumb-background: #686868;
+
+        &::-webkit-scrollbar {
+          height: var(--spacing-100);
+          width: var(--spacing-100);
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: var(--scrollbar-track-background);
+          border: 1px solid var(--scrollbar-track-border);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--scrollbar-thumb-background);
+        }
+      }
+
+      @media (min-width: 768px) {
+        body {
+          &::-webkit-scrollbar {
+            height: var(--spacing-200);
+            width: var(--spacing-200);
+          }
+        }
+      }
+
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word;
+      }
+
+      body > main {
+        flex: 1 0 auto;
+      }
+
+      footer {
+        flex-shrink: 1;
+      }
+
+      .container {
+        padding-inline: var(--spacing-300);
+        margin-inline: auto;
+        max-width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 768px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .container {
+          max-width: 960px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1024px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1200px;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1400px;
+        }
+      }
+
+      iconify-icon {
+        display: inline-block;
+      }
+
+      main {
+        font-size: var(--font-500);
+        padding-block: var(--spacing-600);
+
+        & h2 {
+          font-size: var(--font-800);
+          line-height: var(--heading-line-height);
+          margin-top: var(--spacing-500);
+          margin-bottom: var(--spacing-300);
+        }
+
+        & h2:first-of-type {
+          margin-top: 0;
+        }
+
+        & h3 {
+          font-size: var(--font-700);
+          line-height: var(--heading-line-height);
+          margin-top: var(--spacing-400);
+          margin-bottom: var(--spacing-300);
+        }
+
+        & h4 {
+          font-size: var(--font-600);
+        }
+
+        & h5,
+        & h6 {
+          font-size: var(--font-500);
+          margin-top: var(--spacing-200);
+        }
+
+        & h4,
+        & h5,
+        & h6 {
+          margin-bottom: var(--spacing-200);
+        }
+
+        p,
+        ul,
+        ol {
+          margin-bottom: var(--spacing-300);
+        }
+
+        & pre.astro-code {
+          margin-block: var(--spacing-400);
+          padding: var(--spacing-100) var(--spacing-200);
+          border-radius: var(--radius);
+          max-width: 100%;
+          overflow-x: auto;
+          width: 100%;
+          font-family: var(--code-font);
+
+          &::-webkit-scrollbar {
+            height: var(--spacing-300);
+          }
+
+          &::-webkit-scrollbar-track {
+            background-color: var(--scrollbar-track-background);
+            border: 1px solid var(--scrollbar-track-border);
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-thumb-background);
+          }
+        }
+
+        & img {
+          max-width: 100%;
+          margin: var(--spacing-400) auto;
+          height: auto;
+        }
+
+        & a {
+          color: var(--link-blue);
+          font-weight: 400;
+        }
+
+        & p code,
+        & li code {
+          background-color: var(--black);
+          color: var(--nojaf-500);
+          padding: 2px 6px;
+          margin-inline: 2px;
+          border-radius: var(--radius);
+          font-family: var(--code-font);
+          font-size: var(--font-400);
+        }
+
+        & p:has(iframe) {
+          margin-block: var(--spacing-400);
+        }
+      }
+    </style>
+  </body>
+</html>

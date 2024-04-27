@@ -1,0 +1,124 @@
+---
+import type { CSSProperty } from "astro/types";
+
+interface Props {
+  title: string;
+  image: ImageMetadata;
+  style?: Partial<Record<CSSProperty, any>>;
+  tags?: string[];
+  date?: Date;
+}
+
+const props = Astro.props;
+const style = Object.assign(
+  { backgroundImage: `url(${props.image.src})` },
+  props.style,
+);
+const hasMeta = props.date && props.tags;
+---
+
+<div id="cover" style={style}>
+  <div class="inner"></div>
+  <div class="content container">
+    {
+      hasMeta && (
+        <div class="meta">
+          <strong>Published</strong>
+          <time datetime={props.date?.toISOString()}>
+            <time-ago>{props.date?.toISOString()}</time-ago>
+          </time>
+          <strong>Tags</strong>
+          <ul>
+            {props.tags?.map((t) => (
+              <li>
+                <a href={`/tag/${t}`}>{t}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    <h1>{props.title}</h1>
+  </div>
+</div>
+<script type="module" src="/Timeago.js"></script>
+<style>
+  #cover {
+    color: var(--white);
+    background-blend-mode: darken;
+    background-color: #ffe710;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(33, 37, 41, 0.67);
+    height: 100%;
+    width: 100%;
+  }
+
+  .content {
+    position: relative;
+    height: 280px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: var(--font-800);
+  }
+
+  .meta {
+    display: none;
+    color: var(--nojaf-500);
+    width: 137px;
+    margin-right: 40px;
+    text-align: right;
+
+    & strong {
+      display: block;
+      font-size: var(--font-400);
+    }
+
+    & time {
+      margin-bottom: var(--spacing-300);
+      display: block;
+    }
+
+    & time,
+    & a {
+      font-size: var(--font-300);
+    }
+
+    & ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    & a {
+      color: var(--nojaf-500);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      height: 350px;
+    }
+
+    .meta {
+      display: block;
+    }
+  }
+</style>

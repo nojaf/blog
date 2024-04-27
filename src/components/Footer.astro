@@ -1,0 +1,54 @@
+---
+const today = new Date();
+---
+
+<footer>
+  <div>
+    &copy; {today.getFullYear()} Nojaf BV. All rights reserved.
+  </div>
+  <ul>
+    <li>
+      <a href="https://twitter.com/verdonckflorian" target="_blank"
+        ><iconify-icon icon="devicon:twitter" width="20" height="20"
+        ></iconify-icon></a
+      >
+    </li>
+    <li>
+      <a href="https://www.youtube.com/@nojaf" target="_blank">
+        <iconify-icon icon="mdi:youtube" width="30" height="30"></iconify-icon>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/nojaf/" target="_blank">
+        <iconify-icon icon="uiw:github" width="25" height="25"></iconify-icon>
+      </a>
+    </li>
+  </ul>
+</footer>
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-400);
+    margin: 0;
+    padding: 0;
+    padding-block: var(--spacing-200);
+  }
+  a {
+    text-decoration: none;
+    transition: color 300ms;
+    &:hover {
+      color: var(--nojaf-800);
+    }
+    &:visited {
+      color: var(--black);
+    }
+  }
+</style>
