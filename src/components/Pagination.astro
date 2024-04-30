@@ -2,34 +2,21 @@
 interface Props {
   current: number;
   max: number;
+  prev?: string | undefined;
+  next: string | undefined;
 }
 
 const props = Astro.props;
-let prevLink: string | null;
-
-switch (props.current) {
-  case 1:
-    prevLink = null;
-    break;
-  case 2:
-    prevLink = "/";
-    break;
-  default:
-    prevLink = `/page/${props.current - 1}`;
-}
-
-const nextLink =
-  props.current === props.max ? null : `/page/${props.current + 1}`;
 ---
 
 <nav role="navigation">
-  <a href={prevLink} class:list={[!prevLink && "hide"]}>
+  <a href={props.prev} class:list={[!props.prev && "hide"]}>
     <iconify-icon icon="lets-icons:arrow-left-long-light" width="30" height="30"
     ></iconify-icon>{" "}
     Newer Posts
   </a>
   <span>Page {props.current} of {props.max}</span>
-  <a href={nextLink} class:list={[!nextLink && "hide"]}>
+  <a href={props.next} class:list={[!props.next && "hide"]}>
     Older Posts{" "}
     <iconify-icon
       icon="lets-icons:arrow-right-long-light"

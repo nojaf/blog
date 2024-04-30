@@ -18,6 +18,6 @@ const pageCount = Math.ceil(postCollection.length / 5);
   keywords="home, overview"
 >
   <BlogpostList posts={currentPosts}>
-    <Pagination current={1} max={pageCount} slot="after" />
+    <Pagination current={1} max={pageCount} slot="after" next="/page/2" />
   </BlogpostList>
 </Layout>
