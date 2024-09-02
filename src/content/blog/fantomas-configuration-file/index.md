@@ -10,7 +10,11 @@ Hi all,
 
 The cat's out of the bag:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">New version of <a href="https://twitter.com/IonideProject?ref_src=twsrc%5Etfw">@IonideProject</a> is out - it updates Fantomas support to the latest version including support for Fantomas configuration file (<a href="https://t.co/Pw3TqQ4kYe">https://t.co/Pw3TqQ4kYe</a>)<br><br>Props to <a href="https://twitter.com/verdonckflorian?ref_src=twsrc%5Etfw">@verdonckflorian</a> and <a href="https://twitter.com/ChetHusk?ref_src=twsrc%5Etfw">@ChetHusk</a> for working on this. <a href="https://twitter.com/hashtag/fsharp?src=hash&amp;ref_src=twsrc%5Etfw">#fsharp</a> <a href="https://twitter.com/hashtag/toolingAdventures?src=hash&amp;ref_src=twsrc%5Etfw">#toolingAdventures</a></p>&mdash; Krzysztof Cieślak (@k_cieslak) <a href="https://twitter.com/k_cieslak/status/1215239179472375808?ref_src=twsrc%5Etfw">January 9, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+    <div lang="en" dir="ltr">New version of <a href="https://twitter.com/IonideProject?ref_src=twsrc%5Etfw">@IonideProject</a> is out - it updates Fantomas support to the latest version including support for Fantomas configuration file (<a href="https://t.co/Pw3TqQ4kYe">https://t.co/Pw3TqQ4kYe</a>)<br /><br />Props to <a href="https://twitter.com/verdonckflorian?ref_src=twsrc%5Etfw">@verdonckflorian</a> and <a href="https://twitter.com/ChetHusk?ref_src=twsrc%5Etfw">@ChetHusk</a> for working on this. <a href="https://twitter.com/hashtag/fsharp?src=hash&amp;ref_src=twsrc%5Etfw">#fsharp</a> <a href="https://twitter.com/hashtag/toolingAdventures?src=hash&amp;ref_src=twsrc%5Etfw">#toolingAdventures</a></div>&mdash; Krzysztof Cieślak (@k_cieslak) <a href="https://twitter.com/k_cieslak/status/1215239179472375808?ref_src=twsrc%5Etfw">January 9, 2020</a>
+</blockquote>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Fantomas now has support for configuration files.
 This means you can override the default settings using a JSON file.

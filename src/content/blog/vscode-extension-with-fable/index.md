@@ -41,25 +41,29 @@ Next we need a F# project. This can be a simple `netstandard classlib`.
 This created a `src` folder with a `Library.fs` file in it. Let us try and compile this to JavaScript using `fable-splitter`.  
 In our `package.json` we can add a new script called `build`.
 
-      "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "build": "fable-splitter --config splitter.config.js"
-    }
+```json
+"scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "build": "fable-splitter --config splitter.config.js"
+}
+```
 
 And as you would expect we will also need a `splitter.config.js` file.  
 The configuration looks like this:
 
-    const path = require("path");
+```js
+const path = require("path");
 
-    function resolve(relativePath) {
-      return path.join(__dirname, relativePath);
-    }
+function resolve(relativePath) {
+    return path.join(__dirname, relativePath);
+}
 
-    module.exports = {
-      entry: resolve("src/AdventExtension.fsproj"),
-      outDir: resolve("out"),
-      allFiles: true
-    };
+module.exports = {
+    entry: resolve("src/AdventExtension.fsproj"),
+    outDir: resolve("out"),
+    allFiles: true
+};
+```
 
 Execute by running `yarn build`. This is the equivalent of running `npm run build`. Yarn just doesn't need the `run` word.  
 We see that all the files in the project are compiled to the `out` folder as specified in `splitter.config.js`.
@@ -69,73 +73,83 @@ Now let us rename `Library.fs` and change it to `Extension.fs`, compile again an
 The `main` property of our `package.json` is pointing to `./extension`, so we will need to change that into `out/Extension.js`.  
 However if we look at the existing `extension.js` file it seems to expose an `activate` function.
 
-    // The module 'vscode' contains the VS Code extensibility API
-    // Import the module and reference it with the alias vscode in your code below
-    const vscode = require('vscode');
+```js
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+const vscode = require('vscode');
 
-    // this method is called when your extension is activated
-    // your extension is activated the very first time the command is executed
-    function activate(context) {
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+function activate(context) {
 
-        // Use the console to output diagnostic information (console.log) and errors (console.error)
-        // This line of code will only be executed once when your extension is activated
-        console.log('Congratulations, your extension "fable-markdown-extension" is now active!');
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "fable-markdown-extension" is now active!');
 
-        // The command has been defined in the package.json file
-        // Now provide the implementation of the command with  registerCommand
-        // The commandId parameter must match the command field in package.json
-        let disposable = vscode.commands.registerCommand('extension.sayHello', function () {
-            // The code you place here will be executed every time your command is executed
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with  registerCommand
+    // The commandId parameter must match the command field in package.json
+    let disposable = vscode.commands.registerCommand('extension.sayHello', function () {
+        // The code you place here will be executed every time your command is executed
 
-            // Display a message box to the user
-            vscode.window.showInformationMessage('Hello World!');
-        });
+        // Display a message box to the user
+        vscode.window.showInformationMessage('Hello World!');
+    });
 
-        context.subscriptions.push(disposable);
-    }
-    exports.activate = activate;
+    context.subscriptions.push(disposable);
+}
+exports.activate = activate;
 
-    // this method is called when your extension is deactivated
-    function deactivate() {
-    }
-    exports.deactivate = deactivate;
+// this method is called when your extension is deactivated
+function deactivate() {
+}
+exports.deactivate = deactivate;
+```
 
 So we will need this in our Fable code as well.  
 Changing `Extension.fs` to
 
-    module AdventExtension.Extension
+```fsharp
+module AdventExtension.Extension
 
-    let activate _ =
-        printfn "Fable extension is activated!"
+let activate _ =
+    printfn "Fable extension is activated!"
+```
 
 should do the trick.
 
 At this point we have had to compile for a couple times already. It would be easier if we could compile continuously.  
 This can be achieved by means of another `fable-splitter`, so let's add a new build script `watch`:
 
-        "scripts": {
-            "postinstall": "node ./node_modules/vscode/bin/install",
-            "build": "fable-splitter --config splitter.config.js",
-            "watch": "yarn run build --watch"
-        },
+```json
+"scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "build": "fable-splitter --config splitter.config.js",
+    "watch": "yarn run build --watch"
+}
+```
 
 > yarn watch
 
 Our compiled code looks like
 
-    import { toConsole, printf } from "./fable-library.2.1.8/String";
-    export function activate(_arg1) {
-      toConsole(printf("Fable extension is activated!"));
-    }
+```js
+import { toConsole, printf } from "./fable-library.2.1.8/String";
+export function activate(_arg1) {
+    toConsole(printf("Fable extension is activated!"));
+}
+```
 
 and we can launch the extension in code by hitting the play button in the Debug panel.  
 However in our current setup we want our extension to run when VS Code starts.
 
 Change the `activationEvents` to `*` in the `package.json`.
 
-      "activationEvents": [
-        "*"
-      ]
+```json
+"activationEvents": [
+    "*"
+]
+```
 
 and start debugging.
 
@@ -157,35 +171,39 @@ One small Babel plugin can do this for us. We need to download it with `yarn` an
 
 `splitter.config.js` becomes
 
-    const path = require("path");
+```js
+const path = require("path");
 
-    function resolve(relativePath) {
-      return path.join(__dirname, relativePath);
-    }
+function resolve(relativePath) {
+    return path.join(__dirname, relativePath);
+}
 
-    module.exports = {
-      entry: resolve("src/AdventExtension.fsproj"),
-      outDir: resolve("out"),
-      babel: {
-        plugins: ["@babel/plugin-transform-modules-commonjs"]
-      },
-      allFiles: true
-    };
+module.exports = {
+    entry: resolve("src/AdventExtension.fsproj"),
+    outDir: resolve("out"),
+    babel: {
+    plugins: ["@babel/plugin-transform-modules-commonjs"]
+    },
+    allFiles: true
+};
+```
 
 The JavaScript output now looks like
 
-    "use strict";
+```js
+"use strict";
 
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.activate = activate;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.activate = activate;
 
-    var _String = require("./fable-library.2.1.8/String");
+var _String = require("./fable-library.2.1.8/String");
 
-    function activate(_arg1) {
-      (0, _String.toConsole)((0, _String.printf)("Fable extension is activated!"));
-    }
+function activate(_arg1) {
+    (0, _String.toConsole)((0, _String.printf)("Fable extension is activated!"));
+}
+```
 
 and our extension now runs!
 
@@ -206,28 +224,32 @@ Next we enter `.paket\paket.exe init`.
 
 Open the `paket.dependencies` file and add
 
-    source https://www.nuget.org/api/v2
-    storage:none
-    framework: netstandard2.0
+```
+source https://www.nuget.org/api/v2
+storage:none
+framework: netstandard2.0
 
-    # nuget Fable.Import.Jest // Use when ready for Fable2
-    github nojaf/fable-jest:fable2 fable/Bindings.fs
-    github nojaf/fable-jest:fable2 fable/Exports.fs
-    github nojaf/fable-jest:fable2 fable/Matchers.fs
-    nuget FSharp.Core redirects:force
-    nuget Fable.Import.VSCode
-    nuget Fable.Parsimmon
+# nuget Fable.Import.Jest // Use when ready for Fable2
+github nojaf/fable-jest:fable2 fable/Bindings.fs
+github nojaf/fable-jest:fable2 fable/Exports.fs
+github nojaf/fable-jest:fable2 fable/Matchers.fs
+nuget FSharp.Core redirects:force
+nuget Fable.Import.VSCode
+nuget Fable.Parsimmon
+```
 
 It will download `VS Code` bindings, `Jest` bindings and `Fable.Parsimmon`. I'll explain later why we need those.  
 Then, create a `paket.references` file next to the fsproj.
 
 Add
 
-    Fable.Import.VSCode
-    Fable.Parsimmon
-    File:Bindings.fs Jest
-    File:Exports.fs Jest
-    File:Matchers.fs Jest
+```
+Fable.Import.VSCode
+Fable.Parsimmon
+File:Bindings.fs Jest
+File:Exports.fs Jest
+File:Matchers.fs Jest
+```
 
 Run `.paket\paket.exe install`, which should add everything on **.NET** side.
 
@@ -275,23 +297,27 @@ Here you can already see that using `paket` instead of `NuGet` was a smart move.
 
 **Unit testing in Fable** is described to some extent in the [FAQ](https://fable.io/faq/#unit-tests). In our case everything is almost fully set up. We need to change the `test` script in our package.json.
 
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "build": "fable-splitter --config splitter.config.js",
-        "watch": "yarn run build --watch",
-        "test": "jest"
-    },
+```json
+"scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "build": "fable-splitter --config splitter.config.js",
+    "watch": "yarn run build --watch",
+    "test": "jest"
+},
+```
 
 Add a file that matches the following convention `*.test.fs` to our project, and the `*.test.js` should be picked up by **Jest**.  
 `Parser.test.fs` with a _simple unit test_ should be enough for now.
 
-    module AdventExtension.Tests.Parser
+```fsharp
+module AdventExtension.Tests.Parser
 
-    open Fable.Import.Jest
-    open Fable.Import.Jest.Matchers
+open Fable.Import.Jest
+open Fable.Import.Jest.Matchers
 
-    test "simple Jest test should be picked up" <| fun () ->
-        "42" == "the answer of the Universe"
+test "simple Jest test should be picked up" <| fun () ->
+    "42" == "the answer of the Universe"
+```
 
 Execute with
 
@@ -307,106 +333,117 @@ Execute with
 
 Since we are going to parse text, we need a type to capture the result of our parsing.
 
-    type ParserResult =
-        | Text of string
-        | FableFontText of NodeResult<string>
-        | FableLogo of NodeResult<string>
+```fsharp
+type ParserResult =
+    | Text of string
+    | FableFontText of NodeResult<string>
+    | FableLogo of NodeResult<string>
+```
 
 We may now have found some text, text between dragons (🐉) or `:fable:`.  
 When we have found one or both of the latter two, we would need to know where in our text we have found them.  
 This is where `Parsimmon.node` comes in handy, as it returns a `NodeResult<'t>`.
 
-    type TokenPosition =
-        { offset: int
-          line: int
-          column: int }
+```fsharp
+type TokenPosition =
+    { offset: int
+      line: int
+      column: int }
 
-    type NodeResult<'t> =
-        { name: string
-          value: 't
-          start: TokenPosition
-          ``end``: TokenPosition }
+type NodeResult<'t> =
+    { name: string
+      value: 't
+      start: TokenPosition
+      ``end``: TokenPosition }
+```
 
 Next we need a function that takes a string and returns `Fable.Parsimmon.ParseResult<ParserResult array>`.
 
-    let parseText input : ParseResult<ParserResult array> = failwith "Nothing here yet."
+```fsharp
+let parseText input : ParseResult<ParserResult array> = failwith "Nothing here yet."
+```
 
 And we can quickly write some tests.
 
-    test "basic fable font" <| fun () ->
-        let input = "🐉vibes🐉"
-        let parsed = Parser.parseText input
-        parsed.status == true
+```fsharp
+test "basic fable font" <| fun () ->
+    let input = "🐉vibes🐉"
+    let parsed = Parser.parseText input
+    parsed.status == true
 
-    test "no fable font" <| fun () ->
-        let input = "fableless vibes"
-        let parsed = Parser.parseText input
-        parsed.status == true
+test "no fable font" <| fun () ->
+    let input = "fableless vibes"
+    let parsed = Parser.parseText input
+    parsed.status == true
 
-    test "fable logo is found" <| fun () ->
-        let input = "Once upon a :fable:..."
-        let parsed = Parser.parseText input
+test "fable logo is found" <| fun () ->
+    let input = "Once upon a :fable:..."
+    let parsed = Parser.parseText input
 
-        parsed.status == true
+    parsed.status == true
 
-        match parsed.value with
-        | [| Text _; FableLogo logo; Text _|] ->
-            logo.start.offset == 12
-            logo.value.Length == 7
-        | _ -> failwith "Expected logo in center"
+    match parsed.value with
+    | [| Text _; FableLogo logo; Text _|] ->
+        logo.start.offset == 12
+        logo.value.Length == 7
+    | _ -> failwith "Expected logo in center"
+```
 
 Notice that `==` is a shorthand for `Fable.Import.Jest.Exports.expect.Invoke("foo").toBe("bar")`.
 
 To make these tests pass we'll write some custom parsers, mostly based on regular expressions.
 
-    module AdventExtension.Parser
+```fsharp
+module AdventExtension.Parser
 
-    open Fable.Parsimmon
-    open Fable.Core
-    open System.Text.RegularExpressions
+open Fable.Parsimmon
+open Fable.Core
+open System.Text.RegularExpressions
 
-    type ParserResult =
-        | Text of string
-        | FableFontText of NodeResult<string>
-        | FableLogo of NodeResult<string>
+type ParserResult =
+    | Text of string
+    | FableFontText of NodeResult<string>
+    | FableLogo of NodeResult<string>
 
-    // no /g flag
-    [<Emit("new RegExp($0)")>]
-    let createRegex pattern : Regex = jsNative
+// no /g flag
+[<Emit("new RegExp($0)")>]
+let createRegex pattern : Regex = jsNative
 
-    let dragonParser = Parsimmon.str "🐉"
+let dragonParser = Parsimmon.str "🐉"
 
-    let noDragonParser =
-        Parsimmon.regex (createRegex @"[^🐉]+")
+let noDragonParser =
+    Parsimmon.regex (createRegex @"[^🐉]+")
 
-    let fableFontParser =
-        Parsimmon.between dragonParser dragonParser noDragonParser
-        |> Parsimmon.node "FableFont"
-        |> Parsimmon.map (ParserResult.FableFontText)
+let fableFontParser =
+    Parsimmon.between dragonParser dragonParser noDragonParser
+    |> Parsimmon.node "FableFont"
+    |> Parsimmon.map (ParserResult.FableFontText)
 
-    let halfDragon =
-        "🐉".ToCharArray()
-        |> Array.head
-        |> (string)
+let halfDragon =
+    "🐉".ToCharArray()
+    |> Array.head
+    |> (string)
 
-    let noDragonsParser =
-        Parsimmon.satisfy (fun token -> token <> halfDragon && token <> ":")
-            |> Parsimmon.atLeastOneOrMany
-            |> Parsimmon.concat
-            |> Parsimmon.map (ParserResult.Text)
+let noDragonsParser =
+    Parsimmon.satisfy (fun token -> token <> halfDragon && token <> ":")
+        |> Parsimmon.atLeastOneOrMany
+        |> Parsimmon.concat
+        |> Parsimmon.map (ParserResult.Text)
 
-    let fableLogoParser =
-        Parsimmon.str ":fable:"
-        |> Parsimmon.node "FableLogo"
-        |> Parsimmon.map (FableLogo)
+let fableLogoParser =
+    Parsimmon.str ":fable:"
+    |> Parsimmon.node "FableLogo"
+    |> Parsimmon.map (FableLogo)
 
-    let parseText input : ParseResult<ParserResult array> =
-        Parsimmon.choose [
-            fableLogoParser
-            noDragonsParser
-            fableFontParser
-        ]
-        |> fun parser -> parser.many().parse(input)
+let parseText input : ParseResult<ParserResult array> =
+    Parsimmon.choose [
+        fableLogoParser
+        noDragonsParser
+        fableFontParser
+    ]
+    |> fun parser -> parser.many().parse(input)
+```
+
 
 I won't go into detail about exactly how this works but I do want to highlight two things:
 
@@ -421,108 +458,114 @@ Highlighting in VS Code is surprisingly easily. All we need to do is tell code w
 
 Let's first create some `TextDecorationEditorStyle` objects.
 
-    module AdventExtension.Extension
+```fsharp
+module AdventExtension.Extension
 
-    open Fable.Core.JsInterop
-    open Fable.Import.vscode
+open Fable.Core.JsInterop
+open Fable.Import.vscode
 
-    let createFontOptions color backgroundColor fontWeight : DecorationRenderOptions =
-        jsOptions (fun options ->
-            options.color <- Some color
-            options?fontWeight <- fontWeight
-            options.backgroundColor <- backgroundColor
-        )
+let createFontOptions color backgroundColor fontWeight : DecorationRenderOptions =
+    jsOptions (fun options ->
+        options.color <- Some color
+        options?fontWeight <- fontWeight
+        options.backgroundColor <- backgroundColor
+    )
 
-    let activate _ =
-        let fableFontStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" (Some "white") None)
-        let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" None (Some "bold"))
+let activate _ =
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" (Some "white") None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" None (Some "bold"))
 
-        printfn "Fable extension activated!"
+    printfn "Fable extension activated!"
+```
 
 Now we need to subscribe to certain events.
 
-    let activate (context: ExtensionContext) =
-        let fableFontStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" (Some "white") None)
-        let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" None (Some "bold"))
+```fsharp
+let activate (context: ExtensionContext) =
+    let fableFontStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" (Some "white") None)
+    let fableLogoStyle = window.createTextEditorDecorationType(createFontOptions "#87c5fd" None (Some "bold"))
 
-        // Capture the active editor.
-        let mutable activeEditor = window.activeTextEditor
+    // Capture the active editor.
+    let mutable activeEditor = window.activeTextEditor
 
-        let updateDecorations() = failwithf "Nothing here yet."
+    let updateDecorations() = failwithf "Nothing here yet."
 
-        let mutable timeoutKey = None;
-        let triggerUpdateDecorations _ =
-            timeoutKey
-            |> Option.iter (JS.clearTimeout)
+    let mutable timeoutKey = None;
+    let triggerUpdateDecorations _ =
+        timeoutKey
+        |> Option.iter (JS.clearTimeout)
 
-            timeoutKey <- Some (JS.setTimeout updateDecorations 500)
+        timeoutKey <- Some (JS.setTimeout updateDecorations 500)
 
-        // User is typing
-        window.onDidChangeActiveTextEditor.Invoke((fun editor ->
-            activeEditor <- Some editor
+    // User is typing
+    window.onDidChangeActiveTextEditor.Invoke((fun editor ->
+        activeEditor <- Some editor
+        triggerUpdateDecorations()
+        null
+    ))
+    |> context.subscriptions.Add
+
+    // Change of document
+    workspace.onDidChangeTextDocument.Invoke((fun event ->
+        match activeEditor with
+        | Some aEditor when (event.document = aEditor.document) ->
             triggerUpdateDecorations()
-            null
-        ))
-        |> context.subscriptions.Add
+        | _ -> ()
+        null
+    ))
+    |> context.subscriptions.Add
 
-        // Change of document
-        workspace.onDidChangeTextDocument.Invoke((fun event ->
-            match activeEditor with
-            | Some aEditor when (event.document = aEditor.document) ->
-                triggerUpdateDecorations()
-            | _ -> ()
-            null
-        ))
-        |> context.subscriptions.Add
+    activeEditor
+    |> Option.iter (triggerUpdateDecorations)
 
-        activeEditor
-        |> Option.iter (triggerUpdateDecorations)
-
-        printfn "Fable extension activated!"
+    printfn "Fable extension activated!"
+```
 
 Notice that the event handlers call `triggerUpdateDecorations`, which prevents us from re-rendering too much.
 
-    // Parsimmon ranges are 1-based, VS Code works with 0-based indexing.
-    let nodeResultToRange<'t> (nr: NodeResult<'t>) =
-        let zeroBasedFloat r = r - 1 |> (float)
-        vscode.Range(zeroBasedFloat nr.start.line,
-                     zeroBasedFloat nr.start.column,
-                     zeroBasedFloat nr.``end``.line,
-                     zeroBasedFloat nr.``end``.column)
+```fsharp
+// Parsimmon ranges are 1-based, VS Code works with 0-based indexing.
+let nodeResultToRange<'t> (nr: NodeResult<'t>) =
+    let zeroBasedFloat r = r - 1 |> (float)
+    vscode.Range(zeroBasedFloat nr.start.line,
+                    zeroBasedFloat nr.start.column,
+                    zeroBasedFloat nr.``end``.line,
+                    zeroBasedFloat nr.``end``.column)
 
-    let updateDecorations() =
-        activeEditor
-        |> Option.iter (fun aEditor ->
-            if aEditor.document.languageId = "markdown" then
-                let text = aEditor.document.getText()
-                let parsed = Parser.parseText text
+let updateDecorations() =
+    activeEditor
+    |> Option.iter (fun aEditor ->
+        if aEditor.document.languageId = "markdown" then
+            let text = aEditor.document.getText()
+            let parsed = Parser.parseText text
 
-                if parsed.status then
-                    parsed.value
-                    |> Array.map (fun node ->
-                        match node with
-                        | ParserResult.FableLogo logo ->
-                            Some (fableLogoStyle, nodeResultToRange logo)
+            if parsed.status then
+                parsed.value
+                |> Array.map (fun node ->
+                    match node with
+                    | ParserResult.FableLogo logo ->
+                        Some (fableLogoStyle, nodeResultToRange logo)
 
-                        | ParserResult.FableFontText fableText ->
-                            Some (fableFontStyle, nodeResultToRange fableText)
+                    | ParserResult.FableFontText fableText ->
+                        Some (fableFontStyle, nodeResultToRange fableText)
 
-                        | _ ->
-                            None
+                    | _ ->
+                        None
 
-                    )
-                    |> Array.choose id
-                    |> Array.groupBy (fun (style,_) -> style.key)
-                    |> Array.iter (fun (styleKey, ranges) ->
-                        let r =
-                            Array.map snd ranges
-                            |> ResizeArray
+                )
+                |> Array.choose id
+                |> Array.groupBy (fun (style,_) -> style.key)
+                |> Array.iter (fun (styleKey, ranges) ->
+                    let r =
+                        Array.map snd ranges
+                        |> ResizeArray
 
-                        let style = if fableFontStyle.key = styleKey then fableFontStyle else fableLogoStyle
+                    let style = if fableFontStyle.key = styleKey then fableFontStyle else fableLogoStyle
 
-                        aEditor.setDecorations(style, !^ r)
-                    )
-        )
+                    aEditor.setDecorations(style, !^ r)
+                )
+    )
+```
 
 `updateDecorations` is rather straightforward as well. We map the result of `parseText` and make ranges out of it. The result looks as follows:
 
@@ -545,51 +588,53 @@ Ex.
 
 Will be parsed to
 
-    [
-      {
-        "type": "paragraph_open",
-        "tag": "p",
-      },
-      {
-        "type": "inline",
+```json
+[
+    {
+    "type": "paragraph_open",
+    "tag": "p",
+    },
+    {
+    "type": "inline",
+    "tag": "",
+    "map": [
+        0,
+        1
+    ],
+    "nesting": 0,
+    "level": 1,
+    "children": [
+        {
+        "type": "text",
         "tag": "",
-        "map": [
-          0,
-          1
-        ],
-        "nesting": 0,
-        "level": 1,
-        "children": [
-          {
-            "type": "text",
-            "tag": "",
-            "content": "This is some ",
-          },
-          {
-            "type": "strong_open",
-            "tag": "strong",
-          },
-          {
-            "type": "text",
-            "tag": "",
-            "content": "markdown text",
-          },
-          {
-            "type": "strong_close",
-            "tag": "strong",
-          },
-          {
-            "type": "text",
-            "tag": "",
-          }
-        ],
-        "content": "This is some **markdown text**",
-      },
-      {
-        "type": "paragraph_close",
-        "tag": "p",
-      }
-    ]
+        "content": "This is some ",
+        },
+        {
+        "type": "strong_open",
+        "tag": "strong",
+        },
+        {
+        "type": "text",
+        "tag": "",
+        "content": "markdown text",
+        },
+        {
+        "type": "strong_close",
+        "tag": "strong",
+        },
+        {
+        "type": "text",
+        "tag": "",
+        }
+    ],
+    "content": "This is some **markdown text**",
+    },
+    {
+    "type": "paragraph_close",
+    "tag": "p",
+    }
+]
+```
 
 Note that this is a simplified version. We need to break down any tokens of `type:"text"` and replace them with our own token type (`fable-logo` and `fable-text`).
 
@@ -603,96 +648,102 @@ I found that there are TypeScript bindings on [npm](https://www.npmjs.com/packag
 
 Since this is a rather tricky situation, we should add some tests first.
 
-    module AdventExtension.Tests.MarkdownPlugin
+```fsharp
+module AdventExtension.Tests.MarkdownPlugin
 
-    open Fable.Import.Jest
-    open AdventExtension.MarkdownPlugin
+open Fable.Import.Jest
+open AdventExtension.MarkdownPlugin
 
-    jest.unmock("markdown-it")
+jest.unmock("markdown-it")
 
-    let md = MarkdownItModule.Exports.Invoke().``use``(fableMarkdownPlugin)
+let md = MarkdownItModule.Exports.Invoke().``use``(fableMarkdownPlugin)
 
-    test "fable img is rendered" <| fun () ->
-        let input = ":fable:"
-        let parsed = md.render input
-        expect.Invoke(parsed.StartsWith("<p><img class='fable-logo' src")).toBeTruthy()
+test "fable img is rendered" <| fun () ->
+    let input = ":fable:"
+    let parsed = md.render input
+    expect.Invoke(parsed.StartsWith("<p><img class='fable-logo' src")).toBeTruthy()
 
-    test "fable font is rendered" <| fun () ->
-        let input = "Over the seas 🐉we shall rise🐉!"
-        let parsed = md.render input
-        expect.Invoke(parsed.Contains("<span class='fable'>we shall rise</span>")).toBeTruthy()
+test "fable font is rendered" <| fun () ->
+    let input = "Over the seas 🐉we shall rise🐉!"
+    let parsed = md.render input
+    expect.Invoke(parsed.Contains("<span class='fable'>we shall rise</span>")).toBeTruthy()
+```
 
 The plugin function `fableMarkdownPlugin` looks like
 
-    module AdventExtension.MarkdownPlugin
+```fsharp
+module AdventExtension.MarkdownPlugin
 
-    open MarkdownItModule
-    let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = failwith "Nothing yet"
+open MarkdownItModule
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = failwith "Nothing yet"
+```
 
 Inside this function, we need to replace the tokens and add custom render rules.
 
-    module AdventExtension.MarkdownPlugin
+```fsharp
+module AdventExtension.MarkdownPlugin
 
-    open MarkdownItModule
-    open Fable.Core
-    open AdventExtension.Parser
+open MarkdownItModule
+open Fable.Core
+open AdventExtension.Parser
 
-    [<Emit("new $0.Token($1,$2,$3)")>]
-    let createToken state name tag nesting: Token = jsNative
+[<Emit("new $0.Token($1,$2,$3)")>]
+let createToken state name tag nesting: Token = jsNative
 
-    [<Emit("$0[$1] = $2")>]
-    let addRenderRule rules name fn: unit = jsNative
+[<Emit("$0[$1] = $2")>]
+let addRenderRule rules name fn: unit = jsNative
 
-    let fableMarkdownPlugin (md: MarkdownIt) (options: Options) =
-        // Phase one: replace text tokens to custom tokens
-        let replaceTokens (state: State) =
-            let parseTextToken (parentToken: Token) (textToken: Token) =
-                let textContent = textToken.content
-                let parsedContent = parseText textContent
-                let updatedChildren =
-                    if not parsedContent.status then
-                        Array.empty
-                    else
-                        parsedContent.value
-                        |> Array.map (fun node ->
-                            match node with
-                            | ParserResult.Text text ->
-                                let t = createToken state "text" "" 0
-                                t.content <- text
-                                t
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) =
+    // Phase one: replace text tokens to custom tokens
+    let replaceTokens (state: State) =
+        let parseTextToken (parentToken: Token) (textToken: Token) =
+            let textContent = textToken.content
+            let parsedContent = parseText textContent
+            let updatedChildren =
+                if not parsedContent.status then
+                    Array.empty
+                else
+                    parsedContent.value
+                    |> Array.map (fun node ->
+                        match node with
+                        | ParserResult.Text text ->
+                            let t = createToken state "text" "" 0
+                            t.content <- text
+                            t
 
-                            | ParserResult.FableLogo _ ->
-                                createToken state "fable-logo" "img" 0
+                        | ParserResult.FableLogo _ ->
+                            createToken state "fable-logo" "img" 0
 
-                            | ParserResult.FableFontText fontText ->
-                                let t = createToken state "fable-font" "span" 0
-                                t.content <- fontText.value.Replace("🐉", "")
-                                t
-                        )
-
-                parentToken.children <- new ResizeArray<Token>(updatedChildren)
-
-            let rec parseToken (parentToken: Token) (token: Token) =
-                if token.children <> null && not(Seq.isEmpty token.children) then
-                    token.children
-                    |> Seq.iter (fun childToken ->
-                        if childToken.``type`` = "inline" then
-                            parseToken token childToken
-                        else
-                            parseTextToken token childToken
+                        | ParserResult.FableFontText fontText ->
+                            let t = createToken state "fable-font" "span" 0
+                            t.content <- fontText.value.Replace("🐉", "")
+                            t
                     )
 
-                if token.``type`` = "text" then
-                    parseTextToken parentToken token
+            parentToken.children <- new ResizeArray<Token>(updatedChildren)
 
-            state.tokens
-            |> Seq.filter (fun t -> t.``type`` = "inline" && t.children <> null && not (Seq.isEmpty t.children))
-            |> Seq.iter (fun token ->
+        let rec parseToken (parentToken: Token) (token: Token) =
+            if token.children <> null && not(Seq.isEmpty token.children) then
                 token.children
-                |> Seq.iter (parseToken token)
-            )
+                |> Seq.iter (fun childToken ->
+                    if childToken.``type`` = "inline" then
+                        parseToken token childToken
+                    else
+                        parseTextToken token childToken
+                )
 
-        md.core.ruler.push("fable", replaceTokens)
+            if token.``type`` = "text" then
+                parseTextToken parentToken token
+
+        state.tokens
+        |> Seq.filter (fun t -> t.``type`` = "inline" && t.children <> null && not (Seq.isEmpty t.children))
+        |> Seq.iter (fun token ->
+            token.children
+            |> Seq.iter (parseToken token)
+        )
+
+    md.core.ruler.push("fable", replaceTokens)
+```
 
 This code might not look like much, but we are traversing the tree, replacing the `children` of a parent node that contains `text`.
 
@@ -700,21 +751,23 @@ Our unit tests remain unaffected, as the render part will just ignore the `fable
 
 Part two determines how our own nodes should render:
 
-    [<Emit("$0[$1] = $2")>]
-    let addRenderRule rules name fn: unit = jsNative
+```fsharp
+[<Emit("$0[$1] = $2")>]
+let addRenderRule rules name fn: unit = jsNative
 
-    let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = ...
-        // Phase one ...
+let fableMarkdownPlugin (md: MarkdownIt) (options: Options) = ...
+    // Phase one ...
 
-        // Phase two
-        let renderFableLogo tokens idx = "<img class='fable-logo' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEU...' />"
+    // Phase two
+    let renderFableLogo tokens idx = "<img class='fable-logo' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEU...' />"
 
-        let renderFableText (tokens: Token array) (idx: int) =
-            let token = tokens.[idx]
-            sprintf "<span class='fable'>%s</span>" (token.content.Replace("🐉", ""))
+    let renderFableText (tokens: Token array) (idx: int) =
+        let token = tokens.[idx]
+        sprintf "<span class='fable'>%s</span>" (token.content.Replace("🐉", ""))
 
-        addRenderRule md.renderer.rules "fable-logo" (new System.Func<Token array,int,string>(fun tokens idx -> renderFableLogo tokens idx))
-        addRenderRule md.renderer.rules "fable-font" (new System.Func<Token array,int,string>(fun tokens idx -> renderFableText tokens idx))
+    addRenderRule md.renderer.rules "fable-logo" (new System.Func<Token array,int,string>(fun tokens idx -> renderFableLogo tokens idx))
+    addRenderRule md.renderer.rules "fable-font" (new System.Func<Token array,int,string>(fun tokens idx -> renderFableText tokens idx))
+```
 
 We need to wrap our render functions inside a `System.Func<_,_,_>` in order to preserve compatibility with JavaScript.  
 The reason for this is that Fable compiles these into functions that can be curried, and markdown-it doesn't like this.
@@ -725,37 +778,43 @@ Once more our tests show green, and the times has come to shove this into our VS
 
 To see all this in code we need to extend the `contributes` section in our `package.json`
 
-      "contributes": {
-        "markdown.markdownItPlugins": true,
-        "markdown.previewStyles": [
-          "./fable.css"
-        ]
-      }
+```json
+"contributes": {
+    "markdown.markdownItPlugins": true,
+    "markdown.previewStyles": [
+        "./fable.css"
+    ]
+}
+```
 
 Create a `fable.css` file
 
-    // this works in code, I was somewhat surprised by this. Should be a local url in real world scenario.
-    @import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,600i');
+```css
+// this works in code, I was somewhat surprised by this. Should be a local url in real world scenario.
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,600i');
 
-    .fable {
-        font-family: 'Josefin Slab', serif;
-        font-weight: 600;
-        font-style: italic;
-        color: #87c5fd;
-        font-size: 18px;
-    }
+.fable {
+    font-family: 'Josefin Slab', serif;
+    font-weight: 600;
+    font-style: italic;
+    color: #87c5fd;
+    font-size: 18px;
+}
 
-    .fable-logo {
-        display: inline-block;
-        width: 24px;
-    }
+.fable-logo {
+    display: inline-block;
+    width: 24px;
+}
+```
 
 And make the final change to `Extension.fs` by adding
 
-        // Add render plugin
-        createObj [
-            "extendMarkdownIt" ==> (fun md -> md?``use``(MarkdownPlugin.fableMarkdownPlugin))
-        ]
+```fsharp
+// Add render plugin
+createObj [
+    "extendMarkdownIt" ==> (fun md -> md?``use``(MarkdownPlugin.fableMarkdownPlugin))
+]
+```
 
 at the end.
 

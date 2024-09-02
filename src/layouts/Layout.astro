@@ -308,6 +308,16 @@ const props = Astro.props;
         & p:has(iframe) {
           margin-block: var(--spacing-400);
         }
+
+        & blockquote {
+          background-color: var(--nojaf-500);
+          padding: var(--spacing-200);
+          margin-block: var(--spacing-200);
+
+          & p {
+            margin-bottom: 0;
+          }
+        }
       }
     </style>
   </body>
