@@ -11,15 +11,15 @@
     "format": "bunx --bun prettier src public --write"
   },
   "dependencies": {
-    "@astrojs/mdx": "3.1.5",
-    "@astrojs/rss": "4.0.7",
-    "@astrojs/sitemap": "3.1.6",
-    "astro": "4.16.1"
+    "@astrojs/mdx": "3.1.9",
+    "@astrojs/rss": "4.0.9",
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "4.16.15"
   },
   "devDependencies": {
     "@igor.dvlpr/astro-post-excerpt": "^3.0.4",
-    "@vite-pwa/astro": "^0.4.0",
-    "date-fns": "^3.6.0",
+    "@vite-pwa/astro": "^0.4.3",
+    "date-fns": "^4.1.0",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
