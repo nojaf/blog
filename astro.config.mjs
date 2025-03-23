@@ -2,10 +2,19 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import AstroPWA from "@vite-pwa/astro";
+import { readFileSync } from "fs";
+const rescriptTM = JSON.parse(
+  readFileSync("./src/languages/rescript.tmLanguage.json", "utf-8"),
+);
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.nojaf.com",
+  markdown: {
+    shikiConfig: {
+      langs: [rescriptTM],
+    },
+  },
   integrations: [
     mdx(),
     sitemap(),
@@ -47,9 +56,9 @@ export default defineConfig({
         theme_color: "#FFFFFF",
         description: "Tales and adventures of nojaf",
       },
-      devOptions:{
-        enabled: true
-      }
+      devOptions: {
+        enabled: true,
+      },
     }),
   ],
 });
