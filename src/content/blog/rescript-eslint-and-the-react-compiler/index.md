@@ -9,32 +9,32 @@ backgroundPosition: "initial"
 
 ## Introduction
 
-I'm currently working on a frontend project where I'm using [ReScript](https://rescript-lang.org/) and React 19.
-I consider myself an ok, React developer, but not an expert.
-So I do benefit from a linter that keeps an eye out whehter I'm playing by [the rules of React](https://react.dev/reference/rules/rules-of-hooks). And my fingerspitzengefühl to use memoization in React is also not the greatest, so we will have the new React compiler do that for us.
+I'm currently working on a frontend project using [ReScript](https://rescript-lang.org/) and React 19.
+While I consider myself a competent React developer, I appreciate having tools that help maintain best practices.
+A linter proves invaluable in ensuring I follow [the rules of React](https://react.dev/reference/rules/rules-of-hooks), and since my instinct for React memoization isn't perfectly tuned yet, I'm leveraging the new React compiler to handle that optimization.
 
-ReScript doesn't come with something like linters or analyzers, so I this blogpost I'm going to describe my setup on how I run [eslint](https://eslint.org/) on my javascript output.
+ReScript doesn't include built-in linting or analysis tools, so in this post, I'll explain how to set up [eslint](https://eslint.org/) to analyze the JavaScript output.
 
-Oh yeah and I'm using [Bun](https://bun.sh/), merely because I like it and I can. I'm a Bun guy.
+For this setup, I'm using [Bun](https://bun.sh/) as my JavaScript runtime and package manager.
 
 ## Installation
 
-I'm using ReScript 12, which is in alpha state at the time of writing.
-If you want to follow along, you can scaffold a new Vite project using
+At the time of writing, I'm using ReScript 12 (alpha version).
+To follow along, create a new Vite project using:
 
 ```shell
 bun create rescript-app@next
 ```
 
-Choose the Vite and the latest v12 alpha.
+Select Vite and the latest v12 alpha version when prompted.
 
-Next, we will need a couple of node packages:
+Next, install the required dependencies:
 
 ```shell
 bun i -D eslint eslint-plugin-react-compiler eslint-plugin-react-hooks
 ```
 
-⚠️ Also check that you are using React 19:
+⚠️ Ensure you're using React 19:
 
 ```json
 {
@@ -45,9 +45,9 @@ bun i -D eslint eslint-plugin-react-compiler eslint-plugin-react-hooks
 }
 ```
 
-## ESLint config
+## ESLint Configuration
 
-The `suffix` our `rescript.json` file is `".res.mjs",`, so we will need to tell it to process those files in our `eslint.config.js`:
+In our `rescript.json`, we've set the `suffix` to `".res.mjs"`. We'll need to configure ESLint to process these files in our `eslint.config.js`:
 
 ```js
 import reactHooks from "eslint-plugin-react-hooks";
@@ -73,16 +73,14 @@ export default [
 ];
 ```
 
-If we now run:
+To run the linter:
 
-```
+```shell
 bunx rescript
 bunx eslint
 ```
 
-Our files will be linted.
-
-We can test this by adding `src/Hello.res`:
+Let's verify our setup with a test component in `src/Hello.res`:
 
 ```ReScript
 let someCheck = () => Math.random() == 1.
@@ -97,7 +95,7 @@ let make = () => {
 }
 ```
 
-After `bunx eslint` we see:
+Running `bunx eslint` will show:
 
 ```shell
 /our-project/src/Hey.res.mjs
@@ -107,9 +105,9 @@ After `bunx eslint` we see:
 ✖ 2 problems (2 errors, 0 warnings)
 ```
 
-## React compiler config
+## React Compiler Configuration
 
-To wire up the React compiler, we need to modify our `vite.config.js`:
+To integrate the React compiler, modify your `vite.config.js`:
 
 ```js
 import { defineConfig } from "vite";
@@ -130,12 +128,10 @@ export default defineConfig({
 });
 ```
 
-This will ensure the compiler transforms our javascript code when the browser is requesting modules.
-However, there is one catch here! The React compiler currently [doesn't recognise compiled JSX](https://github.com/reactwg/react-compiler/discussions/22).
+This configuration ensures the compiler transforms our JavaScript code when the browser requests modules.
+Note: The React compiler currently [doesn't recognize compiled JSX](https://github.com/reactwg/react-compiler/discussions/22).
 
-So we would need to annotate our components with the `'use memo'` directive.
-
-For example:
+To work around this limitation, we need to annotate our components with the `'use memo'` directive:
 
 ```ReScript
 @react.component
@@ -148,7 +144,7 @@ let make =
 }
 ```
 
-is compiled to
+This compiles to:
 
 ```js
 import * as React from "react";
@@ -164,7 +160,7 @@ function Playground(props) {
 }
 ```
 
-And will be transformed to
+And transforms to:
 
 ```js
 import { c as _c } from "react/compiler-runtime";
@@ -196,7 +192,8 @@ function Playground(props) {
 }
 ```
 
-## Closing thoughts
+## Conclusion
 
-I think both ESLint and the React Compiler are super useful to create better React code.
-In a perfect world these things happen on the ReScript side, but overall I'm pretty okay with this setup. It catches problems and helps me out.
+ESLint and the React Compiler are powerful tools for improving React code quality.
+While native ReScript tooling for these features would be ideal, this setup effectively catches potential issues and provides valuable optimizations.
+The combination of static analysis and automated performance improvements helps create more reliable React applications.
