@@ -31,11 +31,7 @@ const hasTags = tags && tags.length > 0;
   </div>
   <article>
     <p>
-      <PostExcerpt
-        post={Astro.props}
-        words={100}
-        addEllipsis={true}
-      />
+      <PostExcerpt post={Astro.props} words={100} addEllipsis={true} />
     </p>
   </article>
 </section>

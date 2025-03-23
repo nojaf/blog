@@ -55,13 +55,13 @@ The configuration looks like this:
 const path = require("path");
 
 function resolve(relativePath) {
-    return path.join(__dirname, relativePath);
+  return path.join(__dirname, relativePath);
 }
 
 module.exports = {
-    entry: resolve("src/AdventExtension.fsproj"),
-    outDir: resolve("out"),
-    allFiles: true
+  entry: resolve("src/AdventExtension.fsproj"),
+  outDir: resolve("out"),
+  allFiles: true,
 };
 ```
 
@@ -76,33 +76,36 @@ However if we look at the existing `extension.js` file it seems to expose an `ac
 ```js
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode');
+const vscode = require("vscode");
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
+  // Use the console to output diagnostic information (console.log) and errors (console.error)
+  // This line of code will only be executed once when your extension is activated
+  console.log(
+    'Congratulations, your extension "fable-markdown-extension" is now active!',
+  );
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "fable-markdown-extension" is now active!');
+  // The command has been defined in the package.json file
+  // Now provide the implementation of the command with  registerCommand
+  // The commandId parameter must match the command field in package.json
+  let disposable = vscode.commands.registerCommand(
+    "extension.sayHello",
+    function () {
+      // The code you place here will be executed every time your command is executed
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', function () {
-        // The code you place here will be executed every time your command is executed
+      // Display a message box to the user
+      vscode.window.showInformationMessage("Hello World!");
+    },
+  );
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
-
-    context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {
-}
+function deactivate() {}
 exports.deactivate = deactivate;
 ```
 
@@ -136,7 +139,7 @@ Our compiled code looks like
 ```js
 import { toConsole, printf } from "./fable-library.2.1.8/String";
 export function activate(_arg1) {
-    toConsole(printf("Fable extension is activated!"));
+  toConsole(printf("Fable extension is activated!"));
 }
 ```
 
@@ -175,16 +178,16 @@ One small Babel plugin can do this for us. We need to download it with `yarn` an
 const path = require("path");
 
 function resolve(relativePath) {
-    return path.join(__dirname, relativePath);
+  return path.join(__dirname, relativePath);
 }
 
 module.exports = {
-    entry: resolve("src/AdventExtension.fsproj"),
-    outDir: resolve("out"),
-    babel: {
-    plugins: ["@babel/plugin-transform-modules-commonjs"]
-    },
-    allFiles: true
+  entry: resolve("src/AdventExtension.fsproj"),
+  outDir: resolve("out"),
+  babel: {
+    plugins: ["@babel/plugin-transform-modules-commonjs"],
+  },
+  allFiles: true,
 };
 ```
 
@@ -194,14 +197,14 @@ The JavaScript output now looks like
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true,
 });
 exports.activate = activate;
 
 var _String = require("./fable-library.2.1.8/String");
 
 function activate(_arg1) {
-    (0, _String.toConsole)((0, _String.printf)("Fable extension is activated!"));
+  (0, _String.toConsole)((0, _String.printf)("Fable extension is activated!"));
 }
 ```
 
@@ -444,7 +447,6 @@ let parseText input : ParseResult<ParserResult array> =
     |> fun parser -> parser.many().parse(input)
 ```
 
-
 I won't go into detail about exactly how this works but I do want to highlight two things:
 
 - `"🐉".Length` returns `2`. And `Parsimmon.satisfy` only compares a single token at a time.
@@ -590,49 +592,46 @@ Will be parsed to
 
 ```json
 [
-    {
+  {
     "type": "paragraph_open",
-    "tag": "p",
-    },
-    {
+    "tag": "p"
+  },
+  {
     "type": "inline",
     "tag": "",
-    "map": [
-        0,
-        1
-    ],
+    "map": [0, 1],
     "nesting": 0,
     "level": 1,
     "children": [
-        {
+      {
         "type": "text",
         "tag": "",
-        "content": "This is some ",
-        },
-        {
+        "content": "This is some "
+      },
+      {
         "type": "strong_open",
-        "tag": "strong",
-        },
-        {
+        "tag": "strong"
+      },
+      {
         "type": "text",
         "tag": "",
-        "content": "markdown text",
-        },
-        {
+        "content": "markdown text"
+      },
+      {
         "type": "strong_close",
-        "tag": "strong",
-        },
-        {
+        "tag": "strong"
+      },
+      {
         "type": "text",
-        "tag": "",
-        }
+        "tag": ""
+      }
     ],
-    "content": "This is some **markdown text**",
-    },
-    {
+    "content": "This is some **markdown text**"
+  },
+  {
     "type": "paragraph_close",
-    "tag": "p",
-    }
+    "tag": "p"
+  }
 ]
 ```
 
