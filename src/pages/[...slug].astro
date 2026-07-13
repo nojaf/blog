@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Cover from "../components/Cover.astro";
+import PhotoCredit from "../components/PhotoCredit.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -32,7 +33,123 @@ const style = post.data.backgroundPosition
     date={post.data.date}
     style={style}
   />
-  <main class="container">
+  <main class="container post">
     <Content />
+    {post.data.photoCredit && <PhotoCredit {...post.data.photoCredit} />}
   </main>
 </Layout>
+
+<style>
+  /* The blog article owns its typography. It is a long-form document with
+     its own needs (a comfortable reading measure, looser rhythm, code
+     blocks) so it opts out of the shared main styling in Layout.astro and
+     styles itself here. The markdown from <Content /> is injected, hence
+     the :global() selectors. */
+  .post {
+    --reading-width: 44rem;
+    font-size: var(--font-500);
+    line-height: 1.6;
+    padding-block: var(--spacing-600);
+  }
+
+  /* One reading column shared by every top-level block, code included, so
+     nothing breaks out to the full container width. */
+  .post > :global(*) {
+    max-width: var(--reading-width);
+    margin-inline: auto;
+  }
+
+  .post :global(h2) {
+    font-size: var(--font-800);
+    line-height: var(--heading-line-height);
+    margin-top: var(--spacing-700);
+    margin-bottom: var(--spacing-300);
+  }
+
+  .post :global(h2:first-of-type) {
+    margin-top: 0;
+  }
+
+  .post :global(h3) {
+    font-size: var(--font-700);
+    line-height: var(--heading-line-height);
+    margin-top: var(--spacing-500);
+    margin-bottom: var(--spacing-300);
+  }
+
+  .post :global(h4) {
+    font-size: var(--font-600);
+    margin-bottom: var(--spacing-200);
+  }
+
+  .post :global(h5),
+  .post :global(h6) {
+    font-size: var(--font-500);
+    margin-top: var(--spacing-200);
+    margin-bottom: var(--spacing-200);
+  }
+
+  .post :global(p),
+  .post :global(ul),
+  .post :global(ol) {
+    font-weight: 300;
+    margin-bottom: var(--spacing-400);
+  }
+
+  .post :global(a) {
+    color: var(--link-blue);
+    font-weight: 400;
+  }
+
+  .post :global(img) {
+    height: auto;
+    margin-block: var(--spacing-400);
+  }
+
+  .post :global(p code),
+  .post :global(li code) {
+    background-color: var(--black);
+    color: var(--nojaf-500);
+    padding: 2px 6px;
+    margin-inline: 2px;
+    border-radius: var(--radius);
+    font-family: var(--code-font);
+    font-size: var(--font-400);
+  }
+
+  .post :global(pre.astro-code) {
+    margin-block: var(--spacing-400);
+    padding: var(--spacing-200) var(--spacing-300);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-family: var(--code-font);
+    font-size: var(--font-300);
+  }
+
+  .post :global(pre.astro-code)::-webkit-scrollbar {
+    height: var(--spacing-300);
+  }
+
+  .post :global(pre.astro-code)::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-background);
+    border: 1px solid var(--scrollbar-track-border);
+  }
+
+  .post :global(pre.astro-code)::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-background);
+  }
+
+  .post :global(p:has(iframe)) {
+    margin-block: var(--spacing-400);
+  }
+
+  .post :global(blockquote) {
+    background-color: var(--nojaf-500);
+    padding: var(--spacing-200);
+    margin-block: var(--spacing-200);
+  }
+
+  .post :global(blockquote p) {
+    margin-bottom: 0;
+  }
+</style>

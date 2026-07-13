@@ -4,6 +4,10 @@ date: "2023-11-21"
 title: "Running JetBrains Rider in WSL 2"
 tags: ["wsl2", "tooling"]
 cover: "./nojaf.com.jetbrains-rider-in-wsl2.jpg"
+photoCredit:
+  author: "Ellie Pourreza"
+  username: "ellieeepr"
+  photoId: "red-petaled-flowers-at-daytime-7wP39t9zRzc"
 ---
 
 ## Intro
@@ -155,5 +159,3 @@ Whether it's suitable for daily use remains to be seen, but it's a promising opt
 Happy coding,
 
 Florian
-
-<span>Photo by <a href="https://unsplash.com/@ellieeepr?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ellie Pourreza</a> on <a href="https://unsplash.com/photos/red-petaled-flowers-at-daytime-7wP39t9zRzc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></span>

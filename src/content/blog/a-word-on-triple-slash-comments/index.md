@@ -4,6 +4,9 @@ date: "2022-03-05"
 title: "A word on triple-slash comments"
 tags: ["open-source", "fsharp", "fantomas", "tooling"]
 cover: "./blog.nojaf.com-triple-slash-comments.jpg"
+photoCredit:
+  author: "Fahrul Azmi"
+  username: "fahrulazmi"
 ---
 
 ## Intro
@@ -39,5 +42,3 @@ This change in Fantomas 4.7 can be a bit impactful. I admit I got a bit carried 
 Cheers,
 
 Florian
-
-<small>Photo by <a href="https://unsplash.com/@fahrulazmi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Fahrul Azmi</a> on <a href="https://unsplash.com/s/photos/three?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></small>

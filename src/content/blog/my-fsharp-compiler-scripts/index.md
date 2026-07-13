@@ -4,6 +4,10 @@ date: "2023-02-02"
 title: "My F# compiler scripts"
 tags: ["open-source", "fsharp", "tooling"]
 cover: "./blog.nojaf.com-my-fsharp-compiler-scripts.jpg"
+photoCredit:
+  author: "Jack Prommel"
+  username: "jpprommel"
+  photoId: "kaJiXMCyi20"
 ---
 
 ## Intro
@@ -395,5 +399,3 @@ I felt like sharing, that's all folks.
 Until next time,
 
 Florian
-
-<small>Photo by <a href="https://unsplash.com/@jpprommel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jack Prommel</a> on <a href="https://unsplash.com/photos/kaJiXMCyi20?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></small>

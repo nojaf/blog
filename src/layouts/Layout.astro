@@ -216,7 +216,10 @@ const props = Astro.props;
         display: inline-block;
       }
 
-      main {
+      /* Shared content typography for the simple prose pages (about,
+         contact, public-speaking) and the post list. The blog article
+         opts out with :not(.post) and owns its styling inline instead. */
+      main:not(.post) {
         font-size: var(--font-500);
         padding-block: var(--spacing-600);
 

@@ -4,6 +4,9 @@ date: "2020-12-15"
 title: "Gitpod & Snowpack"
 tags: ["open-source", "fsharp", "js", "docker"]
 cover: "./nojaf.com.gitpod-snowpack-fable-fsadvent-2020.jpg"
+photoCredit:
+  author: "Annie Spratt"
+  username: "anniespratt"
 ---
 
 Hey all,
@@ -18,5 +21,3 @@ Take care everyone!
 Cheers,
 
 nojaf
-
-<span>Photo by <a href="https://unsplash.com/@anniespratt?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Annie Spratt</a> on <a href="https://unsplash.com/s/photos/polar-bear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>

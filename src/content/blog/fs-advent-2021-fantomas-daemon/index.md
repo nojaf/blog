@@ -4,6 +4,9 @@ date: "2021-12-07"
 title: "Fantomas Daemon"
 tags: ["open-source", "fsharp", "fantomas", "tooling"]
 cover: "./nojaf.com.fantomas-daemon-fsadvent-2021.jpg"
+photoCredit:
+  author: "Donovan Reeves"
+  username: "donnehhhh"
 ---
 
 ## Intro
@@ -94,5 +97,3 @@ Enjoy the rest of the advent calendar, happy holidays and stay safe!
 Cheers,
 
 Florian
-
-<span>Photo by <a href="https://unsplash.com/@donnehhhh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Donovan Reeves</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>

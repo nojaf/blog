@@ -4,6 +4,9 @@ date: "2022-08-25"
 title: "Say Hello to Fantomas 5"
 tags: ["open-source", "fsharp", "fantomas", "tooling"]
 cover: "./blog.nojaf.com-say-hello-to-fantomas-five.jpg"
+photoCredit:
+  author: "Florian Wehde"
+  username: "florianwehde"
 ---
 
 ## Introduction
@@ -168,5 +171,3 @@ Please join us to celebrate!
 Cheers,
 
 Florian
-
-Photo by <a href="https://unsplash.com/@florianwehde?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Florian Wehde</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

@@ -4,6 +4,10 @@ date: "2022-05-24"
 title: "World domination, part one"
 tags: ["open-source", "fsharp", "fantomas", "tooling"]
 cover: "./blog.nojaf.com-world-domination-part-one.jpg"
+photoCredit:
+  author: "David Bruyndonckx"
+  username: "david_bxl"
+  photoId: "4XLdfSieqP0"
 ---
 
 ## Intro
@@ -356,5 +360,3 @@ Please try this one out, report issues using [our online tool](https://fsproject
 Cheers,
 
 Florian
-
-<small>Photo by <a href="https://unsplash.com/@david_bxl?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David Bruyndonckx</a> on <a href="https://unsplash.com/photos/4XLdfSieqP0?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">Unsplash</a></small>

@@ -1,0 +1,53 @@
+---
+interface Props {
+  author: string;
+  username: string;
+  photoId?: string;
+}
+
+const { author, username, photoId } = Astro.props;
+
+// Unsplash asks for a UTM-tagged attribution link back to the photographer
+// and to Unsplash. Building the URLs here keeps them out of the post bodies.
+const utm = "utm_source=blog_nojaf_com&utm_medium=referral";
+const authorUrl = `https://unsplash.com/@${username}?${utm}`;
+const photoUrl = photoId
+  ? `https://unsplash.com/photos/${photoId}?${utm}`
+  : `https://unsplash.com/?${utm}`;
+---
+
+<p class="photo-credit">
+  Photo by <a
+    class="credit-link"
+    href={authorUrl}
+    target="_blank"
+    rel="noopener noreferrer">{author}</a
+  > on <a
+    class="credit-link"
+    href={photoUrl}
+    target="_blank"
+    rel="noopener noreferrer">Unsplash</a
+  >
+</p>
+
+<style>
+  .photo-credit {
+    margin-top: var(--spacing-700);
+    color: #6b7280;
+    font-size: var(--font-300);
+    font-weight: 300;
+  }
+
+  .photo-credit .credit-link {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 150ms ease;
+  }
+
+  .photo-credit .credit-link:hover {
+    color: var(--nojaf-600);
+  }
+</style>

@@ -5,6 +5,10 @@ title: "Fantomas 6: The Legendary Formatter"
 tags: ["open-source", "fsharp", "fantomas", "tooling"]
 cover: "./blog.nojaf.com-fantomas-six-legendary-formatter.jpg"
 backgroundPosition: "initial"
+photoCredit:
+  author: "Parmanand Jagnandan"
+  username: "parmanand"
+  photoId: "3z0fVrHkXOM"
 ---
 
 ## Introduction
@@ -306,5 +310,3 @@ I would like to thank the following people in particular for their contributions
 Happy formatting,
 
 Florian
-
-Photo by <a href="https://unsplash.com/@parmanand?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Parmanand Jagnandan</a> on <a href="https://unsplash.com/photos/3z0fVrHkXOM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
