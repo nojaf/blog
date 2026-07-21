@@ -14,7 +14,7 @@
     "@astrojs/mdx": "7.0.2",
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.3",
-    "astro": "7.0.7"
+    "astro": "7.1.0"
   },
   "devDependencies": {
     "@igor.dvlpr/astro-post-excerpt": "^4.0.0",
