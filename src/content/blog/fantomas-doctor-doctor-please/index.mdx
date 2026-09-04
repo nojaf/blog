@@ -1,0 +1,251 @@
+---
+path: "2026/09/04/fantomas-doctor-doctor-please/"
+date: "2026-09-04"
+title: "Fantomas: Doctor doctor please"
+tags: ["open-source", "fsharp", "fantomas", "tooling"]
+cover: "./blog.nojaf.com-fantomas-doctor-doctor-please.jpg"
+backgroundPosition: "cover"
+---
+
+import { Image } from "astro:assets";
+import LlmDisclaimer from "../../../components/LlmDisclaimer.astro";
+import doctorReport from "./doctor.png";
+
+<LlmDisclaimer />
+
+## Introduction
+
+Fantomas 8 is in beta. If you are on 7 and have not been following the alphas, this post is for
+you: a handful of things I think you will actually notice, and then a small favour to ask.
+
+```
+dotnet tool update fantomas --prerelease
+```
+
+That is the whole ask, really. The rest of this is me trying to convince you it is worth the two
+minutes.
+
+## It got faster
+
+Same file, 2937 lines, same machine:
+
+|                         | Time    | Allocated |
+| ----------------------- | ------- | --------- |
+| Fantomas 7.0.3          | 93.5 ms | 155.2 MB  |
+| Fantomas 8.0.0-beta-001 | 64.5 ms | 95.4 MB   |
+
+Roughly one and a half times faster, and 38% less memory.
+
+I want to be upfront about where that comes from, because I nearly published a bigger number.
+Fantomas 8 targets `net10.0` instead of `net8.0`, and the runtime is doing a decent chunk of the
+speedup for free. The memory drop is ours. The changelog briefly claimed something closer to twice
+as fast with 65% less memory, and that turned out to be measured against `main` at a moment when
+`main` had drifted a long way from what any of you were running. Against an actual Fantomas 7,
+this is the honest number.
+
+Where you will feel it is format-on-save, which is one file at a time. A whole repository run is
+already spread across your cores, so there the difference is smaller than you would hope.
+
+## The command line tool grew up
+
+Here is Fantomas 7 formatting a folder:
+
+![Fantomas 7 formatting a folder, printing a table of four counts and no filenames](/blog/fantomas-doctor-doctor-please/format-v7.gif)
+
+And here is Fantomas 8:
+
+![Fantomas 8 formatting the same folder, printing one line naming the file it changed and a line of counts](/blog/fantomas-doctor-doctor-please/format-v8.gif)
+
+One sentence per file that changed, then the counts. That table always bothered me. It told you
+four numbers and not one filename, so the moment something surprised you, you were rerunning with
+`--verbosity d` to find out what.
+
+Checking reads the same way now, and tells you what to do about it:
+
+![Fantomas 8 check reporting one file needs formatting and naming the command to fix it](/blog/fantomas-doctor-doctor-please/check-v8.gif)
+
+`--help` is written by hand instead of generated, with examples at the top. `check`, `profile`,
+`daemon` and `doctor` are proper commands now, so each gets a help page of its own. Your CI does
+not need touching: `--check` and `--daemon` still work exactly as they did.
+
+A few small annoyances went with it. `fantomas` with no path now means `fantomas .`. `--out=build`
+works alongside `--out build`. `-h` works. And a typo'd flag says what it is:
+
+```
+'--chek' is not a Fantomas flag. Did you mean '--check'?
+```
+
+instead of the old, deeply unhelpful `Input path '--chek' not found.`
+
+## fantomas doctor
+
+This is the one I am most pleased with. You point it at a single file and it tells you everything
+Fantomas thinks about that file. Here is a file that a `.fantomasignore` two folders up looks like
+it should have skipped, and did not:
+
+<div class="wide">
+  <Image
+    src={doctorReport}
+    alt="The fantomas doctor report: the file is found, a nested .fantomasignore takes it back out, two settings come from .editorconfig, it needs formatting, and the output is valid and idempotent"
+  />
+</div>
+
+Every question in there was answerable before. You just had to read two config formats by hand and
+know the order Fantomas resolves them in, which is knowledge I would rather nobody had to carry
+around. "Why is this file not being formatted" is the single most common thing people ask me, and
+now the tool answers it.
+
+It writes nothing, so it is safe to run against a dirty working tree. There is `--json` if you
+would rather feed it to something else.
+
+## Your .editorconfig will tell you it is out of date
+
+Say you have this lying around, as you might after a few years:
+
+```ini
+[*.fs]
+fsharp_max_line_length = 100
+fsharp_multiline_brackets_style = aligned
+fsharp_semicolon_at_end_of_line = false
+```
+
+Fantomas 7 ignored all three without a word. Fantomas 8:
+
+<div class="wide">
+  <img
+    src="/blog/fantomas-doctor-doctor-please/editorconfig.gif"
+    alt="Fantomas 8 reporting three unusable editorconfig settings, each with the spelling that would have worked"
+  />
+</div>
+
+Three different ways to get it wrong, all in one file. A real editorconfig key that somebody put
+`fsharp_` in front of, an honest typo, and a setting we removed back in version 5 that has been
+sitting there dead ever since. You get this once per run, not once per file.
+
+The daemon reports the same thing to editors, and Ionide already picks it up thanks to
+[FsAutoComplete #1543](https://github.com/ionide/FsAutoComplete/pull/1543). So you will see it
+while you work rather than only in CI.
+
+## Comments move around less
+
+There is a long tail of issues about comments drifting when they sit at the end of a block. Take
+[#932](https://github.com/fsprojects/fantomas/issues/932), open since 2020:
+
+```fsharp
+let value =
+    // comment on the front
+    let x = 2
+    x * x
+    // comment on the back
+
+let something () =
+    async {
+        // return "foo"
+        return "bar"
+        // return "baz"
+    }
+```
+
+Fantomas 7 hands you back this:
+
+```fsharp
+let value =
+    // comment on the front
+    let x = 2
+    x * x
+// comment on the back
+
+let something () =
+    async {
+        // return "foo"
+        return "bar"
+    // return "baz"
+    }
+```
+
+Fantomas 8 leaves it alone.
+
+That one came as part of
+[a batch of comment placement issues](https://github.com/fsprojects/fantomas/issues?q=is%3Aissue+932+2286+1864+1716+2606+2653+2482+2476+2362+1233)
+we closed together. Comments are in much better shape than they were. I am not going to stand here
+and claim we got all of them.
+
+## Two things to know before you upgrade
+
+**The default bracket style changed.** `fsharp_multiline_bracket_style` now defaults to `aligned`
+instead of `cramped`. Those two words mean nothing until you see them, so: this is what Fantomas 7
+gave you by default,
+
+```fsharp
+let config =
+    { Indent = 4
+      MaxLineLength = 100
+      MultilineBracketStyle = Aligned
+      NewlineBetweenTypeDefinitionAndMembers = true }
+
+let dependencies =
+    [ "Fantomas.Core"
+      "Fantomas.FCS"
+      "FSharp.Core"
+      "StreamJsonRpc"
+      "System.IO.Abstractions" ]
+```
+
+and this is what Fantomas 8 gives you:
+
+```fsharp
+let config =
+    {
+        Indent = 4
+        MaxLineLength = 100
+        MultilineBracketStyle = Aligned
+        NewlineBetweenTypeDefinitionAndMembers = true
+    }
+
+let dependencies =
+    [
+        "Fantomas.Core"
+        "Fantomas.FCS"
+        "FSharp.Core"
+        "StreamJsonRpc"
+        "System.IO.Abstractions"
+    ]
+```
+
+The brackets get lines of their own and the contents are indented under them. I did not decide this
+on my own, by the way: it went to
+[a poll and a long discussion](https://github.com/fsprojects/fantomas/issues/3200) first.
+
+If you never set this, your first run on Fantomas 8 produces that diff across your whole
+repository. One line in your `.editorconfig` keeps what you had:
+
+```ini
+fsharp_multiline_bracket_style = cramped
+```
+
+**`.fantomasignore` is resolved per file.** It used to be resolved once, from wherever you happened
+to run the command. It is now found by walking up from each file, which is what the daemon has
+always done. If a subfolder of your repository has its own `.fantomasignore`, it used to be
+honoured by your editor and invisible to CI. Now both agree, so it is worth a look at whether it
+names files you have been formatting all along.
+
+## Give it a run
+
+```
+dotnet tool update fantomas --prerelease
+```
+
+Point it at a repository you already keep formatted and read the diff. It takes about a minute.
+If anything comes out looking worse than it did on Fantomas 7, let me know.
+
+The [upgrade guide](https://fsprojects.github.io/fantomas/docs/end-users/UpgradeGuide.html) has
+everything you might need to change, and the
+[changelog](https://github.com/fsprojects/fantomas/blob/main/CHANGELOG.md) has the full list, which
+is considerably longer than this post.
+
+It is a beta because I would rather hear about all this now than after it goes stable. Thanks for
+trying it.
+
+All the love,
+
+Florian

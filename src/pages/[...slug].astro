@@ -101,9 +101,46 @@ const style = post.data.backgroundPosition
     font-weight: 400;
   }
 
+  /* max-width keeps an image inside the reading column. The column is set on
+     the <p> the markdown wraps it in, which does not constrain the image
+     itself, so a wide screenshot would otherwise spill past the prose. */
   .post :global(img) {
+    max-width: 100%;
     height: auto;
     margin-block: var(--spacing-400);
+    border-radius: var(--radius);
+  }
+
+  /* Terminal captures too wide to read at the reading measure. The doctor
+     report is 113 columns, which inside 44rem leaves each character about
+     6px, so these fill the container instead. Below that width they stop
+     shrinking and the box scrolls, the way a wide code block does: a phone
+     showing 113 columns at once shows none of them legibly. */
+  .post :global(.wide) {
+    max-width: none;
+    width: 100%;
+    overflow-x: auto;
+    margin-block: var(--spacing-400);
+  }
+
+  .post :global(.wide img) {
+    min-width: 900px;
+    max-width: none;
+    width: 100%;
+    margin-block: 0;
+  }
+
+  .post :global(.wide)::-webkit-scrollbar {
+    height: var(--spacing-300);
+  }
+
+  .post :global(.wide)::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-background);
+    border: 1px solid var(--scrollbar-track-border);
+  }
+
+  .post :global(.wide)::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-background);
   }
 
   .post :global(p code),
@@ -151,5 +188,50 @@ const style = post.data.backgroundPosition
 
   .post :global(blockquote p) {
     margin-bottom: 0;
+  }
+
+  /* Width alone, so the table keeps the reading column that .post > * hands
+     every top-level block. A min-width here would break out of it: min-width
+     beats max-width in the cascade, so a percentage one resolves against the
+     full container and the table stops lining up with the prose beside it. */
+  .post :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--spacing-400);
+    font-size: var(--font-400);
+  }
+
+  .post :global(th),
+  .post :global(td) {
+    padding: var(--spacing-100) var(--spacing-300);
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Markdown centres nothing by default but the browser does centre <th>,
+     which reads as a wonky second column against left-aligned cells. */
+  .post :global(th) {
+    font-weight: 700;
+    border-bottom: 2px solid var(--black);
+    white-space: nowrap;
+  }
+
+  .post :global(td) {
+    font-weight: 300;
+  }
+
+  /* The first column is nearly always the label, and it wants the room. */
+  .post :global(th:first-child),
+  .post :global(td:first-child) {
+    padding-left: 0;
+  }
+
+  .post :global(th:last-child),
+  .post :global(td:last-child) {
+    padding-right: 0;
+  }
+
+  .post :global(tbody tr:last-child td) {
+    border-bottom: none;
   }
 </style>
