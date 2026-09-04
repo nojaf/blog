@@ -1,0 +1,52 @@
+---
+// A banner for posts an LLM drafted. Some posts here are written by a model
+// working from my notes, my measurements and a lot of me complaining at the
+// screen. That is worth saying out loud rather than letting a reader work it
+// out from the prose, so this sits at the top of those posts.
+//
+// Pass children to override the wording for a specific post.
+---
+
+<aside class="llm-disclaimer">
+  <p class="label">Written by a machine</p>
+  <slot>
+    <p>
+      An LLM wrote this post. I shouted at my screen for an afternoon, pointed
+      it at the changelog, made it measure things until the numbers were honest,
+      and this came out. I checked the facts and every command in here is real
+      output. I did not rewrite the prose. So if a sentence reads a little off,
+      that is why.
+    </p>
+  </slot>
+</aside>
+
+<style>
+  .llm-disclaimer {
+    border-left: 4px solid var(--teal-500);
+    background-color: var(--teal-50);
+    padding: var(--spacing-300) var(--spacing-400);
+    margin-bottom: var(--spacing-600);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .label {
+    color: var(--teal-700);
+    font-size: var(--font-300);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-100);
+  }
+
+  /* The post stylesheet gives every paragraph a bottom margin, which leaves a
+     gap under the last line of the banner. The banner sets its own spacing. */
+  .llm-disclaimer :global(p) {
+    font-size: var(--font-400);
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  .llm-disclaimer :global(p + p) {
+    margin-top: var(--spacing-200);
+  }
+</style>
