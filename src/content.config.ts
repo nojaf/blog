@@ -10,6 +10,9 @@ const blog = defineCollection({
       path: z.string(),
       date: z.string().transform((date) => new Date(date)),
       title: z.string(),
+      // Shown to search engines and on social cards. Left out, the opening of
+      // the post is used instead, which beats repeating the title.
+      description: z.string().optional(),
       tags: z.array(z.string()),
       cover: image(),
       backgroundPosition: z.string().optional(),

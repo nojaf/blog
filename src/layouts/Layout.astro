@@ -9,6 +9,9 @@ interface Props {
   title: string;
   description: string;
   keywords: string;
+  // Social card image, forwarded to BaseHead through the spread below. Without
+  // it every page falls back to the site logo, which is what a post shares as.
+  image?: string;
 }
 
 const props = Astro.props;

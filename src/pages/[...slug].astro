@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+import { excerpt } from "../lib/excerpt";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Cover from "../components/Cover.astro";
@@ -19,12 +21,26 @@ const { Content } = await render(post);
 const style = post.data.backgroundPosition
   ? { "background-position": post.data.backgroundPosition }
   : {};
+
+const description = post.data.description ?? excerpt(post.body ?? "");
+
+// The social card, built from the cover rather than handing the cover over as
+// it is. Covers are 1920x700, and the 1.91:1 that X and Facebook lay out for
+// would otherwise be reached by cropping whatever is in the middle.
+const socialCard = await getImage({
+  src: post.data.cover,
+  width: 1200,
+  height: 630,
+  fit: "cover",
+  format: "jpg",
+});
 ---
 
 <Layout
   title={post.data.title}
   keywords={post.data.tags.join(" ")}
-  description={post.data.title}
+  description={description}
+  image={socialCard.src}
 >
   <Cover
     title={post.data.title}
